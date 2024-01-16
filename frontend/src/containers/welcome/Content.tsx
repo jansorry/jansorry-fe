@@ -1,7 +1,13 @@
-import * as css from './Content.css';
+import * as styles from './Content.css';
+import Button from '@/components/Button';
 
 const WelcomeContent = () => {
-  return <div className={css.title}>This is Welcome Content</div>;
+  return (
+    <>
+      <div className={styles.title}>This is Welcome Content</div>
+      <Button>hey</Button>
+    </>
+  );
 };
 
 export default WelcomeContent;
