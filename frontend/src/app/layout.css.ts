@@ -3,7 +3,7 @@ import { globalStyle } from '@vanilla-extract/css';
 import { vars } from '@/styles/vars.css';
 
 globalStyle('html', {
-  backgroundColor: vars.colors.black,
+  backgroundColor: vars.colors.white,
 });
 
 globalStyle('body', {
@@ -14,4 +14,5 @@ globalStyle('body', {
   padding: '0',
   backgroundColor: vars.colors.white,
   position: 'relative',
+  boxShadow: '0px 0px 25px #f1f1f1',
 });
