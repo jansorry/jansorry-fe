@@ -1,33 +1,19 @@
-import NagCardFront from '@/components/NagCard/NagCardFront';
-import NagCardBack from '@/components/NagCard/NagCardBack';
-import NagCardEmpty from '@/components/NagCard/NagCardEmpty';
+
+// eslint-disable-next-line import/named
+import { cardTypesMap, sizeMap } from '@/components/NagCard/cardSettings';
 
 interface Props {// option
   categoryKey: number;
   cardType: number;
   text?: string;
-  width?: number;
+  size: number;
 }
 
-const NagCard = ({ categoryKey, cardType, text, width }: Props) => {
+const NagCard = ({ categoryKey, cardType, size, text }: Props) => {
 
-  const defaultWidth: number = 198;
-  const defaultHeightRatio: number = 264 / 198;
+  const cardColor : string | undefined = cardTypesMap.get(cardType);
+  const cardSize : string | undefined = sizeMap.get(size);
 
-  const cardWidth: number = width || defaultWidth;
-  const cardHeight: number = cardWidth * defaultHeightRatio;
-
-
-  switch (cardType){
-    case 1:
-      return <NagCardFront categoryKey={categoryKey} text={text||''} width={cardWidth} height={cardHeight} />
-
-    case 2:
-      return <NagCardBack categoryKey={categoryKey} text={text||''} width={cardWidth} height={cardHeight} />
-
-    default:
-      return <NagCardEmpty width={cardWidth} height={cardHeight} />
-  }
 
 }
 
