@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import * as styles from './index.css';
 
 interface Props {// option
@@ -12,7 +11,6 @@ interface Props {// option
 const NagCardBack = ({ categoryKey, text, width, height }: Props) => {
   let value:string = 'empty';
 let imgSrc :string = '/nag-card/nagcard-empty.png';
-//카드 색상의 알파벳 순으로 일단 0부터 할당
   switch (categoryKey){
     case 0:
       // imgSrc = '/nag-card/nagcard-blue-back.png'
@@ -44,13 +42,7 @@ let imgSrc :string = '/nag-card/nagcard-empty.png';
   imgSrc = `/nag-card/nagcard-${value}.png`;
 
   return (
-    <div className={styles.divStyle}>
-      <div className={styles.textStyle}>{text}</div>
-    <Image src={imgSrc} alt={'카드'}
-           layout={'fill'}
-           objectFit="cover"
-           objectPosition="center" />
-    </div>
+ <div></div>
   )
 }
 
