@@ -1,5 +1,9 @@
+import React from 'react';
+
 import type { Metadata } from 'next';
+
 import './layout.css';
+import Recoil from '@/states/Recoil';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +17,9 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <Recoil>{children}</Recoil>
+      </body>
     </html>
   );
 };
