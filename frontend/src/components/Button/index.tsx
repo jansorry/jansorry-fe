@@ -23,6 +23,8 @@ const Button = ({ link, children, disabled, onClick, type }: Props) => {
   return (
     // eslint-disable-next-line react/button-has-type
     <button type={type} disabled={disabled} className={styles.commonButton} onClick={onClick}>
+
+
       {children}
     </button>
   );
