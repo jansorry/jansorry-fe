@@ -12,13 +12,13 @@ const NavBar = ({ clickedIndex }: Props) => {
   return (
     <nav className={styles.navWrapper}>
       <div>
-        <IconHeart />
+        <Link href='/feeds'>{clickedIndex === 1 ? <IconHeartFilled /> : <IconHeart />}</Link>
       </div>
       <div>
-        <IconHome />
+        <Link href='/home'>{clickedIndex === 2 ? <IconHomeFilled /> : <IconHome />}</Link>
       </div>
       <div>
-        <IconUser />
+        <Link href='/mypage'>{clickedIndex === 3 ? <IconUserFilled /> : <IconUser />}</Link>
       </div>
     </nav>
   );
