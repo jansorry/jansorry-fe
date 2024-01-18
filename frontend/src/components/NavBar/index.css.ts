@@ -14,5 +14,5 @@ export const navWrapper = style({
   display: 'flex', // 아이콘 수직 정렬
   alignItems: 'center',
   justifyContent: 'space-around', // 하단바 아이콘 분산
-  borderTop: `1px solid #f1f1f1`,
+  borderTop: `1px solid ${vars.colors.lightgray50}`,
 });
