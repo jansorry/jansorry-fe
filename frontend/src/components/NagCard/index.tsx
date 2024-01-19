@@ -1,48 +1,33 @@
+'use client';
 
-import { style } from '@vanilla-extract/css';
+import { NagCardKeyOptions } from '@/types/nagCard';
 
-import * as styles from './index.css';
-import { cardTypesMap, sizeMap } from '@/components/NagCard/cardSettings';
+import { cardTypesMap, cardSizeMap, cardCategoryMap, textStyleMap } from '@/components/NagCard/cardOptions';
 import NagCardContent from '@/components/NagCard/NagCard';
 
-
-
-
-interface Props {// option
-  categoryKey: number;
-  cardType: number;
-  text?: string;
-  size: number;
+interface Props {
+  // 인덱스로 받는 타입
+  card: NagCardKeyOptions;
 }
 
-const NagCard = ({ categoryKey, cardType, size, text }: Props) => {
-  const cardColor: string | undefined = cardTypesMap.get(cardType);
-  const cardSize: string | undefined = sizeMap.get(size);
+const NagCard = ({ card }: Props) => {
+  const { categoryKey, typeKey, sizeKey, textStyleKey, text } = card;
 
-  // If cardSize is undefined, default to a predefined style or an empty string
-  const sizeClassName = cardSize ? styles[cardSize] : '';
+  const cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow' | undefined =
+    cardCategoryMap.get(categoryKey);
+  const cardType: 'empty' | 'front' | 'back' | undefined = cardTypesMap.get(typeKey);
+  const cardSize: 'medium' | 'large' | 'small' | 'xSmall' | undefined = cardSizeMap.get(sizeKey);
+  const textStyle: 'comment' | 'category' | 'nag' | undefined = textStyleMap.get(textStyleKey);
 
   return (
     <NagCardContent
-      className={sizeClassName}
-      cardColor={cardColor}
+      cardCategory={cardCategory}
       cardType={cardType}
+      cardSize={cardSize}
+      textStyle={textStyle}
       text={text}
     />
   );
-}
-
-// const NagCard = ({ categoryKey, cardType, size, text }: Props) => {
-//
-//   const cardColor : string | undefined = cardTypesMap.get(cardType);
-//   // @ts-ignore
-//   const cardSize : string = sizeMap.get(size);
-//   //  이럴때 어떻게?
-//
-//   const sizeClassName = styles.{cardSize};
-//
-//   return<NagCardContent className={`style.${cardSize}Size`} cardColor={cardColor} cardType={cardType} text={text} />
-//
-// }
+};
 
 export default NagCard;
