@@ -9,14 +9,13 @@
     "lint": "next lint",
     "jest": "jest",
     "test": "jest --watch --passWithNoTests",
-    "test:pre": "jest --silent --o --passWithNoTests",
-    "prepare": "cd .. && husky install frontend/.husky",
-    "lint-staged": "lint-staged"
+    "test:pre": "jest --silent --o --passWithNoTests"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.14.0",
     "@vanilla-extract/sprinkles": "^1.6.1",
     "next": "13.5.6",
+    "polished": "^4.2.2",
     "react": "^18",
     "react-dom": "^18",
     "recoil": "^0.7.7",
@@ -45,9 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.0",
     "jest": "^29.7.0",
-    "lint-staged": "^14.0.1",
     "prettier": "^3.2.2",
     "ts-jest": "^29.1.1",
     "typescript": "^5"
