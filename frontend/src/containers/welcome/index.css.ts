@@ -46,7 +46,7 @@ export const title = style({
   zIndex: 20,
 });
 
-export const message = style({
+export const subtitle = style({
   fontSize: '16px',
   fontWeight: 'bold',
   color: vars.colors.brown,
