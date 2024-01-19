@@ -34,6 +34,8 @@ export const vars = createGlobalTheme(':root', {
     green: '#83cf74',
     emerald: '#74cf9c',
     purple: '#cf8abc',
+    oatmeal: '#fdf5e4',
+    brown: '#453216',
   },
 
   borderRadius: {
