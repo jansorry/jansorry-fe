@@ -34,14 +34,17 @@ export const bgBottom = style({
 });
 
 export const title = style({
-  width: '80%',
+  width: 'auto',
   height: 'auto',
   '@media': {
     'screen and (max-height: 720px)': {
       marginBottom: 0,
     },
+    'screen and (max-height: 800px)': {
+      marginBottom: '16px',
+    },
   },
-  marginBottom: '48px',
+  marginBottom: '36px',
   position: 'relative',
   zIndex: 20,
 });
