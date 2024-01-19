@@ -1,3 +1,7 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import { IconArrowLeft } from '#/svgs';
 
 import * as styles from './index.css';
@@ -8,12 +12,14 @@ interface Props {
 }
 
 const Header = ({ title, hasPrevious }: Props) => {
+  const router = useRouter();
+
   return (
     <nav className={styles.headerWrapper}>
       {hasPrevious ? (
-        <div className={styles.perviousButton}>
+        <button type='button' className={styles.perviousButton} onClick={() => router.back()}>
           <IconArrowLeft />
-        </div>
+        </button>
       ) : (
         <div />
       )}

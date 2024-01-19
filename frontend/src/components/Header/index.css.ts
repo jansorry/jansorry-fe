@@ -23,4 +23,10 @@ export const perviousButton = style({
   position: 'fixed',
   marginLeft: '24px',
   marginTop: '2px',
+
+  // 버튼 기본 스타일 해제
+  border: 'none',
+  outline: 'none',
+  backgroundColor: 'inherit',
+  cursor: 'pointer',
 });
