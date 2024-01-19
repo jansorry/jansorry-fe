@@ -6,44 +6,42 @@ import Image from 'next/image';
 import { cardSizes, sizeStyles, textStyles } from './index.css';
 
 interface Props {
-  // option
-  cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow' | undefined;
-  cardType: 'empty' | 'front' | 'back' | undefined;
-  cardSize: 'medium' | 'large' | 'small' | 'xSmall' | undefined;
-  textStyle: 'comment' | 'category' | 'nag' | undefined;
+  cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow';
+  cardType: 'empty' | 'front' | 'back';
+  cardSize: 'medium' | 'large' | 'small' | 'xSmall';
+  textStyle: 'comment' | 'category' | 'nag';
 
   text?: string;
 }
 
 interface CardTextProps {
-  text: string | undefined;
-  textClass: string;
+  text?: string;
+  textClassName: string;
 }
 
-const CardText = memo(({ text, textClass }: CardTextProps) => {
-  return <span className={textClass}>{text}</span>;
+const CardText = memo(({ text, textClassName }: CardTextProps) => {
+  return <span className={textClassName}>{text}</span>;
 });
 
 const NagCardContent = ({ cardCategory, cardType, cardSize, textStyle, text }: Props) => {
-  const imgSrc =
+  const imgSrc: string =
     cardType || cardCategory ? `/nag-card/nagcard-${cardCategory}-${cardType}.png` : '/nag-card/nagcard-empty.png';
-  const sizeClass = cardSize ? sizeStyles[cardSize] : sizeStyles.medium;
-  let textClass;
+  const sizeClassName: string = cardSize ? sizeStyles[cardSize] : sizeStyles.medium;
+  let textClassName;
   if (textStyle === 'nag' && cardCategory && cardCategory in textStyles.nag) {
-    textClass = textStyles.nag[cardCategory];
+    textClassName = textStyles.nag[cardCategory];
   } else if (textStyle === 'comment' || textStyle === 'category') {
-    textClass = textStyles[textStyle];
+    textClassName = textStyles[textStyle];
   } else {
-    textClass = textStyles.nag.empty;
+    textClassName = textStyles.nag.empty;
   }
 
   return (
-    <div className={sizeClass}>
-      <CardText text={text} textClass={textClass} />
+    <div className={sizeClassName}>
+      <CardText textClassName={textClassName} text={text} />
       <Image
         src={imgSrc}
         alt={`${cardCategory}카드`}
-        layout='fixed'
         width={cardSize ? cardSizes[cardSize].width : cardSizes.medium.width}
         height={cardSize ? cardSizes[cardSize].height : cardSizes.medium.height}
         objectFit='cover'

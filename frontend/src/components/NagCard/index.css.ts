@@ -26,18 +26,13 @@ export const sizeStyles = {
   medium: style([relativeStyle, cardSizes.medium]),
   large: style([relativeStyle, cardSizes.large]),
 };
-// export const sizeStyles = {
-//   xSmall: style([relativeStyle, { width: '96px', height: '128px' }]),
-//   small: style([relativeStyle, { width: '138px', height: '184px' }]),
-//   medium: style([relativeStyle, { width: '198px', height: '264px' }]),
-//   large: style([relativeStyle, { width: '300px', height: '400px' }]),
-// };
 
 // 공통 스타일
 // top, left, font 등 수정 필요 (중앙정렬할건지.. margin으로 넣을건지 확인 필요)
 const cardTextCenterStyle = style({
   position: 'absolute',
   transform: 'translate(-50%, -50%)',
+  //  추후 공통스타일로 관리 필요 (확인)
   zIndex: 1,
   fontSize: vars.fontSize['1x'],
 
