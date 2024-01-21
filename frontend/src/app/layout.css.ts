@@ -14,5 +14,5 @@ globalStyle('body', {
   padding: '0',
   backgroundColor: vars.colors.white,
   position: 'relative',
-  boxShadow: '0px 0px 25px #f1f1f1',
+  boxShadow: `0 0 25px ${vars.colors.lightgray50}`,
 });
