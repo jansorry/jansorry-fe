@@ -4,7 +4,7 @@ import { modularScale } from 'polished';
 const createScale = (ratio: number, base: number) => (steps: number) => `${modularScale(steps, base, ratio)}px`;
 
 const spaceScale = createScale(1.4, 4);
-const fontSizeScale = createScale(1.3, 8);
+const fontSizeScale = createScale(2, 8);
 const lineHeightScale = createScale(1, 8);
 const borderRadiusScale = createScale(1.5, 4);
 
