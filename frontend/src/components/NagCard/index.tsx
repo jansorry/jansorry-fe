@@ -13,24 +13,16 @@ interface Props {
 const NagCard = ({ card }: Props) => {
   const { categoryKey, typeKey, sizeKey, textStyleKey, text } = card;
 
-  const cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow' | '[ERROR] cardCategory' =
-    cardCategoryMap.get(categoryKey) ?? '[ERROR] cardCategory';
-  const cardType: 'empty' | 'front' | 'back' | '[ERROR] cardType' = cardTypesMap.get(typeKey) ?? '[ERROR] cardType';
+  const cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow' | 'ERROR'=
+    cardCategoryMap.get(categoryKey) ?? 'ERROR';
+  const cardType: 'empty' | 'front' | 'back' | 'ERROR'  = cardTypesMap.get(typeKey) ?? 'ERROR';
 
-  const cardSize: 'medium' | 'large' | 'small' | 'xSmall' | '[ERROR] cardSize' =
-    cardSizeMap.get(sizeKey) ?? '[ERROR] cardSize';
+  const cardSize: 'medium' | 'large' | 'small' | 'xSmall' | 'ERROR'= cardSizeMap.get(sizeKey)  ?? 'ERROR';
 
-  const textStyle: 'comment' | 'category' | 'nag' | '[ERROR] textStyle' =
-    textStyleMap.get(textStyleKey) ?? '[ERROR] textStyle';
+  const textStyle: 'comment' | 'category' | 'nag' | 'ERROR' =  textStyleMap.get(textStyleKey)  ?? 'ERROR';
 
-  //  임시 오류 검사
-  const isError = [cardCategory, cardType, cardSize, textStyle].some((value) => value.startsWith('[ERROR]'));
-  if (isError) {
-    return (
-      <div>
-        `오류가 발생했습니다. 입력 값을 확인해주세요.${cardCategory}${cardType}${cardSize}${textStyle}`
-      </div>
-    );
+  if (cardCategory === 'ERROR' || cardType === 'ERROR' || cardSize === 'ERROR' || textStyle === 'ERROR') {
+    return <div>오류입니다</div>;
   }
 
   return (
