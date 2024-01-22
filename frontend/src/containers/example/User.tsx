@@ -14,10 +14,8 @@ interface Props {
   link?: string;
 }
 
-const User = (props: Props) => {
+const User = ({ id, name, image, link }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const { id, name, image, link } = props;
 
   return (
     <li>
