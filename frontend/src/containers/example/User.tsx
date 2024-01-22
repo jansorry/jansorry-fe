@@ -17,7 +17,6 @@ interface Props {
 }
 
 const User = ({ id, name, image, link }: Props) => {
-  // const [isOpen, setIsOpen] = useState(false);
   const { isOpen, open, close } = useModal();
 
   return (
