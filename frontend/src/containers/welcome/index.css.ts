@@ -1,13 +1,15 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
+import { defaultWrapper } from '@/styles/common.css';
 
-export const welcomeWrapper = style({
-  height: '100svh',
-  maxWidth: '480px',
-  backgroundColor: vars.colors.oatmeal,
-  textAlign: 'center',
-});
+export const welcomeWrapper = style([
+  defaultWrapper({ height: 'max' }),
+  {
+    backgroundColor: vars.colors.oatmeal,
+    textAlign: 'center',
+  },
+]);
 
 export const bgTop = style({
   '@media': {
@@ -15,22 +17,22 @@ export const bgTop = style({
       marginBottom: 0,
     },
     'screen and (min-height: 720px) and (max-height: 840px)': {
-      marginBottom: '32px',
+      marginBottom: vars.space['4x'],
     },
   },
   width: '100%',
   height: 'auto',
-  marginTop: '16px',
-  marginBottom: '64px',
+  marginTop: vars.space['2x'],
+  marginBottom: 64,
 });
 
 export const bgBottom = style({
   width: '100%',
   height: 'auto',
   position: 'absolute',
-  bottom: '16px',
+  bottom: vars.space['2x'],
   left: 0,
-  zIndex: 1,
+  zIndex: vars.zIndex['z-1'],
 });
 
 export const title = style({
@@ -41,27 +43,27 @@ export const title = style({
       marginBottom: 0,
     },
     'screen and (max-height: 800px)': {
-      marginBottom: '16px',
+      marginBottom: vars.space['2x'],
     },
   },
-  marginBottom: '36px',
+  marginBottom: vars.space['4x'],
   position: 'relative',
-  zIndex: 20,
+  zIndex: vars.zIndex['z-2'],
 });
 
 export const subtitle = style({
-  fontSize: '16px',
-  fontWeight: 'bold',
+  fontSize: vars.fontSize['2x'],
+  fontWeight: vars.fontWeight.accent,
   color: vars.colors.brown,
   position: 'relative',
-  zIndex: 20,
+  zIndex: vars.zIndex['z-2'],
 });
 
 export const kakaoLoginButton = style({
   width: '80%',
   height: 'auto',
-  marginTop: '60px',
+  marginTop: 60,
   position: 'relative',
   cursor: 'pointer',
-  zIndex: 20,
+  zIndex: vars.zIndex['z-2'],
 });
