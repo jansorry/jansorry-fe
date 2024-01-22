@@ -18,7 +18,10 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang='en' suppressHydrationWarning>
       <body>
-        <Recoil>{children}</Recoil>
+        <Recoil>
+          {children}
+          <div id='modal' />
+        </Recoil>
       </body>
     </html>
   );
