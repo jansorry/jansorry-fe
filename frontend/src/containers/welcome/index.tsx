@@ -1,7 +1,5 @@
 import Image from 'next/image';
 
-import { ButtonKakaoLogin } from '#/svgs';
-
 import * as styles from './index.css';
 
 const Welcome = () => {

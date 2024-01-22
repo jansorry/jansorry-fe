@@ -1,32 +1,29 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
+import { defaultWrapper, flex, plainButton } from '@/styles/common.css';
 
-export const headerWrapper = style({
-  position: 'fixed',
-  height: '80px',
-  width: '100svw',
-  maxWidth: '480px',
-  backgroundColor: vars.colors.white,
-  borderBottom: `1px solid ${vars.colors.lightgray50}`,
-  display: 'flex',
-  alignItems: 'center',
-});
+export const headerWrapper = style([
+  flex({ align: 'center' }),
+  defaultWrapper({ width: 'max', border: 'bottom' }),
+  {
+    position: 'fixed',
+    height: 80,
+    backgroundColor: vars.colors.white,
+  },
+]);
 
 export const title = style({
-  fontSize: '24px',
-  fontWeight: 'bold',
+  fontSize: vars.fontSize['3x'],
+  fontWeight: vars.fontWeight.accent,
   margin: '0 auto',
 });
 
-export const perviousButton = style({
-  position: 'fixed',
-  marginLeft: '24px',
-  marginTop: '2px',
-
-  // 버튼 기본 스타일 해제
-  border: 'none',
-  outline: 'none',
-  backgroundColor: 'inherit',
-  cursor: 'pointer',
-});
+export const previousButton = style([
+  plainButton(),
+  {
+    position: 'fixed',
+    marginLeft: vars.space['3x'],
+    marginTop: 2,
+  },
+]);
