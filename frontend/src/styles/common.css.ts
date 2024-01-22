@@ -8,14 +8,22 @@ export const defaultWrapper = recipe({
   },
   variants: {
     width: {
-      max: '100svw',
+      max: {
+        width: '100svw',
+      },
     },
     height: {
-      max: '100svh',
+      max: {
+        height: '100svh',
+      },
     },
     border: {
-      top: `1px solid ${vars.colors.whitesmoke}`,
-      bottom: `1px solid ${vars.colors.whitesmoke}`,
+      top: {
+        borderTop: `1px solid ${vars.colors.whitesmoke}`,
+      },
+      bottom: {
+        borderBottom: `1px solid ${vars.colors.whitesmoke}`,
+      },
     },
   },
 });
