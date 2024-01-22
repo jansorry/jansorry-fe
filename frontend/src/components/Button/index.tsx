@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import * as styles from './index.css';
+import { commonButton, CommonButtonVariants } from '@/components/Button/index.css';
 
 interface Props {
   children: ReactNode;
@@ -9,22 +9,26 @@ interface Props {
   disabled?: boolean;
   onClick?: () => void;
   type?: 'submit' | 'reset' | 'button';
+  buttonStyle: CommonButtonVariants;
 }
 
-const Button = ({ link, children, disabled, onClick, type }: Props) => {
+const Button = ({ link, children, disabled, onClick, type, buttonStyle }: Props) => {
   if (link) {
     return (
-      <Link href={link} className={styles.commonButton}>
+      <Link href={link} className={commonButton(buttonStyle)}>
         {children}
       </Link>
     );
   }
 
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button type={type} disabled={disabled} className={styles.commonButton} onClick={onClick}>
-
-
+    <button
+      // 왜 오류가 날까요?
+      type={type}
+      disabled={disabled}
+      className={commonButton(buttonStyle)}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

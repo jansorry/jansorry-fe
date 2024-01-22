@@ -1,4 +1,4 @@
-'use client';
+ 'use client';
 
 // client component example
 import Link from 'next/link';
