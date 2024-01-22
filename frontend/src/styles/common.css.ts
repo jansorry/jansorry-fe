@@ -45,6 +45,9 @@ export const flex = recipe({
       center: {
         alignItems: 'center',
       },
+      right: {
+        marginLeft: 'auto',
+      },
     },
   },
 });

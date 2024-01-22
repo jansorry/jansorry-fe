@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Button from '@/components/Button';
+import Modal from '@/components/Modal';
 
 interface Props {
   id: string;
@@ -14,20 +15,27 @@ interface Props {
 }
 
 const User = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { id, name, image, link } = props;
 
-  const clicked = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <li>
-      <Button type='button' onClick={clicked}>
+      <Button type='button' onClick={() => setIsOpen(true)}>
         눌러
       </Button>
-      {isOpen ? <div>버튼 눌렀나요?</div> : <div>버튼 눌렸어요</div>}
+      {isOpen && (
+        <Modal open={isOpen} onClose={() => setIsOpen(false)} title='버튼을 누르셨네요.'>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+        </Modal>
+      )}
       <div>{id}</div>
       <div>{name}</div>
       {link ? (
