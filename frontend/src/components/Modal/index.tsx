@@ -25,11 +25,13 @@ const Modal = ({ open, title, onClose, children }: Props) => {
     <>
       <div className={styles.modalOverlay} />
       <div ref={ref} className={styles.modalWrapper}>
-        <button type='button' onClick={onClose} className={styles.closeButton}>
-          <IconClose />
-        </button>
-        {title && <div className={styles.modalTitle}>{title}</div>}
-        {children}
+        <div className={styles.modalPadding}>
+          <button type='button' onClick={onClose} className={styles.closeButton}>
+            <IconClose />
+          </button>
+          {title && <div className={styles.modalTitle}>{title}</div>}
+          {children}
+        </div>
       </div>
     </>,
     document.getElementById('modal') as HTMLElement,
