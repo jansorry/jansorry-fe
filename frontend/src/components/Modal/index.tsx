@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { IconClose } from '#/svgs';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
+import usePreventScroll from '@/hooks/usePreventScroll';
 
 import * as styles from './index.css';
 
@@ -18,6 +19,9 @@ const Modal = ({ open, title, onClose, children }: Props) => {
 
   // Modal 영역 바깥을 클릭했을 때, close 이벤트를 custom hook에 전달
   useOnClickOutside(ref, () => onClose());
+
+  // Modal 영역 바깥 스크롤 방지
+  usePreventScroll(open);
 
   if (!open) return null;
 

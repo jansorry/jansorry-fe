@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 
 import { flex, plainButton } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';

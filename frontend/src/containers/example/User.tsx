@@ -4,6 +4,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+import useModal from '@/hooks/useModal';
+
 import Button from '@/components/Button';
 import Modal from '@/components/Modal';
 
@@ -15,15 +17,16 @@ interface Props {
 }
 
 const User = ({ id, name, image, link }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, open, close } = useModal();
 
   return (
     <li>
-      <Button type='button' onClick={() => setIsOpen(true)}>
+      <Button type='button' onClick={open}>
         눌러
       </Button>
       {isOpen && (
-        <Modal open={isOpen} onClose={() => setIsOpen(false)} title='버튼을 누르셨네요.'>
+        <Modal open={isOpen} onClose={close} title='버튼을 누르셨네요.'>
           <div>아아 모달 테스트</div>
           <div>아아 모달 테스트</div>
           <div>아아 모달 테스트</div>
