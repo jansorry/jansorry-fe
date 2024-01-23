@@ -8,15 +8,12 @@ import Button from '@/components/Button';
 
 const Example = () => {
   const card: NagCardKeyOptions = { categoryKey: 1, typeKey: 1, sizeKey: 3, textStyleKey: 2, text: 'test' };
-
-  const buttonSmall = { colorStyle: 'red', filled: false, size: 'small' };
   return (
     <main>
       <NagCard card={card} />
 
-      <Button type='button' buttonStyle={buttonSmall}>
-        {' '}
-        test{' '}
+      <Button size='large' filled colorStyle='strongRed' type='button'>
+        이상한 버튼사이즈에 관하여
       </Button>
       <div>
         <ul>

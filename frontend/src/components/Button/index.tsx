@@ -1,36 +1,42 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import { commonButton, CommonButtonVariants } from '@/components/Button/index.css';
+import { ButtonWrapper, commonButton } from '@/components/Button/index.css';
 
 interface Props {
   children: ReactNode;
   link?: string;
   disabled?: boolean;
   onClick?: () => void;
-  type?: 'submit' | 'reset' | 'button';
-  buttonStyle: CommonButtonVariants;
+  type: 'submit' | 'reset' | 'button';
+  size: 'large' | 'small';
+  colorStyle: 'blue' | 'strongRed';
+  filled: boolean;
 }
 
-const Button = ({ link, children, disabled, onClick, type, buttonStyle }: Props) => {
+const Button = ({ link, children, disabled, onClick, type, size, colorStyle, filled }: Props) => {
   if (link) {
     return (
-      <Link href={link} className={commonButton(buttonStyle)}>
-        {children}
-      </Link>
+      <div className={ButtonWrapper[size]}>
+        <Link href={link} className={commonButton({ size, colorStyle, filled })}>
+          {children}
+        </Link>
+      </div>
     );
   }
 
   return (
-    <button
-      // 왜 오류가 날까요?
-      type={type}
-      disabled={disabled}
-      className={commonButton(buttonStyle)}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    <div className={ButtonWrapper[size]}>
+      <button
+        // 왜 오류가 날까요?
+        type={type}
+        disabled={disabled}
+        className={commonButton({ size, colorStyle, filled })}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    </div>
   );
 };
 

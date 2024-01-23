@@ -1,17 +1,12 @@
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes';
+import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
+import { defaultWrapper } from '@/styles/common.css';
 
-const colors: ('blue' | 'red' | 'yellow' | 'green' | 'emerald' | 'purple')[] = [
-  'blue',
-  'red',
-  'yellow',
-  'green',
-  'emerald',
-  'purple',
-];
+const colors: ('blue' | 'strongRed')[] = ['blue', 'strongRed'];
 
-const filledStyles = colors.flatMap((colorStyle: 'blue' | 'red' | 'yellow' | 'green' | 'emerald' | 'purple') => [
+const filledStyles = colors.flatMap((colorStyle: 'blue' | 'strongRed') => [
   {
     variants: { colorStyle, filled: true },
     style: {
@@ -23,7 +18,6 @@ const filledStyles = colors.flatMap((colorStyle: 'blue' | 'red' | 'yellow' | 'gr
   {
     variants: { colorStyle, filled: false },
     style: {
-      boxSizing: 'border-box',
       borderColor: vars.colors[colorStyle],
       borderWidth: 2,
       borderStyle: 'solid',
@@ -35,40 +29,59 @@ const filledStyles = colors.flatMap((colorStyle: 'blue' | 'red' | 'yellow' | 'gr
 
 export const commonButton = recipe({
   base: {
+    boxSizing: 'border-box',
     borderRadius: vars.borderRadius.full,
     border: 'none',
     fontSize: vars.fontSize['3x'],
     fontWeight: vars.fontWeight.accent,
     height: 48,
+    margin: 'auto',
+    paddingTop: vars.space['0.5x'],
+    paddingBottom: vars.space['0.5x'],
   },
   variants: {
     size: {
       small: {
-        width: 124,
-      },
-      medium: {
-        /* 필요한지 확인 */
+        width: 'auto',
+        paddingLeft: vars.space['2x'],
+        paddingRight: vars.space['2x'],
       },
       large: {
-        width: 325,
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       },
     },
-
     colorStyle: {
       blue: {},
-      red: {},
-      yellow: {},
-      green: {},
-      emerald: {},
-      purple: {},
+      strongRed: {},
     },
     filled: {
-      true: {},
+      ture: {},
       false: {},
     },
   },
-  compoundVariants: [...filledStyles],
+  compoundVariants: filledStyles,
 });
-
-//  이부분은 어떻게 통일할 것인가
-export type CommonButtonVariants = RecipeVariants<typeof commonButton>;
+export const ButtonWrapper = {
+  large: style([
+    {
+      boxSizing: 'border-box',
+      '@media': {
+        'screen and (min-width: 480px)': {
+          width: '480px',
+        },
+      },
+      width: '100svw',
+      paddingLeft: vars.space['4x'],
+      paddingRight: vars.space['4x'],
+    },
+  ]),
+  small: style([
+    {
+      boxSizing: 'border-box',
+      width: 'auto',
+    },
+  ]),
+};

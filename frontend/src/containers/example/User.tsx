@@ -1,4 +1,4 @@
- 'use client';
+'use client';
 
 // client component example
 import Link from 'next/link';
@@ -18,11 +18,10 @@ interface Props {
 
 const User = ({ id, name, image, link }: Props) => {
   const { isOpen, open, close } = useModal();
-
   return (
     <li>
-      <Button type='button' onClick={open}>
-        눌러
+      <Button size='small' filled={false} colorStyle='blue' type='button' onClick={open}>
+        길이에 따른 유동적인스타일
       </Button>
       {isOpen && (
         <Modal open={isOpen} onClose={close} title='버튼을 누르셨네요.'>
