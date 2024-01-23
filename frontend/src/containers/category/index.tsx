@@ -1,18 +1,18 @@
 import { nag } from '@/types/nag';
 
 interface Props {
-  nags: nag[];
+  nagItems: nag[];
 }
 
-const Category = ({ nags }: Props) => {
+const Category = ({ nagItems }: Props) => {
   return (
     <>
-      {nags.map((nagging: nag) => (
+      {nagItems.map((nagItem: nag) => (
         <>
-          <div>{nagging.nagId}</div>
-          <div>{nagging.categoryId}</div>
-          <div>{nagging.content}</div>
-          <div>{nagging.price}</div>
+          <div>{nagItem.nagId}</div>
+          <div>{nagItem.categoryId}</div>
+          <div>{nagItem.content}</div>
+          <div>{nagItem.price}</div>
         </>
       ))}
     </>
