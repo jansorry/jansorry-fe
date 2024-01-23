@@ -28,7 +28,7 @@ const Button = ({ link, children, disabled, onClick, type, size, colorStyle, fil
   return (
     <div className={ButtonWrapper[size]}>
       <button
-        // 왜 오류가 날까요?
+        // eslint-disable-next-line react/button-has-type
         type={type}
         disabled={disabled}
         className={commonButton({ size, colorStyle, filled })}

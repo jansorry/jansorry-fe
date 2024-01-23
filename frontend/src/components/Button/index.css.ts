@@ -2,7 +2,6 @@ import { recipe } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { defaultWrapper } from '@/styles/common.css';
 
 const colors: ('blue' | 'strongRed' | 'black')[] = ['blue', 'strongRed', 'black'];
 
@@ -38,6 +37,8 @@ export const commonButton = recipe({
     margin: 'auto',
     paddingTop: vars.space['0.5x'],
     paddingBottom: vars.space['0.5x'],
+    textDecorationLine: 'none',
+    cursor: 'pointer',
   },
   variants: {
     size: {
@@ -59,12 +60,13 @@ export const commonButton = recipe({
       black: {},
     },
     filled: {
-      ture: {},
+      true: {},
       false: {},
     },
   },
   compoundVariants: filledStyles,
 });
+
 export const ButtonWrapper = {
   large: style([
     {

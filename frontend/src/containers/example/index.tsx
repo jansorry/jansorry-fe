@@ -11,9 +11,11 @@ const Example = () => {
   return (
     <main>
       <NagCard card={card} />
-
+      <Button size='large' filled colorStyle='strongRed' type='button' link='https://www.naver.com'>
+        영수증 사진으로 공유하기
+      </Button>
       <Button size='large' filled colorStyle='strongRed' type='button'>
-        이상한 버튼사이즈에 관하여
+        영수증 사진으로 공유하기
       </Button>
       <Button size='small' filled colorStyle='black' type='button'>
         색상테스트
