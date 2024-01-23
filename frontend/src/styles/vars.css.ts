@@ -62,7 +62,8 @@ export const vars = createGlobalTheme(':root', {
   zIndex: {
     'alert-content': '3001',
     'alert-bg': '3000',
-    'content-to-top': '2000',
+    'content-to-top': '2001',
+    'content-bg-to-top': '2000',
     'float-button': '1000',
     'z-5': '5',
     'z-4': '4',
