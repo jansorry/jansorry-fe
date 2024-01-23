@@ -4,9 +4,9 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/vars.css';
 import { defaultWrapper } from '@/styles/common.css';
 
-const colors: ('blue' | 'strongRed')[] = ['blue', 'strongRed'];
+const colors: ('blue' | 'strongRed' | 'black')[] = ['blue', 'strongRed', 'black'];
 
-const filledStyles = colors.flatMap((colorStyle: 'blue' | 'strongRed') => [
+const filledStyles = colors.flatMap((colorStyle: 'blue' | 'strongRed' | 'black') => [
   {
     variants: { colorStyle, filled: true },
     style: {
@@ -56,6 +56,7 @@ export const commonButton = recipe({
     colorStyle: {
       blue: {},
       strongRed: {},
+      black: {},
     },
     filled: {
       ture: {},

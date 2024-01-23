@@ -15,6 +15,9 @@ const Example = () => {
       <Button size='large' filled colorStyle='strongRed' type='button'>
         이상한 버튼사이즈에 관하여
       </Button>
+      <Button size='small' filled colorStyle='black' type='button'>
+        색상테스트
+      </Button>
       <div>
         <ul>
           {users.map((user) => (

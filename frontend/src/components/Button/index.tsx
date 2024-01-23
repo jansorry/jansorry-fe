@@ -10,7 +10,7 @@ interface Props {
   onClick?: () => void;
   type: 'submit' | 'reset' | 'button';
   size: 'large' | 'small';
-  colorStyle: 'blue' | 'strongRed';
+  colorStyle: 'blue' | 'strongRed' | 'black';
   filled: boolean;
 }
 
