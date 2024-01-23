@@ -12,14 +12,6 @@ const nextConfig = {
 
     return config;
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       destination: `${'backend-url'}/:path*`,
-  //     },
-  //   ];
-  // },
 };
 
 module.exports = withVanillaExtract(nextConfig);
