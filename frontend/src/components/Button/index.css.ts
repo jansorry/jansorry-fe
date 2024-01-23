@@ -5,23 +5,23 @@ import { vars } from '@/styles/vars.css';
 
 const colors: ('blue' | 'strongRed' | 'black')[] = ['blue', 'strongRed', 'black'];
 
-const filledStyles = colors.flatMap((colorStyle: 'blue' | 'strongRed' | 'black') => [
+const filledStyles = colors.flatMap((colorItem:'blue' | 'strongRed' | 'black') => [
   {
-    variants: { colorStyle, filled: true },
+    variants: { colorStyle:colorItem, filled: true },
     style: {
-      backgroundColor: vars.colors[colorStyle],
+      backgroundColor: vars.colors[colorItem],
       border: 'none',
       color: vars.colors.white,
     },
   },
   {
-    variants: { colorStyle, filled: false },
+    variants: { colorStyle: colorItem, filled: false },
     style: {
-      borderColor: vars.colors[colorStyle],
+      borderColor: vars.colors[colorItem],
       borderWidth: 2,
       borderStyle: 'solid',
       background: vars.colors.white,
-      color: vars.colors[colorStyle],
+      color: vars.colors[colorItem],
     },
   },
 ]);
