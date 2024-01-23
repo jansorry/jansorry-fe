@@ -13,15 +13,22 @@ export const modalOverlay = style({
 });
 
 export const modalWrapper = style({
+  '@media': {
+    'screen and (min-width: 480px)': {
+      width: 480,
+    },
+  },
   position: 'fixed',
   bottom: 0,
-  width: '100%',
-  maxWidth: 480 - 64,
+  width: '100svw',
   maxHeight: '80%',
-  padding: vars.space['4x'],
-  paddingBottom: 80,
   backgroundColor: vars.colors.white,
   borderRadius: vars.borderRadius.top,
+});
+
+export const modalPadding = style({
+  padding: vars.space['4x'],
+  paddingBottom: 80,
 });
 
 export const closeButton = style([

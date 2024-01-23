@@ -4,6 +4,7 @@ import { vars } from '@/styles/vars.css';
 
 globalStyle('html', {
   backgroundColor: vars.colors.white,
+  scrollbarGutter: 'stable',
 });
 
 globalStyle('body', {
