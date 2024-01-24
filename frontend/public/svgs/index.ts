@@ -6,6 +6,7 @@ import IconHomeFilled from './home-filled.svg';
 import IconHeart from './heart.svg';
 import IconHeartFilled from './heart-filled.svg';
 import IconArrowLeft from './arrow-left.svg';
+import IconClose from './close.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
 
 export {
@@ -16,5 +17,6 @@ export {
   IconHeart,
   IconHeartFilled,
   IconArrowLeft,
+  IconClose,
   ButtonKakaoLogin,
 };

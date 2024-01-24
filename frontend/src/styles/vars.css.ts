@@ -18,13 +18,14 @@ export const vars = createGlobalTheme(':root', {
     gray: '#919191',
     whitesmoke: '#f1f1f1',
     blue: '#7f9bc9',
-    red: '#ff8585', // Card, AlertAlarm 에 사용
+    red: '#ff8585',
     yellow: '#ffde9d',
     green: '#83cf74',
     emerald: '#74cf9c',
     purple: '#cf8abc',
     oatmeal: '#fdf5e4',
     brown: '#453216',
+    strongRed: '#E8635C',
   },
 
   borderRadius: {
@@ -34,6 +35,7 @@ export const vars = createGlobalTheme(':root', {
     '3x': '24px',
     '4x': '32px',
     '5x': '40px',
+    top: '32px 32px 0 0',
     full: '9999px', // 원을 만들 때 사용
   },
 
@@ -60,7 +62,8 @@ export const vars = createGlobalTheme(':root', {
   zIndex: {
     'alert-content': '3001',
     'alert-bg': '3000',
-    'content-to-top': '2000',
+    'content-to-top': '2001',
+    'content-bg-to-top': '2000',
     'float-button': '1000',
     'z-5': '5',
     'z-4': '4',
