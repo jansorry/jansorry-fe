@@ -1,0 +1,72 @@
+stages:
+  - create-env
+  - frontend-build
+  - docker-build
+  - docker-pull
+
+variables:
+  DOCKER_COMPOSE_FILE: docker-compose.yml
+  DEPLOY_BRANCH: fe-deploy
+
+create-env:
+  stage: create-env
+  script:
+    - echo "NEXT_PUBLIC_SERVER_URL = ${NEXT_PUBLIC_SERVER_URL}" >> .env
+    - echo "NEXT_PUBLIC_KAKAO_REST_KEY = ${NEXT_PUBLIC_KAKAO_REST_KEY}" >> .env
+    - echo "NEXT_PUBLIC_KAKAO_JS_KEY = ${NEXT_PUBLIC_KAKAO_JS_KEY}" >> .env
+    - echo "NEXT_PUBLIC_KAKAO_LOGIN_REDIRECT_URI = ${NEXT_PUBLIC_KAKAO_LOGIN_REDIRECT_URI}" >> .env
+    - echo "NODE_ENV = ${NODE_ENV}" >> .env
+  artifacts:
+    paths:
+      - .env
+  only:
+    - $DEPLOY_BRANCH
+
+
+frontend-build:
+  stage: frontend-build
+  image: node:18-alpine
+  script:
+    - cd frontend
+    - npm install -g pnpm
+    - pnpm install --production=false
+    - pnpm build
+  artifacts:
+    paths:
+      - frontend/.next/standalone
+      - frontend/public
+      - frontend/.next/static
+  only:
+    - $DEPLOY_BRANCH
+
+docker-build:
+  stage: docker-build
+  dependencies:
+    - create-env
+    - frontend-build
+  script:
+    # image removal
+    - docker rmi ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest || true
+    # login
+    - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+    # frontend push
+    - cd frontend
+    - docker build -t ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest -f Dockerfile .
+    - docker push ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest
+  only:
+    - $DEPLOY_BRANCH
+
+docker-pull:
+  stage: docker-pull
+  script:
+    # login again
+    - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+    # container removal
+    - docker stop $(docker ps -q --filter ancestor=${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest) || true
+    - docker rm $(docker ps -aq --filter ancestor=${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest) || true
+    # deploy
+    - docker-compose -f $DOCKER_COMPOSE_FILE pull
+    - docker-compose -f $DOCKER_COMPOSE_FILE up -d
+    - docker image prune -f
+  only:
+    - $DEPLOY_BRANCH
