@@ -15,7 +15,7 @@ async function request<TResponse>(url: string, config: RequestInit): Promise<TRe
   if (!response.ok) {
     handleError(response.status, response.statusText);
   }
-  return await response.json();
+  return response.json();
 }
 
 export const api = {

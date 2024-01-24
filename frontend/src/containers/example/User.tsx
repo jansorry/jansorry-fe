@@ -2,7 +2,6 @@
 
 // client component example
 import Link from 'next/link';
-import { useState } from 'react';
 
 import useModal from '@/hooks/useModal';
 
