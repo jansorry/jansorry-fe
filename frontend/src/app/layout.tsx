@@ -31,7 +31,7 @@ const RootLayout = ({ children }: Props) => {
         </Recoil>
         <Script
           src='https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js'
-          integrity={`${process.env.NEXT_PUBLIC_KAKAO_INTEGRITY}`}
+          integrity={`${process.env.NEXT_PUBLIC_KAKAO_INTEGRITY_KEY}`}
           crossOrigin='anonymous'
         />
       </body>
