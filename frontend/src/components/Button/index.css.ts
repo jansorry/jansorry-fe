@@ -25,22 +25,21 @@ const filledStyles = colors.flatMap((colorItem:'blue' | 'strongRed' | 'black') =
     },
   },
 ]);
+const commonButtonBase = style({
+  boxSizing: 'border-box',
+  borderRadius: vars.borderRadius.full,
+  border: 'none',
+  fontSize: vars.fontSize['3x'],
+  fontWeight: vars.fontWeight.accent,
+  height: 48,
+  margin: 'auto',
+  paddingTop: vars.space['0.5x'],
+  paddingBottom: vars.space['0.5x'],
+  textDecorationLine: 'none',
+  cursor: 'pointer',
+})
 
-export const commonButton = recipe({
-  base: {
-    boxSizing: 'border-box',
-    borderRadius: vars.borderRadius.full,
-    border: 'none',
-    fontSize: vars.fontSize['3x'],
-    fontWeight: vars.fontWeight.accent,
-    height: 48,
-    margin: 'auto',
-    paddingTop: vars.space['0.5x'],
-    paddingBottom: vars.space['0.5x'],
-    textDecorationLine: 'none',
-    cursor: 'pointer',
-  },
-  variants: {
+const commonButtonVariants = {
     size: {
       small: {
         width: 'auto',
@@ -63,7 +62,11 @@ export const commonButton = recipe({
       true: {},
       false: {},
     },
-  },
+
+}
+export const commonButton = recipe({
+  base: commonButtonBase,
+  variants: commonButtonVariants,
   compoundVariants: filledStyles,
 });
 
@@ -88,3 +91,10 @@ export const ButtonWrapper = {
     },
   ]),
 };
+
+export interface CommonButtonVariantProps {
+  size: keyof typeof commonButtonVariants.size;
+  colorStyle: keyof typeof commonButtonVariants.colorStyle;
+  filled: boolean;
+};
+

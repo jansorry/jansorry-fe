@@ -1,20 +1,18 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import { ButtonWrapper, commonButton } from '@/components/Button/index.css';
+import { CommonButtonVariantProps, ButtonWrapper, commonButton } from '@/components/Button/index.css';
 
-interface Props {
+interface ButtonProps {
   children: ReactNode;
   link?: string;
   disabled?: boolean;
   onClick?: () => void;
   type: 'submit' | 'reset' | 'button';
-  size: 'large' | 'small';
-  colorStyle: 'blue' | 'strongRed' | 'black';
-  filled: boolean;
 }
 
-const Button = ({ link, children, disabled, onClick, type, size, colorStyle, filled }: Props) => {
+
+const Button = ({ link, children, disabled, onClick, type, size, colorStyle, filled}: ButtonProps & CommonButtonVariantProps) => {
   if (link) {
     return (
       <div className={ButtonWrapper[size]}>
