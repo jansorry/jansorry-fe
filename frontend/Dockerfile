@@ -6,8 +6,8 @@ WORKDIR /usr/src/app
 
 # 빌드된 파일들을 이미지로 복사
 COPY ./.next/standalone ./
-COPY ./public ./public
-COPY ./.next/static ./static
+#COPY ./public ./public
+#COPY ./.next/static ./static
 
 # 시스템 사용자 및 그룹 설정
 RUN addgroup --system --gid 1001 nodejs \
