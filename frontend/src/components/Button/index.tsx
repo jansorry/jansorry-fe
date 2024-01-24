@@ -1,32 +1,40 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import * as styles from './index.css';
+import { CommonButtonVariantProps, ButtonWrapper, commonButton } from '@/components/Button/index.css';
 
-interface Props {
+interface ButtonProps {
   children: ReactNode;
   link?: string;
   disabled?: boolean;
   onClick?: () => void;
-  type?: 'submit' | 'reset' | 'button';
+  type: 'submit' | 'reset' | 'button';
 }
 
-const Button = ({ link, children, disabled, onClick, type }: Props) => {
+
+const Button = ({ link, children, disabled, onClick, type, size, colorStyle, filled}: ButtonProps & CommonButtonVariantProps) => {
   if (link) {
     return (
-      <Link href={link} className={styles.commonButton}>
-        {children}
-      </Link>
+      <div className={ButtonWrapper[size]}>
+        <Link href={link} className={commonButton({ size, colorStyle, filled })}>
+          {children}
+        </Link>
+      </div>
     );
   }
 
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button type={type} disabled={disabled} className={styles.commonButton} onClick={onClick}>
-
-
-      {children}
-    </button>
+    <div className={ButtonWrapper[size]}>
+      <button
+        // eslint-disable-next-line react/button-has-type
+        type={type}
+        disabled={disabled}
+        className={commonButton({ size, colorStyle, filled })}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    </div>
   );
 };
 

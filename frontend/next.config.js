@@ -4,6 +4,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: 'standalone',
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -12,14 +13,6 @@ const nextConfig = {
 
     return config;
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       destination: `${'backend-url'}/:path*`,
-  //     },
-  //   ];
-  // },
 };
 
 module.exports = withVanillaExtract(nextConfig);

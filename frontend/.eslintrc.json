@@ -14,6 +14,7 @@
     "plugin:react/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
     "eslint-config-prettier",
     "next/core-web-vitals"
   ],
@@ -66,7 +67,7 @@
     "import/no-unresolved": "off",
     "no-restricted-exports": ["error", { "restrictDefaultExports": { "defaultFrom": false } }],
     "import/order": [
-      "error",
+      "warn",
       {
         "pathGroups": [
           {

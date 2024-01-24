@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 
-import { vars } from '@/styles/vars.css';
 import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const navWrapper = style([
