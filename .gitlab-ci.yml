@@ -64,6 +64,7 @@ docker-pull:
     - docker stop $(docker ps -q --filter ancestor=${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest) || true
     - docker rm $(docker ps -aq --filter ancestor=${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest) || true
     - docker-compose -f $DOCKER_COMPOSE_FILE down || true
+    - docker rmi $(docker images -q ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest) || true
     # deploy
     - docker-compose -f $DOCKER_COMPOSE_FILE pull
     - docker-compose -f $DOCKER_COMPOSE_FILE up -d
