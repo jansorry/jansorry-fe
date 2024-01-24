@@ -10,6 +10,7 @@ export const modalOverlay = style({
   left: 0,
   right: 0,
   backgroundColor: `rgba(0, 0, 0, 0.5)`,
+  zIndex: vars.zIndex['content-bg-to-top'],
 });
 
 export const modalWrapper = style({
@@ -24,6 +25,7 @@ export const modalWrapper = style({
   maxHeight: '80%',
   backgroundColor: vars.colors.white,
   borderRadius: vars.borderRadius.top,
+  zIndex: vars.zIndex['content-to-top'],
 });
 
 export const modalPadding = style({
