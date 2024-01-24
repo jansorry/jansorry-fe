@@ -3,8 +3,6 @@ services:
   frontend:
     image: ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest
     ports:
-      - "80:3000"
-      - "443:3000"
       - "3000:3000"
     env_file:
       - ./.env
