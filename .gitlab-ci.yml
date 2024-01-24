@@ -6,7 +6,6 @@ stages:
 
 variables:
   DOCKER_COMPOSE_FILE: docker-compose.yml
-  DEPLOY_BRANCH: fe-deploy
 
 create-env:
   stage: create-env
@@ -20,7 +19,7 @@ create-env:
     paths:
       - .env
   only:
-    - $DEPLOY_BRANCH
+    - fe-deploy
 
 
 frontend-build:
@@ -37,7 +36,7 @@ frontend-build:
       - frontend/public
       - frontend/.next/static
   only:
-    - $DEPLOY_BRANCH
+    - fe-deploy
 
 docker-build:
   stage: docker-build
@@ -54,7 +53,7 @@ docker-build:
     - docker build -t ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest -f Dockerfile .
     - docker push ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest
   only:
-    - $DEPLOY_BRANCH
+    - fe-deploy
 
 docker-pull:
   stage: docker-pull
@@ -69,4 +68,4 @@ docker-pull:
     - docker-compose -f $DOCKER_COMPOSE_FILE up -d
     - docker image prune -f
   only:
-    - $DEPLOY_BRANCH
+    - fe-deploy
