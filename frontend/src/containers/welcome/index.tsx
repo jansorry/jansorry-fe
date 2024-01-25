@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import KakaoLoginButton from '@/containers/welcome/KakaoLoginButton';
+
 import * as styles from './index.css';
 
 const Welcome = () => {
@@ -22,14 +24,7 @@ const Welcome = () => {
         <div className={styles.subtitle}>잔소리 영수증을 만들고 비용을 청구하세요</div>
         <div className={styles.subtitle}>누구 잔소리가 가장 많은지 실시간으로 공유해보세요</div>
       </div>
-      <Image
-        src='/images/welcome/button-kakao-login.png'
-        alt='kakao-login-button'
-        width={0}
-        height={0}
-        sizes='100vw'
-        className={styles.kakaoLoginButton}
-      />
+      <KakaoLoginButton />
       <Image
         src='/images/welcome/bg-bottom.png'
         alt='bg-bottom'
