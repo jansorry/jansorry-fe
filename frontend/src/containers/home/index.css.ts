@@ -15,16 +15,6 @@ export const homeWrapper = style([
   },
 ]);
 
-export const homeBgWrapper = style({
-  position: 'absolute',
-  width: '100svw',
-  height: 'auto',
-
-  boxSizing: 'border-box',
-  paddingBottom: '48px',
-  paddingTop: '30%',
-});
-
 export const bottomNav = style({
   width: '100svw',
   height: 'auto',
@@ -64,7 +54,6 @@ export const homeBg = style([
     bottom: '0%',
   },
 ]);
-export const tempStyle = style({});
 
 export const homeText = recipe({
   base: {
