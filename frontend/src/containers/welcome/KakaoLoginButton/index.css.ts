@@ -1,15 +1,17 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { plainButton } from '@/styles/common.css';
 
 export const kakaoLoginImage = style({
-  width: '100%',
+  '@media': {
+    'screen and (max-height: 600px)': {
+      marginTop: 20,
+    },
+  },
+  width: '90%',
   height: 'auto',
   marginTop: 60,
   position: 'relative',
   cursor: 'pointer',
   zIndex: vars.zIndex['z-2'],
 });
-
-export const kakaoLoginButton = style([plainButton()]);

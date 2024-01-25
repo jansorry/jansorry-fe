@@ -7,6 +7,6 @@ export const getKakaoLogin = async (code: string): Promise<authResponse> => {
   } catch (e) {
     console.log(e);
   }
-  // TODO: authResponse 타입 default 선언 필요
+  // TODO: authResponse 타입 default 선언 필요함
   return { oauthId: '', nickname: null, accessToken: null, refreshToken: null } as authResponse;
 };
