@@ -2,9 +2,11 @@
 
 // client component example
 import Link from 'next/link';
-import { useState } from 'react';
+
+import useModal from '@/hooks/useModal';
 
 import Button from '@/components/Button';
+import Modal from '@/components/Modal';
 
 interface Props {
   id: string;
@@ -13,21 +15,25 @@ interface Props {
   link?: string;
 }
 
-const User = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const { id, name, image, link } = props;
-
-  const clicked = () => {
-    setIsOpen(!isOpen);
-  };
-
+const User = ({ id, name, image, link }: Props) => {
+  const { isOpen, open, close } = useModal();
   return (
     <li>
-      <Button type='button' onClick={clicked}>
-        눌러
+      <Button size='small' filled={false} colorStyle='blue' type='button' onClick={open}>
+        길이에 따른 유동적인스타일
       </Button>
-      {isOpen ? <div>버튼 눌렀나요?</div> : <div>버튼 눌렸어요</div>}
+      {isOpen && (
+        <Modal open={isOpen} onClose={close} title='버튼을 누르셨네요.'>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+          <div>아아 모달 테스트</div>
+        </Modal>
+      )}
       <div>{id}</div>
       <div>{name}</div>
       {link ? (

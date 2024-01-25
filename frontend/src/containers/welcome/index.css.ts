@@ -35,8 +35,13 @@ export const bgBottom = style({
   zIndex: vars.zIndex['z-1'],
 });
 
+export const mainCharacter = style({
+  width: '40%',
+  height: 'auto',
+});
+
 export const title = style({
-  width: 'auto',
+  width: '70%',
   height: 'auto',
   '@media': {
     'screen and (max-height: 720px)': {
@@ -52,18 +57,14 @@ export const title = style({
 });
 
 export const subtitle = style({
+  '@media': {
+    'screen and (max-height: 600px)': {
+      fontSize: 0,
+    },
+  },
   fontSize: vars.fontSize['2x'],
   fontWeight: vars.fontWeight.accent,
   color: vars.colors.brown,
   position: 'relative',
-  zIndex: vars.zIndex['z-2'],
-});
-
-export const kakaoLoginButton = style({
-  width: '80%',
-  height: 'auto',
-  marginTop: 60,
-  position: 'relative',
-  cursor: 'pointer',
   zIndex: vars.zIndex['z-2'],
 });
