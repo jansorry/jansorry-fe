@@ -10,10 +10,12 @@ variables:
 create-env:
   stage: create-env
   script:
+    - echo "NEXT_SHARP_PATH = ${NEXT_SHARP_PATH}" >> .env
     - echo "NEXT_PUBLIC_SERVER_URL = ${NEXT_PUBLIC_SERVER_URL}" >> .env
     - echo "NEXT_PUBLIC_KAKAO_REST_KEY = ${NEXT_PUBLIC_KAKAO_REST_KEY}" >> .env
     - echo "NEXT_PUBLIC_KAKAO_JS_KEY = ${NEXT_PUBLIC_KAKAO_JS_KEY}" >> .env
     - echo "NEXT_PUBLIC_KAKAO_LOGIN_REDIRECT_URI = ${NEXT_PUBLIC_KAKAO_LOGIN_REDIRECT_URI}" >> .env
+    - echo "NEXT_PUBLIC_KAKAO_INTEGRITY_KEY = ${NEXT_PUBLIC_KAKAO_INTEGRITY_KEY}" >> .env
     - echo "NODE_ENV = ${NODE_ENV}" >> .env
   artifacts:
     paths:
