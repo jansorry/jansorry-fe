@@ -4,7 +4,7 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 import './layout.css';
-import Recoil from '@/states/Recoil';
+import Recoil from '../states/recoil';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
