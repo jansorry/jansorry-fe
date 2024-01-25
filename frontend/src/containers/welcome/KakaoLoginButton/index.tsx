@@ -32,15 +32,15 @@ const KakaoLoginButton = () => {
   };
 
   return (
-    <button type='button' onClick={kakaoLoginHandler} className={styles.kakaoLoginButton}>
-      <Image
-        src='/images/welcome/button-kakao-login.png'
-        alt='kakao-login-button'
-        width={300}
-        height={300}
-        className={styles.kakaoLoginImage}
-      />
-    </button>
+    <Image
+      src='/images/welcome/button-kakao-login.png'
+      alt='kakao-login-button'
+      width={0}
+      height={0}
+      sizes='90vw'
+      className={styles.kakaoLoginImage}
+      onClick={kakaoLoginHandler}
+    />
   );
 };
 
