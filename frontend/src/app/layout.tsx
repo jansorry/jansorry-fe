@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 declare global {
   interface Window {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     Kakao: any;
   }
 }
