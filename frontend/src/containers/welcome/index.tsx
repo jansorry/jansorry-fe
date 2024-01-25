@@ -15,9 +15,23 @@ const Welcome = () => {
         sizes='100vw'
         className={styles.bgTop}
       />
-      <Image src='/images/welcome/main-character.png' alt='main-character' width={180} height={180} />
+      <Image
+        src='/images/welcome/main-character.png'
+        alt='main-character'
+        width={0}
+        height={0}
+        sizes='100vw'
+        className={styles.mainCharacter}
+      />
       <div>
-        <Image src='/images/welcome/title.png' alt='title' width={200} height={200} className={styles.title} />
+        <Image
+          src='/images/welcome/title.png'
+          alt='title'
+          width={0}
+          height={0}
+          sizes='100vw'
+          className={styles.title}
+        />
       </div>
       <div>
         <div className={styles.subtitle}>명절 잔소리 얼마나 들어보셨나요?</div>
