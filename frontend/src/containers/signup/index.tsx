@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { bg } from '@/containers/signup/index.css';
 import Birthyear from '@/containers/signup/Birthyear';
 import Gender from '@/containers/signup/Gender';
 
@@ -11,14 +10,21 @@ import * as styles from './index.css';
 import Header from '@/components/Header';
 
 const Signup = () => {
-  const [userYear, setUserYear] = useState<number | null>(null);
+  const [userBirth, setUserBirth] = useState<number | null>(null);
 
   return (
     <main className={styles.signupWrapper}>
+      <Image
+        src='/images/signup/bg.png'
+        width={0}
+        height={0}
+        alt='home-bg'
+        sizes='100vw'
+        className={`${styles.signupBg}`}
+      />
       <Header title='회원 가입' />
-      <div className={styles.signupComponentsWrapper}>
-        {!userYear ? <Birthyear setUserYear={setUserYear} /> : <Gender userBirth={userYear} />}
-        <Image src='/images/signup/bg.png' alt='bg' width={2560} height={340} className={bg} />
+      <div className={styles.signupContentWrapper}>
+        {!userBirth ? <Birthyear setBirth={setUserBirth} /> : <Gender userBirth={userBirth} />}
       </div>
     </main>
   );

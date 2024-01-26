@@ -1,108 +1,124 @@
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
+import { defaultWrapper } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
-import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const signupWrapper = style([
-  defaultWrapper({
-    height: 'max',
-  }),
+  defaultWrapper({ height: 'max' }),
   {
-    backgroundColor: vars.colors.white,
-    textAlign: 'center',
-  },
-]);
-
-export const signupComponentsWrapper = style([
-  {
-    position: 'relative',
-    boxSizing: 'border-box',
-    height: '100vh',
     '@media': {
       'screen and (min-width: 480px)': {
         width: '480px',
       },
     },
-    width: '100vw',
-    paddingTop: '80px',
-    bottom: 0,
-    overflowX: 'hidden',
   },
 ]);
 
-export const bg = style({
-  width: 'auto',
-  height: 170,
-  position: 'relative',
-  bottom: 0,
-  left: 0,
+export const signupBg = style({
+  position: 'absolute',
+  width: '100%',
+  height: 'auto',
+  bottom: '0%',
 });
-//   signup 설정 ---- 종료
 
-export const birthyearWrapper = style([
-  signupComponentsWrapper,
-  {
-    fontWeight: vars.fontWeight.accent,
-  },
-]);
-
-export const birthYearStyle = {
-  birthyearWrapper,
-};
-
-const yearPickerWrapper = style({
+export const signupContentWrapper = style({
+  position: 'relative',
+  top: 0,
   boxSizing: 'border-box',
-  '@media': {
-    'screen and (min-width: 480px)': {
-      width: '480px',
+  height: '100svh',
+  //  header 등 padding좀 고정해야만.. recipe으로 만들까?
+  paddingTop: '80px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+});
+
+export const birthGenderWrapper = style({
+  position: 'relative',
+  top: 0,
+  boxSizing: 'border-box',
+  height: '100%',
+  paddingTop: '10%',
+  paddingBottom: '30%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+});
+
+export const selectWrapper = recipe({
+  base: {
+    overflowY: 'auto',
+    height: '186px',
+    boxSizing: 'border-box',
+
+    //   스크롤바 숨김 -> 최신 브라우저에서만 작동하는 것 같음. 모바일웹 케이느 확인 필요
+    '::-webkit-scrollbar': {
+      display: 'none',
     },
   },
-  width: '100svw',
-  paddingLeft: vars.space['2x'],
-  paddingRight: vars.space['2x'],
+  variants: {
+    content: {
+      yearPicker: {},
+      genderButtons: {
+        justifyContent: 'space-around',
+        display: 'flex',
+        flexDirection: 'column',
+        overflowY: 'visible',
+      },
+    },
+  },
 });
 
-const yearItem = style({
-  padding: '10px',
-  margin: '5px',
-  border: '1px solid black',
-});
-
-const buttonsWrapper = style({
-  // Add your CSS properties for ButtonBox here
+export const yearPickerWrapper = style({});
+export const yearPickerBox = style({
+  width: '120px',
+  height: '64px',
+  paddingRight: '10px',
+  paddingLeft: '10px',
+  borderRadius: '16px',
+  cursor: 'pointer',
   display: 'flex',
-  justifyContent: 'space-between',
-  width: '100px',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '32px',
 });
 
-const genderWrapper = style({
-  width: '100%',
-  height: '100%',
+export const yearPickerBoxVariants = styleVariants({
+  selected: {
+    backgroundColor: vars.colors.babyBlue,
+  },
+  unselected: {
+    backgroundColor: 'transparent',
+  },
 });
 
-const gendertext = style({
-  fontWeight: vars.fontWeight.accent,
-  fontSize: vars.fontSize['5x'],
-  paddingBottom: '80px',
-  paddingTop: '80px',
+export const signupText = recipe({
+  base: {
+    visibility: 'visible',
+    textAlign: 'center',
+  },
+  variants: {
+    text: {
+      title: {
+        fontSize: vars.fontSize['3x'],
+        fontWeight: vars.fontWeight.accent,
+      },
+      birthNumber: {
+        fontSize: vars.fontSize['2x'],
+      },
+      underAgeNotice: {
+        fontSize: vars.fontSize['2x'],
+        color: vars.colors.strongRed,
+        paddingTop: vars.space['0.5x'],
+      },
+    },
+    visible: {
+      hidden: {
+        visibility: 'hidden',
+      },
+      show: {},
+    },
+  },
 });
-
-const genderButtons = style({
-  paddingTop: '10px',
-  paddingBottom: '10px',
-});
-
-const submitButtons = style({
-  top: '60%',
-  zIndex: vars.zIndex['z-2'],
-});
-
-export const genderStyle = {
-  genderWrapper,
-  gendertext,
-  genderButtons,
-  submitButtons,
-};
-
-//  gender 설정
-export const yearPickerStyle = { yearPickerWrapper, yearItem, buttonsWrapper };
