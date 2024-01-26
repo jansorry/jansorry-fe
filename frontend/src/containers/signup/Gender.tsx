@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 import { signup } from '@/types/signup';
-import { postBirthGender } from '@/services/signup';
 import { genderMap } from '@/containers/signup/genderOptions';
 
 import * as styles from './index.css';
@@ -30,7 +29,7 @@ const Gender = ({ userBirth }: Props) => {
       genderId: selected,
     };
     //  로그인 처리작업 여기서 필요
-    postBirthGender(data);
+    // postBirthGender(data);
     //  데이터 확인을 위한 콘솔
     console.log(data);
   };
