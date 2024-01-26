@@ -13,6 +13,7 @@ const contentWrapperBase = style({
   },
   width: '100vw',
   height: '100vh',
+  boxSizing: 'border-box',
 });
 export const contentWrapper = recipe({
   base: contentWrapperBase,
