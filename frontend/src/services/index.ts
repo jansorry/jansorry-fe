@@ -1,3 +1,5 @@
+import { getToken } from '@/services/token';
+
 const HTTPMethods = {
   GET: 'GET',
   POST: 'POST',
@@ -10,15 +12,18 @@ function handleError(status: number, message: string) {
   throw new Error(`${status}: ${message}`);
 }
 
-async function request<TResponse>(url: string, config: RequestInit): Promise<TResponse> {
+async function request<TResponse>(url: string, config: RequestInit, body?: BodyInit): Promise<TResponse> {
+  const token = await getToken();
   const options = {
     ...config,
+    body,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: '',
+      Authorization: token,
     },
   };
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, options);
+
+  const response = await fetch(url, { ...options, credentials: 'include' });
   if (!response.ok) {
     response.json().then((res) => console.log(res));
     handleError(response.status, response.statusText);
@@ -27,10 +32,10 @@ async function request<TResponse>(url: string, config: RequestInit): Promise<TRe
 }
 
 export const api = {
-  get: <TResponse>(url: string) => request<TResponse>(url, { method: HTTPMethods.GET }),
+  get: <TResponse>(url: string): Promise<TResponse> => request<TResponse>(url, { method: HTTPMethods.GET }),
 
-  post: <TBody extends object, TResponse>(url: string, bodyObject: TBody): Promise<TResponse> => {
+  post: <TResponse, TBody>(url: string, bodyObject?: TBody): Promise<TResponse> => {
     const body = JSON.stringify(bodyObject);
-    return request<TResponse>(url, { method: HTTPMethods.POST, body });
+    return request<TResponse>(url, { method: HTTPMethods.POST }, body);
   },
 };
