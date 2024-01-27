@@ -13,15 +13,20 @@ function handleError(status: number, message: string) {
 }
 
 async function request<TResponse>(url: string, config: RequestInit, body?: BodyInit): Promise<TResponse> {
-  const token = await getToken();
-  const options = {
-    ...config,
-    body,
-    headers: {
+  // /로 시작하면 client component에서 호출, Full URL이면 server component에서 호출
+  const isServer = !url.startsWith('/');
+  const needToken = !(url.includes(`login`) || url.includes(`signup`));
+  const options = { ...config, body };
+
+  if (needToken) {
+    const token = await getToken(isServer);
+    options.headers = {
       'Content-Type': 'application/json',
       Authorization: token,
-    },
-  };
+    };
+  } else {
+    options.headers = { 'Content-Type': 'application/json' };
+  }
 
   const response = await fetch(url, { ...options, credentials: 'include' });
   if (!response.ok) {
