@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { getKakaoLogin } from '@/services/auth';
 import { authResponse } from '@/types/auth';
@@ -11,7 +11,7 @@ import { oauthIdState } from '@/states/auth';
 import Loading from '@/components/Loading';
 
 const KakaoOauth = () => {
-  const [authId, setAuthId] = useRecoilState(oauthIdState);
+  const setAuthId = useSetRecoilState(oauthIdState);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -19,16 +19,15 @@ const KakaoOauth = () => {
 
   const loginHandler = (code: string) =>
     getKakaoLogin(code).then((res: authResponse) => {
-      const { oauthId, nickname, accessToken, refreshToken } = res;
+      const { oauthId, nickname, accessToken } = res;
 
       if (!accessToken && oauthId) {
-        console.log(oauthId);
-        if (oauthId) setAuthId(oauthId);
+        setAuthId(oauthId);
         router.push('/signup');
+        return;
       }
       if (accessToken) router.push('/home');
-
-      router.push('/');
+      else router.push('/');
     });
 
   useEffect(() => {
