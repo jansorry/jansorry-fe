@@ -12,7 +12,14 @@ const HomePage = async () => {
     const data = await api.get(`/members`);
     console.log(data);
 
-    const categoryData = await getNagCategory();
+    const categoryData = await fetch(`/nags`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.json());
     console.log(categoryData);
   };
 
