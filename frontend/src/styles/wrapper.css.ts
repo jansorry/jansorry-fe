@@ -1,20 +1,23 @@
 import { recipe } from '@vanilla-extract/recipes';
 import { style } from '@vanilla-extract/css';
 
-const contentWrapperBase = style({
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  '@media': {
-    'screen and (min-width: 480px)': {
-      width: '480px',
-    },
+import { defaultWrapper, flex } from '@/styles/common.css';
+
+const contentWrapperBase = style([
+  defaultWrapper({
+    width: 'max',
+    height: 'max',
+  }),
+  flex({
+    align: 'center',
+  }),
+  {
+    position: 'relative',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    border: 'none',
   },
-  width: '100vw',
-  height: '100vh',
-  boxSizing: 'border-box',
-});
+]);
 export const contentWrapper = recipe({
   base: contentWrapperBase,
 
