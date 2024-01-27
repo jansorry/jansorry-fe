@@ -1,7 +1,8 @@
 import { tokenResponse } from '@/types/token';
 
-export const getToken = async (): Promise<string> => {
-  const data: tokenResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/members/reissue`, {
+export const getToken = async (isServer?: boolean): Promise<string> => {
+  const url = isServer ? `${process.env.NEXT_PUBLIC_SERVER_URL}/members/reissue` : `/members/reissue`;
+  const data: tokenResponse = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
