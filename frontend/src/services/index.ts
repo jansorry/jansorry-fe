@@ -22,7 +22,7 @@ async function request<TResponse>(url: string, config: RequestInit, body?: BodyI
     const token = await getToken(isServer);
     options.headers = {
       'Content-Type': 'application/json',
-      Authorization: token,
+      Authorization: `Bearer ${token}`,
     };
   } else {
     options.headers = { 'Content-Type': 'application/json' };
