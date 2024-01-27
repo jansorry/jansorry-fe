@@ -1,20 +1,14 @@
 'use client';
 
 import { getToken } from '@/services/token';
+import { api } from '@/services';
 
 const HomePage = async () => {
   const clicked = async () => {
     const token = await getToken();
     console.log('token: ', token);
 
-    const data = await fetch(`/members`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => res.json());
+    const data = await api.get(`/members`);
 
     console.log(data);
   };
