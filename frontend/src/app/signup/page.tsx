@@ -1,17 +1,17 @@
 'use client';
 
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 
-import { api } from '@/services';
 import { oauthIdState } from '@/states/auth';
+import { postSignup } from '@/services/auth';
 
 const SignupPage = () => {
-  // const oauthId = useRecoilValue(oauthIdState);
+  const [oauthId, setOauthId] = useRecoilState(oauthIdState);
 
-  const clicked = () => {
-    api.post('/members/signup', { oauthId: 3287827161, birth: 1998, genderId: 2 }).then((res) => {
-      console.log(res);
-    });
+  const clicked = async () => {
+    const data = await postSignup({ oauthId, birth: 1998, genderId: 1 });
+    setOauthId('');
+    console.log(data);
   };
 
   return (
