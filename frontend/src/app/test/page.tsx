@@ -8,7 +8,7 @@ const HomePage = async () => {
     console.log('token: ', token);
 
     const data = await fetch(`/members`, {
-      method: 'POST',
+      method: 'GET',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
