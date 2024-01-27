@@ -5,9 +5,9 @@ import { vars } from '@/styles/vars.css';
 
 const colors: ('blue' | 'strongRed' | 'black')[] = ['blue', 'strongRed', 'black'];
 
-const filledStyles = colors.flatMap((colorItem:'blue' | 'strongRed' | 'black') => [
+const filledStyles = colors.flatMap((colorItem: 'blue' | 'strongRed' | 'black') => [
   {
-    variants: { colorStyle:colorItem, filled: true },
+    variants: { colorStyle: colorItem, filled: true },
     style: {
       backgroundColor: vars.colors[colorItem],
       border: 'none',
@@ -37,33 +37,33 @@ const commonButtonBase = style({
   paddingBottom: vars.space['0.5x'],
   textDecorationLine: 'none',
   cursor: 'pointer',
-})
+  boxShadow: '0px 10px 25px 0px rgba(0, 0, 0, 0.25)',
+});
 
 const commonButtonVariants = {
-    size: {
-      small: {
-        width: 'auto',
-        paddingLeft: vars.space['2x'],
-        paddingRight: vars.space['2x'],
-      },
-      large: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
+  size: {
+    small: {
+      width: 'auto',
+      paddingLeft: vars.space['2x'],
+      paddingRight: vars.space['2x'],
     },
-    colorStyle: {
-      blue: {},
-      strongRed: {},
-      black: {},
+    large: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    filled: {
-      true: {},
-      false: {},
-    },
-
-}
+  },
+  colorStyle: {
+    blue: {},
+    strongRed: {},
+    black: {},
+  },
+  filled: {
+    true: {},
+    false: {},
+  },
+};
 export const commonButton = recipe({
   base: commonButtonBase,
   variants: commonButtonVariants,
@@ -96,5 +96,4 @@ export interface CommonButtonVariantProps {
   size: keyof typeof commonButtonVariants.size;
   colorStyle: keyof typeof commonButtonVariants.colorStyle;
   filled: boolean;
-};
-
+}
