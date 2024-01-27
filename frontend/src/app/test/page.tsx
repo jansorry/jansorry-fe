@@ -2,6 +2,7 @@
 
 import { getToken } from '@/services/token';
 import { api } from '@/services';
+import { getNagCategory } from '@/services/nag';
 
 const HomePage = async () => {
   const clicked = async () => {
@@ -9,8 +10,10 @@ const HomePage = async () => {
     console.log('token: ', token);
 
     const data = await api.get(`/members`);
-
     console.log(data);
+
+    const categoryData = await getNagCategory();
+    console.log(categoryData);
   };
 
   return (
