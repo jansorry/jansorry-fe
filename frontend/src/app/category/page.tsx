@@ -6,9 +6,7 @@ import Category from '@/containers/category';
 const CategoryPage = async () => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value ?? '';
-  cookieStore.set('refreshToken', refreshToken);
-
-  const data = await getNagCategory();
+  const data = await getNagCategory(refreshToken);
 
   return <Category nagItems={data} />;
 };
