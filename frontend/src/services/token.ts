@@ -18,7 +18,7 @@ export const getServerToken = async (token: string): Promise<string> => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Cookie: `accessToken=${token}; HttpOnly; Secure; Path=/; SameSite=None`,
+      Cookie: `refreshToken=${token}; HttpOnly; Secure; Path=/; SameSite=None`,
     },
     credentials: 'include',
   }).then((res) => res.json());
