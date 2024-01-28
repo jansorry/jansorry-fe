@@ -1,15 +1,14 @@
 'use client';
 
 import { getToken } from '@/services/token';
-import { api } from '@/services';
-import { getNagCategory } from '@/services/nag';
+import { apiClient } from '@/services';
 
 const HomePage = async () => {
   const clicked = async () => {
     const token = await getToken();
     console.log('token: ', token);
 
-    const data = await api.get(`/members`);
+    const data = await apiClient.get(`/members`);
     console.log(data);
 
     const categoryData = await fetch(`/nags`, {
