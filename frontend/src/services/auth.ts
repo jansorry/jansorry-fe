@@ -1,9 +1,9 @@
-import { api } from '@/services/index';
+import { apiClient } from '@/services/index';
 import { authResponse, signupRequest } from '@/types/auth';
 
 export const getKakaoLogin = async (code: string): Promise<authResponse> => {
   try {
-    return await api.get<authResponse>(`/oauth/login/kakao?code=${code}`);
+    return await apiClient.get<authResponse>(`/oauth/login/kakao?code=${code}`);
   } catch (e) {
     console.log(e);
   }
@@ -13,7 +13,7 @@ export const getKakaoLogin = async (code: string): Promise<authResponse> => {
 
 export const postSignup = async (signupInfo: signupRequest): Promise<authResponse> => {
   try {
-    return await api.post<authResponse, signupRequest>(`/members/signup`, signupInfo);
+    return await apiClient.post<authResponse, signupRequest>(`/members/signup`, signupInfo);
   } catch (e) {
     console.log(e);
   }
