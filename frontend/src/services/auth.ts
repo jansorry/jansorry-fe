@@ -1,5 +1,5 @@
 import { api } from '@/services/index';
-import { authResponse } from '@/types/auth';
+import { authResponse, signupRequest } from '@/types/auth';
 
 export const getKakaoLogin = async (code: string): Promise<authResponse> => {
   try {
@@ -8,5 +8,14 @@ export const getKakaoLogin = async (code: string): Promise<authResponse> => {
     console.log(e);
   }
   // TODO: authResponse 타입 default 선언 필요함
-  return { oauthId: '', nickname: null, accessToken: null, refreshToken: null } as authResponse;
+  return { oauthId: '', nickname: null, accessToken: null } as authResponse;
+};
+
+export const postSignup = async (signupInfo: signupRequest): Promise<authResponse> => {
+  try {
+    return await api.post<authResponse, signupRequest>(`/members/signup`, signupInfo);
+  } catch (e) {
+    console.log(e);
+  }
+  return { nickname: null, accessToken: null } as authResponse;
 };
