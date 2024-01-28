@@ -2,15 +2,17 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import Birthyear from '@/containers/signup/Birthyear';
 import Gender from '@/containers/signup/Gender';
+import { userBirthState } from '@/states/signup';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 
 const Signup = () => {
-  const [userBirth, setUserBirth] = useState<number | null>(null);
+  const [userBirth, setUserBirth] = useRecoilState(userBirthState);
 
   return (
     <main className={styles.signupWrapper}>
@@ -23,9 +25,7 @@ const Signup = () => {
         className={`${styles.signupBg}`}
       />
       <Header title='회원 가입' />
-      <div className={styles.signupContentWrapper}>
-        {!userBirth ? <Birthyear setBirth={setUserBirth} /> : <Gender userBirth={userBirth} />}
-      </div>
+      <div className={styles.signupContentWrapper}>{!userBirth ? <Birthyear /> : <Gender />}</div>
     </main>
   );
 };

@@ -1,18 +1,16 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+
+import { selectedYearState, userBirthState } from '@/states/signup';
 
 import * as styles from './index.css';
 
-interface Props {
-  selected: (n: number) => void;
-  //  그냥 year값을 넘겨주는 함수 필요함
-}
-
-const YearPicker = ({ selected }: Props) => {
+const YearPicker = () => {
   const minYear: number = 1900;
   const maxYear: number = new Date().getFullYear();
-  const [selectedYear, setSelectedYear] = useState(maxYear);
+  const [selectedYear, setSelectedYear] = useRecoilState(selectedYearState);
   const listRef = useRef<HTMLDivElement>(null);
   const handleScroll = () => {
     const list = listRef.current;
@@ -41,10 +39,6 @@ const YearPicker = ({ selected }: Props) => {
     list.addEventListener('scroll', handleScroll);
     return () => list.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    selected(selectedYear);
-  }, [selectedYear]);
 
   const yearCount = maxYear - minYear + 1;
   const paddingItemsCount = 1; // 빈 <div> 요소의 개수를 정의합니다.

@@ -1,32 +1,30 @@
 'use client';
 
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { signup } from '@/types/signup';
 import { genderMap } from '@/containers/signup/genderOptions';
+import { selectedYearState, userBirthState, userGenderState } from '@/states/signup';
 
 import * as styles from './index.css';
 import Button from '@/components/Button';
-import { yearPickerWrapper } from './index.css';
 
-interface Props {
-  userBirth: number;
-}
-const Gender = ({ userBirth }: Props) => {
+const Gender = () => {
+  const [userBirth, setUserBirth] = useRecoilState(userBirthState);
   const buttons = Array.from(genderMap)
     .filter(([key, _]) => key >= 1 && key <= 3)
     .map(([_, value]) => value);
   // 숫자로 사용할 데이터 따로 저장해야되지 않을까요? (관리 목적)
-  const getGender = userBirth < 2024 - 14;
-  const selectedInitial: number = 4;
-  const [selected, setSelected] = useState<number>(selectedInitial);
+  const getGender = userBirth !== null && userBirth < 2024 - 14;
+  const [userGender, setUserGender] = useRecoilState(userGenderState);
 
   //  여기서 api 통신 및 다음 화면으로 전환...필요한데 가능?
   const postData = () => {
     const data: signup = {
       oauthId: '',
       birth: userBirth,
-      genderId: selected,
+      genderId: userGender,
     };
     //  로그인 처리작업 여기서 필요
     // postBirthGender(data);
@@ -48,9 +46,9 @@ const Gender = ({ userBirth }: Props) => {
               type='button'
               size='large'
               colorStyle='blue'
-              filled={selected === index + 1 || (index === 2 && selected >= 4)}
+              filled={userGender === index + 1 || (index === 2 && userGender >= 4)}
               disabled={!getGender}
-              onClick={() => setSelected(index + 1)}
+              onClick={() => setUserGender(index + 1)}
             >
               {buttonText}
             </Button>

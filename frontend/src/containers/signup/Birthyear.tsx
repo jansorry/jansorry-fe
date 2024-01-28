@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
+import { selectedYearState, userBirthState } from '@/states/signup';
 
 import Button from '@/components/Button';
 
-interface Props {
-  setBirth: React.Dispatch<React.SetStateAction<number | null>>;
-}
-const Birthyear = ({ setBirth }: Props) => {
-  const [selectedBirth, setSelectedBirth] = useState<number>(0);
+const Birthyear = () => {
+  const [selectedYear, setSelectedYear] = useRecoilState(selectedYearState);
+  const [userBirth, setUserBirth] = useRecoilState(userBirthState);
+
   const setBirthOnClick = () => {
-    setBirth(selectedBirth);
+    setUserBirth(selectedYear);
   };
   return (
     <div className={styles.birthGenderWrapper}>
       <div className={styles.signupText({ text: 'title' })}>출생년도를 알려주세요.</div>
       <div>
-        <YearPicker selected={setSelectedBirth} />
+        <YearPicker />
       </div>
       <Button onClick={setBirthOnClick} type='button' size='large' colorStyle='blue' filled>
         다음버튼임
