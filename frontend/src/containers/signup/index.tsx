@@ -11,6 +11,7 @@ import { contentWrapper } from '@/styles/wrapper.css';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
+import { birthGenderWrapper } from './index.css';
 
 const Signup = () => {
   const [userBirth, setUserBirth] = useRecoilState(userBirthState);

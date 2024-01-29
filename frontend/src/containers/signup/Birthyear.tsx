@@ -4,6 +4,8 @@ import { useRecoilState } from 'recoil';
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
 import { selectedYearState, userBirthState } from '@/states/signup';
+import { contentWrapper } from '@/styles/wrapper.css';
+import { birthGenderWrapper } from '@/containers/signup/index.css';
 
 import Button from '@/components/Button';
 
@@ -15,7 +17,7 @@ const Birthyear = () => {
     setUserBirth(selectedYear);
   };
   return (
-    <div className={styles.birthGenderWrapper}>
+    <div className={birthGenderWrapper}>
       <div className={styles.signupText({ text: 'title' })}>출생년도를 알려주세요.</div>
       <div>
         <YearPicker />

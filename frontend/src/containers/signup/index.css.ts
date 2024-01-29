@@ -1,19 +1,9 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { defaultWrapper } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
-
-export const signupWrapper = style([
-  defaultWrapper({ height: 'max' }),
-  {
-    '@media': {
-      'screen and (min-width: 480px)': {
-        width: '480px',
-      },
-    },
-  },
-]);
+import { contentWrapper } from '@/styles/wrapper.css';
 
 export const signupBg = style({
   position: 'absolute',
@@ -22,30 +12,18 @@ export const signupBg = style({
   bottom: '0%',
 });
 
-export const signupContentWrapper = style({
-  position: 'relative',
-  top: 0,
-  boxSizing: 'border-box',
-  height: '100svh',
-  //  header 등 padding좀 고정해야만.. recipe으로 만들까?
-  paddingTop: '80px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-});
-
-export const birthGenderWrapper = style({
-  position: 'relative',
-  top: 0,
-  boxSizing: 'border-box',
-  height: '100%',
-  paddingTop: '10%',
-  paddingBottom: '30%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-});
+export const birthGenderWrapper = style([
+  flex({ align: 'center', justify: 'spaceAround' }),
+  {
+    position: 'relative',
+    top: 0,
+    boxSizing: 'border-box',
+    height: '100%',
+    paddingTop: '10%',
+    paddingBottom: '30%',
+    flexDirection: 'column',
+  },
+]);
 
 export const selectWrapper = recipe({
   base: {

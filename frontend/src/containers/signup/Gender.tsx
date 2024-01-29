@@ -11,6 +11,7 @@ import { contentWrapper } from '@/styles/wrapper.css';
 
 import * as styles from './index.css';
 import Button from '@/components/Button';
+import { birthGenderWrapper } from './index.css';
 
 const Gender = () => {
   const [userBirth] = useRecoilState(userBirthState);
@@ -34,7 +35,7 @@ const Gender = () => {
     const response = await apiClient.post<authResponse, signupRequest>('/members/signup', data);
   };
   return (
-    <div className={contentWrapper({ contentArea: 'headerOnly' })}>
+    <div className={birthGenderWrapper}>
       <div>
         <div className={styles.signupText({ text: 'title' })}>성별을 알려주세요.</div>
         <div className={styles.signupText({ text: 'underAgeNotice', visible: getGender ? 'hidden' : 'show' })}>
