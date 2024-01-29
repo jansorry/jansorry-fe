@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import Birthyear from '@/containers/signup/Birthyear';
 import Gender from '@/containers/signup/Gender';
@@ -11,10 +11,9 @@ import { contentWrapper } from '@/styles/wrapper.css';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
-import { birthGenderWrapper } from './index.css';
 
 const Signup = () => {
-  const [userBirth, setUserBirth] = useRecoilState(userBirthState);
+  const userBirth = useRecoilValue(userBirthState);
 
   return (
     <main className={defaultWrapper({ width: 'max', height: 'max' })}>

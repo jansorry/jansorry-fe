@@ -3,9 +3,9 @@ import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
 
-const colors: ('blue' | 'strongRed' | 'black')[] = ['blue', 'strongRed', 'black'];
+const colors: ('blue' | 'strongRed' | 'black' | 'lightGray')[] = ['blue', 'strongRed', 'black', 'lightGray'];
 
-const filledStyles = colors.flatMap((colorItem: 'blue' | 'strongRed' | 'black') => [
+const filledStyles = colors.flatMap((colorItem: 'blue' | 'strongRed' | 'black' | 'lightGray') => [
   {
     variants: { colorStyle: colorItem, filled: true },
     style: {
@@ -58,6 +58,7 @@ const commonButtonVariants = {
     blue: {},
     strongRed: {},
     black: {},
+    lightGray: {},
   },
   filled: {
     true: {},

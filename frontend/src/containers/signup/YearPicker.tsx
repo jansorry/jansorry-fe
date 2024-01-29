@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { selectedYearState, userBirthState } from '@/states/signup';
+import { selectedYearState } from '@/states/signup';
 
 import * as styles from './index.css';
 

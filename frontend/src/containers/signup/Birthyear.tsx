@@ -1,17 +1,16 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
 import { selectedYearState, userBirthState } from '@/states/signup';
-import { contentWrapper } from '@/styles/wrapper.css';
 import { birthGenderWrapper } from '@/containers/signup/index.css';
 
 import Button from '@/components/Button';
 
 const Birthyear = () => {
-  const [selectedYear, setSelectedYear] = useRecoilState(selectedYearState);
-  const [userBirth, setUserBirth] = useRecoilState(userBirthState);
+  const selectedYear = useRecoilValue(selectedYearState);
+  const setUserBirth = useSetRecoilState(userBirthState);
 
   const setBirthOnClick = () => {
     setUserBirth(selectedYear);
