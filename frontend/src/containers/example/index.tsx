@@ -6,12 +6,19 @@ import KakaoLogin from '@/containers/welcome/KakaoLoginButton';
 import User from './User';
 import NagCard from '@/components/NagCard';
 import Button from '@/components/Button';
+import { UserPreview } from '../../components/UserPreview';
+import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 const Example = () => {
   const card: NagCardKeyOptions = { categoryKey: 1, typeKey: 1, sizeKey: 3, textStyleKey: 2, text: 'test' };
 
   return (
     <main>
+      {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
+      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
+      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' size='large' />
+      <UserPreview imgSrc='/images/userProfileImage/temp-userProfile.png' nickname='테스트닉네임' subText='00분전' />
+      <UserPreview imgSrc='/images/userProfileImage/temp-userProfile.png' nickname='테스트닉네임' />
       <NagCard card={card} />
       <NagCard card={card} />
       <Button size='large' filled colorStyle='strongRed' type='button' link='https://www.naver.com'>
