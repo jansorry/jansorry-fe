@@ -1,9 +1,8 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { defaultWrapper, flex } from '@/styles/common.css';
+import { flex } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
-import { contentWrapper } from '@/styles/wrapper.css';
 
 export const signupBg = style({
   position: 'absolute',
@@ -31,7 +30,6 @@ export const selectWrapper = recipe({
     height: '186px',
     boxSizing: 'border-box',
 
-    //   스크롤바 숨김 -> 최신 브라우저에서만 작동하는 것 같음. 모바일웹 케이느 확인 필요
     '::-webkit-scrollbar': {
       display: 'none',
     },
@@ -50,17 +48,29 @@ export const selectWrapper = recipe({
 });
 
 export const yearPickerWrapper = style({});
-export const yearPickerBox = style({
-  width: '120px',
-  height: '64px',
-  paddingRight: '10px',
-  paddingLeft: '10px',
-  borderRadius: '16px',
-  cursor: 'pointer',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  fontSize: '32px',
+export const yearPickerBox = recipe({
+  base: [
+    flex({
+      justify: 'center',
+      align: 'center',
+    }),
+    {
+      width: '120px',
+      height: '64px',
+      paddingRight: '10px',
+      paddingLeft: '10px',
+      borderRadius: '16px',
+      cursor: 'pointer',
+      fontSize: '32px',
+    },
+  ],
+  variants: {
+    show: {
+      hidden: {
+        visibility: 'hidden',
+      },
+    },
+  },
 });
 
 export const yearPickerBoxVariants = styleVariants({

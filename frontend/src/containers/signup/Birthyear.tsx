@@ -22,7 +22,7 @@ const Birthyear = () => {
         <YearPicker />
       </div>
       <Button onClick={setBirthOnClick} type='button' size='large' colorStyle='blue' filled>
-        다음버튼임
+        다음
       </Button>
     </div>
   );

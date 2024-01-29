@@ -7,7 +7,6 @@ import { userBirthState, userGenderState } from '@/states/signup';
 import { oauthIdState } from '@/states/auth';
 import { apiClient } from '@/services';
 import { authResponse, signupRequest } from '@/types/auth';
-import { contentWrapper } from '@/styles/wrapper.css';
 
 import * as styles from './index.css';
 import Button from '@/components/Button';
@@ -19,15 +18,14 @@ const Gender = () => {
     .filter(([key, _]) => key >= 1 && key <= 3)
     .map(([_, value]) => value);
 
-  const getGender = userBirth !== null && userBirth < 2024 - 14;
+  const isGenderRequired: boolean = userBirth !== null && userBirth < 2024 - 14;
   const [userGender, setUserGender] = useRecoilState(userGenderState);
 
   const [oauthId] = useRecoilState(oauthIdState);
-  const postData = async () => {
-    //  여기서 userBirth가 null 등 잘못된 값이면 예외처리 해줘야 되는데 어떻게 처리할까 합의 필요
+  const handleSignupRequest = async () => {
     const data: signupRequest = {
       oauthId,
-      birth: userBirth ?? 0,
+      birth: userBirth,
       genderId: userGender,
     };
 
@@ -38,7 +36,7 @@ const Gender = () => {
     <div className={birthGenderWrapper}>
       <div>
         <div className={styles.signupText({ text: 'title' })}>성별을 알려주세요.</div>
-        <div className={styles.signupText({ text: 'underAgeNotice', visible: getGender ? 'hidden' : 'show' })}>
+        <div className={styles.signupText({ text: 'underAgeNotice', visible: isGenderRequired ? 'hidden' : 'show' })}>
           14세 이하는 성별 정보를 받지 않아요.
         </div>
       </div>
@@ -50,7 +48,7 @@ const Gender = () => {
               size='large'
               colorStyle='blue'
               filled={userGender === index + 1 || (index === 2 && userGender >= 4)}
-              disabled={!getGender}
+              disabled={!isGenderRequired}
               onClick={() => setUserGender(index + 1)}
             >
               {buttonText}
@@ -60,7 +58,7 @@ const Gender = () => {
       </div>
 
       <div>
-        <Button onClick={postData} type='submit' size='large' colorStyle='blue' filled>
+        <Button onClick={handleSignupRequest} type='submit' size='large' colorStyle='blue' filled>
           가입하기
         </Button>
       </div>
