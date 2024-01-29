@@ -4,8 +4,8 @@ import { vars } from '@/styles/vars.css';
 
 export const numberStyle = style({
   '@media': {
-    'screen and (max-height: 600px)': {
-      fontSize: 0,
+    'screen and (max-width: 450px)': {
+      fontSize: vars.fontSize['3x'],
     },
   },
   fontSize: vars.fontSize['4x'],

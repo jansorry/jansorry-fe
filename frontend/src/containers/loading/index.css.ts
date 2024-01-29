@@ -11,13 +11,15 @@ export const loadingWrapper = style([
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    marginLeft: vars.space['2x'],
+    marginRight: vars.space['2x'],
   },
 ]);
 
 export const title = style({
   '@media': {
-    'screen and (max-height: 600px)': {
-      fontSize: 0,
+    'screen and (max-width: 450px)': {
+      fontSize: vars.fontSize['2x'],
     },
   },
   fontSize: vars.fontSize['3x'],
