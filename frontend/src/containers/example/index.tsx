@@ -23,6 +23,9 @@ const Example = () => {
       <Button size='small' filled colorStyle='black' type='button'>
         색상테스트
       </Button>
+      <Button size='large' filled colorStyle='lightGray' type='button'>
+        색상테스트
+      </Button>
       <div>
         <ul>
           {users.map((user) => (
