@@ -6,7 +6,7 @@ import KakaoLogin from '@/containers/welcome/KakaoLoginButton';
 import User from './User';
 import NagCard from '@/components/NagCard';
 import Button from '@/components/Button';
-import { UserPreview } from '../../components/UserPreview';
+import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 const Example = () => {

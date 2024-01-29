@@ -42,10 +42,10 @@ export const profileText = {
     },
   ]),
   nickname: style({
-    fontSize: vars.fontSize['2x'], // Assuming '2x' is a valid key in your fontSize theme
+    fontSize: vars.fontSize['2x'],
   }),
   subText: style({
-    fontSize: vars.fontSize['1x'], // Assuming '1x' is a valid key in your fontSize theme
+    fontSize: vars.fontSize['1x'],
     color: vars.colors.gray,
   }),
 };
