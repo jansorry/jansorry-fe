@@ -1,9 +1,9 @@
-import { api } from '@/services/index';
+import { apiServer } from '@/services/index';
 import { nag } from '@/types/nag';
 
-export const getNagCategory = async (): Promise<nag[]> => {
+export const getNagCategory = async (token: string): Promise<nag[]> => {
   try {
-    return await api.get<nag[]>('/nags');
+    return await apiServer.get(`/nags`, token);
   } catch (e) {
     console.log(e);
   }

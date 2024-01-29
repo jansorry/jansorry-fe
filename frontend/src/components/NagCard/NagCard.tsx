@@ -25,7 +25,9 @@ const CardText = memo(({ text, textClassName }: CardTextProps) => {
 
 const NagCardContent = ({ cardCategory, cardType, cardSize, textStyle, text }: Props) => {
   const imgSrc: string =
-    cardType || cardCategory ? `/nag-card/nagcard-${cardCategory}-${cardType}.png` : '/nag-card/nagcard-empty.png';
+    cardType || cardCategory
+      ? `/nag-card/nagcard-${cardCategory}-${cardType}.png`
+      : '/nag-card/nagcard-empty-empty.png';
   const sizeClassName: string = cardSize ? sizeStyles[cardSize] : sizeStyles.medium;
   let textClassName;
   if (textStyle === 'nag' && cardCategory && cardCategory in textStyles.nag) {
