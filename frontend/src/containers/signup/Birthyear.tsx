@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { router } from 'next/client';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
