@@ -14,10 +14,9 @@ const imageUrls = [
 ];
 
 const AnimatedImage: React.FC = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [animationFinished, setAnimationFinished] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (!animationFinished) {
       const interval = setInterval(() => {
@@ -33,6 +32,7 @@ const AnimatedImage: React.FC = () => {
 
       return () => clearInterval(interval);
     }
+    return undefined;
   }, [animationFinished]);
 
   return (
