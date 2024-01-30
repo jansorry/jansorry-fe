@@ -26,7 +26,10 @@ const YearPicker = () => {
       const closestRect = closest.getBoundingClientRect();
       const closestCenter = closestRect.top + closestRect.height / 2;
 
-      return Math.abs(childCenter - viewportCenter) < Math.abs(closestCenter - viewportCenter) ? child : closest;
+      return Math.abs(childCenter - viewportCenter) <
+        Math.abs(closestCenter - viewportCenter)
+        ? child
+        : closest;
     }, children[0]);
 
     setSelectedYear(parseInt(closestChild.getAttribute('data-year') ?? '', 10));
@@ -35,7 +38,7 @@ const YearPicker = () => {
   useEffect(() => {
     const list = listRef.current;
     if (!list) return () => {};
-
+    setSelectedYear(2024);
     list.addEventListener('scroll', handleScroll);
     return () => list.removeEventListener('scroll', handleScroll);
   }, []);
@@ -44,9 +47,15 @@ const YearPicker = () => {
   const paddingItemsCount = 1; // 빈 <div> 요소의 개수를 정의합니다.
 
   return (
-    <div className={styles.selectWrapper({ content: 'yearPicker' })} ref={listRef}>
+    <div
+      className={styles.selectWrapper({ content: 'yearPicker' })}
+      ref={listRef}
+    >
       {Array.from({ length: paddingItemsCount }).map((_, index) => (
-        <div key={`padding-top-${index}`} className={styles.yearPickerBox({ show: 'hidden' })} />
+        <div
+          key={`padding-top-${index}`}
+          className={styles.yearPickerBox({ show: 'hidden' })}
+        />
       ))}
       {Array.from({ length: yearCount }, (_, index) => {
         const year = maxYear - index;
@@ -55,7 +64,9 @@ const YearPicker = () => {
             key={year}
             data-year={year}
             className={`${styles.yearPickerBox()} ${
-              year === selectedYear ? styles.yearPickerBoxVariants.selected : styles.yearPickerBoxVariants.unselected
+              year === selectedYear
+                ? styles.yearPickerBoxVariants.selected
+                : styles.yearPickerBoxVariants.unselected
             }`}
           >
             {year}
@@ -63,7 +74,10 @@ const YearPicker = () => {
         );
       })}
       {Array.from({ length: paddingItemsCount }).map((_, index) => (
-        <div key={`padding-bottom-${index}`} className={styles.yearPickerBox({ show: 'hidden' })} />
+        <div
+          key={`padding-bottom-${index}`}
+          className={styles.yearPickerBox({ show: 'hidden' })}
+        />
       ))}
     </div>
   );
