@@ -7,7 +7,7 @@ import { vars } from '@/styles/vars.css';
 export const userPreview = style([
   flex(),
   {
-    height: '40px',
+    height: vars.space['5x'],
     width: 'auto',
     boxSizing: 'border-box',
     marginTop: vars.space['0.5x'],
@@ -17,8 +17,8 @@ export const userPreview = style([
 
 export const profileImage = recipe({
   base: {
-    width: '40px',
-    height: '40px',
+    width: vars.space['5x'],
+    height: vars.space['5x'],
     marginRight: vars.space['1x'],
     borderRadius: vars.borderRadius.full,
   },
@@ -27,6 +27,7 @@ export const profileImage = recipe({
       large: {
         width: '64px',
         height: '64px',
+        border: `1px solid ${vars.colors.lightGray}`,
       },
     },
   },

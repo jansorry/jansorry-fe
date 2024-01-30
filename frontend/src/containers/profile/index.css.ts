@@ -93,6 +93,7 @@ export const usernameAndSettings = style([
 
 export const username = style({
   flexGrow: 0,
+  fontSize: vars.fontSize['3x'],
   width: 'auto',
 });
 
@@ -110,6 +111,7 @@ export const followInfo = style([
   {
     gap: vars.space['2x'],
     marginTop: vars.space['2x'],
+    fontSize: vars.fontSize['2x'],
   },
 ]);
 

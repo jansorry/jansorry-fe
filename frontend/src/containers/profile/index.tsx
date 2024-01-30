@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { IconSetting } from '#/svgs';
+import { userDataResponse } from '@/types/userData';
 
 import Header from '@/components/Header';
 import * as styles from './index.css';
@@ -16,23 +17,16 @@ interface Props {
   username: string;
 }
 
-interface UserData {
-  nickname: string; // '?'를 사용하여 이 필드가 선택적임을 나타냅니다.
-  imageUrl: string;
-  followerCnt: number;
-  followingCnt: number;
-}
-
 const UserProfile = ({ username }: Props) => {
   const router = useRouter();
-  const [userData, setUserData] = useState<UserData>({
+  const [userData, setUserData] = useState<userDataResponse>({
     nickname: '',
     imageUrl: '',
     followerCnt: 0,
     followingCnt: 0,
   });
   // 더미 데이터
-  const dummyUserData = {
+  const dummyUserData: userDataResponse = {
     nickname: 'dummyUser',
     imageUrl: '/images/userProfileImage/temp-userProfile.png',
     followerCnt: 150,
@@ -61,17 +55,24 @@ const UserProfile = ({ username }: Props) => {
     // fetchData();
     setUserData(dummyUserData);
   }, []);
-  const handleSettingsClick = () => {
-    router.push('/management');
+
+  const handleConfigClicked = () => {
+    router.push('/accounts');
   };
 
   return (
     <div className={styles.userProfileWrapper}>
-      <UserProfileImage imgSrc={userData.imageUrl} size='large' />
+      {userData.imageUrl && (
+        <UserProfileImage imgSrc={userData.imageUrl} size='large' />
+      )}
       <div className={styles.profileDetails}>
         <div className={styles.usernameAndSettings}>
           <span className={styles.username}>{userData.nickname}</span>
-          <button type='button' className={styles.settingsButton} onClick={handleSettingsClick}>
+          <button
+            type='button'
+            className={styles.settingsButton}
+            onClick={handleConfigClicked}
+          >
             <IconSetting />
           </button>
         </div>
@@ -89,15 +90,15 @@ const UserProfile = ({ username }: Props) => {
 };
 
 const Profile = () => {
-  const [nagCount, setNagCount] = useState(0);
-  const [username, setUsername] = useState('');
-  const [userData, setUserData] = useState<UserData>({
+  const [nagCount, setNagCount] = useState<number>(0);
+  const [username, setUsername] = useState<string>('');
+  const [userData, setUserData] = useState<userDataResponse>({
     nickname: '',
     imageUrl: '',
     followerCnt: 0,
     followingCnt: 0,
   });
-  const dummyNagCount = 4;
+  const dummyNagCount: number = 4;
   useEffect(() => {
     // 더미 잔소리 개수 테스트
     setNagCount(dummyNagCount);
