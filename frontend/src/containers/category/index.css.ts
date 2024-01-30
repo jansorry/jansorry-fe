@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { contentWrapper } from '@/styles/wrapper.css';
 import { flex } from '@/styles/common.css';
@@ -14,6 +15,7 @@ export const categoryLeft = style({
   position: 'sticky',
   top: 80,
   left: 0,
+  height: calc.subtract('100vh', '80px'),
   flexBasis: '33%',
   backgroundColor: vars.colors.babyBlue,
   borderBottom: `1px solid ${vars.colors.whitesmoke}`,
@@ -24,12 +26,12 @@ export const categoryRight = style({
 });
 
 const categoryKeyRecipe = recipe({
-  base: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 80,
-  },
+  base: [
+    flex({ justify: 'center', align: 'center' }),
+    {
+      height: 80,
+    },
+  ],
   variants: {
     isSelected: {
       true: {
