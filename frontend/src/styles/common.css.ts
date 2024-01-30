@@ -5,6 +5,7 @@ import { vars } from '@/styles/vars.css';
 export const defaultWrapper = recipe({
   base: {
     maxWidth: 480,
+    height: 'auto',
   },
   variants: {
     width: {
@@ -14,6 +15,9 @@ export const defaultWrapper = recipe({
     },
     height: {
       max: {
+        height: '100svh',
+      },
+      auto: {
         height: 'auto',
       },
     },
