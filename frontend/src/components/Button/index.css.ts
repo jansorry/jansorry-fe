@@ -37,6 +37,7 @@ const commonButtonBase = style({
   paddingBottom: vars.space['0.5x'],
   textDecorationLine: 'none',
   cursor: 'pointer',
+  boxShadow: '0px 10px 25px 0px rgba(0, 0, 0, 0.25)',
 });
 
 const commonButtonVariants = {

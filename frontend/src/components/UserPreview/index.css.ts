@@ -36,10 +36,8 @@ export const profileText = {
   box: style([
     flex({
       justify: 'center',
+      direction: 'column',
     }),
-    {
-      flexDirection: 'column',
-    },
   ]),
   nickname: style({
     fontSize: vars.fontSize['2x'],

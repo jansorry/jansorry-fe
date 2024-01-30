@@ -13,7 +13,6 @@ const contentWrapperBase = style([
   }),
   {
     position: 'relative',
-    flexDirection: 'column',
     boxSizing: 'border-box',
     border: 'none',
   },

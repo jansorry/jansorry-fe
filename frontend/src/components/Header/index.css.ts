@@ -10,6 +10,7 @@ export const headerWrapper = style([
     position: 'fixed',
     height: 80,
     backgroundColor: vars.colors.white,
+    zIndex: vars.zIndex['layout-content'],
   },
 ]);
 
