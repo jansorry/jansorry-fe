@@ -1,15 +1,13 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { defaultWrapper, flex } from '@/styles/common.css';
+import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { vars } from '@/styles/vars.css';
 
-import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
-
 export const profileWrapper = style([
-  defaultWrapper({ height: 'max' }),
   contentWrapper({ contentArea: 'headerAndNavBar' }),
+  flex(),
   {
     '@media': {
       'screen and (min-width: 480px)': {
@@ -18,20 +16,21 @@ export const profileWrapper = style([
     },
   },
   {
-    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
 ]);
 
-export const profileContentWrapper = style({
-  width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-});
+export const profileContentWrapper = style([
+  flex(),
+  {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+]);
 
 export const profileText = recipe({
   base: {
@@ -78,11 +77,12 @@ export const profileImage = style([
   },
 ]);
 
-export const profileDetails = style({
-  display: 'flex',
-  flexDirection: 'column',
-  // 여기에 필요한 기타 스타일 추가
-});
+export const profileDetails = style([
+  flex(),
+  {
+    flexDirection: 'column',
+  },
+]);
 
 export const usernameAndSettings = style([
   flex({ align: 'center' }),
@@ -115,26 +115,15 @@ export const followInfo = style([
   },
 ]);
 
-export const followerBox = style({
-  display: 'inline-block',
-  marginRight: vars.space['0.5x'],
-});
-
-export const followingBox = style({
-  display: 'inline-block',
-  marginLeft: vars.space['5x'],
-  marginRight: vars.space['0.5x'],
-});
-
-export const number = style({
+export const followNumber = style({
   width: 'auto',
 });
 
 export const profileNoContentStyle = style([
+  flex(),
   {
     width: '100svw',
     height: '100%',
-    display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-around',

@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 import * as styles from '@/containers/profile/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 
@@ -19,7 +17,9 @@ const ProfileNoContent = () => {
       <Button type='button' size='large' colorStyle='lightGray' filled>
         영수증 발급
       </Button>
-      <div className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}>
+      <div
+        className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}
+      >
         <NagCard card={card} />
       </div>
     </div>
