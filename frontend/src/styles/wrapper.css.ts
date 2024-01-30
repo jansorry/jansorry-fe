@@ -10,10 +10,10 @@ const contentWrapperBase = style([
   }),
   flex({
     align: 'center',
+    direction: 'column',
   }),
   {
     position: 'relative',
-    flexDirection: 'column',
     boxSizing: 'border-box',
     border: 'none',
   },

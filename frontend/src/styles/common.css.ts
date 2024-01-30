@@ -14,7 +14,7 @@ export const defaultWrapper = recipe({
     },
     height: {
       max: {
-        height: 'auth',
+        height: 'auto',
       },
     },
     border: {
@@ -56,6 +56,14 @@ export const flex = recipe({
       },
       right: {
         marginLeft: 'auto',
+      },
+    },
+    direction: {
+      row: {
+        flexDirection: 'row',
+      },
+      column: {
+        flexDirection: 'column',
       },
     },
   },

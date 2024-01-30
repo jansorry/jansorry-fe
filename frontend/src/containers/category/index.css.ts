@@ -7,17 +7,13 @@ import { vars } from '@/styles/vars.css';
 
 export const categoryWrapper = style([
   contentWrapper({ contentArea: 'headerOnly' }),
-  flex({ justify: 'flexStart', align: 'flexStart' }),
-  {
-    flexDirection: 'row',
-  },
+  flex({ justify: 'flexStart', align: 'flexStart', direction: 'row' }),
 ]);
 
 export const categoryLeft = style({
   position: 'sticky',
   top: 80,
   left: 0,
-  height: `100vh-80px`,
   flexBasis: '33%',
   backgroundColor: vars.colors.babyBlue,
   borderBottom: `1px solid ${vars.colors.whitesmoke}`,
@@ -57,17 +53,17 @@ export const selectedCategoryKeys = style([
 export const categoryKeys = style([categoryKeyRecipe({ isSelected: false })]);
 
 const categoryContentRecipe = recipe({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    marginLeft: vars.space['2x'],
-    height: 56,
-  },
+  base: [
+    flex({ align: 'center' }),
+    {
+      marginLeft: vars.space['2x'],
+      height: 56,
+    },
+  ],
   variants: {
     title: {
       true: {
         fontWeight: vars.fontWeight.accent,
-        scrollMarginTop: 80,
       },
     },
   },

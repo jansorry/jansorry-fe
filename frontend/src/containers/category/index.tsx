@@ -5,6 +5,7 @@ import { RefObject, useState } from 'react';
 import { nagResponse } from '@/types/nag';
 import { useObserver } from '@/hooks/useObserver';
 import { IconRightBracket } from '#/svgs';
+import { categoryKeys, categoryValues } from '@/utils/categoryRecord';
 
 import Header from '@/components/Header';
 import * as styles from './index.css';
@@ -17,6 +18,7 @@ interface Props {
 const Category = ({ nagItems }: Props) => {
   const [isFocused, setIsfocused] = useState(1);
 
+  const refUndefined = useObserver(0, setIsfocused);
   const refCareer = useObserver(1, setIsfocused);
   const refHealth = useObserver(2, setIsfocused);
   const refMarry = useObserver(3, setIsfocused);
@@ -50,78 +52,23 @@ const Category = ({ nagItems }: Props) => {
       <div className={styles.categoryWrapper}>
         <section className={styles.categoryLeft}>
           <ul>
-            <li
-              className={
-                isFocused === 1
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refCareer}
-              onClick={() => onScroll(refCareer, 1)}
-            >
-              학업/진로
-            </li>
-            <li
-              className={
-                isFocused === 2
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refHealth}
-              onClick={() => onScroll(refHealth, 2)}
-            >
-              건강/외모
-            </li>
-            <li
-              className={
-                isFocused === 3
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refMarry}
-              onClick={() => onScroll(refMarry, 3)}
-            >
-              연애/결혼
-            </li>
-            <li
-              className={
-                isFocused === 4
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refWork}
-              onClick={() => onScroll(refWork, 4)}
-            >
-              취업/직장
-            </li>
-            <li
-              className={
-                isFocused === 5
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refFamily}
-              onClick={() => onScroll(refFamily, 5)}
-            >
-              가족/자녀
-            </li>
-            <li
-              className={
-                isFocused === 6
-                  ? styles.selectedCategoryKeys
-                  : styles.categoryKeys
-              }
-              role='presentation'
-              ref={refEtc}
-              onClick={() => onScroll(refEtc, 6)}
-            >
-              기타
-            </li>
+            {categoryKeys.map((categoryKey: number) => (
+              <div
+                className={
+                  isFocused === categoryKey
+                    ? styles.selectedCategoryKeys
+                    : styles.categoryKeys
+                }
+                key={categoryKey}
+                role='presentation'
+                ref={refMap.get(categoryKey)}
+                onClick={() =>
+                  onScroll(refMap.get(categoryKey) ?? refUndefined, categoryKey)
+                }
+              >
+                {categoryValues[categoryKey as keyof typeof categoryValues]}
+              </div>
+            ))}
           </ul>
         </section>
         <div className={styles.categoryRight}>
