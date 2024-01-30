@@ -6,6 +6,6 @@ export interface authResponse {
 
 export interface signupRequest {
   oauthId: string;
-  birth: number;
+  birth: number | null;
   genderId: number;
 }

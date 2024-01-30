@@ -6,18 +6,18 @@ import { defaultWrapper, flex } from '@/styles/common.css';
 const contentWrapperBase = style([
   defaultWrapper({
     width: 'max',
-    height: 'max',
+    height: 'auto',
   }),
   flex({
     align: 'center',
   }),
   {
     position: 'relative',
-    flexDirection: 'column',
     boxSizing: 'border-box',
     border: 'none',
   },
 ]);
+
 export const contentWrapper = recipe({
   base: contentWrapperBase,
 
@@ -32,6 +32,11 @@ export const contentWrapper = recipe({
       headerAndNavBar: {
         paddingTop: '80px',
         paddingBottom: '48px',
+      },
+    },
+    heightStyle: {
+      max: {
+        height: '100svh',
       },
     },
   },
