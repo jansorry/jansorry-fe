@@ -1,18 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { defaultWrapper } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const loadingWrapper = style([
+  flex({ justify: 'center', align: 'center', direction: 'column' }),
   defaultWrapper({ height: 'max' }),
   {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     textAlign: 'center',
-    marginLeft: vars.space['2x'],
-    marginRight: vars.space['2x'],
   },
 ]);
 
