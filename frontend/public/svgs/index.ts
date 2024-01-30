@@ -8,6 +8,7 @@ import IconHeartFilled from './heart-filled.svg';
 import IconArrowLeft from './arrow-left.svg';
 import IconClose from './close.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
+import IconSetting from './setting.svg';
 
 export {
   IconUser,
@@ -19,4 +20,5 @@ export {
   IconArrowLeft,
   IconClose,
   ButtonKakaoLogin,
+  IconSetting,
 };
