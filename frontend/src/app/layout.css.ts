@@ -17,3 +17,9 @@ globalStyle('body', {
   position: 'relative',
   boxShadow: `0 0 25px ${vars.colors.whitesmoke}`,
 });
+
+globalStyle('ul', {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+});
