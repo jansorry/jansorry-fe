@@ -22,6 +22,12 @@ const Gender = () => {
   const isGenderRequired: boolean = userBirth !== null && userBirth < 2024 - 14;
   const [userGender, setUserGender] = useRecoilState(userGenderState);
   const [oauthId] = useRecoilState(oauthIdState);
+  const resetUserGender = useResetRecoilState(userGenderState);
+
+  const handlePrevButton = () => {
+    resetUserGender();
+    setUserBirth(null);
+  };
   const handleSignupRequest = async () => {
     const data: signupRequest = {
       oauthId,
@@ -34,11 +40,6 @@ const Gender = () => {
       '/members/signup',
       data,
     );
-  };
-  const resetUserGender = useResetRecoilState(userGenderState);
-  const handlePrevButton = () => {
-    resetUserGender();
-    setUserBirth(null);
   };
 
   return (
