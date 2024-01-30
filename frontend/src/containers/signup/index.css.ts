@@ -12,14 +12,14 @@ export const signupBg = style({
 });
 
 export const birthGenderWrapper = style([
-  flex({ align: 'center', justify: 'spaceAround', direction: 'column' }),
+  flex({ align: 'center', justify: 'spaceBetween', direction: 'column' }),
   {
     position: 'relative',
     top: 0,
     boxSizing: 'border-box',
     height: '100%',
-    paddingTop: '10%',
-    paddingBottom: '30%',
+    paddingTop: '20%',
+    paddingBottom: '40%',
   },
 ]);
 
@@ -46,7 +46,6 @@ export const selectWrapper = recipe({
   },
 });
 
-export const yearPickerWrapper = style({});
 export const yearPickerBox = recipe({
   base: [
     flex({

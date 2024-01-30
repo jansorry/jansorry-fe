@@ -26,7 +26,11 @@ const Signup = () => {
         className={`${styles.signupBg}`}
       />
       <Header title='회원 가입' />
-      <div className={contentWrapper({ contentArea: 'headerOnly' })}>{!userBirth ? <Birthyear /> : <Gender />}</div>
+      <div
+        className={`${contentWrapper({ contentArea: 'headerOnly', heightStyle: 'max' })}`}
+      >
+        {!userBirth ? <Birthyear /> : <Gender />}
+      </div>
     </main>
   );
 };

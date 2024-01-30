@@ -17,13 +17,23 @@ const Birthyear = () => {
   };
   return (
     <div className={birthGenderWrapper}>
-      <div className={styles.signupText({ text: 'title' })}>출생년도를 알려주세요.</div>
+      <div className={styles.signupText({ text: 'title' })}>
+        출생년도를 알려주세요.
+      </div>
       <div>
         <YearPicker />
       </div>
-      <Button onClick={setBirthOnClick} type='button' size='large' colorStyle='blue' filled>
-        다음
-      </Button>
+      <div>
+        <Button
+          onClick={setBirthOnClick}
+          type='button'
+          size='large'
+          colorStyle='blue'
+          filled
+        >
+          다음
+        </Button>
+      </div>
     </div>
   );
 };
