@@ -1,9 +1,12 @@
+import Loading from '@/containers/receipt/Loading';
+
 import { ReceiptBackground } from '@/components/Receipt/ReceiptBackground';
 
 const Receipt = () => {
   return (
     <div>
-      <ReceiptBackground />
+      <Loading />
+      {/* <ReceiptBackground /> */}
     </div>
   );
 };
