@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { defaultWrapper } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
 
 export const homeWrapper = style([
@@ -20,6 +20,7 @@ export const bottomNav = style({
   height: 'auto',
 });
 export const homeContentWrapper = style([
+  flex({ align: 'center', direction: 'column' }),
   {
     position: 'relative',
     top: 0,
@@ -29,20 +30,14 @@ export const homeContentWrapper = style([
     // 상하단 padding style 셋팅을 하는게 나을지도 -> 고민
     paddingBottom: '48px',
     paddingTop: '20%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
 ]);
 
 export const emptyStyle = style([
+  flex({ align: 'center', justify: 'center', direction: 'column' }),
   {
     width: '100svw',
     height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
 ]);
 
