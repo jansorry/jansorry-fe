@@ -12,15 +12,14 @@ export const signupBg = style({
 });
 
 export const birthGenderWrapper = style([
-  flex({ align: 'center', justify: 'spaceAround' }),
+  flex({ align: 'center', justify: 'spaceBetween', direction: 'column' }),
   {
     position: 'relative',
     top: 0,
     boxSizing: 'border-box',
     height: '100%',
-    paddingTop: '10%',
-    paddingBottom: '30%',
-    flexDirection: 'column',
+    paddingTop: '20%',
+    paddingBottom: '40%',
   },
 ]);
 
@@ -37,17 +36,16 @@ export const selectWrapper = recipe({
   variants: {
     content: {
       yearPicker: {},
-      genderButtons: {
-        justifyContent: 'space-around',
-        display: 'flex',
-        flexDirection: 'column',
-        overflowY: 'visible',
-      },
+      genderButtons: [
+        flex({ justify: 'spaceAround', direction: 'column' }),
+        {
+          overflowY: 'visible',
+        },
+      ],
     },
   },
 });
 
-export const yearPickerWrapper = style({});
 export const yearPickerBox = recipe({
   base: [
     flex({
