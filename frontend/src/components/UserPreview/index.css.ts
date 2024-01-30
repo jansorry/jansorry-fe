@@ -25,8 +25,8 @@ export const profileImage = recipe({
   variants: {
     sizes: {
       large: {
-        width: '64px',
-        height: '64px',
+        width: 64,
+        height: 64,
         border: `1px solid ${vars.colors.lightGray}`,
       },
     },

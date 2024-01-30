@@ -1,4 +1,3 @@
-// containers/profile/ProfileWithContent.tsx
 import * as styles from '@/containers/profile/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 
