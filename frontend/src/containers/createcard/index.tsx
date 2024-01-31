@@ -19,7 +19,7 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
   const [inputCount, setInputCount] = useState<number>(0);
   const [showWarningMaxLine, setShowWarningMaxLine] = useState<boolean>(false);
 
-  const cardOption: NagCardKeyOptions = {
+  const selectedCardOption: NagCardKeyOptions = {
     categoryKey: categoryId,
     typeKey: 1,
     sizeKey: 3,
@@ -49,7 +49,7 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
     <>
       <Header title='내 카드 등록' hasPrevious />
       <div className={styles.createCardWrapper}>
-        <NagCard cardOption={cardOption} />
+        <NagCard cardOption={selectedCardOption} />
         <Button
           type='button'
           size='large'
