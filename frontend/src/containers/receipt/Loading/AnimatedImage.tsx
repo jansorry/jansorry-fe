@@ -2,12 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
 
 import * as styles from '@/containers/receipt/Loading/index.css';
+import { animationFinishedState } from '@/states/receiptAnimation';
 
 const AnimatedImage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const [animationFinished, setAnimationFinished] = useState<boolean>(false);
+  const [animationFinished, setAnimationFinished] = useRecoilState(
+    animationFinishedState,
+  );
 
   const imageUrls = [
     '/images/Loading/loadingReceipt0.png',
