@@ -8,9 +8,10 @@ import { IconSetting } from '#/svgs';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 interface Props {
-  username: string;
+  UserDataType: userDataResponse;
 }
-export const UserProfile = ({ username }: Props) => {
+
+export const UserProfile = ({ UserDataType }: Props) => {
   const router = useRouter();
   const [userData, setUserData] = useState<userDataResponse>({
     nickname: '',
@@ -29,7 +30,7 @@ export const UserProfile = ({ username }: Props) => {
   useEffect(() => {
     // const fetchData = async () => {
     //   try {
-    //     const response = await fetch('api/v1/members');
+    //     const response = await fetch('/members');
     //     if (!response.ok) {
     //       console.log('올바르지 않은 요청 형식입니다.');
     //     }
@@ -72,12 +73,12 @@ export const UserProfile = ({ username }: Props) => {
         <div className={styles.followInfo}>
           <span>
             <div className={styles.followNumber}>
-              팔로잉 {userData.followerCnt}
+              팔로잉 {userData.followingCnt}
             </div>
           </span>
           <span>
             <div className={styles.followNumber}>
-              팔로워 {userData.followingCnt}
+              팔로워 {userData.followerCnt}
             </div>
           </span>
         </div>

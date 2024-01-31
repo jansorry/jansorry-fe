@@ -11,22 +11,28 @@ import ProfileWithContent from './ProfileWithContent';
 import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 
-const Profile = () => {
+interface Props {
+  username: string;
+}
+
+const Profile = ({ username }: Props) => {
   const [nagCount, setNagCount] = useState<number>(0);
-  const [username, setUsername] = useState<string>('');
+  const [setUsername] = useState<string>('');
   const [userData, setUserData] = useState<userDataResponse>({
     nickname: '',
     imageUrl: '',
     followerCnt: 0,
     followingCnt: 0,
   });
+
   const dummyNagCount: number = 4;
+
   useEffect(() => {
-    // 더미 잔소리 개수 테스트
+    // 잔소리 개수 더미 테스트 코드
     setNagCount(dummyNagCount);
     // const fetchUserData = async () => {
     //   try {
-    //     const response = await fetch('api/v1/members');
+    //     const response = await fetch('/api/members');
     //     if (!response.ok) {
     //       throw new Error('Network response was not ok');
     //     }
@@ -46,7 +52,7 @@ const Profile = () => {
     // // 잔소리 갯수를 불러오는 함수
     // const fetchNagCount = async () => {
     //   try {
-    //     const response = await fetch('api/v1/actions');
+    //     const response = await fetch('/api/actions');
     //     if (!response.ok) {
     //       throw new Error('Network response was not ok');
     //     }
@@ -65,7 +71,7 @@ const Profile = () => {
       <Header title='나의 잔소리 목록' />
       <main className={styles.profileWrapper}>
         <div className={styles.profileContentWrapper}>
-          <UserProfile username={username} />
+          <UserProfile username={nickname} />
         </div>
         <div>{nagCount ? <ProfileWithContent /> : <ProfileNoContent />}</div>
         <div className={styles.bottomNav}>

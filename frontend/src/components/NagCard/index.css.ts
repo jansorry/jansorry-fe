@@ -32,8 +32,7 @@ export const sizeStyles = {
 const cardTextCenterStyle = style({
   position: 'absolute',
   transform: 'translate(-50%, -50%)',
-  //  추후 공통스타일로 관리 필요 (확인)
-  zIndex: 1,
+  zIndex: vars.zIndex['z-1'],
   fontSize: vars.fontSize['1x'],
 
   top: '50%',

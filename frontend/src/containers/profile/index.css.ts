@@ -7,7 +7,11 @@ import { vars } from '@/styles/vars.css';
 
 export const profileWrapper = style([
   contentWrapper({ contentArea: 'headerAndNavBar' }),
-  flex(),
+  flex({
+    align: 'center',
+    justify: 'flexStart',
+    direction: 'column',
+  }),
   {
     '@media': {
       'screen and (min-width: 480px)': {
@@ -15,20 +19,16 @@ export const profileWrapper = style([
       },
     },
   },
-  {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
 ]);
 
 export const profileContentWrapper = style([
-  flex(),
+  flex({
+    justify: 'center',
+    align: 'center',
+    direction: 'column',
+  }),
   {
     width: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 ]);
 
@@ -53,7 +53,10 @@ export const profileText = recipe({
 });
 
 export const userProfileWrapper = style([
-  flex({ align: 'center', justify: 'center' }),
+  flex({
+    align: 'center',
+    justify: 'center',
+  }),
   {
     '@media': {
       'screen and (min-width: 480px)': {
@@ -61,27 +64,15 @@ export const userProfileWrapper = style([
       },
     },
     padding: vars.space['4x'],
-    position: 'static',
     gap: vars.space['4x'],
     top: '80px',
   },
 ]);
 
-export const profileImage = style([
-  flex({ justify: 'center' }),
-  {
-    width: '64px',
-    height: '64px',
-    borderRadius: vars.borderRadius.full,
-    backgroundColor: vars.colors.whitesmoke,
-  },
-]);
-
 export const profileDetails = style([
-  flex(),
-  {
-    flexDirection: 'column',
-  },
+  flex({
+    direction: 'column',
+  }),
 ]);
 
 export const usernameAndSettings = style([
@@ -98,8 +89,8 @@ export const username = style({
 });
 
 export const settingsButton = style({
-  width: '24px',
-  height: '24px',
+  width: vars.space['3x'],
+  height: vars.space['3x'],
   cursor: 'pointer',
   backgroundColor: 'transparent',
   border: 'none',
@@ -120,13 +111,14 @@ export const followNumber = style({
 });
 
 export const profileNoContentStyle = style([
-  flex(),
+  flex({
+    direction: 'column',
+    align: 'center',
+    justify: 'spaceAround',
+  }),
   {
     width: '100svw',
     height: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-around',
   },
 ]);
 

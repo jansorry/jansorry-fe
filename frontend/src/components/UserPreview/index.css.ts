@@ -7,7 +7,7 @@ import { vars } from '@/styles/vars.css';
 export const userPreview = style([
   flex(),
   {
-    height: vars.space['5x'],
+    height: 'auto',
     width: 'auto',
     boxSizing: 'border-box',
     marginTop: vars.space['0.5x'],
@@ -29,6 +29,10 @@ export const profileImage = recipe({
         height: 64,
         border: `1px solid ${vars.colors.lightGray}`,
       },
+      xLarge: {
+        width: '72px',
+        height: '72px',
+      },
     },
   },
 });
@@ -42,6 +46,9 @@ export const profileText = {
   ]),
   nickname: style({
     fontSize: vars.fontSize['2x'],
+  }),
+  nicknameLarge: style({
+    fontSize: vars.fontSize['3x'],
   }),
   subText: style({
     fontSize: vars.fontSize['1x'],
