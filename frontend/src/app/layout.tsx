@@ -4,6 +4,8 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 import './layout.css';
+import * as pretendard from '@/styles/font.css';
+
 import Provider from '@/app/Provider';
 
 export const metadata: Metadata = {
@@ -25,7 +27,7 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body>
+      <body className={pretendard.font}>
         <Provider>
           {children}
           <div id='modal' />
