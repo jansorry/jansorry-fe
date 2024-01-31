@@ -78,7 +78,13 @@ export const categoryContentWrapper = style([
   },
 ]);
 
-export const categoryContent = style([categoryContentRecipe()]);
+export const categoryContent = style([
+  categoryContentRecipe(),
+  {
+    wordBreak: 'keep-all',
+    marginRight: vars.space['1x'],
+  },
+]);
 export const categoryContentTitle = style([
   categoryContentRecipe({ title: true }),
 ]);
