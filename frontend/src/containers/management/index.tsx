@@ -18,7 +18,7 @@ const managementPage = () => {
             nickname='닉네임'
             size='xLarge'
           />
-          <Link href='./change'>
+          <Link href='/usernameEdit'>
             <IconEdit />
           </Link>
         </div>
@@ -52,7 +52,7 @@ const managementPage = () => {
           <IconRightBracket />
         </Link>
         <hr className={styles.managementSeperateLine} />
-        <Link href='/withdrawl' className={styles.managementListContent}>
+        <Link href='/withdrawal' className={styles.managementListContent}>
           <div>회원 탈퇴</div>
           <IconRightBracket />
         </Link>
