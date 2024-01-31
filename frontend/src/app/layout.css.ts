@@ -18,6 +18,10 @@ globalStyle('body', {
   boxShadow: `0 0 25px ${vars.colors.whitesmoke}`,
 });
 
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
+});
+
 globalStyle('ul', {
   listStyle: 'none',
   padding: 0,
