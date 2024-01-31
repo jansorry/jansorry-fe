@@ -8,7 +8,7 @@ const ProfilePage = async () => {
   const refreshToken = cookieStore.get('refreshToken')?.value;
   const data = await getProfile(refreshToken);
 
-  return <Profile username={data.nickname} />;
+  return <Profile profileItems={data} />;
 };
 
 export default ProfilePage;

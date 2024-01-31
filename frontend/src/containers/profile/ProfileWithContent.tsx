@@ -19,7 +19,7 @@ const ProfileWithContent = () => {
         영수증 발급
       </Button>
       <div className={styles.profileText({ contentType: 'card' })}>
-        <NagCard card={card} />
+        <NagCard cardOption={card} />
       </div>
     </div>
   );

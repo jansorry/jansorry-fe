@@ -20,7 +20,7 @@ const ProfileNoContent = () => {
       <div
         className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}
       >
-        <NagCard card={card} />
+        <NagCard cardOption={card} />
       </div>
     </div>
   );
