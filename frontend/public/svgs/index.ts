@@ -8,9 +8,6 @@ import IconHeartFilled from './heart-filled.svg';
 import IconArrowLeft from './arrow-left.svg';
 import IconClose from './close.svg';
 import IconRightBracket from './right-bracket.svg';
-import IconEdit from './edit.svg';
-import IconInstagram from './instagram.svg';
-import IconTwitter from './twitter.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
 
 export {
@@ -23,8 +20,5 @@ export {
   IconArrowLeft,
   IconClose,
   IconRightBracket,
-  IconEdit,
-  IconInstagram,
-  IconTwitter,
   ButtonKakaoLogin,
 };
