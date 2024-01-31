@@ -39,8 +39,8 @@ const NagCardContent = ({
 }: Props) => {
   const imgSrc: string =
     cardType || cardCategory
-      ? `images/nag-card/nagcard-${cardCategory}-${cardType}.png`
-      : 'images/nag-card/nagcard-empty-empty.png';
+      ? `/images/nag-card/nagcard-${cardCategory}-${cardType}.png`
+      : '/images/nag-card/nagcard-empty-empty.png';
   const sizeClassName: string = cardSize
     ? sizeStyles[cardSize]
     : sizeStyles.medium;
