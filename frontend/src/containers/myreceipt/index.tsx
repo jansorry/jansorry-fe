@@ -2,7 +2,7 @@
 
 import { useRecoilValue } from 'recoil';
 
-import Loading from '@/containers/receipt/Loading';
+import Loading from '@/containers/myreceipt/Loading';
 import { animationFinishedState } from '@/states/receiptAnimation';
 import { defaultWrapper } from '@/styles/common.css';
 

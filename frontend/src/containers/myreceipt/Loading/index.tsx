@@ -1,7 +1,11 @@
-import AnimatedNumber from '@/containers/receipt/Loading/AnimatedNumber';
-import AnimatedImage from '@/containers/receipt/Loading/AnimatedImage';
+import AnimatedNumber from '@/containers/myreceipt/Loading/AnimatedNumber';
+import AnimatedImage from '@/containers/myreceipt/Loading/AnimatedImage';
 
 import * as styles from './index.css';
+
+//  get createReceipt Api
+
+// post receipts
 
 const Loading = () => {
   return (

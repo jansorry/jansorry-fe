@@ -1,1 +1,1 @@
-export { default } from '@/containers/receipt';
+export { default } from '@/containers/myreceipt';

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import * as styles from '@/containers/receipt/Loading/index.css';
+import * as styles from '@/containers/myreceipt/Loading/index.css';
 
 const AnimatedNumber: React.FC = () => {
   const [currentNumber, setCurrentNumber] = useState<number>(0);

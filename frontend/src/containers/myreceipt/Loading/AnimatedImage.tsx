@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 
-import * as styles from '@/containers/receipt/Loading/index.css';
+import * as styles from '@/containers/myreceipt/Loading/index.css';
 import { animationFinishedState } from '@/states/receiptAnimation';
 
 const AnimatedImage: React.FC = () => {
