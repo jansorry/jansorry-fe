@@ -2,7 +2,6 @@ export interface nag {
   nagId: number;
   content: string;
   price: number;
-  categoryId?: number;
 }
 
 export interface nagDetails extends nag {
