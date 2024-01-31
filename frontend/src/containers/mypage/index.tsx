@@ -6,7 +6,6 @@ import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 import { UserPreview } from '@/components/UserPreview';
-import { myPageSnsListContent } from './index.css';
 
 const myPage = () => {
   return (
