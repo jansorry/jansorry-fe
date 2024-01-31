@@ -45,10 +45,12 @@ export const actionTextareaBox = style({
 export const actionInputInfoWrapper = style([
   flex({
     justify: 'spaceBetween',
+    align: 'center',
   }),
   {
     width: '90%',
     margin: vars.space['2x'],
+    marginBottom: vars.space['3x'],
   },
 ]);
 
