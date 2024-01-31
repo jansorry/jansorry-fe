@@ -46,4 +46,5 @@ export const modalTitle = style({
   fontSize: vars.fontSize['3x'],
   fontWeight: vars.fontWeight.accent,
   marginBottom: vars.space['3x'],
+  wordBreak: 'keep-all',
 });
