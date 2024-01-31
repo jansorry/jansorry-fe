@@ -1,8 +1,16 @@
 import Image from 'next/image';
 
-import { receiptBg, receiptBg2, receiptTop, tempForImg } from '@/components/Receipt/index.css';
+import {
+  receiptBg,
+  receiptBg2,
+  receiptTop,
+  tempForImg,
+} from '@/components/Receipt/index.css';
 
-export const ReceiptBackground = () => {
+interface Props {
+  height: number | string;
+}
+export const ReceiptBackground = ({ height }: Props) => {
   return (
     <div>
       <div className={receiptTop}>
