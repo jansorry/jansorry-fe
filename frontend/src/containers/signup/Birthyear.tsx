@@ -4,7 +4,10 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
 import { selectedYearState, userBirthState } from '@/states/signup';
-import { birthGenderWrapper } from '@/containers/signup/index.css';
+import {
+  birthGenderWrapper,
+  prevNextButton,
+} from '@/containers/signup/index.css';
 
 import Button from '@/components/Button';
 
@@ -15,6 +18,12 @@ const Birthyear = () => {
   const setBirthOnClick = () => {
     setUserBirth(selectedYear);
   };
+
+  //  첫화면으로 돌아가는 router 추가 필요
+  const handlePrevButton = () => {
+    setUserBirth(null);
+  };
+
   return (
     <div className={birthGenderWrapper}>
       <div className={styles.signupText({ text: 'title' })}>
@@ -23,15 +32,26 @@ const Birthyear = () => {
       <div>
         <YearPicker />
       </div>
-      <div>
+
+      <div className={prevNextButton}>
+        <Button
+          type='submit'
+          size='small'
+          colorStyle='blue'
+          filled={false}
+          onClick={handlePrevButton}
+        >
+          이전으로
+        </Button>
+
         <Button
           onClick={setBirthOnClick}
           type='button'
-          size='large'
+          size='small'
           colorStyle='blue'
           filled
         >
-          다음
+          다음으로
         </Button>
       </div>
     </div>

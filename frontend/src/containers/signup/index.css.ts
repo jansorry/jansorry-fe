@@ -1,7 +1,7 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { flex } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
 
 export const signupBg = style({
@@ -19,7 +19,7 @@ export const birthGenderWrapper = style([
     boxSizing: 'border-box',
     height: '100%',
     paddingTop: '20%',
-    paddingBottom: '40%',
+    paddingBottom: '20%',
   },
 ]);
 
@@ -79,7 +79,20 @@ export const yearPickerBoxVariants = styleVariants({
     backgroundColor: 'transparent',
   },
 });
-
+export const prevNextButton = style([
+  flex({
+    direction: 'row',
+    justify: 'spaceBetween',
+  }),
+  defaultWrapper({
+    width: 'max',
+  }),
+  {
+    paddingRight: '10%',
+    paddingLeft: '10%',
+    boxSizing: 'border-box',
+  },
+]);
 export const signupText = recipe({
   base: {
     visibility: 'visible',
