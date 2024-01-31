@@ -6,14 +6,24 @@ interface Props {
   imgSrc: string;
   nickname: string;
   subText?: string;
+  size?: 'xLarge';
 }
 
-export const UserPreview = ({ imgSrc, nickname, subText }: Props) => {
+export const UserPreview = ({ imgSrc, nickname, subText, size }: Props) => {
   return (
     <div className={styles.userPreview}>
-      <UserProfileImage imgSrc={imgSrc} />
+      <UserProfileImage
+        imgSrc={imgSrc}
+        size={size === 'xLarge' ? 'xLarge' : undefined}
+      />
       <div className={profileText.box}>
-        <div className={profileText.nickname}>{nickname}</div>
+        <div
+          className={
+            size === 'xLarge' ? profileText.nicknameLarge : profileText.nickname
+          }
+        >
+          {nickname}
+        </div>
         {subText && <div className={profileText.subText}>{subText}</div>}
       </div>
     </div>
