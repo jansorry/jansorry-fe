@@ -23,54 +23,54 @@ const myPage = () => {
           </Link>
         </div>
         <hr className={styles.myPageSeperateLine} />
-        <a
+        <Link
           href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
           className={styles.myPageListContent}
         >
           <div>팀소개</div>
           <IconRightBracket />
-        </a>
+        </Link>
         <hr className={styles.myPageSeperateLine} />
-        <a
+        <Link
           href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
           className={styles.myPageListContent}
         >
           <div>공지사항</div>
           <IconRightBracket />
-        </a>
+        </Link>
         <hr className={styles.myPageSeperateLine} />
-        <a
+        <Link
           href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
           className={styles.myPageListContent}
         >
           <div>자주 듣는 질문</div>
           <IconRightBracket />
-        </a>
+        </Link>
         <hr className={styles.myPageSeperateLine} />
-        <a href='./logout' className={styles.myPageListContent}>
+        <Link href='./logout' className={styles.myPageListContent}>
           <div>로그아웃</div>
           <IconRightBracket />
-        </a>
+        </Link>
         <hr className={styles.myPageSeperateLine} />
-        <a href='./quit' className={styles.myPageListContent}>
+        <Link href='./quit' className={styles.myPageListContent}>
           <div>회원 탈퇴</div>
           <IconRightBracket />
-        </a>
+        </Link>
         <hr className={styles.myPageSeperateLine} />
-        <a
+        <Link
           href='https://www.instagram.com/jansorry_official/'
           className={styles.myPageSnsListContent}
         >
           <IconInstagram />
           <div>인스타그램</div>
-        </a>
-        <a
+        </Link>
+        <Link
           href='https://twitter.com/jansorry_S2'
           className={styles.myPageSnsListContent}
         >
           <IconTwitter />
           <div>트위터</div>
-        </a>
+        </Link>
       </div>
       <NavBar clickedIndex={3} />
     </>
