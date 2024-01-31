@@ -6,7 +6,14 @@ import Image from 'next/image';
 import { cardSizes, sizeStyles, textStyles } from './index.css';
 
 interface Props {
-  cardCategory: 'empty' | 'blue' | 'emerald' | 'green' | 'purple' | 'red' | 'yellow';
+  cardCategory:
+    | 'empty'
+    | 'blue'
+    | 'emerald'
+    | 'green'
+    | 'purple'
+    | 'red'
+    | 'yellow';
   cardType: 'empty' | 'front' | 'back';
   cardSize: 'medium' | 'large' | 'small' | 'xSmall';
   textStyle: 'comment' | 'category' | 'nag';
@@ -23,12 +30,20 @@ const CardText = memo(({ text, textClassName }: CardTextProps) => {
   return <span className={textClassName}>{text}</span>;
 });
 
-const NagCardContent = ({ cardCategory, cardType, cardSize, textStyle, text }: Props) => {
+const NagCardContent = ({
+  cardCategory,
+  cardType,
+  cardSize,
+  textStyle,
+  text,
+}: Props) => {
   const imgSrc: string =
     cardType || cardCategory
-      ? `/nag-card/nagcard-${cardCategory}-${cardType}.png`
-      : '/nag-card/nagcard-empty-empty.png';
-  const sizeClassName: string = cardSize ? sizeStyles[cardSize] : sizeStyles.medium;
+      ? `images/nag-card/nagcard-${cardCategory}-${cardType}.png`
+      : 'images/nag-card/nagcard-empty-empty.png';
+  const sizeClassName: string = cardSize
+    ? sizeStyles[cardSize]
+    : sizeStyles.medium;
   let textClassName;
   if (textStyle === 'nag' && cardCategory && cardCategory in textStyles.nag) {
     textClassName = textStyles.nag[cardCategory];
