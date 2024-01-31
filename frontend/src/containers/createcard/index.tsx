@@ -50,8 +50,6 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
       <Header title='내 카드 등록' hasPrevious />
       <div className={styles.createCardWrapper}>
         <NagCard cardOption={selectedCardOption} />
-        <Button type='button' size='large' colorStyle='blue' filled>
-        <NagCard cardOption={selectedCardOption} />
         <Button
           type='button'
           size='large'
