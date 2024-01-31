@@ -17,16 +17,17 @@ export const userPreview = style([
 
 export const profileImage = recipe({
   base: {
-    width: '40px',
-    height: '40px',
+    width: vars.space['5x'],
+    height: vars.space['5x'],
     marginRight: vars.space['1x'],
     borderRadius: vars.borderRadius.full,
   },
   variants: {
     sizes: {
       large: {
-        width: '64px',
-        height: '64px',
+        width: 64,
+        height: 64,
+        border: `1px solid ${vars.colors.lightGray}`,
       },
       xLarge: {
         width: '72px',
