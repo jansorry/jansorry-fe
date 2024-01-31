@@ -33,7 +33,7 @@ const NagCard = ({ cardOption }: Props) => {
   const cardSize: 'xSmall' | 'small' | 'medium' | 'large' | 'ERROR' =
     cardSizeMap.get(sizeKey) ?? 'ERROR';
 
-  const textStyle: 'comment' | 'category' | 'nag' | 'ERROR' =
+  const textStyle: 'comment' | 'nag' | 'category' | 'ERROR' =
     textStyleMap.get(textStyleKey) ?? 'ERROR';
 
   if (
