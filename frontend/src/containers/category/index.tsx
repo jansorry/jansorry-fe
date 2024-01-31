@@ -1,8 +1,9 @@
 'use client';
 
 import { RefObject, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { nagResponse } from '@/types/nag';
+import { nagTotalResponse } from '@/types/nag';
 import { useObserver } from '@/hooks/useObserver';
 import { IconRightBracket } from '#/svgs';
 import { categoryKeys, categoryValues } from '@/utils/categoryRecord';
@@ -12,10 +13,12 @@ import * as styles from './index.css';
 import { categoryContentTitle } from './index.css';
 
 interface Props {
-  nagItems: nagResponse[];
+  nagItems: nagTotalResponse[];
 }
 
 const Category = ({ nagItems }: Props) => {
+  const router = useRouter();
+
   const [isFocused, setIsfocused] = useState(1);
 
   const refUndefined = useObserver(0, setIsfocused);
@@ -35,7 +38,10 @@ const Category = ({ nagItems }: Props) => {
     [6, refEtc],
   ]);
 
-  const onScroll = (refcurrent: React.RefObject<HTMLDivElement>, e: number) => {
+  const handleScroll = (
+    refcurrent: React.RefObject<HTMLDivElement>,
+    e: number,
+  ) => {
     if (refcurrent.current) {
       refcurrent.current.style.scrollMargin = '80px';
       refcurrent.current.scrollIntoView({
@@ -63,7 +69,10 @@ const Category = ({ nagItems }: Props) => {
                 role='presentation'
                 ref={refMap.get(categoryKey)}
                 onClick={() =>
-                  onScroll(refMap.get(categoryKey) ?? refUndefined, categoryKey)
+                  handleScroll(
+                    refMap.get(categoryKey) ?? refUndefined,
+                    categoryKey,
+                  )
                 }
               >
                 {categoryValues[categoryKey as keyof typeof categoryValues]}
@@ -72,12 +81,17 @@ const Category = ({ nagItems }: Props) => {
           </ul>
         </section>
         <div className={styles.categoryRight}>
-          {nagItems.map((nagItem: nagResponse) => (
+          {nagItems.map((nagItem: nagTotalResponse) => (
             <div ref={refMap.get(nagItem.categoryId)} key={nagItem.categoryId}>
               <hr className={styles.categorySeperateLine} />
               <div className={categoryContentTitle}>{nagItem.title}</div>
               {nagItem.nags.map((nag) => (
-                <div key={nag.nagId} className={styles.categoryContentWrapper}>
+                <div
+                  key={nag.nagId}
+                  role='presentation'
+                  className={styles.categoryContentWrapper}
+                  onClick={() => router.push(`/createcard/${nag.nagId}`)}
+                >
                   <div className={styles.categoryContent}>{nag.content}</div>
                   <IconRightBracket />
                 </div>

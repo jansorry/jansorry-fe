@@ -37,8 +37,10 @@ const Example = () => {
         imgSrc='/images/userProfileImage/temp-userProfile.png'
         nickname='테스트닉네임'
       />
-      <NagCard card={card} />
-      <NagCard card={card} />
+
+      <NagCard cardOption={card} />
+      <NagCard cardOption={card} />
+
       <Button
         size='large'
         filled
