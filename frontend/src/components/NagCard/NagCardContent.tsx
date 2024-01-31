@@ -56,7 +56,7 @@ const NagCardContent = ({
         })}
         text={text}
       />
-      <Image src={imgSrc} alt={`${cardCategory}카드`} fill />
+      <Image src={imgSrc} alt={`${cardCategory}카드`} fill sizes='400px' />
     </div>
   );
 };
