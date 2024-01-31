@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import exp from 'node:constants';
 
 import { vars } from '@/styles/vars.css';
 import { contentWrapper } from '@/styles/wrapper.css';
