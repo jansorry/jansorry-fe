@@ -4,7 +4,7 @@ import * as styles from '@/components/UserPreview/index.css';
 
 interface Props {
   imgSrc: string;
-  size?: 'large';
+  size?: 'large' | 'xLarge';
   nickname?: string;
 }
 export const UserProfileImage = ({ imgSrc, size, nickname }: Props) => {
