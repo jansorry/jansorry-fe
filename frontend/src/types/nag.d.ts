@@ -4,7 +4,11 @@ export interface nag {
   price: number;
 }
 
-export interface nagResponse {
+export interface nagDetails extends nag {
+  categoryId: number;
+}
+
+export interface nagTotalResponse {
   categoryId: number;
   title: string;
   nags: nag[];
