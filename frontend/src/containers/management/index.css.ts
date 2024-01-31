@@ -12,7 +12,7 @@ export const managementWrapper = style([
 export const managementProfile = style([
   flex({ justify: 'center', align: 'center', direction: 'row' }),
   {
-    padding: `${vars.space['4x']} ${vars.space['4x']}`,
+    padding: vars.space['4x'],
     gap: vars.space['1x'],
   },
 ]);
