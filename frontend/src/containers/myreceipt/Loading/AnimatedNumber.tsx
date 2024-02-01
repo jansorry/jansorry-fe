@@ -8,6 +8,7 @@ const AnimatedNumber: React.FC = () => {
   const [currentNumber, setCurrentNumber] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const numberList: number[] = [0, 25, 50, 75, 100];
+
   useEffect(() => {
     const animate = () => {
       if (currentIndex < numberList.length - 1) {

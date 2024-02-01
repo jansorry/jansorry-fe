@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { contentWrapper } from '@/styles/wrapper.css';
 
 import Header from '@/components/Header';

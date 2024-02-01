@@ -26,8 +26,8 @@ const Example = () => {
   const saveAsImageHandler = () => {
     const target = document.getElementById('content');
     if (!target) {
-      alert('결과 저장에 실패했습니다.');
-      return; // React에서는 여기서 Promise.reject를 사용하지 않아도 됩니다.
+      console.log('결과 저장에 실패했습니다.');
+      return;
     }
     html2canvas(target).then((canvas) => {
       const link = document.createElement('a');
