@@ -22,6 +22,7 @@ const AnimatedNumber: React.FC = () => {
         }
       }
     };
+
     animate();
   }, [currentNumber, currentIndex]);
 
