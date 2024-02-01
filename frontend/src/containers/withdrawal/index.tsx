@@ -40,7 +40,7 @@ const withdrawal = () => {
             </div>
           </div>
 
-          <Button type='button' size='large' colorStyle='blue' filled>
+          <Button type='button' size='large' colorStyle='strongRed' filled>
             탈퇴하기
           </Button>
         </div>
