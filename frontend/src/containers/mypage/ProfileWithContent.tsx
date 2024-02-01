@@ -1,4 +1,4 @@
-import * as styles from '@/containers/profile/index.css';
+import * as styles from '@/containers/mypage/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 
 import Button from '@/components/Button';

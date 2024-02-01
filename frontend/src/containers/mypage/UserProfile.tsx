@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { userDataResponse } from '@/types/userData';
-import * as styles from '@/containers/profile/index.css';
+import * as styles from '@/containers/mypage/index.css';
 import { IconSetting } from '#/svgs';
 
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
@@ -38,7 +38,7 @@ export const UserProfile = ({ profileItems }: Props) => {
           <button
             type='button'
             className={styles.settingsButton}
-            onClick={handleConfigClicked}
+            onClick={() => handleConfigClicked()}
           >
             <IconSetting />
           </button>

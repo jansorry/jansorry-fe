@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers';
 
 import { getProfile } from '@/services/profile';
-import Profile from '@/containers/profile';
+
+import Profile from '../../containers/mypage';
 
 const ProfilePage = async () => {
   const cookieStore = cookies();
