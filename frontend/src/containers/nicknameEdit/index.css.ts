@@ -48,23 +48,3 @@ export const nicknameInputStyle = style({
   backgroundColor: vars.colors.whitesmoke,
   fontSize: vars.fontSize['2x'],
 });
-
-export const nicknameModalWrapper = style([
-  flex({ justify: 'center', align: 'center', direction: 'column' }),
-]);
-
-export const nicknameModalContentWrapper = style({
-  width: '100%',
-  paddingBottom: vars.space['5x'],
-});
-
-export const nicknameModalContent = style({
-  padding: vars.space['2x'],
-  fontSize: vars.fontSize['2x'],
-  color: vars.colors.red,
-});
-
-export const nicknameModalSeperateLine = style({
-  border: `1px solid ${vars.colors.lightGray}`,
-  width: '100%',
-});
