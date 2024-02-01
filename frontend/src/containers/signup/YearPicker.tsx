@@ -51,7 +51,7 @@ const YearPicker = () => {
       className={styles.selectWrapper({ content: 'yearPicker' })}
       ref={listRef}
     >
-      {Array.from({ length: paddingItemsCount }).map((value, index) => (
+      {Array.from({ length: paddingItemsCount }).map((value) => (
         <div
           key={`padding-top-${value}`}
           className={styles.yearPickerBox({ show: 'hidden' })}
@@ -73,7 +73,7 @@ const YearPicker = () => {
           </div>
         );
       })}
-      {Array.from({ length: paddingItemsCount }).map((value, index) => (
+      {Array.from({ length: paddingItemsCount }).map((value) => (
         <div
           key={`padding-bottom-${value}`}
           className={styles.yearPickerBox({ show: 'hidden' })}

@@ -1,15 +1,15 @@
 import { cookies } from 'next/headers';
 
-import { getProfile } from '@/services/profile';
+import { getMyPage } from '@/services/mypage';
 
-import Profile from '../../containers/mypage';
+import MyPageContainer from '../../containers/mypage';
 
-const ProfilePage = async () => {
+const MyPage = async () => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
-  const data = await getProfile(refreshToken);
+  const data = await getMyPage(refreshToken);
 
-  return <Profile profileItems={data} />;
+  return <MyPageContainer myPageItems={data} />;
 };
 
-export default ProfilePage;
+export default MyPage;

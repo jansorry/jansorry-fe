@@ -2,7 +2,6 @@ import React from 'react';
 import Script from 'next/script';
 
 import type { Metadata } from 'next';
-
 import './layout.css';
 import * as pretendard from '@/styles/font.css';
 

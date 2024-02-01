@@ -1,7 +1,6 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { contentWrapper } from '@/styles/wrapper.css';
 import { flex } from '@/styles/common.css';
 
 export const withdrawalWrapper = style([
