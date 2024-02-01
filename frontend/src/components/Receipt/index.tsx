@@ -96,7 +96,7 @@ export const Receipt = ({ content }: Props) => {
             -------------------------------------------
           </div>
           {content.data.map((item, index) => (
-            <div key={`${item.nagId} ${index}`} className={RowBoxWrapper}>
+            <div key={`${item.nagId}-${item.count}`} className={RowBoxWrapper}>
               <div className={receiptRowBox({ entry: 'nag' })}>
                 <div
                   className={receiptTextStyle({
