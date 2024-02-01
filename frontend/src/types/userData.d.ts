@@ -12,26 +12,27 @@ export interface action {
   actionContent: string;
 }
 
-export interface Sort {
-  empty: boolean;
-  unsorted: boolean;
-  sorted: boolean;
-}
-export interface Pageable {
-  offset: number;
-  sort: Sort;
-  paged: boolean;
-  unpaged: boolean;
-  pageNumber: number;
-  pageSize: number;
-}
-
 export interface actionTotalCount {
   size: number;
   content: Action[];
   number: number;
-  sort: Sort;
-  pageable: Pageable;
+  sort: {
+    empty: boolean;
+    unsorted: boolean;
+    sorted: boolean;
+  };
+  pageable: {
+    offset: number;
+    sort: {
+      empty: boolean;
+      unsorted: boolean;
+      sorted: boolean;
+    };
+    paged: boolean;
+    unpaged: boolean;
+    pageNumber: number;
+    pageSize: number;
+  };
   numberOfElements: number;
   first: boolean;
   last: boolean;

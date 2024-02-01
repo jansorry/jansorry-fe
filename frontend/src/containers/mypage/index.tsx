@@ -1,4 +1,4 @@
-import { action, actionTotalCount, userDataResponse } from '@/types/userData';
+import { userDataResponse } from '@/types/userData';
 import { UserProfile } from '@/containers/mypage/UserProfile';
 
 import Header from '@/components/Header';

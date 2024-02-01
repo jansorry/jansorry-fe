@@ -1,5 +1,3 @@
-import { blue } from 'next/dist/lib/picocolors';
-
 import { contentWrapper } from '@/styles/wrapper.css';
 
 import * as styles from './index.css';

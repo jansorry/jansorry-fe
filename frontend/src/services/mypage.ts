@@ -1,5 +1,5 @@
 import { apiServer } from '@/services/index';
-import { userDataResponse, action, actionTotalCount } from '@/types/userData';
+import { userDataResponse, actionTotalCount } from '@/types/userData';
 
 export const getMyPage = async (
   token: string = '',
@@ -17,13 +17,30 @@ export const getMyPage = async (
   };
 };
 
-// export const getActionTotalCount = async (
-//   token: string = '',
-// ): Promise<actionTotalCount> => {
-//   try {
-//     return await apiServer.get<actionTotalCount>(`/actions`, token);
-//   } catch (e) {
-//     console.log(e);
-//   }
-//   return { content: [] };
-// };
+export const getActionTotalCount = async (
+  token: string = '',
+): Promise<actionTotalCount> => {
+  try {
+    return await apiServer.get<actionTotalCount>(`/actions`, token);
+  } catch (e) {
+    console.log(e);
+  }
+  return {
+    empty: false,
+    first: false,
+    last: false,
+    number: -1,
+    numberOfElements: -1,
+    pageable: {
+      offset: -1,
+      pageNumber: -1,
+      pageSize: -1,
+      paged: false,
+      sort: { empty: false, sorted: false, unsorted: false },
+      unpaged: false,
+    },
+    size: -1,
+    sort: { empty: false, sorted: false, unsorted: false },
+    content: [],
+  };
+};
