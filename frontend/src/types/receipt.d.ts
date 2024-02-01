@@ -10,5 +10,7 @@ export interface receiptContent {
   description: string;
   message: string;
   date: string;
-  data: receiptData;
+  data: receiptData[];
+  totalCount: number;
+  totalPrice: number;
 }

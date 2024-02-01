@@ -9,6 +9,7 @@ import NagCard from '@/components/NagCard';
 import Button from '@/components/Button';
 import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
+import { tempReceiptContent } from '@/components/Receipt/tempReceipData';
 
 const Example = () => {
   const card: NagCardKeyOptions = {
@@ -21,7 +22,7 @@ const Example = () => {
 
   return (
     <main>
-      <Receipt />
+      <Receipt content={tempReceiptContent} />
       {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
       <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
       <UserProfileImage
