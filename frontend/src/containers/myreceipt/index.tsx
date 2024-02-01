@@ -3,7 +3,7 @@
 import { useRecoilValue } from 'recoil';
 
 import Loading from '@/containers/myreceipt/Loading';
-import { animationFinishedState } from '@/states/receiptAnimation';
+import { animationFinishedState } from '@/containers/myreceipt/receiptAnimation';
 import { defaultWrapper } from '@/styles/common.css';
 
 const Receipt = () => {

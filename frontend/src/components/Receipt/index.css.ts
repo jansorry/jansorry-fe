@@ -67,12 +67,12 @@ export const qrcodeWrapper = style([
 export const RowBoxWrapper = style([
   flex({
     direction: 'row',
+    justify: 'spaceBetween',
   }),
   {
     width: '100%',
     paddingTop: vars.space['1x'],
     paddingBottom: vars.space['1x'],
-    justifyContent: 'space-between',
   },
 ]);
 
@@ -168,55 +168,4 @@ export const receiptTextStyle = recipe({
       },
     },
   ],
-});
-
-export const tempPadding = style({
-  position: 'relative',
-  width: '350px',
-  boxSizing: 'border-box',
-  paddingTop: '10px',
-  paddingRight: '15px',
-  paddingLeft: '15px',
-});
-export const textTemp = style({
-  fontSize: vars.fontSize['2x'],
-  width: '160px',
-});
-
-export const text16 = style({
-  fontSize: vars.fontSize['2x'],
-});
-export const textNTemp = style({
-  fontSize: vars.fontSize['2x'],
-  width: '70px',
-  display: 'flex',
-  justifyContent: 'right',
-  paddingRight: '5px',
-});
-
-export const resultTemp = style([{}]);
-
-export const textPTemp = style({
-  fontSize: vars.fontSize['2x'],
-  display: 'flex',
-  justifyContent: 'right',
-  width: '120px',
-});
-
-export const receiptTop = style({
-  position: 'relative',
-  width: '350px',
-  height: '10px',
-});
-export const receiptBg = style({
-  position: 'relative',
-  width: '350px',
-  height: '1200px',
-});
-
-export const receiptBg2 = style({
-  position: 'relative',
-  width: '350px',
-  height: '1200px',
-  overflow: 'hidden',
 });
