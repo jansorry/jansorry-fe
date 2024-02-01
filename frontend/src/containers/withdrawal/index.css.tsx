@@ -29,6 +29,12 @@ export const withdrawalContent = style([
   {
     padding: vars.space['1x'],
     fontSize: vars.fontSize['2x'],
-    alignSelf: 'flex-start',
+  },
+]);
+
+export const lastWithdrawalContent = style([
+  {
+    color: vars.colors.red,
+    fontWeight: vars.fontWeight.accent,
   },
 ]);

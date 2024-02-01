@@ -32,7 +32,9 @@ const withdrawal = () => {
               <div className={styles.withdrawalContent}>
                 - 사라진 영수증은 다시 복구할 수 없어요.
               </div>
-              <div className={styles.withdrawalContent}>
+              <div
+                className={`${styles.withdrawalContent} ${styles.lastWithdrawalContent}`}
+              >
                 - 지금 탈퇴 시 다음 명절까지 가입 불가해요.
               </div>
             </div>
