@@ -1,5 +1,3 @@
-'use client';
-
 import { NagCardKeyOptions } from '@/types/nagCard';
 
 import {
