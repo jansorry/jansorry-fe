@@ -10,12 +10,44 @@ import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 const Example = () => {
-  const card: NagCardKeyOptions = {
+  const cardXsmall: NagCardKeyOptions = {
     categoryKey: 1,
     typeKey: 1,
-    sizeKey: 3,
+    sizeKey: 0,
     textStyleKey: 2,
-    text: 'test',
+    text: 'cardXsmall',
+  };
+
+  const cardSmall: NagCardKeyOptions = {
+    categoryKey: 2,
+    typeKey: 1,
+    sizeKey: 1,
+    textStyleKey: 2,
+    text: 'cardSmall',
+  };
+
+  const cardMedium: NagCardKeyOptions = {
+    categoryKey: 3,
+    typeKey: 1,
+    sizeKey: 2,
+    textStyleKey: 2,
+    text: 'cardMedium',
+  };
+
+  const cardLargeNag: NagCardKeyOptions = {
+    categoryKey: 4,
+    typeKey: 1,
+    sizeKey: 3,
+    textStyleKey: 1,
+    text: 'cardLargeNag',
+  };
+
+  const cardLargeComment: NagCardKeyOptions = {
+    categoryKey: 5,
+    typeKey: 2,
+    sizeKey: 3,
+    textStyleKey: 0,
+    text: 'cardLargeComment',
   };
 
   return (
@@ -35,8 +67,11 @@ const Example = () => {
         imgSrc='/images/userProfileImage/temp-userProfile.png'
         nickname='테스트닉네임'
       />
-      <NagCard cardOption={card} />
-      <NagCard cardOption={card} />
+      <NagCard cardOption={cardXsmall} />
+      <NagCard cardOption={cardSmall} />
+      <NagCard cardOption={cardMedium} />
+      <NagCard cardOption={cardLargeNag} />
+      <NagCard cardOption={cardLargeComment} />
       <Button
         size='large'
         filled
