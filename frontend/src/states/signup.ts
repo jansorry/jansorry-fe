@@ -1,4 +1,4 @@
-import { atom, RecoilState } from 'recoil';
+import { atom } from 'recoil';
 
 export const userBirthState = atom<number | null>({
   key: 'userBirthState',

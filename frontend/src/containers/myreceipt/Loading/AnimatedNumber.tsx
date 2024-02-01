@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 
-import * as styles from '@/containers/loading/AnimatedNumber/index.css';
-
-const numberList: number[] = [0, 25, 50, 75, 100];
+import * as styles from '@/containers/myreceipt/Loading/index.css';
 
 const AnimatedNumber: React.FC = () => {
   const [currentNumber, setCurrentNumber] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-
+  const numberList: number[] = [0, 25, 50, 75, 100];
   useEffect(() => {
     const animate = () => {
       if (currentIndex < numberList.length - 1) {
