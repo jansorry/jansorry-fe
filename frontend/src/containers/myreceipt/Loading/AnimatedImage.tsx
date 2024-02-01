@@ -14,11 +14,11 @@ const AnimatedImage: React.FC = () => {
   );
 
   const imageUrls = [
-    '/images/Loading/loadingReceipt0.png',
-    '/images/Loading/loadingReceipt1.png',
-    '/images/Loading/loadingReceipt2.png',
-    '/images/Loading/loadingReceipt3.png',
-    '/images/Loading/loadingReceipt4.png',
+    '/images/loading/loadingReceipt0.png',
+    '/images/loading/loadingReceipt1.png',
+    '/images/loading/loadingReceipt2.png',
+    '/images/loading/loadingReceipt3.png',
+    '/images/loading/loadingReceipt4.png',
   ];
 
   useEffect(() => {
