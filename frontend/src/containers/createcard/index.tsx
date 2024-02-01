@@ -47,7 +47,7 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
   const handleCreateAction = async (actionContent: string) => {
     const actionInfo: createActionRequest = { nagId, content: actionContent };
     await createCardAction(actionInfo);
-    router.push('/mypage');
+    // router.push('/mypage');
   };
 
   return (
