@@ -13,6 +13,14 @@ export const cardSizes = recipe({
       medium: { width: 198, height: 264 },
       large: { width: 300, height: 400 },
     },
+    shadow: {
+      true: {
+        borderRadius: vars.borderRadius['4x'],
+        backgroundColor: 'transparent',
+        //  그림자 설정 바꾸기
+        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)',
+      },
+    },
   },
 });
 

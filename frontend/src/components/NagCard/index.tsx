@@ -52,6 +52,7 @@ const NagCard = ({ cardOption }: Props) => {
       cardSize={cardSize}
       textStyle={textStyle}
       text={text}
+      shadow={cardOption.shadow}
     />
   );
 };
