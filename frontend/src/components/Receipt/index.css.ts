@@ -7,8 +7,9 @@ import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const receiptWrapper = style([
   flex({ direction: 'column', align: 'center' }),
-  defaultWrapper({ height: 'auto', width: 'max' }),
+  defaultWrapper({ height: 'auto' }),
   {
+    width: '350px',
     position: 'relative',
   },
 ]);
