@@ -2,20 +2,24 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
 
-import * as styles from '@/containers/loading/AnimatedImage/index.css';
-
-const imageUrls = [
-  '/images/loading/loadingReceipt0.png',
-  '/images/loading/loadingReceipt1.png',
-  '/images/loading/loadingReceipt2.png',
-  '/images/loading/loadingReceipt3.png',
-  '/images/loading/loadingReceipt4.png',
-];
+import * as styles from '@/containers/myreceipt/Loading/index.css';
+import { animationFinishedState } from '@/containers/myreceipt/receiptAnimation';
 
 const AnimatedImage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const [animationFinished, setAnimationFinished] = useState<boolean>(false);
+  const [animationFinished, setAnimationFinished] = useRecoilState(
+    animationFinishedState,
+  );
+
+  const imageUrls = [
+    '/images/Loading/loadingReceipt0.png',
+    '/images/Loading/loadingReceipt1.png',
+    '/images/Loading/loadingReceipt2.png',
+    '/images/Loading/loadingReceipt3.png',
+    '/images/Loading/loadingReceipt4.png',
+  ];
 
   useEffect(() => {
     if (!animationFinished) {

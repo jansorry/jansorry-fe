@@ -7,10 +7,37 @@ export interface userDataResponse {
 
 export interface action {
   categoryId: number;
+  nagContent: string;
   actionId: number;
-  content: string;
+  actionContent: string;
+}
+
+export interface Sort {
+  empty: boolean;
+  unsorted: boolean;
+  sorted: boolean;
+}
+export interface Pageable {
+  offset: number;
+  sort: Sort;
+  paged: boolean;
+  unpaged: boolean;
+  pageNumber: number;
+  pageSize: number;
 }
 
 export interface actionTotalCount {
-  content: action[];
+  size: number;
+  content: Action[];
+  number: number;
+  sort: Sort;
+  pageable: Pageable;
+  numberOfElements: number;
+  first: boolean;
+  last: boolean;
+  empty: boolean;
+}
+
+export interface totalReceiptCount {
+  receiptCount: number;
 }
