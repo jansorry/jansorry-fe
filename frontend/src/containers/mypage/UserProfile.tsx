@@ -15,12 +15,11 @@ interface Props {
 export const UserProfile = ({ profileItems }: Props) => {
   const router = useRouter();
 
-  // 더미 데이터
-  const dummyUserData: userDataResponse = {
-    nickname: 'dummyUser',
-    imageUrl: '/images/userProfileImage/temp-userProfile.png',
-    followerCnt: 150,
-    followingCnt: 75,
+  const UserData: userDataResponse = {
+    nickname: profileItems.nickname,
+    imageUrl: profileItems.imageUrl,
+    followingCnt: profileItems.followingCnt,
+    followerCnt: profileItems.followerCnt,
   };
 
   const handleConfigClicked = () => {
@@ -29,12 +28,12 @@ export const UserProfile = ({ profileItems }: Props) => {
 
   return (
     <div className={styles.userProfileWrapper}>
-      {dummyUserData.imageUrl && (
-        <UserProfileImage imgSrc={dummyUserData.imageUrl} size='large' />
+      {UserData.imageUrl && (
+        <UserProfileImage imgSrc={UserData.imageUrl} size='large' />
       )}
       <div className={styles.profileDetails}>
         <div className={styles.usernameAndSettings}>
-          <span className={styles.username}>{dummyUserData.nickname}</span>
+          <span className={styles.username}>{UserData.nickname}</span>
           <button
             type='button'
             className={styles.settingsButton}
@@ -46,12 +45,12 @@ export const UserProfile = ({ profileItems }: Props) => {
         <div className={styles.followInfo}>
           <span>
             <div className={styles.followNumber}>
-              팔로잉 {dummyUserData.followingCnt}
+              팔로잉 {UserData.followingCnt}
             </div>
           </span>
           <span>
             <div className={styles.followNumber}>
-              팔로워 {dummyUserData.followerCnt}
+              팔로워 {UserData.followerCnt}
             </div>
           </span>
         </div>
