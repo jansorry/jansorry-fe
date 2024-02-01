@@ -23,6 +23,9 @@ const Example = () => {
   return (
     <main>
       <Receipt content={tempReceiptContent} />
+      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
+      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
+      <Receipt content={{ ...tempReceiptContent, type: 'normal' }} />
       {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
       <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
       <UserProfileImage

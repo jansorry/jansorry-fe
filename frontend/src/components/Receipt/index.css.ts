@@ -1,4 +1,6 @@
 import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css';
 import { defaultWrapper, flex } from '@/styles/common.css';
@@ -20,17 +22,152 @@ export const receiptTopAndBottomBg = style([
 ]);
 
 export const receiptContentWrapper = style([
+  flex({ align: 'center', justify: 'center' }),
   {
     position: 'relative',
     width: '350px',
     height: 'auto',
+    zIndex: vars.zIndex['z-1'],
+    paddingRight: vars.space['2x'],
+    paddingLeft: vars.space['2x'],
+    paddingTop: vars.space['1x'],
+    paddingBottom: vars.space['1x'],
     boxSizing: 'border-box',
-    paddingTop: '10px',
-    paddingRight: '15px',
-    paddingLeft: '15px',
+  },
+]);
+
+export const receiptTextWrapper = style([
+  flex({ align: 'center', justify: 'center', direction: 'column' }),
+  {
+    position: 'relative',
+    width: calc.subtract('100%', vars.space['2x']),
     zIndex: vars.zIndex['z-1'],
   },
 ]);
+
+export const receipt = style([
+  {
+    width: '100%',
+    height: '40px',
+    margin: '20px',
+  },
+  flex({ align: 'center', justify: 'center' }),
+]);
+
+export const qrcodeWrapper = style([
+  {
+    position: 'relative',
+    width: '90px',
+    height: '90px',
+    margin: '32px',
+  },
+  flex({ align: 'center', justify: 'center' }),
+]);
+export const RowBoxWrapper = style([
+  flex({
+    direction: 'row',
+  }),
+  {
+    width: '100%',
+    paddingTop: vars.space['1x'],
+    paddingBottom: vars.space['1x'],
+    justifyContent: 'space-between',
+  },
+]);
+
+export const receiptRowBox = recipe({
+  base: style([
+    flex({ direction: 'row' }),
+    {
+      width: '100%',
+    },
+  ]),
+  variants: {
+    entry: {
+      nag: {
+        width: '45%',
+      },
+      quantity: {
+        width: '20%',
+      },
+      unitPrice: {
+        width: '35%',
+      },
+    },
+
+    align: {
+      left: {
+        justifyContent: 'left',
+      },
+      right: {
+        justifyContent: 'right',
+      },
+    },
+  },
+});
+
+export const receiptTextStyle = recipe({
+  base: {
+    zIndex: vars.zIndex['z-1'],
+    height: 'auto',
+    boxSizing: 'border-box',
+  },
+  variants: {
+    target: {
+      adult: {
+        fontWeight: vars.fontWeight.accent,
+      },
+      normal: {
+        fontWeight: vars.fontWeight.normal,
+      },
+    },
+    contentType: {
+      title: {},
+      content: {},
+      line: {
+        fontSize: vars.fontSize['2x'],
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        target: 'adult',
+        contentType: 'title',
+      },
+      style: {
+        fontSize: vars.fontSize['4x'],
+      },
+    },
+    {
+      variants: {
+        target: 'adult',
+        contentType: 'content',
+      },
+      style: {
+        fontSize: vars.fontSize['3x'],
+      },
+    },
+    {
+      variants: {
+        target: 'normal',
+        contentType: 'title',
+      },
+      style: {
+        fontSize: vars.fontSize['3x'],
+      },
+    },
+    {
+      variants: {
+        target: 'normal',
+        contentType: 'content',
+      },
+      style: {
+        fontSize: vars.fontSize['2x'],
+      },
+    },
+  ],
+});
 
 export const tempPadding = style({
   position: 'relative',
@@ -43,12 +180,10 @@ export const tempPadding = style({
 export const textTemp = style({
   fontSize: vars.fontSize['2x'],
   width: '160px',
-  zIndex: vars.zIndex['z-2'],
 });
 
 export const text16 = style({
   fontSize: vars.fontSize['2x'],
-  zIndex: vars.zIndex['z-2'],
 });
 export const textNTemp = style({
   fontSize: vars.fontSize['2x'],
@@ -56,7 +191,6 @@ export const textNTemp = style({
   display: 'flex',
   justifyContent: 'right',
   paddingRight: '5px',
-  zIndex: vars.zIndex['z-1'],
 });
 
 export const resultTemp = style([{}]);
@@ -66,16 +200,6 @@ export const textPTemp = style({
   display: 'flex',
   justifyContent: 'right',
   width: '120px',
-  zIndex: vars.zIndex['z-1'],
-});
-export const tempC = style({
-  paddingTop: '5px',
-  paddingBottom: '5px',
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  fontSize: vars.fontSize['2x'],
-  zIndex: vars.zIndex['z-1'],
 });
 
 export const receiptTop = style({

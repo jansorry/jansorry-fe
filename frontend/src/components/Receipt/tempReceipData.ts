@@ -4,8 +4,8 @@ const tempReceiptData: receiptData[] = [
   {
     nagId: 1,
     content: '공부도 못하는데 집안일은 네가 해야지',
-    price: 10000,
-    count: 2,
+    price: '100,000',
+    count: 99,
   },
   {
     nagId: 2,
@@ -61,8 +61,33 @@ const tempReceiptData: receiptData[] = [
     price: 10000,
     count: 2,
   },
+  {
+    nagId: 27,
+    content: '아직도 아이돌 따라다니니?',
+    price: 10000,
+    count: 2,
+  },
+  {
+    nagId: 27,
+    content: '아직도 아이돌 따라다니니?',
+    price: 10000,
+    count: 2,
+  },
+  {
+    nagId: 27,
+    content: '아직도 아이돌 따라다니니?',
+    price: 10000,
+    count: 2,
+  },
+  {
+    nagId: 27,
+    content: '아직도 아이돌 따라다니니?',
+    price: 10000,
+    count: 2,
+  },
 ];
 export const tempReceiptContent: receiptContent = {
+  type: 'adult',
   title: '00님의 영수증!',
   description: '돈 벌기 쉽지 않아요~!',
   message: '돈 벌기 쉽지 않아요~!',

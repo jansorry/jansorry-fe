@@ -3,16 +3,15 @@ import Image from 'next/image';
 import { receiptContent } from '@/types/receipt';
 
 import {
+  qrcodeWrapper,
+  receipt,
   receiptContentWrapper,
-  receiptTop,
+  receiptRowBox,
+  receiptTextStyle,
+  receiptTextWrapper,
   receiptTopAndBottomBg,
   receiptWrapper,
-  tempC,
-  tempPadding,
-  text16,
-  textNTemp,
-  textPTemp,
-  textTemp,
+  RowBoxWrapper,
 } from '@/components/Receipt/index.css';
 
 interface Props {
@@ -20,6 +19,7 @@ interface Props {
 }
 
 export const Receipt = ({ content }: Props) => {
+  const receiptStyle = content.type;
   return (
     <div className={receiptWrapper}>
       <div className={receiptTopAndBottomBg}>
@@ -31,47 +31,176 @@ export const Receipt = ({ content }: Props) => {
         />
       </div>
       <div className={receiptContentWrapper}>
-        <div className={tempC}>
-          <div className={textNTemp}>영수증</div>
-        </div>
-        <div className={tempC}>
-          <div className={text16}>{`발행일자 : ${content.date}`}</div>
-        </div>
-        <div className={tempPadding}>
-          <div className={text16}>
-            ----------------------------------------------
+        <div className={receiptTextWrapper}>
+          <div className={receipt}>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'title',
+              })}
+            >
+              영수증
+            </div>
+          </div>
+
+          <div className={receiptRowBox({ align: 'left' })}>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'content',
+              })}
+            >{`발행일자 : ${content.date}`}</div>
+          </div>
+
+          <div className={receiptTextStyle({ contentType: 'line' })}>
+            -------------------------------------------
+          </div>
+
+          <div className={RowBoxWrapper}>
+            <div className={receiptRowBox({ entry: 'nag' })}>
+              <div
+                className={receiptTextStyle({
+                  target: receiptStyle,
+                  contentType: 'content',
+                })}
+              >
+                잔소리
+              </div>
+            </div>
+            <div
+              className={receiptRowBox({ entry: 'quantity', align: 'right' })}
+            >
+              <div
+                className={receiptTextStyle({
+                  target: receiptStyle,
+                  contentType: 'content',
+                })}
+              >
+                수량
+              </div>
+            </div>
+            <div
+              className={receiptRowBox({ entry: 'unitPrice', align: 'right' })}
+            >
+              <div
+                className={receiptTextStyle({
+                  target: receiptStyle,
+                  contentType: 'content',
+                })}
+              >
+                금액
+              </div>
+            </div>
+          </div>
+          <div className={receiptTextStyle({ contentType: 'line' })}>
+            -------------------------------------------
+          </div>
+          {content.data.map((item, index) => (
+            <div key={`${item.nagId} ${index}`} className={RowBoxWrapper}>
+              <div className={receiptRowBox({ entry: 'nag' })}>
+                <div
+                  className={receiptTextStyle({
+                    target: receiptStyle,
+                    contentType: 'content',
+                  })}
+                >
+                  {item.content}
+                </div>
+              </div>
+              <div
+                className={receiptRowBox({ entry: 'quantity', align: 'right' })}
+              >
+                <div
+                  className={receiptTextStyle({
+                    target: receiptStyle,
+                    contentType: 'content',
+                  })}
+                >
+                  {item.count}
+                </div>
+              </div>
+              <div
+                className={receiptRowBox({
+                  entry: 'unitPrice',
+                  align: 'right',
+                })}
+              >
+                <div
+                  className={receiptTextStyle({
+                    target: receiptStyle,
+                    contentType: 'content',
+                  })}
+                >
+                  {item.price}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className={receiptTextStyle({ contentType: 'line' })}>
+            -------------------------------------------
+          </div>
+
+          <div className={RowBoxWrapper}>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'content',
+              })}
+            >
+              총 개 수
+            </div>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'content',
+              })}
+            >
+              {content.totalCount}
+            </div>
+          </div>
+          <div className={RowBoxWrapper}>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'content',
+              })}
+            >
+              합 계
+            </div>
+            <div
+              className={receiptTextStyle({
+                target: receiptStyle,
+                contentType: 'content',
+              })}
+            >
+              {content.totalPrice}
+            </div>
+          </div>
+          <div className={receiptTextStyle({ contentType: 'line' })}>
+            -------------------------------------------
+          </div>
+          <div className={qrcodeWrapper}>
+            <Image
+              src='/images/receipt/jansorryQR.png'
+              fill
+              objectFit='cover'
+              alt='임시큐알위치'
+            />
+          </div>
+          <div
+            className={receiptTextStyle({
+              target: receiptStyle,
+              contentType: 'content',
+            })}
+          >
+            https://jansorry.com/
+          </div>
+          <div className={receiptTextStyle({ contentType: 'line' })}>
+            -------------------------------------------
           </div>
         </div>
 
-        <div className={tempC}>
-          <div className={textTemp}>잔소리</div>
-          <div className={textNTemp}>수량</div>
-          <div className={textPTemp}>금액</div>
-        </div>
-        <div>----------------------------------------------</div>
-        {content.data.map((item, index) => (
-          <div key={item.nagId} className={tempC}>
-            <div className={textTemp}>{item.content}</div>
-            <div className={textNTemp}>{item.count}</div>
-            <div className={textPTemp}>{item.price}</div>
-          </div>
-        ))}
-
-        <div className={tempPadding}>
-          <div>----------------------------------------------</div>
-          <div className={tempC}>
-            <div>총 개 수</div>
-            <div>{content.totalCount}</div>
-          </div>
-          <div className={tempC}>
-            <div>합 계</div>
-            <div>{content.totalPrice}</div>
-          </div>
-          <div>----------------------------------------------</div>
-          <div>큐알</div>
-          <div>잔소리 홈 영수증</div>
-          <div>----------------------------------------------</div>
-        </div>
         <Image
           src='/images/receipt/receiptPaperBright-2.png'
           fill
@@ -87,8 +216,6 @@ export const Receipt = ({ content }: Props) => {
           alt='receipt-top'
         />
       </div>
-
-      {/* <ReceiptBackground height='1200px' />;<div>영수증</div> */}
     </div>
   );
 };
