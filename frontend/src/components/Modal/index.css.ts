@@ -30,7 +30,6 @@ export const modalWrapper = style({
 
 export const modalPadding = style({
   padding: vars.space['4x'],
-  paddingBottom: 80,
 });
 
 export const closeButton = style([
@@ -46,4 +45,5 @@ export const modalTitle = style({
   fontSize: vars.fontSize['3x'],
   fontWeight: vars.fontWeight.accent,
   marginBottom: vars.space['3x'],
+  wordBreak: 'keep-all',
 });
