@@ -31,3 +31,12 @@ export const getCardAction = async (
     actionContent: '서버 오류',
   };
 };
+
+export const deleteCardAction = async (actionId: number) => {
+  try {
+    return await apiClient.delete(`/actions/${actionId}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return undefined;
+};

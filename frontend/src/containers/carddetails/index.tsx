@@ -1,7 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { getActionResponse } from '@/types/action';
 import useModal from '@/hooks/useModal';
+import { deleteCardAction } from '@/services/cardaction';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
@@ -20,10 +23,12 @@ const CardDetails = ({
   actionId,
   actionContent,
 }: getActionResponse) => {
+  const router = useRouter();
   const { isOpen, open, close } = useModal();
 
-  const handleDeleteClicked = (id: number) => {
-    console.log(id);
+  const handleDeleteClicked = async (id: number) => {
+    await deleteCardAction(id);
+    router.push('/mypage');
   };
 
   return (
