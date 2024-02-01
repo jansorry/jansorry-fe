@@ -38,17 +38,13 @@ const Category = ({ nagItems }: Props) => {
     [6, refEtc],
   ]);
 
-  const handleScroll = (
-    refcurrent: React.RefObject<HTMLDivElement>,
-    e: number,
-  ) => {
-    if (refcurrent.current) {
-      refcurrent.current.style.scrollMargin = '80px';
-      refcurrent.current.scrollIntoView({
+  const handleScroll = (refCurrent: React.RefObject<HTMLDivElement>) => {
+    if (refCurrent.current) {
+      refCurrent.current.style.scrollMargin = '80px';
+      refCurrent.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      setIsfocused(e);
     }
   };
 
@@ -69,10 +65,7 @@ const Category = ({ nagItems }: Props) => {
                 role='presentation'
                 ref={refMap.get(categoryKey)}
                 onClick={() =>
-                  handleScroll(
-                    refMap.get(categoryKey) ?? refUndefined,
-                    categoryKey,
-                  )
+                  handleScroll(refMap.get(categoryKey) ?? refUndefined)
                 }
               >
                 {categoryValues[categoryKey as keyof typeof categoryValues]}
