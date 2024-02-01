@@ -25,9 +25,9 @@ export const cardSizeMap: Map<number, 'xSmall' | 'small' | 'medium' | 'large'> =
     [3, 'large'],
   ]);
 
-export const textStyleMap: Map<number, 'comment' | 'category' | 'nag'> =
+export const textStyleMap: Map<number, 'comment' | 'nag' | 'category'> =
   new Map([
     [0, 'comment'],
-    [1, 'category'],
-    [2, 'nag'],
+    [1, 'nag'],
+    [2, 'category'],
   ]);
