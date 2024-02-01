@@ -17,9 +17,17 @@ export const getCardAction = async (
   token: string = '',
 ): Promise<getActionResponse> => {
   try {
-    return await apiServer.get(`/actions/${actionId}`, token);
+    return await apiServer.get<getActionResponse>(
+      `/actions/${actionId}`,
+      token,
+    );
   } catch (error) {
     console.log(error);
   }
-  return { categoryId: -1, actionId: -1, content: '서버 오류' };
+  return {
+    categoryId: -1,
+    nagContent: '서버 오류',
+    actionId: -1,
+    actionContent: '서버 오류',
+  };
 };

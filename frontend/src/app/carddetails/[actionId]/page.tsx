@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 
 import { getCardAction } from '@/services/cardaction';
+import Carddetails from '@/containers/carddetails';
 
 interface Props {
   params: { actionId: number };
@@ -12,7 +13,7 @@ const CardDetailsPage = async ({ params }: Props) => {
   const refreshToken = cookieStore.get('refreshToken')?.value;
   const data = await getCardAction(actionId, refreshToken);
 
-  return <div />;
+  return <Carddetails {...data} />;
 };
 
 export default CardDetailsPage;

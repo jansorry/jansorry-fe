@@ -5,6 +5,7 @@ export interface createActionRequest {
 
 export interface getActionResponse {
   categoryId: number;
+  nagContent: string;
   actionId: number;
-  content: string;
+  actionContent: string;
 }
