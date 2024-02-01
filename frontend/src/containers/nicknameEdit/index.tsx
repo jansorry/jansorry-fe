@@ -1,19 +1,15 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { contentWrapper } from '@/styles/wrapper.css';
-import { MAX_ACTION_INPUT_LENGTH } from '@/constants';
 
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
 import * as styles from './index.css';
-import Modal from '@/components/Modal';
 
 const nicknameEdit = () => {
-  const [inputCount, setInputCount] = useState<number>(0);
-
   return (
     <>
       <Header title='닉네임 변경하기' hasPrevious />
