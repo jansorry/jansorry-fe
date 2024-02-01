@@ -9,17 +9,17 @@ import { IconSetting } from '#/svgs';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 interface Props {
-  profileItems: userDataResponse;
+  myPageItems: userDataResponse;
 }
 
-export const UserProfile = ({ profileItems }: Props) => {
+export const UserProfile = ({ myPageItems }: Props) => {
   const router = useRouter();
 
   const UserData: userDataResponse = {
-    nickname: profileItems.nickname,
-    imageUrl: profileItems.imageUrl,
-    followingCnt: profileItems.followingCnt,
-    followerCnt: profileItems.followerCnt,
+    nickname: myPageItems.nickname,
+    imageUrl: myPageItems.imageUrl,
+    followingCnt: myPageItems.followingCnt,
+    followerCnt: myPageItems.followerCnt,
   };
 
   const handleConfigClicked = () => {

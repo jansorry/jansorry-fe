@@ -8,21 +8,20 @@ import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 
 interface Props {
-  profileItems: userDataResponse;
-  nagTotalCount: actionTotalCount;
+  myPageItems: userDataResponse;
 }
 
-const Profile = ({ profileItems, nagTotalCount }: Props) => {
-  const NagCount: number = nagTotalCount?.content?.length;
+const MyPageContainer = ({ myPageItems }: Props) => {
+  // const NagCount: number = nagTotalCount?.content?.length;
 
   return (
     <>
       <Header title='나의 잔소리 목록' />
       <main className={styles.profileWrapper}>
         <div className={styles.profileContentWrapper}>
-          <UserProfile profileItems={profileItems} />
+          <UserProfile myPageItems={myPageItems} />
         </div>
-        <div>{NagCount ? <ProfileWithContent /> : <ProfileNoContent />}</div>
+        {/* <div>{NagCount ? <ProfileWithContent /> : <ProfileNoContent />}</div> */}
         <div className={styles.bottomNav}>
           <NavBar clickedIndex={3} />
         </div>
@@ -31,4 +30,4 @@ const Profile = ({ profileItems, nagTotalCount }: Props) => {
   );
 };
 
-export default Profile;
+export default MyPageContainer;

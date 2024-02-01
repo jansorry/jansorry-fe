@@ -37,3 +37,7 @@ export interface actionTotalCount {
   last: boolean;
   empty: boolean;
 }
+
+export interface totalReceiptCount {
+  receiptCount: number;
+}
