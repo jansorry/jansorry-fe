@@ -1,5 +1,5 @@
-import { apiClient } from '@/services/index';
-import { createActionRequest } from '@/types/action';
+import { apiClient, apiServer } from '@/services/index';
+import { createActionRequest, getActionResponse } from '@/types/action';
 
 export const createCardAction = async (actionInfo: createActionRequest) => {
   try {
@@ -10,4 +10,16 @@ export const createCardAction = async (actionInfo: createActionRequest) => {
     console.log(error);
   }
   return undefined;
+};
+
+export const getCardAction = async (
+  actionId: number,
+  token: string = '',
+): Promise<getActionResponse> => {
+  try {
+    return await apiServer.get(`/actions/${actionId}`, token);
+  } catch (error) {
+    console.log(error);
+  }
+  return { categoryId: -1, actionId: -1, content: '서버 오류' };
 };
