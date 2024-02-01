@@ -32,6 +32,17 @@ export const profileContentWrapper = style([
   },
 ]);
 
+export const receiptPrintButtonWrapper = style([
+  flex({
+    justify: 'center',
+    align: 'center',
+    direction: 'row',
+  }),
+  {
+    width: '100%',
+  },
+]);
+
 export const profileText = recipe({
   base: {
     color: vars.colors.black,
@@ -130,3 +141,13 @@ export const bottomNav = style({
   width: '100svw',
   height: 'auto',
 });
+
+export const actionModalWrapper = style([
+  flex({
+    align: 'center',
+    direction: 'column',
+  }),
+  {
+    marginTop: vars.space['5x'],
+  },
+]);
