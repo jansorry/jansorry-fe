@@ -17,7 +17,7 @@ interface Props {
   cardType: 'empty' | 'front' | 'back';
   cardSize: 'medium' | 'large' | 'small' | 'xSmall';
   textStyle: 'comment' | 'nag' | 'category';
-
+  shadow: boolean | undefined;
   text?: string;
 }
 
@@ -36,6 +36,7 @@ const NagCardContent = ({
   cardSize,
   textStyle,
   text,
+  shadow,
 }: Props) => {
   const imgSrc: string =
     cardType || cardCategory
@@ -47,7 +48,7 @@ const NagCardContent = ({
   const fontColor = cardSize === 'large' ? 'empty' : cardCategory;
 
   return (
-    <div className={cardSizes({ size: cardSize })}>
+    <div className={cardSizes({ size: cardSize, shadow })}>
       <CardText
         textClassName={cardText({
           position,
