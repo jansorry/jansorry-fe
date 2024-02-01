@@ -1,80 +1,41 @@
-import Link from 'next/link';
+import { action, actionTotalCount, userDataResponse } from '@/types/userData';
+import { UserProfile } from '@/containers/mypage/UserProfile';
 
-import { IconEdit, IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
-
-import * as styles from './index.css';
 import Header from '@/components/Header';
+import * as styles from './index.css';
+import ProfileWithContent from './ProfileWithContent';
+import ProfileNoContent from './ProfileNoContent';
+import ReceiptPrintButton from './ReceiptPrintButton';
 import NavBar from '@/components/NavBar';
-import { UserPreview } from '@/components/UserPreview';
 
-const myPage = () => {
+interface Props {
+  profileItems: userDataResponse;
+  nagTotalCount: actionTotalCount;
+}
+
+const Profile = ({ profileItems, nagTotalCount }: Props) => {
+  // nagCount 정보 불러오기
+  const dummyNagCount: number = 0;
+
   return (
     <>
-      <Header title='마이페이지' hasPrevious />
-      <div className={styles.myPageWrapper}>
-        <div className={styles.myPageProfile}>
-          <UserPreview
-            imgSrc='/images/userProfileImage/temp-userProfile.png'
-            nickname='닉네임'
-            size='xLarge'
-          />
-          <Link href='./change'>
-            <IconEdit />
-          </Link>
+      <Header title='나의 잔소리 목록' />
+      <main className={styles.profileWrapper}>
+        <div className={styles.profileContentWrapper}>
+          <UserProfile profileItems={profileItems} />
         </div>
-        <hr className={styles.myPageSeperateLine} />
-        <Link
-          href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
-          className={styles.myPageListContent}
-        >
-          <div>팀소개</div>
-          <IconRightBracket />
-        </Link>
-        <hr className={styles.myPageSeperateLine} />
-        <Link
-          href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
-          className={styles.myPageListContent}
-        >
-          <div>공지사항</div>
-          <IconRightBracket />
-        </Link>
-        <hr className={styles.myPageSeperateLine} />
-        <Link
-          href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
-          className={styles.myPageListContent}
-        >
-          <div>자주 듣는 질문</div>
-          <IconRightBracket />
-        </Link>
-        <hr className={styles.myPageSeperateLine} />
-        <Link href='./logout' className={styles.myPageListContent}>
-          <div>로그아웃</div>
-          <IconRightBracket />
-        </Link>
-        <hr className={styles.myPageSeperateLine} />
-        <Link href='./quit' className={styles.myPageListContent}>
-          <div>회원 탈퇴</div>
-          <IconRightBracket />
-        </Link>
-        <hr className={styles.myPageSeperateLine} />
-        <Link
-          href='https://www.instagram.com/jansorry_official/'
-          className={styles.myPageSnsListContent}
-        >
-          <IconInstagram />
-          <div>인스타그램</div>
-        </Link>
-        <Link
-          href='https://twitter.com/jansorry_S2'
-          className={styles.myPageSnsListContent}
-        >
-          <IconTwitter />
-          <div>트위터</div>
-        </Link>
-      </div>
-      <NavBar clickedIndex={3} />
+        {/* 동작 코드: 현재는 더미로 체크 */}
+        {/* <div>{nagCount ? <ProfileWithContent /> : <ProfileNoContent />}</div> */}
+        {/* 더미 데이터 확인용 코드 */}
+        <div>
+          {dummyNagCount ? <ProfileWithContent /> : <ProfileNoContent />}
+        </div>
+        <div className={styles.bottomNav}>
+          <NavBar clickedIndex={3} />
+        </div>
+      </main>
     </>
   );
 };
 
-export default myPage;
+export default Profile;

@@ -1,5 +1,5 @@
 import { apiServer } from '@/services/index';
-import { nag, nagDetails, nagTotalResponse } from '@/types/nag';
+import { nagDetails, nagTotalResponse } from '@/types/nag';
 
 export const getNagCategory = async (
   token: string = '',

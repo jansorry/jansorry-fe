@@ -1,5 +1,3 @@
-'use client';
-
 import { NagCardKeyOptions } from '@/types/nagCard';
 
 import {
@@ -33,7 +31,7 @@ const NagCard = ({ cardOption }: Props) => {
   const cardSize: 'xSmall' | 'small' | 'medium' | 'large' | 'ERROR' =
     cardSizeMap.get(sizeKey) ?? 'ERROR';
 
-  const textStyle: 'comment' | 'category' | 'nag' | 'ERROR' =
+  const textStyle: 'comment' | 'nag' | 'category' | 'ERROR' =
     textStyleMap.get(textStyleKey) ?? 'ERROR';
 
   if (
@@ -52,6 +50,7 @@ const NagCard = ({ cardOption }: Props) => {
       cardSize={cardSize}
       textStyle={textStyle}
       text={text}
+      shadow={cardOption.shadow}
     />
   );
 };

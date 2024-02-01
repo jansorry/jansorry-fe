@@ -4,3 +4,13 @@ export interface userDataResponse {
   followerCnt: number;
   followingCnt: number;
 }
+
+export interface action {
+  categoryId: number;
+  actionId: number;
+  content: string;
+}
+
+export interface actionTotalCount {
+  content: action[];
+}
