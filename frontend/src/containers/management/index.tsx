@@ -18,7 +18,7 @@ const managementPage = () => {
             nickname='닉네임'
             size='xLarge'
           />
-          <Link href='/usernameEdit'>
+          <Link href='/nicknameEdit'>
             <IconEdit />
           </Link>
         </div>
