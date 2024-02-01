@@ -76,6 +76,9 @@ export const apiClient = {
     const body = JSON.stringify(bodyObject);
     return requestClient<TResponse>(url, { method: HTTPMethods.POST }, body);
   },
+
+  delete: <T>(url: string): Promise<T> =>
+    requestClient<T>(url, { method: HTTPMethods.DELETE }),
 };
 
 export const apiServer = {

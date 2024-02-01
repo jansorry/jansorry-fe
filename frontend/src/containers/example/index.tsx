@@ -1,10 +1,10 @@
 // server component example
+
 import { users } from '@/containers/example/users';
-import { NagCardKeyOptions } from '@/types/nagCard';
 import KakaoLogin from '@/containers/welcome/KakaoLoginButton';
 
-import User from './User';
 import NagCard from '@/components/NagCard';
+import User from './User';
 import Button from '@/components/Button';
 import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
@@ -34,11 +34,11 @@ const Example = () => {
         imgSrc='/images/userProfileImage/temp-userProfile.png'
         nickname='테스트닉네임'
       />
-      <NagCard cardOption={cardXsmall(1, 'xSmall')} />
+      <NagCard cardOption={cardXsmall(1, 'xSmall', true)} />
       <NagCard cardOption={cardSmall(2, 'small')} />
       <NagCard cardOption={cardMedium(3, 'medium')} />
       <NagCard cardOption={cardLargeNag(4, 'largeNag')} />
-      <NagCard cardOption={cardLargeComment(5, 'largeComment')} />
+      <NagCard cardOption={cardLargeComment(5, 'largeComment', true)} />
       <Button
         size='large'
         filled
