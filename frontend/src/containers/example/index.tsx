@@ -8,48 +8,15 @@ import NagCard from '@/components/NagCard';
 import Button from '@/components/Button';
 import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
+import {
+  cardLargeComment,
+  cardLargeNag,
+  cardMedium,
+  cardSmall,
+  cardXsmall,
+} from '@/components/NagCard/cardOptionsSet';
 
 const Example = () => {
-  const cardXsmall: NagCardKeyOptions = {
-    categoryKey: 1,
-    typeKey: 1,
-    sizeKey: 0,
-    textStyleKey: 2,
-    text: 'cardXsmall',
-  };
-
-  const cardSmall: NagCardKeyOptions = {
-    categoryKey: 2,
-    typeKey: 1,
-    sizeKey: 1,
-    textStyleKey: 2,
-    text: 'cardSmall',
-  };
-
-  const cardMedium: NagCardKeyOptions = {
-    categoryKey: 3,
-    typeKey: 1,
-    sizeKey: 2,
-    textStyleKey: 2,
-    text: 'cardMedium',
-  };
-
-  const cardLargeNag: NagCardKeyOptions = {
-    categoryKey: 4,
-    typeKey: 1,
-    sizeKey: 3,
-    textStyleKey: 1,
-    text: 'cardLargeNag',
-  };
-
-  const cardLargeComment: NagCardKeyOptions = {
-    categoryKey: 5,
-    typeKey: 2,
-    sizeKey: 3,
-    textStyleKey: 0,
-    text: 'cardLargeComment',
-  };
-
   return (
     <main>
       {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
@@ -67,11 +34,11 @@ const Example = () => {
         imgSrc='/images/userProfileImage/temp-userProfile.png'
         nickname='테스트닉네임'
       />
-      <NagCard cardOption={cardXsmall} />
-      <NagCard cardOption={cardSmall} />
-      <NagCard cardOption={cardMedium} />
-      <NagCard cardOption={cardLargeNag} />
-      <NagCard cardOption={cardLargeComment} />
+      <NagCard cardOption={cardXsmall(1, 'xSmall')} />
+      <NagCard cardOption={cardSmall(2, 'small')} />
+      <NagCard cardOption={cardMedium(3, 'medium')} />
+      <NagCard cardOption={cardLargeNag(4, 'largeNag')} />
+      <NagCard cardOption={cardLargeComment(5, 'largeComment')} />
       <Button
         size='large'
         filled
