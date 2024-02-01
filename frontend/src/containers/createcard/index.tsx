@@ -1,11 +1,14 @@
 'use client';
 
 import { ChangeEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { nagDetails } from '@/types/nag';
 import { NagCardKeyOptions } from '@/types/nagCard';
 import useModal from '@/hooks/useModal';
 import { MAX_ACTION_INPUT_LENGTH } from '@/constants';
+import { createCardAction } from '@/services/cardaction';
+import { createActionRequest } from '@/types/action';
 
 import Header from '@/components/Header';
 import NagCard from '@/components/NagCard';
@@ -14,7 +17,9 @@ import * as styles from './index.css';
 import Modal from '@/components/Modal';
 
 const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
+  const router = useRouter();
   const { isOpen, open, close } = useModal();
+
   const [action, setAction] = useState<string>('');
   const [inputCount, setInputCount] = useState<number>(0);
   const [showWarningMaxLine, setShowWarningMaxLine] = useState<boolean>(false);
@@ -41,8 +46,10 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
     }
   };
 
-  const handleCreateAction = () => {
-    console.log(action);
+  const handleCreateAction = async (actionContent: string) => {
+    const actionInfo: createActionRequest = { nagId, content: actionContent };
+    await createCardAction(actionInfo);
+    router.push('/mypage');
   };
 
   return (
@@ -92,7 +99,7 @@ const CreateCard = ({ categoryId, nagId, content }: nagDetails) => {
                 size='large'
                 colorStyle='blue'
                 filled
-                onClick={handleCreateAction}
+                onClick={() => handleCreateAction(action)}
               >
                 카드 등록하기
               </Button>
