@@ -10,7 +10,7 @@ export const tempRelative = style({
   alignItems: 'center',
 });
 export const tempPadding = style({
-  position: 'absolute',
+  position: 'relative',
   width: '350px',
   boxSizing: 'border-box',
   paddingTop: '10px',
@@ -21,11 +21,13 @@ export const tempPadding = style({
 export const textTemp = style({
   fontSize: vars.fontSize['3x'],
   fontWeight: vars.fontWeight.accent,
-  width: '180px',
+  width: '160px',
+  zIndex: vars.zIndex['z-2'],
 });
 
 export const text16 = style({
   fontSize: vars.fontSize['2x'],
+  zIndex: vars.zIndex['z-2'],
 });
 export const textNTemp = style({
   fontSize: vars.fontSize['3x'],
@@ -34,14 +36,18 @@ export const textNTemp = style({
   display: 'flex',
   justifyContent: 'right',
   paddingRight: '5px',
+  zIndex: vars.zIndex['z-1'],
 });
+
+export const resultTemp = style([{}]);
 
 export const textPTemp = style({
   fontSize: vars.fontSize['3x'],
   fontWeight: vars.fontWeight.accent,
   display: 'flex',
   justifyContent: 'right',
-  width: '100px',
+  width: '120px',
+  zIndex: vars.zIndex['z-1'],
 });
 export const tempC = style({
   paddingTop: '5px',
@@ -49,6 +55,9 @@ export const tempC = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  fontSize: vars.fontSize['3x'],
+  fontWeight: vars.fontWeight.accent,
+  zIndex: vars.zIndex['z-1'],
 });
 
 export const receiptTop = style({
