@@ -18,7 +18,7 @@ const NavBar = ({ clickedIndex }: Props) => {
         <Link href='/home'>{clickedIndex === 2 ? <IconHomeFilled /> : <IconHome />}</Link>
       </div>
       <div>
-        <Link href='/mypage'>{clickedIndex === 3 ? <IconUserFilled /> : <IconUser />}</Link>
+        <Link href='/profile'>{clickedIndex === 3 ? <IconUserFilled /> : <IconUser />}</Link>
       </div>
     </nav>
   );

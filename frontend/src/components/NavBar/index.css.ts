@@ -14,6 +14,7 @@ export const navWrapper = style([
     height: 48,
     margin: 'auto', // 하단바 가운데 정렬
     overflow: 'hidden', // 영역 밖으로 나가면 숨김
+    backgroundColor: vars.colors.white,
     zIndex: vars.zIndex['layout-content'],
   },
 ]);
