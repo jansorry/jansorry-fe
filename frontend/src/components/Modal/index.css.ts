@@ -30,7 +30,6 @@ export const modalWrapper = style({
 
 export const modalPadding = style({
   padding: vars.space['4x'],
-  paddingBottom: 80,
 });
 
 export const closeButton = style([
