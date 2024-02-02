@@ -28,6 +28,9 @@ export const vars = createGlobalTheme(':root', {
     oatmeal: '#fdf5e4',
     brown: '#453216',
     strongRed: '#E8635C',
+    pink: '#F19CBC',
+    lightBlue: '#8AAEF9',
+    lavender: '#BBA4DA',
   },
 
   borderRadius: {
@@ -47,6 +50,7 @@ export const vars = createGlobalTheme(':root', {
 
   fontSize: {
     '1x': '8px',
+    '1.5x': '12px',
     '2x': '16px',
     '3x': '24px',
     '4x': '32px',

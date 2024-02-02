@@ -2,6 +2,7 @@ export interface feedContent {
   memberId: number;
   actionId: number;
   nickname: string;
+  profileImage: number;
   nag: string;
   action: string;
   categoryId: number;
