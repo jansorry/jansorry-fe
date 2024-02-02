@@ -15,3 +15,21 @@ export interface receiptContent {
   totalCount: number;
   totalPrice: number;
 }
+
+export interface nagStatisticItem {
+  nagId: number;
+  content: string;
+  price: number;
+  count: number;
+}
+export interface nagStatisticResponse {
+  data: nagStatisticItem[];
+}
+
+export interface receiptResponse {
+  title: string;
+  description: string;
+  message: string;
+  familyUrl: string;
+  friendUrl: string;
+}
