@@ -1,21 +1,23 @@
 'use client';
 
 import { liveFeedResponse } from '@/types/feed';
+import FeedCard from '@/containers/feed/FeedCard';
 
+import * as styles from './index.css';
 import Header from '@/components/Header';
+import NavBar from '@/components/NavBar';
 
 const Feed = ({ size, content }: liveFeedResponse) => {
-  const clicked = () => {
-    console.log(size, content);
-  };
-
   return (
     <>
       <Header title='모두의 잔소리' />
-      <div>피드 페이지</div>
-      <button type='button' onClick={clicked}>
-        데이터 확인
-      </button>
+      <div className={styles.feedWrapper}>
+        {content &&
+          content.map((feedContent) => (
+            <FeedCard key={feedContent.actionId} {...feedContent} />
+          ))}
+      </div>
+      <NavBar clickedIndex={1} />
     </>
   );
 };

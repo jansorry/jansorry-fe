@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 
-import { getLiveFeed } from '@/services/feeds';
+import { getLiveFeed } from '@/services/feed';
 import Feed from '@/containers/feed';
 
 const FeedPage = async () => {
