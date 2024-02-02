@@ -19,5 +19,8 @@ USER nextjs
 # 애플리케이션에 할당할 포트
 EXPOSE 3000
 
+# 한국 시간으로 설정
+ENV TZ Asia/Seoul
+
 # 애플리케이션 실행 명령어
 CMD ["node", "server.js"]
