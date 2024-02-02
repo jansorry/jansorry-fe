@@ -6,7 +6,6 @@ import { feedContent } from '@/types/feed';
 import { IconHeart, IconHeartFilledRed } from '#/svgs';
 
 import * as styles from './FeedCard.css';
-import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
 import NagCard from '@/components/NagCard';
 import { UserPreview } from '@/components/UserPreview';

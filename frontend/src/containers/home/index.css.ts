@@ -36,7 +36,7 @@ export const homeContentWrapper = style([
 export const emptyStyle = style([
   flex({ align: 'center', justify: 'center', direction: 'column' }),
   {
-    width: '100svw',
+    width: '100%',
     height: '100%',
   },
 ]);

@@ -1,17 +1,32 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import * as styles from '@/containers/home/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 
 import NagCard from '@/components/NagCard/index';
 
 const Empty = () => {
+  const router = useRouter();
+
   const card: NagCardKeyOptions = {
     categoryKey: 0,
     typeKey: 0,
     sizeKey: 2,
     textStyleKey: 0,
   };
+
+  const handleEmptyCardClicked = () => {
+    router.push('/category');
+  };
+
   return (
-    <div className={styles.emptyStyle}>
+    <div
+      className={styles.emptyStyle}
+      role='presentation'
+      onClick={handleEmptyCardClicked}
+    >
       <div className={styles.homeText({ contentType: 'card' })}>
         <NagCard cardOption={card} />
       </div>
