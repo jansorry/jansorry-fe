@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
-import { IconLoading } from '#/svgs';
+import { AnimationLoading } from '#/svgs';
 
 import * as styles from './index.css';
 
 const Loading = () => {
   return (
     <div className={styles.LoadingWrapper}>
-      <IconLoading />
+      <AnimationLoading />
     </div>
   );
 };
