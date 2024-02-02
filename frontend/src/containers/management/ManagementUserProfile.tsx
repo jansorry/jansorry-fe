@@ -20,10 +20,6 @@ export const ManagementUserProfile = ({ managementItems }: Props) => {
     imageUrl: managementItems.imageUrl,
   };
 
-  const handleNicknameEditClicked = () => {
-    router.push('/management/nicknameEdit');
-  };
-
   return (
     <div className={styles.managementProfileContentWrapper}>
       {ManagementUserData.imageUrl && (
@@ -37,7 +33,7 @@ export const ManagementUserProfile = ({ managementItems }: Props) => {
           <button
             type='button'
             className={styles.nicknameEditButton}
-            onClick={() => handleNicknameEditClicked()}
+            onClick={() => router.push('/management/nicknameEdit')}
           >
             <IconEdit />
           </button>
