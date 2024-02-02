@@ -43,3 +43,12 @@ export const getReceipts = async (seq: number): Promise<receiptResponse> => {
     friendUrl: '서버오류',
   };
 };
+
+export const deleteReceipt = async (seq: number) => {
+  try {
+    return await apiClient.delete(`/receipts/${seq}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return undefined;
+};

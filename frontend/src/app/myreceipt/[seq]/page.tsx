@@ -12,6 +12,6 @@ const MyReceiptPage = ({ params }: Props) => {
   // const data = await getReceipts(seq);
   //   TODO 받은 url을 페이지 구성용 data로 변환
   const dataToReceiptContent = tempReceiptContent;
-  return <MyReceipt data={dataToReceiptContent} />;
+  return <MyReceipt data={dataToReceiptContent} seq={seq} />;
 };
 export default MyReceiptPage;

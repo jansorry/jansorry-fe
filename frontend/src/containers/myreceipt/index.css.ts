@@ -43,3 +43,17 @@ export const myreceiptButtonWrapper = style([
     marginBottom: vars.space['3x'],
   },
 ]);
+
+export const modalWrapper = style([
+  flex({ direction: 'column', align: 'center', justify: 'center' }),
+  {
+    '@media': {
+      'screen and (min-width: 480px)': {
+        width: '432px', // 480px의 90%에 해당하는 너비 직접 지정
+      },
+    },
+  },
+]);
+export const doubleButtonWrapper = style([
+  flex({ direction: 'row', align: 'center', justify: 'spaceBetween' }),
+]);
