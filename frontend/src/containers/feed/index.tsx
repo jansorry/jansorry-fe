@@ -20,9 +20,8 @@ const Feed = ({ content, last }: liveFeedResponse) => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const lastActionId: number = content[content.length - 1].actionId;
+    const lastActionId: number = feeds[feeds.length - 1].actionId;
     const data = await getLiveFeed(lastActionId);
-    console.log(data);
     if (data.last) setIsLast(data.last);
     setFeeds([...feeds, ...data.content]);
 

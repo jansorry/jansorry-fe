@@ -9,7 +9,6 @@ export const getToken = async (): Promise<string> => {
     credentials: 'include',
   }).then((res) => res.json());
 
-  console.log('클라이언트에서 토큰 요청 후 어떤 데이터가 올까요? : ', data);
   return data.accessToken;
 };
 
@@ -26,6 +25,5 @@ export const getServerToken = async (token: string): Promise<string> => {
     },
   ).then((res) => res.json());
 
-  console.log('서버에서 토큰 요청 후 어떤 데이터가 올까요? : ', data);
   return data.accessToken;
 };
