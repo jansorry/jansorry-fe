@@ -51,7 +51,7 @@ export const profileText = {
     fontSize: vars.fontSize['3x'],
   }),
   subText: style({
-    fontSize: vars.fontSize['1x'],
+    fontSize: vars.fontSize['1.5x'],
     color: vars.colors.gray,
   }),
 };
