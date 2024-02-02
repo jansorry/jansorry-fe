@@ -9,6 +9,7 @@ import * as styles from './FeedCard.css';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
 import NagCard from '@/components/NagCard';
+import { UserPreview } from '@/components/UserPreview';
 
 const FeedCard = ({
   actionId,
@@ -41,11 +42,11 @@ const FeedCard = ({
   return (
     <div className={styles.feedCardWrapper}>
       <div className={styles.feedHeader}>
-        <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
-        <div>
-          <div>{nickname}</div>
-          <span className={styles.feedTimestamp}>{createdAt}</span>
-        </div>
+        <UserPreview
+          imgSrc='/images/userProfileImage/temp-userProfile.png'
+          nickname={nickname}
+          subText={createdAt}
+        />
         {isFollow ? (
           <button
             type='button'
