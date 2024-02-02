@@ -18,8 +18,8 @@ export const UserProfile = ({ myPageItems }: Props) => {
   const UserData: userDataResponse = {
     nickname: myPageItems.nickname,
     imageUrl: myPageItems.imageUrl,
-    followingCnt: myPageItems.followingCnt,
     followerCnt: myPageItems.followerCnt,
+    followingCnt: myPageItems.followingCnt,
   };
 
   const handleConfigClicked = () => {
@@ -45,12 +45,12 @@ export const UserProfile = ({ myPageItems }: Props) => {
         <div className={styles.followInfo}>
           <span>
             <div className={styles.followNumber}>
-              팔로잉 {UserData.followingCnt}
+              팔로워 {UserData.followerCnt}
             </div>
           </span>
           <span>
             <div className={styles.followNumber}>
-              팔로워 {UserData.followerCnt}
+              팔로잉 {UserData.followingCnt}
             </div>
           </span>
         </div>
