@@ -33,7 +33,6 @@ export const ManagementUserProfile = ({ managementItems }: Props) => {
         <div className={styles.nicknameAndEdit}>
           <span className={styles.nicknameManagement}>
             {ManagementUserData.nickname}
-            <div>{}</div>
           </span>
           <button
             type='button'
