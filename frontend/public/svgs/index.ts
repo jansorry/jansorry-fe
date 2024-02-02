@@ -5,6 +5,7 @@ import IconHome from './home.svg';
 import IconHomeFilled from './home-filled.svg';
 import IconHeart from './heart.svg';
 import IconHeartFilled from './heart-filled.svg';
+import IconHeartFilledRed from './heart-filled-red.svg';
 import IconArrowLeft from './arrow-left.svg';
 import IconClose from './close.svg';
 import IconRightBracket from './right-bracket.svg';
@@ -21,6 +22,7 @@ export {
   IconHomeFilled,
   IconHeart,
   IconHeartFilled,
+  IconHeartFilledRed,
   IconArrowLeft,
   IconClose,
   IconRightBracket,

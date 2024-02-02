@@ -1,28 +1,30 @@
 'use client';
 
 import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRouter } from 'next/navigation';
 
 import { genderMap } from '@/containers/signup/genderOptions';
 import { userBirthState, userGenderState } from '@/states/signup';
 import { oauthIdState } from '@/states/auth';
-import { apiClient } from '@/services';
 import { authResponse, signupRequest } from '@/types/auth';
+import { postSignup } from '@/services/auth';
 
 import * as styles from './index.css';
 import Button from '@/components/Button';
 import { birthGenderWrapper, prevNextButton } from './index.css';
 
-const Gender = () => {
+const GenderPage = () => {
+  const router = useRouter();
+
   const [userBirth, setUserBirth] = useRecoilState(userBirthState);
-
-  const buttons = Array.from(genderMap)
-    .filter(([key, _]) => key >= 1 && key <= 3)
-    .map(([_, value]) => value);
-
   const isGenderRequired: boolean = userBirth !== null && userBirth < 2024 - 14;
   const [userGender, setUserGender] = useRecoilState(userGenderState);
   const [oauthId] = useRecoilState(oauthIdState);
   const resetUserGender = useResetRecoilState(userGenderState);
+
+  const buttons = Array.from(genderMap)
+    .filter(([key, _]) => key >= 1 && key <= 3)
+    .map(([_, value]) => value);
 
   const handlePrevButton = () => {
     resetUserGender();
@@ -35,11 +37,12 @@ const Gender = () => {
       genderId: userGender,
     };
 
-    //  api호출 로직 혹시 닉네임 recoil로 사용하게 되면 여기 response에서 수정
-    const response = await apiClient.post<authResponse, signupRequest>(
-      '/members/signup',
-      data,
-    );
+    const response: authResponse = await postSignup(data);
+    if (response.accessToken) {
+      router.push(`/home`);
+      return;
+    }
+    router.push(`/`);
   };
 
   return (
@@ -100,4 +103,4 @@ const Gender = () => {
   );
 };
 
-export default Gender;
+export default GenderPage;
