@@ -11,7 +11,7 @@ import {
 
 import Button from '@/components/Button';
 
-const Birthyear = () => {
+const BirthyearPage = () => {
   const selectedYear = useRecoilValue(selectedYearState);
   const setUserBirth = useSetRecoilState(userBirthState);
 
@@ -58,4 +58,4 @@ const Birthyear = () => {
   );
 };
 
-export default Birthyear;
+export default BirthyearPage;

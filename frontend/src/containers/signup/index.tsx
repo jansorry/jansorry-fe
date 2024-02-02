@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
 
-import Birthyear from '@/containers/signup/Birthyear';
-import Gender from '@/containers/signup/Gender';
+import BirthyearPage from '@/containers/signup/BirthyearPage';
+import GenderPage from '@/containers/signup/GenderPage';
 import { userBirthState } from '@/states/signup';
 import { defaultWrapper } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -29,7 +29,7 @@ const Signup = () => {
       <div
         className={`${contentWrapper({ contentArea: 'headerOnly', heightStyle: 'max' })}`}
       >
-        {!userBirth ? <Birthyear /> : <Gender />}
+        {!userBirth ? <BirthyearPage /> : <GenderPage />}
       </div>
     </main>
   );
