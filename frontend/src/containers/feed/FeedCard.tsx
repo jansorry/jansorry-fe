@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { feedContent } from '@/types/feed';
 import { IconHeart, IconHeartFilledRed } from '#/svgs';
+import FollowButton from '@/containers/feed/FollowButton';
 
 import * as styles from './FeedCard.css';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
@@ -19,22 +20,17 @@ const FeedCard = ({
   categoryId,
   categoryTitle,
   favoriteCount,
+  isFollow,
+  isFavorite,
   createdAt,
 }: feedContent) => {
   // TODO: fetch follow, favorite initial data
-
-  const [isFollow, setIsFollow] = useState<boolean>(false);
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [isLike, setIsLike] = useState<boolean>(isFavorite);
   const [likeCount, setLikeCount] = useState<number>(favoriteCount);
 
-  const handleFollowClicked = () => {
-    setIsFollow(!isFollow);
-    // TODO: fetch follow/unfollow
-  };
-
   const handleFavoriteClicked = () => {
-    setIsFavorite(!isFavorite);
-    if (isFavorite) setLikeCount(favoriteCount);
+    setIsLike(!isLike);
+    if (isLike) setLikeCount(favoriteCount);
     else setLikeCount(favoriteCount + 1);
   };
 
@@ -46,23 +42,7 @@ const FeedCard = ({
           nickname={nickname}
           subText={createdAt}
         />
-        {isFollow ? (
-          <button
-            type='button'
-            className={styles.feedFollowButton({ follow: true })}
-            onClick={handleFollowClicked}
-          >
-            팔로잉
-          </button>
-        ) : (
-          <button
-            type='button'
-            className={styles.feedFollowButton({ follow: false })}
-            onClick={handleFollowClicked}
-          >
-            팔로우
-          </button>
-        )}
+        {isFollow !== null && <FollowButton isFollow={isFollow} />}
       </div>
       <div className={styles.feedActionBackground}>
         <div className={styles.feedActionText}>{action}</div>
@@ -73,7 +53,7 @@ const FeedCard = ({
             onClick={handleFavoriteClicked}
             className={styles.feedFavoriteIcon}
           >
-            {isFavorite ? <IconHeartFilledRed /> : <IconHeart />}
+            {isLike ? <IconHeartFilledRed /> : <IconHeart />}
           </div>
         </div>
       </div>
