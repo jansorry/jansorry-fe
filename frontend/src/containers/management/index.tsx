@@ -1,26 +1,24 @@
 import Link from 'next/link';
 
-import { IconEdit, IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
+import { IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
+import { ManagementUserProfile } from '@/containers/management/ManagementUserProfile';
+import { managementUserDataResponse } from '@/types/managementProfile';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
-import { UserPreview } from '@/components/UserPreview';
 
-const managementPage = () => {
+interface Props {
+  managementItems: managementUserDataResponse;
+}
+
+const ManagementContainer = ({ managementItems }: Props) => {
   return (
     <>
       <Header title='마이페이지' hasPrevious />
-      <div className={styles.managementWrapper}>
+      <main className={styles.managementWrapper}>
         <div className={styles.managementProfile}>
-          <UserPreview
-            imgSrc='/images/userProfileImage/temp-userProfile.png'
-            nickname='닉네임'
-            size='xLarge'
-          />
-          <Link href='/management/nicknameEdit'>
-            <IconEdit />
-          </Link>
+          <ManagementUserProfile managementItems={managementItems} />
         </div>
         <hr className={styles.managementSeperateLine} />
         <Link
@@ -74,10 +72,10 @@ const managementPage = () => {
           <IconTwitter />
           <div>트위터</div>
         </Link>
-      </div>
-      <NavBar clickedIndex={3} />
+        <NavBar clickedIndex={3} />
+      </main>
     </>
   );
 };
 
-export default managementPage;
+export default ManagementContainer;
