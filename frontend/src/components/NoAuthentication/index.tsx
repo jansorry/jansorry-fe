@@ -6,7 +6,7 @@ import Image from 'next/image';
 import * as styles from './index.css';
 import Button from '@/components/Button';
 
-const NotFound = () => {
+const NoAuthentication = () => {
   const router = useRouter();
   return (
     <div className={styles.noAuthenticationWrapper}>
@@ -31,4 +31,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NoAuthentication;
