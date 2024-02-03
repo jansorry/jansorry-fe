@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { feedContent } from '@/types/feed';
 import { IconHeart, IconHeartFilledRed } from '#/svgs';
 import FollowButton from '@/containers/feed/FollowButton';
+import useDebounce from '@/hooks/useDebounce';
+import { dislikeFeed, likeFeed } from '@/services/feed';
 
 import * as styles from './FeedCard.css';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
@@ -24,15 +26,32 @@ const FeedCard = ({
   isFavorite,
   createdAt,
 }: feedContent) => {
-  // TODO: fetch follow, favorite initial data
+  const isMounted = useRef<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(isFavorite);
   const [likeCount, setLikeCount] = useState<number>(favoriteCount);
+  const debouncedLike = useDebounce<boolean>(isLike, 3000);
+
+  const handleLike = async (catchLike: boolean) => {
+    if (catchLike) {
+      await likeFeed(actionId);
+      return;
+    }
+    await dislikeFeed(actionId);
+  };
 
   const handleFavoriteClicked = () => {
     setIsLike(!isLike);
     if (isLike) setLikeCount(favoriteCount);
     else setLikeCount(favoriteCount + 1);
   };
+
+  useEffect(() => {
+    if (isMounted.current) {
+      handleLike(debouncedLike);
+      return;
+    }
+    isMounted.current = true;
+  }, [debouncedLike]);
 
   return (
     <div className={styles.feedCardWrapper}>
