@@ -6,7 +6,6 @@ import Link from 'next/link';
 import useModal from '@/hooks/useModal';
 
 import Button from '@/components/Button';
-import Modal from '@/components/Modal';
 
 interface Props {
   id: string;
@@ -16,24 +15,28 @@ interface Props {
 }
 
 const User = ({ id, name, image, link }: Props) => {
-  const { isOpen, open, close } = useModal();
+  const { Modal, openModal } = useModal();
   return (
     <li>
-      <Button size='small' filled={false} colorStyle='blue' type='button' onClick={open}>
+      <Button
+        size='small'
+        filled={false}
+        colorStyle='blue'
+        type='button'
+        onClick={openModal}
+      >
         길이에 따른 유동적인스타일
       </Button>
-      {isOpen && (
-        <Modal open={isOpen} onClose={close} title='버튼을 누르셨네요.'>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-          <div>아아 모달 테스트</div>
-        </Modal>
-      )}
+      <Modal title='버튼을 누르셨네요.'>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+        <div>아아 모달 테스트</div>
+      </Modal>
       <div>{id}</div>
       <div>{name}</div>
       {link ? (

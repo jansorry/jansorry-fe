@@ -14,7 +14,7 @@ interface Props {
   children: ReactNode;
 }
 
-const Modal = ({ open, title, onClose, children }: Props) => {
+const ModalContent = ({ open, title, onClose, children }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   // Modal 영역 바깥을 클릭했을 때, close 이벤트를 custom hook에 전달
@@ -30,7 +30,11 @@ const Modal = ({ open, title, onClose, children }: Props) => {
       <div className={styles.modalOverlay} />
       <div ref={ref} className={styles.modalWrapper}>
         <div className={styles.modalPadding}>
-          <button type='button' onClick={onClose} className={styles.closeButton}>
+          <button
+            type='button'
+            onClick={onClose}
+            className={styles.closeButton}
+          >
             <IconClose />
           </button>
           {title && <div className={styles.modalTitle}>{title}</div>}
@@ -42,4 +46,4 @@ const Modal = ({ open, title, onClose, children }: Props) => {
   );
 };
 
-export default Modal;
+export default ModalContent;
