@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { feedContent, liveFeedResponse } from '@/types/feed';
 import FeedCard from '@/containers/feed/FeedCard';
