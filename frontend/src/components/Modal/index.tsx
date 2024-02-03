@@ -8,27 +8,34 @@ import usePreventScroll from '@/hooks/usePreventScroll';
 import * as styles from './index.css';
 
 interface Props {
-  open: boolean;
-  title?: string;
   onClose: () => void;
+  isOpen: boolean;
+  isUnmount: boolean;
+  title?: string;
   children: ReactNode;
 }
 
-const ModalContent = ({ open, title, onClose, children }: Props) => {
+const ModalContent = ({
+  onClose,
+  isOpen,
+  isUnmount,
+  title,
+  children,
+}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   // Modal 영역 바깥을 클릭했을 때, close 이벤트를 custom hook에 전달
   useOnClickOutside(ref, () => onClose());
 
   // Modal 영역 바깥 스크롤 방지
-  usePreventScroll(open);
+  usePreventScroll(isOpen);
 
-  if (!open) return null;
+  if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <>
       <div className={styles.modalOverlay} />
-      <div ref={ref} className={styles.modalWrapper}>
+      <div ref={ref} className={styles.modalWrapper({ isUnmount })}>
         <div className={styles.modalPadding}>
           <button
             type='button'

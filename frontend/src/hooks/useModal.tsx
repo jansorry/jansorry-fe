@@ -4,11 +4,18 @@ import ModalContent from '@/components/Modal';
 
 const useModal = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isUnmount, setIsUnmount] = useState<boolean>(false);
+
   const openModal = () => {
+    setIsUnmount(false);
     setIsOpen(true);
   };
   const closeModal = () => {
-    setIsOpen(false);
+    setIsUnmount(true);
+
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 300);
   };
 
   interface Props {
@@ -18,7 +25,12 @@ const useModal = () => {
 
   const Modal = ({ title, children }: Props) => {
     return (
-      <ModalContent open={isOpen} onClose={closeModal} title={title}>
+      <ModalContent
+        onClose={closeModal}
+        isOpen={isOpen}
+        isUnmount={isUnmount}
+        title={title}
+      >
         {children}
       </ModalContent>
     );
