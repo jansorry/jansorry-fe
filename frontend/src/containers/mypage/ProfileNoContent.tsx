@@ -8,11 +8,10 @@ import useModal from '@/hooks/useModal';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
-import Modal from '@/components/Modal';
 
 const ProfileNoContent = () => {
   const router = useRouter();
-  const { isOpen, open, close } = useModal();
+  const { Modal, openModal } = useModal();
 
   const card: NagCardKeyOptions = {
     categoryKey: 0,
@@ -29,29 +28,23 @@ const ProfileNoContent = () => {
         size='large'
         colorStyle='lightGray'
         filled
-        onClick={open}
+        onClick={openModal}
       >
         영수증 발급
       </Button>
-      {isOpen && (
-        <Modal
-          open={isOpen}
-          onClose={close}
-          title='잔소리 카드를 먼저 만들어 주세요.'
-        >
-          <div className={styles.actionModalWrapper}>
-            <Button
-              type='button'
-              size='large'
-              colorStyle='blue'
-              filled
-              onClick={() => router.push('/category')}
-            >
-              잔소리 카드 등록하기
-            </Button>
-          </div>
-        </Modal>
-      )}
+      <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
+        <div className={styles.actionModalWrapper}>
+          <Button
+            type='button'
+            size='large'
+            colorStyle='blue'
+            filled
+            onClick={() => router.push('/category')}
+          >
+            잔소리 카드 등록하기
+          </Button>
+        </div>
+      </Modal>
       <div
         className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}
       >

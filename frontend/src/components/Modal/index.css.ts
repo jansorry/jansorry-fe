@@ -1,7 +1,18 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { flex, plainButton } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
+
+export const upAnimation = keyframes({
+  '0%': { bottom: '-100%' },
+  '100%': { bottom: 0 },
+});
+
+export const downAnimation = keyframes({
+  '0%': { bottom: 0 },
+  '100%': { bottom: '-100%' },
+});
 
 export const modalOverlay = style({
   position: 'fixed',
@@ -13,19 +24,33 @@ export const modalOverlay = style({
   zIndex: vars.zIndex['content-bg-to-top'],
 });
 
-export const modalWrapper = style({
-  '@media': {
-    'screen and (min-width: 480px)': {
-      width: 480,
+export const modalWrapper = recipe({
+  base: {
+    '@media': {
+      'screen and (min-width: 480px)': {
+        width: 480,
+      },
+    },
+    position: 'fixed',
+    bottom: 0,
+    width: '100svw',
+    maxHeight: '80%',
+    backgroundColor: vars.colors.white,
+    borderRadius: vars.borderRadius.top,
+    zIndex: vars.zIndex['content-to-top'],
+    animationDuration: '600ms',
+    animationTimingFunction: `600ms cubic-bezier(0.86, 0, 0.07, 1)`,
+  },
+  variants: {
+    isUnmount: {
+      true: {
+        animationName: downAnimation,
+      },
+      false: {
+        animationName: upAnimation,
+      },
     },
   },
-  position: 'fixed',
-  bottom: 0,
-  width: '100svw',
-  maxHeight: '80%',
-  backgroundColor: vars.colors.white,
-  borderRadius: vars.borderRadius.top,
-  zIndex: vars.zIndex['content-to-top'],
 });
 
 export const modalPadding = style({

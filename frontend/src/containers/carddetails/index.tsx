@@ -15,7 +15,6 @@ import {
   cardLargeNag,
 } from '@/components/NagCard/cardOptionsSet';
 import Button from '@/components/Button';
-import Modal from '@/components/Modal';
 
 const CardDetails = ({
   categoryId,
@@ -24,7 +23,7 @@ const CardDetails = ({
   actionContent,
 }: getActionResponse) => {
   const router = useRouter();
-  const { isOpen, open, close } = useModal();
+  const { Modal, openModal } = useModal();
 
   const handleDeleteClicked = async (id: number) => {
     await deleteCardAction(id);
@@ -43,27 +42,25 @@ const CardDetails = ({
           size='large'
           colorStyle='strongRed'
           filled
-          onClick={open}
+          onClick={openModal}
         >
           내 카드 삭제하기
         </Button>
       </div>
       <NavBar />
-      {isOpen && (
-        <Modal open={isOpen} onClose={close} title='내 카드를 삭제하시겠어요?'>
-          <div className={styles.cardDeleteModal}>
-            <Button
-              type='button'
-              size='large'
-              colorStyle='strongRed'
-              filled
-              onClick={() => handleDeleteClicked(actionId)}
-            >
-              내 카드 삭제하기
-            </Button>
-          </div>
-        </Modal>
-      )}
+      <Modal title='내 카드를 삭제하시겠어요?'>
+        <div className={styles.cardDeleteModal}>
+          <Button
+            type='button'
+            size='large'
+            colorStyle='strongRed'
+            filled
+            onClick={() => handleDeleteClicked(actionId)}
+          >
+            내 카드 삭제하기
+          </Button>
+        </div>
+      </Modal>
     </>
   );
 };

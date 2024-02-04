@@ -4,7 +4,7 @@ import { RefObject, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { nagTotalResponse } from '@/types/nag';
-import { useObserver } from '@/hooks/useObserver';
+import { useCategoryObserver } from '@/hooks/useCategoryObserver';
 import { IconRightBracket } from '#/svgs';
 import { categoryKeys, categoryValues } from '@/utils/categoryRecord';
 
@@ -21,13 +21,13 @@ const Category = ({ nagItems }: Props) => {
 
   const [isFocused, setIsfocused] = useState(1);
 
-  const refUndefined = useObserver(0, setIsfocused);
-  const refCareer = useObserver(1, setIsfocused);
-  const refHealth = useObserver(2, setIsfocused);
-  const refMarry = useObserver(3, setIsfocused);
-  const refWork = useObserver(4, setIsfocused);
-  const refFamily = useObserver(5, setIsfocused);
-  const refEtc = useObserver(6, setIsfocused);
+  const refUndefined = useCategoryObserver(0, setIsfocused);
+  const refCareer = useCategoryObserver(1, setIsfocused);
+  const refHealth = useCategoryObserver(2, setIsfocused);
+  const refMarry = useCategoryObserver(3, setIsfocused);
+  const refWork = useCategoryObserver(4, setIsfocused);
+  const refFamily = useCategoryObserver(5, setIsfocused);
+  const refEtc = useCategoryObserver(6, setIsfocused);
 
   const refMap: Map<number, RefObject<HTMLDivElement>> = new Map([
     [1, refCareer],
@@ -55,21 +55,22 @@ const Category = ({ nagItems }: Props) => {
         <section className={styles.categoryLeft}>
           <ul>
             {categoryKeys.map((categoryKey: number) => (
-              <div
-                className={
-                  isFocused === categoryKey
-                    ? styles.selectedCategoryKeys
-                    : styles.categoryKeys
-                }
-                key={categoryKey}
-                role='presentation'
-                ref={refMap.get(categoryKey)}
-                onClick={() =>
-                  handleScroll(refMap.get(categoryKey) ?? refUndefined)
-                }
-              >
-                {categoryValues[categoryKey as keyof typeof categoryValues]}
-              </div>
+              <li key={categoryKey}>
+                <div
+                  className={
+                    isFocused === categoryKey
+                      ? styles.selectedCategoryKeys
+                      : styles.categoryKeys
+                  }
+                  role='presentation'
+                  ref={refMap.get(categoryKey)}
+                  onClick={() =>
+                    handleScroll(refMap.get(categoryKey) ?? refUndefined)
+                  }
+                >
+                  {categoryValues[categoryKey as keyof typeof categoryValues]}
+                </div>
+              </li>
             ))}
           </ul>
         </section>

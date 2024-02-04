@@ -33,4 +33,22 @@ export const getActionTotalCount = async (
     console.log(e);
     throw e;
   }
+  return {
+    empty: false,
+    first: false,
+    last: false,
+    number: -1,
+    numberOfElements: -1,
+    pageable: {
+      offset: -1,
+      pageNumber: -1,
+      pageSize: -1,
+      paged: false,
+      sort: { empty: false, sorted: false, unsorted: false },
+      unpaged: false,
+    },
+    size: -1,
+    sort: { empty: false, sorted: false, unsorted: false },
+    content: [],
+  };
 };

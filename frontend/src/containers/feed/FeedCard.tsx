@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { feedContent } from '@/types/feed';
 import { IconHeart, IconHeartFilledRed } from '#/svgs';
+import FollowButton from '@/containers/feed/FollowButton';
+import useDebounce from '@/hooks/useDebounce';
+import { dislikeFeed, likeFeed } from '@/services/feed';
 
 import * as styles from './FeedCard.css';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
@@ -19,24 +22,36 @@ const FeedCard = ({
   categoryId,
   categoryTitle,
   favoriteCount,
+  isFollow,
+  isFavorite,
   createdAt,
 }: feedContent) => {
-  // TODO: fetch follow, favorite initial data
-
-  const [isFollow, setIsFollow] = useState<boolean>(false);
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const isMounted = useRef<boolean>(false);
+  const [isLike, setIsLike] = useState<boolean>(isFavorite);
   const [likeCount, setLikeCount] = useState<number>(favoriteCount);
+  const debouncedLike = useDebounce<boolean>(isLike, 3000);
 
-  const handleFollowClicked = () => {
-    setIsFollow(!isFollow);
-    // TODO: fetch follow/unfollow
+  const handleLike = async (catchLike: boolean) => {
+    if (catchLike) {
+      await likeFeed(actionId);
+      return;
+    }
+    await dislikeFeed(actionId);
   };
 
   const handleFavoriteClicked = () => {
-    setIsFavorite(!isFavorite);
-    if (isFavorite) setLikeCount(favoriteCount);
+    setIsLike(!isLike);
+    if (isLike) setLikeCount(favoriteCount);
     else setLikeCount(favoriteCount + 1);
   };
+
+  useEffect(() => {
+    if (isMounted.current) {
+      handleLike(debouncedLike);
+      return;
+    }
+    isMounted.current = true;
+  }, [debouncedLike]);
 
   return (
     <div className={styles.feedCardWrapper}>
@@ -46,23 +61,7 @@ const FeedCard = ({
           nickname={nickname}
           subText={createdAt}
         />
-        {isFollow ? (
-          <button
-            type='button'
-            className={styles.feedFollowButton({ follow: true })}
-            onClick={handleFollowClicked}
-          >
-            팔로잉
-          </button>
-        ) : (
-          <button
-            type='button'
-            className={styles.feedFollowButton({ follow: false })}
-            onClick={handleFollowClicked}
-          >
-            팔로우
-          </button>
-        )}
+        {isFollow !== null && <FollowButton isFollow={isFollow} />}
       </div>
       <div className={styles.feedActionBackground}>
         <div className={styles.feedActionText}>{action}</div>
@@ -73,7 +72,7 @@ const FeedCard = ({
             onClick={handleFavoriteClicked}
             className={styles.feedFavoriteIcon}
           >
-            {isFavorite ? <IconHeartFilledRed /> : <IconHeart />}
+            {isLike ? <IconHeartFilledRed /> : <IconHeart />}
           </div>
         </div>
       </div>

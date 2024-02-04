@@ -20,11 +20,6 @@ export const feedHeader = style([
   },
 ]);
 
-export const feedTimestamp = style({
-  fontSize: vars.fontSize['1.5x'],
-  color: vars.colors.gray,
-});
-
 export const feedFollowButton = recipe({
   base: {
     fontWeight: vars.fontWeight.accent,
@@ -92,6 +87,7 @@ export const feedFooter = style([
 export const feedNag = style({
   fontWeight: vars.fontWeight.accent,
   marginBottom: vars.space['1x'],
+  wordBreak: 'keep-all',
 });
 
 export const feedCategoryTitle = style({

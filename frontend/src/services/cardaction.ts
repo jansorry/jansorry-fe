@@ -9,7 +9,7 @@ export const createCardAction = async (actionInfo: createActionRequest) => {
   } catch (error) {
     console.log(error);
   }
-  return undefined;
+  return null;
 };
 
 export const getCardAction = async (
@@ -38,5 +38,5 @@ export const deleteCardAction = async (actionId: number) => {
   } catch (error) {
     console.log(error);
   }
-  return undefined;
+  return null;
 };
