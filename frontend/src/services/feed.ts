@@ -1,13 +1,13 @@
 import { apiClient, apiServer } from '@/services/index';
-import { liveFeedResponse } from '@/types/feed';
+import { feedResponse } from '@/types/feed';
 
 export const getLiveFeedonServer = async (
   lastActionId: number,
   token: string = '',
-): Promise<liveFeedResponse> => {
+): Promise<feedResponse> => {
   try {
     const params = lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    return await apiServer.get<liveFeedResponse>(
+    return await apiServer.get<feedResponse>(
       `/feed/actions/live${params}`,
       token,
     );
@@ -42,12 +42,38 @@ export const getLiveFeedonServer = async (
   };
 };
 
-export const getLiveFeed = async (
+export const getFeed = async (
   lastActionId: number,
-): Promise<liveFeedResponse> => {
+  hashtagId?: number,
+): Promise<feedResponse> => {
   try {
-    const params = lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    return await apiClient.get<liveFeedResponse>(`/feed/actions/live${params}`);
+    const actionIdParams =
+      lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
+
+    let feedType;
+    let generationParams = '';
+    switch (hashtagId) {
+      case 1: // following feed
+        feedType = 'following';
+        break;
+      case 2: // trending feed
+        feedType = 'trending';
+        break;
+      case 3: // 10s feed
+      case 4: // 20s feed
+      case 5: // 30s feed
+        feedType = 'generation';
+        generationParams = lastActionId !== -1 ? '&age=' : '?age=';
+        if (hashtagId === 3) generationParams += '10';
+        else if (hashtagId === 4) generationParams += '20';
+        else generationParams += '30';
+        break;
+      default: // live feed
+        feedType = 'live';
+    }
+    return await apiClient.get<feedResponse>(
+      `/feed/actions/${feedType}${actionIdParams}${generationParams}`,
+    );
   } catch (error) {
     console.log(error);
   }

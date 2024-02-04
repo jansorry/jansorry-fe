@@ -19,7 +19,7 @@ export interface feedSort {
   unsorted: boolean;
 }
 
-export interface liveFeedResponse {
+export interface feedResponse {
   size: number;
   content: feedContent[];
   number: number;
