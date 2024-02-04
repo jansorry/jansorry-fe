@@ -14,24 +14,16 @@ export interface action {
 
 export interface actionTotalCount {
   size: number;
-  content: Action[];
+  content: action[];
   number: number;
-  sort: {
-    empty: boolean;
-    unsorted: boolean;
-    sorted: boolean;
-  };
+  sort: { empty: boolean; sorted: boolean; unsorted: boolean };
   pageable: {
     offset: number;
-    sort: {
-      empty: boolean;
-      unsorted: boolean;
-      sorted: boolean;
-    };
+    sort: { empty: boolean; sorted: boolean; unsorted: boolean };
     paged: boolean;
     unpaged: boolean;
-    pageNumber: number;
     pageSize: number;
+    pageNumber: number;
   };
   numberOfElements: number;
   first: boolean;

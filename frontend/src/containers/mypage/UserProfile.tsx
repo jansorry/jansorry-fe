@@ -32,8 +32,8 @@ export const UserProfile = ({ myPageItems }: Props) => {
         <UserProfileImage imgSrc={UserData.imageUrl} size='large' />
       )}
       <div className={styles.profileDetails}>
-        <div className={styles.usernameAndSettings}>
-          <span className={styles.username}>{UserData.nickname}</span>
+        <div className={styles.nicknameAndSettings}>
+          <span className={styles.nicknameBox}>{UserData.nickname}</span>
           <button
             type='button'
             className={styles.settingsButton}

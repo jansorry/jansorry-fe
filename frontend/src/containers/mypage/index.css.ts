@@ -86,14 +86,14 @@ export const profileDetails = style([
   }),
 ]);
 
-export const usernameAndSettings = style([
+export const nicknameAndSettings = style([
   flex({ align: 'center' }),
   {
     gap: vars.space['1x'],
   },
 ]);
 
-export const username = style({
+export const nicknameBox = style({
   flexGrow: 0,
   fontSize: vars.fontSize['3x'],
   width: 'auto',
@@ -121,7 +121,7 @@ export const followNumber = style({
   width: 'auto',
 });
 
-export const profileNoContentStyle = style([
+export const profileContentStyle = style([
   flex({
     direction: 'column',
     align: 'center',
@@ -148,6 +148,7 @@ export const actionModalWrapper = style([
     direction: 'column',
   }),
   {
-    marginTop: vars.space['5x'],
+    marginTop: `calc(${vars.space['5x']} * 4)`,
+    marginBottom: vars.space['5x'],
   },
 ]);

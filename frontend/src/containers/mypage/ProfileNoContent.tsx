@@ -22,7 +22,7 @@ const ProfileNoContent = () => {
   };
 
   return (
-    <div className={styles.profileNoContentStyle}>
+    <div className={styles.profileContentStyle}>
       <div className={styles.profileText({ contentType: 'card' })} />
       <Button
         type='button'
