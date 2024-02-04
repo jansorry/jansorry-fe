@@ -61,7 +61,9 @@ const FeedCard = ({
           nickname={nickname}
           subText={createdAt}
         />
-        {isFollow !== null && <FollowButton isFollow={isFollow} />}
+        {isFollow !== null && (
+          <FollowButton isFollow={isFollow} nickname={nickname} />
+        )}
       </div>
       <div className={styles.feedActionBackground}>
         <div className={styles.feedActionText}>{action}</div>

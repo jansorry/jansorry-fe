@@ -1,19 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import * as styles from '@/containers/feed/FeedCard.css';
+import useDebounce from '@/hooks/useDebounce';
+import { followUser, unfollowUser } from '@/services/feed';
 
 interface Props {
   isFollow: boolean | null;
+  nickname: string;
 }
 
-const FollowButton = ({ isFollow }: Props) => {
+const FollowButton = ({ isFollow, nickname }: Props) => {
+  const isMounted = useRef<boolean>(false);
   const [isFollowState, setIsFollowState] = useState<boolean | null>(isFollow);
+  const debouncedFollow = useDebounce<boolean | null>(isFollowState, 3000);
+
+  const handleFollow = async (catchFollow: boolean) => {
+    if (catchFollow) {
+      await followUser(nickname);
+      return;
+    }
+    await unfollowUser(nickname);
+  };
+
   const handleFollowClicked = () => {
     setIsFollowState(!isFollowState);
-    // TODO: fetch follow/unfollow
   };
+
+  useEffect(() => {
+    if (isMounted.current && debouncedFollow !== null) {
+      handleFollow(debouncedFollow);
+      return;
+    }
+    isMounted.current = true;
+  }, [debouncedFollow]);
 
   return isFollowState ? (
     <button
