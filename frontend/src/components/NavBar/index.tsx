@@ -19,17 +19,17 @@ const NavBar = ({ clickedIndex }: Props) => {
   return (
     <nav className={styles.navWrapper}>
       <div>
-        <Link href='/feed' scroll={false}>
+        <Link href='/feed' scroll={false} aria-label='feed'>
           {clickedIndex === 1 ? <IconHeartFilled /> : <IconHeart />}
         </Link>
       </div>
       <div>
-        <Link href='/home' scroll={false}>
+        <Link href='/home' scroll={false} aria-label='home'>
           {clickedIndex === 2 ? <IconHomeFilled /> : <IconHome />}
         </Link>
       </div>
       <div>
-        <Link href='/mypage' scroll={false}>
+        <Link href='/mypage' scroll={false} aria-label='mypage'>
           {clickedIndex === 3 ? <IconUserFilled /> : <IconUser />}
         </Link>
       </div>
