@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import * as styles from '@/containers/mypage/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 import useModal from '@/hooks/useModal';
-import { totalReceiptCountResponse } from '@/types/userData';
+import { totalReceiptCountResponse } from '@/types/receipt';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';

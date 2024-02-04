@@ -1,9 +1,6 @@
 import { apiServer } from '@/services/index';
-import {
-  userDataResponse,
-  actionTotalCount,
-  totalReceiptCountResponse,
-} from '@/types/userData';
+import { userDataResponse, actionTotalCount } from '@/types/userData';
+import { totalReceiptCountResponse } from '@/types/receipt';
 
 export const getMyPage = async (
   token: string = '',

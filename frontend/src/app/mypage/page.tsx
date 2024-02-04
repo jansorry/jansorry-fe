@@ -14,7 +14,7 @@ const MyPage = async () => {
     <MyPageContainer
       myPageItems={userData}
       actionsData={actionsData}
-      receiptData={receiptCountData}
+      receiptCount={receiptCountData}
     />
   );
 };

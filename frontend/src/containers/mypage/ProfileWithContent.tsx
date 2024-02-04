@@ -48,6 +48,10 @@ const ProfileWithContent = ({ actions, totalReceiptCount }: Props) => {
     }
   };
 
+  const handleCardClick = (actionId: number) => {
+    router.push(`/actions/${actionId}`);
+  };
+
   return (
     <div className={styles.profileContentStyle}>
       <div className={styles.profileText({ contentType: 'card' })} />
@@ -62,17 +66,22 @@ const ProfileWithContent = ({ actions, totalReceiptCount }: Props) => {
       </Button>
       <div className={styles.cardGridWrapper}>
         {actions.map((action) => (
-          <NagCard
+          <div
+            onClick={() => handleCardClick(action.actionId)}
             key={action.actionId}
-            cardOption={{
-              categoryKey: action.categoryId,
-              typeKey: 1,
-              sizeKey: 1,
-              textStyleKey: 1,
-              shadow: false,
-              text: undefined,
-            }}
-          />
+          >
+            <NagCard
+              key={action.actionId}
+              cardOption={{
+                categoryKey: action.categoryId,
+                typeKey: 1,
+                sizeKey: 1,
+                textStyleKey: 1,
+                shadow: false,
+                text: undefined,
+              }}
+            />
+          </div>
         ))}
         ;
       </div>
