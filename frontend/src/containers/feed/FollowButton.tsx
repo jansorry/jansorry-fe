@@ -7,14 +7,14 @@ import useDebounce from '@/hooks/useDebounce';
 import { followUser, unfollowUser } from '@/services/feed';
 
 interface Props {
-  isFollow: boolean | null;
+  isFollow: boolean;
   memberId: number;
 }
 
 const FollowButton = ({ isFollow, memberId }: Props) => {
   const isMounted = useRef<boolean>(false);
-  const [isFollowState, setIsFollowState] = useState<boolean | null>(isFollow);
-  const debouncedFollow = useDebounce<boolean | null>(isFollowState, 3000);
+  const [isFollowState, setIsFollowState] = useState<boolean>(isFollow);
+  const debouncedFollow = useDebounce<boolean>(isFollowState, 3000);
 
   const handleFollow = async (catchFollow: boolean) => {
     if (catchFollow) {
@@ -29,7 +29,7 @@ const FollowButton = ({ isFollow, memberId }: Props) => {
   };
 
   useEffect(() => {
-    if (isMounted.current && debouncedFollow !== null) {
+    if (isMounted.current) {
       handleFollow(debouncedFollow);
       return;
     }
