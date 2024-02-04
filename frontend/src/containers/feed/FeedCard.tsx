@@ -14,6 +14,7 @@ import NagCard from '@/components/NagCard';
 import { UserPreview } from '@/components/UserPreview';
 
 const FeedCard = ({
+  memberId,
   actionId,
   nickname,
   profileImage,
@@ -62,7 +63,7 @@ const FeedCard = ({
           subText={createdAt}
         />
         {isFollow !== null && (
-          <FollowButton isFollow={isFollow} nickname={nickname} />
+          <FollowButton isFollow={isFollow} memberId={memberId} />
         )}
       </div>
       <div className={styles.feedActionBackground}>

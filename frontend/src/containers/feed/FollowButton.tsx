@@ -8,20 +8,20 @@ import { followUser, unfollowUser } from '@/services/feed';
 
 interface Props {
   isFollow: boolean | null;
-  nickname: string;
+  memberId: number;
 }
 
-const FollowButton = ({ isFollow, nickname }: Props) => {
+const FollowButton = ({ isFollow, memberId }: Props) => {
   const isMounted = useRef<boolean>(false);
   const [isFollowState, setIsFollowState] = useState<boolean | null>(isFollow);
   const debouncedFollow = useDebounce<boolean | null>(isFollowState, 3000);
 
   const handleFollow = async (catchFollow: boolean) => {
     if (catchFollow) {
-      await followUser(nickname);
+      await followUser(memberId);
       return;
     }
-    await unfollowUser(nickname);
+    await unfollowUser(memberId);
   };
 
   const handleFollowClicked = () => {
