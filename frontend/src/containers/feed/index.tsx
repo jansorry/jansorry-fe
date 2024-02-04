@@ -20,7 +20,7 @@ const Feed = ({ content, last }: liveFeedResponse) => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const lastActionId: number = feeds[feeds.length - 1].actionId;
+    const lastActionId: number = feeds[feeds.length - 1]?.actionId;
     const data = await getLiveFeed(lastActionId);
     if (data.last) setIsLast(data.last);
     setFeeds([...feeds, ...data.content]);
@@ -38,7 +38,7 @@ const Feed = ({ content, last }: liveFeedResponse) => {
           feeds.map((feedItem) => (
             <FeedCard key={feedItem.actionId} {...feedItem} />
           ))}
-        <div ref={refLast} />
+        {isLast ? <div>더 이상 피드가 없어요.</div> : <div ref={refLast} />}
       </div>
       <NavBar clickedIndex={1} />
     </>

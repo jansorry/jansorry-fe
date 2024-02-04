@@ -28,7 +28,7 @@ export const getActionTotalCount = async (
   return {
     empty: false,
     first: false,
-    last: false,
+    last: true,
     number: -1,
     numberOfElements: -1,
     pageable: {

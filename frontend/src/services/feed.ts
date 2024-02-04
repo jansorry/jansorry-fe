@@ -37,7 +37,7 @@ export const getLiveFeedonServer = async (
     },
     numberOfElements: -1,
     first: false,
-    last: false,
+    last: true,
     empty: false,
   };
 };
@@ -74,7 +74,25 @@ export const getLiveFeed = async (
     },
     numberOfElements: -1,
     first: false,
-    last: false,
+    last: true,
     empty: false,
   };
+};
+
+export const likeFeed = async (actionId: number) => {
+  try {
+    return await apiClient.post(`/actions/${actionId}/favorite`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
+
+export const dislikeFeed = async (actionId: number) => {
+  try {
+    return await apiClient.delete(`/actions/${actionId}/favorite`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
 };
