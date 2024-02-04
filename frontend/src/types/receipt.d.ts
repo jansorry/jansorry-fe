@@ -12,6 +12,8 @@ export interface receiptContent {
   message: string;
   date: string;
   data: receiptData[];
+  familyUrl: string;
+  friendUrl: string;
   totalCount: number;
   totalPrice: number;
 }
@@ -32,4 +34,7 @@ export interface receiptResponse {
   message: string;
   familyUrl: string;
   friendUrl: string;
+  totalPrice: number;
+  //  date저장 어떻게 되는지 확인
+  date?: string;
 }

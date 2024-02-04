@@ -47,6 +47,7 @@ export const myreceiptButtonWrapper = style([
 export const modalWrapper = style([
   flex({ direction: 'column', align: 'center', justify: 'center' }),
   {
+    width: '100%',
     '@media': {
       'screen and (min-width: 480px)': {
         width: '432px', // 480px의 90%에 해당하는 너비 직접 지정
@@ -57,3 +58,5 @@ export const modalWrapper = style([
 export const doubleButtonWrapper = style([
   flex({ direction: 'row', align: 'center', justify: 'spaceBetween' }),
 ]);
+
+export const buttonStyleForSharing = style([{}]);

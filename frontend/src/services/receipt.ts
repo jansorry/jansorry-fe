@@ -1,5 +1,6 @@
 import { apiClient, apiServer } from '@/services/index';
 import { nagStatisticResponse, receiptResponse } from '@/types/receipt';
+import { nagTotalResponse } from '@/types/nag';
 
 export const getNagStatistic = async (): Promise<nagStatisticResponse> => {
   try {
@@ -19,18 +20,23 @@ export const getNagStatistic = async (): Promise<nagStatisticResponse> => {
   };
 };
 
-export const createReceipt = async (receiptInfo: receiptResponse) => {
+export const createReceipt = async (
+  receiptInfo: receiptResponse,
+): Promise<number> => {
   try {
     return await apiClient.post('/receipts');
   } catch (error) {
     console.log(error);
   }
-  return undefined;
+  return -1;
 };
 
-export const getReceipts = async (seq: number): Promise<receiptResponse> => {
+export const getReceipts = async (
+  seq: number,
+  token: string = '',
+): Promise<receiptResponse> => {
   try {
-    return await apiClient.get(`/receipts/${seq}`);
+    return await apiServer.get(`/receipts/${seq}`, token);
   } catch (error) {
     console.log(error);
   }
@@ -41,6 +47,7 @@ export const getReceipts = async (seq: number): Promise<receiptResponse> => {
     message: '서버오류',
     familyUrl: '서버오류',
     friendUrl: '서버오류',
+    totalPrice: 0,
   };
 };
 
@@ -51,4 +58,13 @@ export const deleteReceipt = async (seq: number) => {
     console.log(error);
   }
   return undefined;
+};
+
+export const getAllNag = async (): Promise<nagTotalResponse[]> => {
+  try {
+    return await apiClient.get<nagTotalResponse[]>(`/nags`);
+  } catch (e) {
+    console.log(e);
+  }
+  return [];
 };

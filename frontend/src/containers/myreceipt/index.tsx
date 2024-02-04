@@ -13,38 +13,51 @@ import {
 import { deleteReceipt } from '@/services/receipt';
 import useModal from '@/hooks/useModal';
 import { SharingButtons } from '@/containers/myreceipt/SharingButtons';
+import { makeUrlForSharing } from '@/utils/makeReceipt';
 
 import { Receipt } from '@/components/Receipt';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
-import Modal from '@/components/Modal';
 
 interface Props {
   data: receiptContent;
   seq: number;
 }
 const MyReceipt = ({ data, seq }: Props) => {
-  const { isOpen, open, close } = useModal();
+  const { Modal, openModal } = useModal();
   const shareReceiptEvent = () => {};
   const deleteReceiptEvent = () => {
     deleteReceipt(seq);
   };
-  //  TODO 임시 데이터 삭제하고 실제 데이터 연결
-  const tempData = tempReceiptContent;
+
+  const familyUrlForOpenGraph = makeUrlForSharing(
+    data.familyUrl,
+    data.title,
+    data.description,
+    data.message,
+    data.date,
+  );
+  const friendUrlForOpenGraph = makeUrlForSharing(
+    data.familyUrl,
+    data.title,
+    data.description,
+    data.message,
+    data.date,
+  );
+
   return (
     <main className={fullWrapper}>
       <Header title='영수증 출력' hasPrevious />
       <div className={receiptWrapper}>
         <div className={myReceiptWrapper}>
           <div className={receiptShadow}>
-            {/* TODO 임시 데이터 삭제하고 실제 데이터 연결  */}
-            <Receipt content={tempData} />
+            <Receipt content={data} />
           </div>
           <div className={buttonsWrapper}>
             <div className={myreceiptButtonWrapper}>
               <Button
-                onClick={open}
+                onClick={openModal}
                 type='button'
                 size='large'
                 colorStyle='blue'
@@ -68,11 +81,13 @@ const MyReceipt = ({ data, seq }: Props) => {
         </div>
       </div>
       <NavBar />
-      {isOpen && (
-        <Modal open={isOpen} onClose={close} title='어떻게 공유할까요?'>
-          <SharingButtons />
-        </Modal>
-      )}
+
+      <Modal title='어떻게 공유할까요?'>
+        <SharingButtons
+          familyUrl={familyUrlForOpenGraph}
+          friendUrl={friendUrlForOpenGraph}
+        />
+      </Modal>
     </main>
   );
 };

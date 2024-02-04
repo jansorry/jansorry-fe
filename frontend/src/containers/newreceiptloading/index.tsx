@@ -1,41 +1,50 @@
-import { useEffect } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import { animationFinishedState } from '@/containers/newreceiptloading/receiptAnimation';
 import { defaultWrapper } from '@/styles/common.css';
 import CreateLoading from '@/containers/newreceiptloading/createloading';
 import { createReceipt, getNagStatistic } from '@/services/receipt';
+import { createReceiptObject } from '@/utils/makeReceipt';
 
 interface Props {
   seq: number;
 }
 
-const MyReceipt = ({ seq }: Props) => {
+const CreateReceipt = () => {
   const router = useRouter();
   const [animationFinished, setAnimationFinished] = useRecoilState(
     animationFinishedState,
   );
+  const [receiptSeq, setReceiptSeq] = useState(0);
 
+  //  생성한 영수증 페이지로 이동하는 로직
+  useEffect(() => {
+    if (animationFinished && !receiptSeq) {
+      router.push(`/myreceipt/${receiptSeq}`);
+    }
+    //  하단 두 개에 종속
+  }, [animationFinished, receiptSeq]);
+
+  //  api 데이터를 불러오는 로직 -> 한 번만 호출 되어야함.
   useEffect(() => {
     const getDataAndCreateReceipt = async () => {
       try {
         const data = await getNagStatistic();
-
-        //  TODO 영수증 데이터로 저장용 url 생성
-        const receiptInfo = {};
-        const dataToReceiptString;
-        await createReceipt(receiptInfo);
+        // const data = tempNagStatisticResponse;
+        const receiptInfo = createReceiptObject(data);
+        const seq = await createReceipt(receiptInfo);
+        setReceiptSeq(seq);
       } catch (error) {
         console.error(error);
       }
     };
 
-    if (animationFinished) {
-      setAnimationFinished(false);
-      router.push(`/myreceipt/${seq}`);
-    }
-  }, [animationFinished, router, seq]);
+    getDataAndCreateReceipt();
+  }, []);
 
   return (
     <main className={defaultWrapper({ width: 'max', height: 'auto' })}>
@@ -44,4 +53,4 @@ const MyReceipt = ({ seq }: Props) => {
   );
 };
 
-export default MyReceipt;
+export default CreateReceipt;
