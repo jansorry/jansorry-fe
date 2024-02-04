@@ -17,7 +17,12 @@ const Header = ({ title, hasPrevious }: Props) => {
   return (
     <nav className={styles.headerWrapper}>
       {hasPrevious ? (
-        <button type='button' className={styles.previousButton} onClick={() => router.back()}>
+        <button
+          type='button'
+          className={styles.previousButton}
+          onClick={() => router.back()}
+          aria-label='뒤로가기'
+        >
           <IconArrowLeft />
         </button>
       ) : (

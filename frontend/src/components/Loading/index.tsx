@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import { AnimationLoading } from '#/svgs';
 
 import * as styles from './index.css';

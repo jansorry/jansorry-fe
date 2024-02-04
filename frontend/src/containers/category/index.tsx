@@ -55,21 +55,22 @@ const Category = ({ nagItems }: Props) => {
         <section className={styles.categoryLeft}>
           <ul>
             {categoryKeys.map((categoryKey: number) => (
-              <div
-                className={
-                  isFocused === categoryKey
-                    ? styles.selectedCategoryKeys
-                    : styles.categoryKeys
-                }
-                key={categoryKey}
-                role='presentation'
-                ref={refMap.get(categoryKey)}
-                onClick={() =>
-                  handleScroll(refMap.get(categoryKey) ?? refUndefined)
-                }
-              >
-                {categoryValues[categoryKey as keyof typeof categoryValues]}
-              </div>
+              <li key={categoryKey}>
+                <div
+                  className={
+                    isFocused === categoryKey
+                      ? styles.selectedCategoryKeys
+                      : styles.categoryKeys
+                  }
+                  role='presentation'
+                  ref={refMap.get(categoryKey)}
+                  onClick={() =>
+                    handleScroll(refMap.get(categoryKey) ?? refUndefined)
+                  }
+                >
+                  {categoryValues[categoryKey as keyof typeof categoryValues]}
+                </div>
+              </li>
             ))}
           </ul>
         </section>
