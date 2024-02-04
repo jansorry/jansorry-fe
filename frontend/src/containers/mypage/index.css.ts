@@ -133,6 +133,12 @@ export const profileContentStyle = style([
   },
 ]);
 
+export const cardGridWrapper = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gap: vars.space['1x'],
+});
+
 export const noCardWrapper = style({
   marginTop: vars.space['4x'],
 });

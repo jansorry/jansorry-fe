@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import { userDataResponse, actionTotalCount } from '@/types/userData';
+import { totalReceiptCountResponse } from '@/types/receipt';
 import { UserProfile } from '@/containers/mypage/UserProfile';
-import { getActionTotalCount } from '@/services/mypage';
 
 import Header from '@/components/Header';
 import * as styles from './index.css';
@@ -15,40 +15,36 @@ import Loading from '@/components/Loading';
 
 interface Props {
   myPageItems: userDataResponse;
+  actionsData: actionTotalCount;
+  receiptCount: totalReceiptCountResponse;
 }
 
-const MyPageContainer = ({ myPageItems }: Props) => {
+const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const actionCount = await getActionTotalCount();
-        setNagCount(actionCount.content.length);
-        setIsLoading(false);
-      } catch (e) {
-        console.error(e);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+    try {
+      setNagCount(actionsData.content.length);
+      setIsLoading(false);
+    } catch (e) {
+      console.error(e);
+      setIsLoading(false);
+    }
+  }, [actionsData]);
 
   const renderContent = () => {
     if (isLoading) {
-      return (
-        <div>
-          <Loading />
-        </div>
-      );
+      return <Loading />;
     }
 
     return NagCount > 0 ? (
-      <ProfileWithContent NagCount={NagCount} />
+      <ProfileWithContent
+        actions={actionsData.content}
+        totalReceiptCount={receiptCount}
+      />
     ) : (
-      <ProfileNoContent />
+      <ProfileNoContent totalReceiptCount={receiptCount} />
     );
   };
 

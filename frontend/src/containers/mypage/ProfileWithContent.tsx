@@ -1,52 +1,51 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
-import { NagCardKeyOptions } from '@/types/nagCard';
 import useModal from '@/hooks/useModal';
+import { actionResponse } from '@/types/userData';
+import { ReceiptData, totalReceiptCountResponse } from '@/types/receipt';
+import { postReceipt } from '@/services/receipt';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
-import Modal from '@/components/Modal';
 
 interface Props {
-  NagCount: number;
+  actions: actionResponse[];
+  totalReceiptCount: totalReceiptCountResponse;
 }
 
-const ProfileWithContent = ({ NagCount }: Props) => {
+const ProfileWithContent = ({ actions, totalReceiptCount }: Props) => {
   const router = useRouter();
-  const [receiptCount, setReceiptCount] = useState<number>(0);
-  const { isOpen, open, close } = useModal();
-
-  useEffect(() => {
-    // TODO: Replace the below URL with the actual API endpoint if needed
-    fetch('/api/v1/receipts')
-      .then((response) => response.json())
-      .then((data) => {
-        setReceiptCount(data.receiptCount);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch receipt count', error);
-        // Handle error state as needed
-      });
-  }, []);
+  const { Modal, openModal, closeModal } = useModal();
 
   const handleReceiptCount = () => {
-    if (NagCount >= 3) {
-      open();
+    if (totalReceiptCount.receiptCount >= 3) {
+      openModal();
     } else {
-      router.push('/receipts');
-    }
-  };
+      const receiptData: ReceiptData = {
+        // title, description: OG 사용해서 추가 예정
+        title: '명절 잔소리에 가격을 매길 수 있다고요?',
+        description:
+          '내 친구들은 이번 명절에 어떤 잔소리를 들었을지 궁금하다면?',
+        message: '명절 잔소리 영수증 하러가기',
+        // familiyUrl, freindUrl 임시 설정
+        familyUrl: `https://temp.family`,
+        friendUrl: 'https://temp.friend',
+        // 현재 시각은 생성 시각으로 설정해야 함
+        createdAt: new Date().toISOString(), // 현재 시각을 ISO 문자열로 설정
+      };
 
-  // 현재 NagCardKeyOptions는 데이터가 없어서 임시로 구현
-  const card: NagCardKeyOptions = {
-    categoryKey: 2,
-    typeKey: 1,
-    sizeKey: 2,
-    textStyleKey: 0,
+      postReceipt(receiptData)
+        .then(() => {
+          router.push(`/receipts/${totalReceiptCount.receiptCount + 1}`);
+        })
+        .catch((error) => {
+          console.error('Failed to save the receipt:', error);
+        });
+    }
   };
 
   return (
@@ -61,28 +60,35 @@ const ProfileWithContent = ({ NagCount }: Props) => {
       >
         영수증 발급
       </Button>
-      {isOpen && (
-        <Modal
-          open={isOpen}
-          onClose={close}
-          title='영수증은 세 개까지만 저장 가능해요.'
-        >
-          <div className={styles.actionModalWrapper}>
-            <Button
-              type='button'
-              size='large'
-              colorStyle='blue'
-              filled
-              onClick={close}
-            >
-              확인
-            </Button>
-          </div>
-        </Modal>
-      )}
-      <div className={styles.profileText({ contentType: 'card' })}>
-        <NagCard cardOption={card} />
+      <div className={styles.cardGridWrapper}>
+        {actions.map((action) => (
+          <NagCard
+            key={action.actionId}
+            cardOption={{
+              categoryKey: action.categoryId,
+              typeKey: 1,
+              sizeKey: 1,
+              textStyleKey: 1,
+              shadow: false,
+              text: undefined,
+            }}
+          />
+        ))}
+        ;
       </div>
+      <Modal title='영수증은 세 개까지만 저장 가능해요.'>
+        <div className={styles.actionModalWrapper}>
+          <Button
+            type='button'
+            size='large'
+            colorStyle='blue'
+            filled
+            onClick={closeModal}
+          >
+            확인
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };

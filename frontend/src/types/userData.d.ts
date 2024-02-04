@@ -5,7 +5,7 @@ export interface userDataResponse {
   followingCnt: number;
 }
 
-export interface action {
+export interface actionResponse {
   categoryId: number;
   nagContent: string;
   actionId: number;
@@ -14,7 +14,7 @@ export interface action {
 
 export interface actionTotalCount {
   size: number;
-  content: action[];
+  content: actionResponse[];
   number: number;
   sort: { empty: boolean; sorted: boolean; unsorted: boolean };
   pageable: {
@@ -29,8 +29,4 @@ export interface actionTotalCount {
   first: boolean;
   last: boolean;
   empty: boolean;
-}
-
-export interface totalReceiptCount {
-  receiptCount: number;
 }

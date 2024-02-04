@@ -15,3 +15,16 @@ export interface receiptContent {
   totalCount: number;
   totalPrice: number;
 }
+
+export interface ReceiptData {
+  title: string;
+  description: string;
+  message: string;
+  familyUrl: string;
+  friendUrl: string;
+  createdAt: string;
+}
+
+export interface totalReceiptCountResponse {
+  receiptCount: number;
+}
