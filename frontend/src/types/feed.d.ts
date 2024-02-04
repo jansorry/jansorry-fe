@@ -8,6 +8,8 @@ export interface feedContent {
   categoryId: number;
   categoryTitle: string;
   favoriteCount: number;
+  isFollow: boolean | null;
+  isFavorite: boolean;
   createdAt: string;
 }
 

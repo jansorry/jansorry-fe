@@ -1,5 +1,15 @@
+import Image from 'next/image';
+
+import { AnimationLoading } from '#/svgs';
+
+import * as styles from './index.css';
+
 const Loading = () => {
-  return <div>Loading</div>;
+  return (
+    <div className={styles.LoadingWrapper}>
+      <AnimationLoading />
+    </div>
+  );
 };
 
 export default Loading;
