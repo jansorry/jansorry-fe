@@ -53,6 +53,9 @@ export const getFeed = async (
     let feedType;
     let generationParams = '';
     switch (hashtagId) {
+      case 0: // live feed
+        feedType = 'live';
+        break;
       case 1: // following feed
         feedType = 'following';
         break;
