@@ -16,9 +16,9 @@ interface Props {
 export const SharingButtons = ({ familyUrl, friendUrl }: Props) => {
   const [isSelected, setIsSelected] = useState(true);
 
-  const copyLink = async (family: boolean) => {
+  const copyLink = async () => {
     try {
-      const url = family ? familyUrl : friendUrl;
+      const url = isSelected ? friendUrl : familyUrl;
       await navigator.clipboard.writeText(url);
       console.log('링크가 클립보드에 복사되었습니다.');
       console.log(url);
@@ -37,7 +37,7 @@ export const SharingButtons = ({ familyUrl, friendUrl }: Props) => {
           <Button
             onClick={() => {
               setIsSelected(true);
-              copyLink(true);
+              copyLink();
             }}
             type='button'
             size='small'
@@ -52,7 +52,7 @@ export const SharingButtons = ({ familyUrl, friendUrl }: Props) => {
           <Button
             onClick={() => {
               setIsSelected(false);
-              copyLink(true);
+              copyLink();
             }}
             type='button'
             size='small'

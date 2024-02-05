@@ -1,28 +1,29 @@
-import * as url from 'url';
-
-import { getAllNags, getReceipts } from '@/services/receipt';
 import MyReceipt from '@/containers/myreceipt';
-import { tempReceiptContent } from '@/containers/myreceipt/tempReceipData';
 import {
   makeShareUrl,
   parsingReceiptContent,
   parsingReceiptDataArray,
 } from '@/utils/drawReceipt';
+import { getAllNags, getReceipts } from '@/services/receipt';
+
+import { dummyNagArray, dummyReceiptResponse } from '@/app/myreceipt/dummy';
 
 interface Props {
   params: { seq: 0 | 1 | 2 };
 }
 
 const MyReceiptPage = async ({ params }: Props) => {
-  //  TODO myreceipt Cnt와 seq가 맞지 않을 경우에 대한 예외처리 필요할 것 같아요
   const { seq } = params;
 
-  //  TODO 여기 api 활성화
-  //  기본 api 호출
+  // api 받는 로직
   const [receiptInfo, allNagsArray] = await Promise.all([
     getReceipts(seq),
     getAllNags(),
   ]);
+
+  // //  더미데이터
+  // const receiptInfo = dummyReceiptResponse;
+  // const allNagsArray = dummyNagArray;
 
   const familyUrlForOpenGraph = makeShareUrl(
     receiptInfo.familyUrl,

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useRouter } from 'next/navigation';
 
-import { animationFinishedState } from '@/containers/newreceiptloading/receiptAnimation';
+import { animationFinishedState } from '@/containers/newreceiptloading/store';
 import { defaultWrapper } from '@/styles/common.css';
 import CreateLoading from '@/containers/newreceiptloading/createloading';
 import { createReceipt, getNagStatistic } from '@/services/receipt';
@@ -15,20 +15,18 @@ const CreateReceipt = () => {
   const [animationFinished, setAnimationFinished] = useRecoilState(
     animationFinishedState,
   );
-  const [receiptSeq, setReceiptSeq] = useState(0);
+  const [receiptSeq, setReceiptSeq] = useState(1);
 
   //  생성한 영수증 페이지로 이동하는 로직
   useEffect(() => {
-    if (animationFinished && !receiptSeq) {
+    if (animationFinished && receiptSeq) {
       router.push(`/myreceipt/${receiptSeq}`);
     }
   }, [animationFinished, receiptSeq]);
 
-  //  api 데이터를 불러오는 로직 -> 한 번만 호출 되어야함.
   useEffect(() => {
     const getDataAndCreateReceipt = async () => {
       const data = await getNagStatistic();
-      // const data = tempNagStatisticResponse;
       const receiptInfo = createReceiptObject(data);
       const seq = await createReceipt(receiptInfo);
       console.log(receiptInfo);

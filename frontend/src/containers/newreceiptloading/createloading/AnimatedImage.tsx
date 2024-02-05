@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 
 import * as styles from '@/containers/newreceiptloading/createloading/index.css';
-import { animationFinishedState } from '@/containers/newreceiptloading/receiptAnimation';
+import { animationFinishedState } from '@/containers/newreceiptloading/store';
 
 const AnimatedImage: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
