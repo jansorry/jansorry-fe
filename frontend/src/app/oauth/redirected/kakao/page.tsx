@@ -6,12 +6,13 @@ import { useSetRecoilState } from 'recoil';
 
 import { getKakaoLogin } from '@/services/auth';
 import { authResponse } from '@/types/auth';
-import { oauthIdState } from '@/states/auth';
+import { kakaoNicknameState, oauthIdState } from '@/states/auth';
 
 import Loading from '@/components/Loading';
 
 const KakaoOauth = () => {
   const setAuthId = useSetRecoilState(oauthIdState);
+  const setKakaoNickname = useSetRecoilState(kakaoNicknameState);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -19,10 +20,11 @@ const KakaoOauth = () => {
 
   const loginHandler = (code: string) =>
     getKakaoLogin(code).then((res: authResponse) => {
-      const { oauthId, nickname, accessToken } = res;
+      const { oauthId, kakaoNickname, accessToken } = res;
 
       if (!accessToken && oauthId) {
         setAuthId(oauthId);
+        setKakaoNickname(kakaoNickname);
         router.push('/signup');
         return;
       }
