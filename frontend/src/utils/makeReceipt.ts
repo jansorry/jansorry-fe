@@ -38,8 +38,8 @@ export const createReceiptObject = (
     return url.toString();
   };
 
-  const familyUrlBase = `http://janssory.com/sharereceipt/family`;
-  const friendUrlBase = `http://janssory.com/sharereceipt/friend`;
+  const familyUrlBase = `https://jansorry.com/sharereceipt/family`;
+  const friendUrlBase = `https://jansorry.com/sharereceipt/friend`;
 
   const familyUrl = addQueryStringToURL(familyUrlBase, nagCountMap);
   const friendUrl = addQueryStringToURL(friendUrlBase, nagCountMap);
