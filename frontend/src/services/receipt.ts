@@ -47,13 +47,13 @@ export const getReceipts = async (
 
   return {
     maxCountedNagId: -1,
+    totalPrice: -1,
+    totalCount: -1,
     title: '서버오류',
     description: '서버오류',
     message: '서버오류',
     familyUrl: '서버오류',
     friendUrl: '서버오류',
-    totalPrice: -1,
-    totalCount: -1,
     createdAt: '없음',
   };
 };

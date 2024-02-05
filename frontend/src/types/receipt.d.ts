@@ -32,9 +32,9 @@ export interface nagStatisticResponse {
 }
 
 export interface receiptResponse {
-  maxCountedNagId: number;
+  maxCountedNagId?: number;
   totalPrice: number;
-  totalCount: number;
+  totalCount?: number;
   title?: string;
   description?: string;
   message?: string;
