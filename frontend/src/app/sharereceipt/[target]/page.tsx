@@ -6,6 +6,8 @@ import {
   parsingReceiptDataArray,
 } from '@/utils/drawReceipt';
 
+import { dummyNagArray } from '@/app/myreceipt/dummy';
+
 interface metaProps {
   params: { target: 'family' | 'friend' };
   searchParams: { [key: string]: string };
@@ -28,8 +30,9 @@ export const generateMetadata = ({
 };
 
 const ShareReceipt = async ({ params, searchParams }: metaProps) => {
-  //  전체 잔소리 배열api호출
+  // //  전체 잔소리 배열api호출
   const allNagsArray = await getAllNags();
+  // const allNagsArray = dummyNagArray;
 
   //  잔소리 배열 + url 상의 잔소리 내역
   const dataArray = parsingReceiptDataArray({

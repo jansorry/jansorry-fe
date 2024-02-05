@@ -25,15 +25,19 @@ export interface nagStatisticItem {
   count: number;
 }
 export interface nagStatisticResponse {
+  totalPrice: number;
+  totalCount: number;
+  maxCountedNagId: number;
   data: nagStatisticItem[];
 }
 
 export interface receiptResponse {
-  title: string | null;
-  description: string | null;
-  message: string | null;
-  familyUrl: string | null;
-  friendUrl: string | null;
-  totalPrice: number | null;
-  createdAt: string | null;
+  maxCountedNagId: number;
+  title?: string;
+  description?: string;
+  message?: string;
+  familyUrl: string;
+  friendUrl: string;
+  totalPrice: number;
+  createdAt?: string;
 }

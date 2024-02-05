@@ -1,7 +1,6 @@
 'use client';
 
 import { receiptContent } from '@/types/receipt';
-import { tempReceiptContent } from '@/containers/myreceipt/tempReceipData';
 import {
   buttonsWrapper,
   fullWrapper,
@@ -13,7 +12,6 @@ import {
 import { deleteReceipt } from '@/services/receipt';
 import useModal from '@/hooks/useModal';
 import { SharingButtons } from '@/containers/myreceipt/SharingButtons';
-import { makeUrlForSharing } from '@/utils/makeReceipt';
 
 import { Receipt } from '@/components/Receipt';
 import Header from '@/components/Header';
@@ -33,7 +31,6 @@ const MyReceipt = ({
   friendUrlForOpenGraph,
 }: Props) => {
   const { Modal, openModal } = useModal();
-  const shareReceiptEvent = () => {};
   const deleteReceiptEvent = () => {
     deleteReceipt(seq);
   };

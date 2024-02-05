@@ -115,10 +115,10 @@ export const receiptTextStyle = recipe({
   },
   variants: {
     target: {
-      adult: {
+      family: {
         fontWeight: vars.fontWeight.accent,
       },
-      normal: {
+      friend: {
         fontWeight: vars.fontWeight.normal,
       },
     },
@@ -133,7 +133,7 @@ export const receiptTextStyle = recipe({
   compoundVariants: [
     {
       variants: {
-        target: 'adult',
+        target: 'family',
         contentType: 'title',
       },
       style: {
@@ -142,7 +142,7 @@ export const receiptTextStyle = recipe({
     },
     {
       variants: {
-        target: 'adult',
+        target: 'family',
         contentType: 'content',
       },
       style: {
@@ -151,7 +151,7 @@ export const receiptTextStyle = recipe({
     },
     {
       variants: {
-        target: 'normal',
+        target: 'friend',
         contentType: 'title',
       },
       style: {
@@ -160,7 +160,7 @@ export const receiptTextStyle = recipe({
     },
     {
       variants: {
-        target: 'normal',
+        target: 'friend',
         contentType: 'content',
       },
       style: {
