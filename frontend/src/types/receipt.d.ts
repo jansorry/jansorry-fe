@@ -28,7 +28,7 @@ export interface nagStatisticResponse {
   totalPrice: number;
   totalCount: number;
   maxCountedNagId: number;
-  data: nagStatisticItem[];
+  nagStatisticDtos: nagStatisticItem[];
 }
 
 export interface receiptResponse {

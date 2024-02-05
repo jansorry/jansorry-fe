@@ -13,7 +13,7 @@ export const getNagStatistic = async (): Promise<nagStatisticResponse> => {
     totalPrice: -1,
     totalCount: -1,
     maxCountedNagId: -1,
-    data: [
+    nagStatisticDtos: [
       {
         nagId: -1,
         content: '서버 오류',

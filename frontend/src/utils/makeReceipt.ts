@@ -13,7 +13,7 @@ const createNagMap = (
   response: nagStatisticResponse,
 ): Record<number, number> => {
   const paramsObj: Record<number, number> = {};
-  response.data.forEach((item) => {
+  response.nagStatisticDtos.forEach((item) => {
     paramsObj[item.nagId] = item.count;
   });
   return paramsObj;
