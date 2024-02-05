@@ -6,7 +6,7 @@ export interface receiptData {
 }
 
 export interface receiptContent {
-  type: 'adult' | 'normal';
+  type: 'family' | 'friend';
   title: string;
   description: string;
   message: string;
@@ -29,12 +29,11 @@ export interface nagStatisticResponse {
 }
 
 export interface receiptResponse {
-  title: string;
-  description: string;
-  message: string;
-  familyUrl: string;
-  friendUrl: string;
-  totalPrice: number;
-  //  date저장 어떻게 되는지 확인
-  date?: string;
+  title: string | null;
+  description: string | null;
+  message: string | null;
+  familyUrl: string | null;
+  friendUrl: string | null;
+  totalPrice: number | null;
+  createdAt: string | null;
 }

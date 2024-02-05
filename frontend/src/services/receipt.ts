@@ -1,6 +1,7 @@
 import { apiClient, apiServer } from '@/services/index';
 import { nagStatisticResponse, receiptResponse } from '@/types/receipt';
-import { nagTotalResponse } from '@/types/nag';
+import { nag, nagTotalResponse } from '@/types/nag';
+import { flattenNags } from '@/utils/drawReceipt';
 
 export const getNagStatistic = async (): Promise<nagStatisticResponse> => {
   try {
@@ -24,13 +25,14 @@ export const createReceipt = async (
   receiptInfo: receiptResponse,
 ): Promise<number> => {
   try {
-    return await apiClient.post('/receipts');
+    return await apiClient.post('/receipts', receiptInfo);
   } catch (error) {
     console.log(error);
   }
   return -1;
 };
 
+//  영수증 상세 정보
 export const getReceipts = async (
   seq: number,
   token: string = '',
@@ -48,6 +50,7 @@ export const getReceipts = async (
     familyUrl: '서버오류',
     friendUrl: '서버오류',
     totalPrice: 0,
+    createdAt: '없음',
   };
 };
 
@@ -60,9 +63,10 @@ export const deleteReceipt = async (seq: number) => {
   return undefined;
 };
 
-export const getAllNag = async (): Promise<nagTotalResponse[]> => {
+export const getAllNags = async (): Promise<nag[]> => {
   try {
-    return await apiClient.get<nagTotalResponse[]>(`/nags`);
+    const response = await apiClient.get<nagTotalResponse[]>(`/nags`);
+    return flattenNags(response);
   } catch (e) {
     console.log(e);
   }

@@ -15,15 +15,14 @@ const calculateTotal = (response: nagStatisticResponse) => {
   return total;
 };
 
-const createQueryString = (params: {
+const createQueryStringUsingURL = (params: {
   [x: string]: string | number | boolean;
-  [x: number]: number;
 }) => {
-  return Object.keys(params)
-    .map(
-      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
-    )
-    .join('&');
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([key, value]) => {
+    searchParams.append(key, value.toString());
+  });
+  return searchParams.toString();
 };
 const createNagMap = (
   response: nagStatisticResponse,
@@ -38,19 +37,38 @@ const createNagMap = (
 export const createReceiptObject = (
   response: nagStatisticResponse,
 ): receiptResponse => {
+  //   총합 계산
   const total = calculateTotal(response);
+
+  // nagId : count Map 생성
   const nagCountMap = createNagMap(response);
-  const queryString = createQueryString(nagCountMap);
-  const familyUrl = `http://janssory.com/sharereceipt/family/${queryString}`;
-  const friendUrl = `http://janssory.com/sharereceipt/friend/${queryString}`;
+
+  const addQueryStringToURL = (
+    baseUrl: string,
+    params: { [x: string]: string | number | boolean },
+  ) => {
+    const url = new URL(baseUrl);
+    const queryString = createQueryStringUsingURL(params);
+    url.search = queryString;
+    return url.toString();
+  };
+
+  const familyUrlBase = `http://janssory.com/sharereceipt/family`;
+  const friendUrlBase = `http://janssory.com/sharereceipt/friend`;
+
+  const familyUrl = addQueryStringToURL(familyUrlBase, nagCountMap);
+  const friendUrl = addQueryStringToURL(friendUrlBase, nagCountMap);
+
   const postData: receiptResponse = {
-    title: '',
-    description: '',
-    message: '',
+    title: null,
+    description: null,
+    message: null,
     familyUrl,
     friendUrl,
     totalPrice: total,
+    createdAt: null,
   };
+  console.log(postData);
   return postData;
 };
 
@@ -159,8 +177,6 @@ export const makeUrlForSharing = (
   console.log(urlObj.toString());
   return urlObj.toString();
 };
-
-export const makeContentForSharing = (url: string) => {};
 
 export const getQueryStringValues = (
   nagItems: nagTotalResponse[],

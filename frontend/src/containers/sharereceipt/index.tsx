@@ -1,18 +1,18 @@
-import { receiptContent, receiptData } from '@/types/receipt';
-import { getQueryStringValues } from '@/utils/makeReceipt';
-import { nagTotalResponse } from '@/types/nag';
-import { getNagCategory } from '@/services/nag';
-import { getAllNag } from '@/services/receipt';
+'use client';
+
+import { receiptContent } from '@/types/receipt';
 
 import { Receipt } from '@/components/Receipt';
 
-const SharedReceipt = async () => {
-  const nagItems = await getAllNag();
-  const content = getQueryStringValues(nagItems);
+interface Props {
+  content: receiptContent;
+}
 
+const SharedReceipt = ({ content }: Props) => {
+  console.log(content);
   return (
     <div>
-      <Receipt content={content} />
+      {content.date ? <Receipt content={content} /> : <div>오류입니다</div>}
     </div>
   );
 };

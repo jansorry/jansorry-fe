@@ -10,10 +10,6 @@ import CreateLoading from '@/containers/newreceiptloading/createloading';
 import { createReceipt, getNagStatistic } from '@/services/receipt';
 import { createReceiptObject } from '@/utils/makeReceipt';
 
-interface Props {
-  seq: number;
-}
-
 const CreateReceipt = () => {
   const router = useRouter();
   const [animationFinished, setAnimationFinished] = useRecoilState(
@@ -26,21 +22,17 @@ const CreateReceipt = () => {
     if (animationFinished && !receiptSeq) {
       router.push(`/myreceipt/${receiptSeq}`);
     }
-    //  하단 두 개에 종속
   }, [animationFinished, receiptSeq]);
 
   //  api 데이터를 불러오는 로직 -> 한 번만 호출 되어야함.
   useEffect(() => {
     const getDataAndCreateReceipt = async () => {
-      try {
-        const data = await getNagStatistic();
-        // const data = tempNagStatisticResponse;
-        const receiptInfo = createReceiptObject(data);
-        const seq = await createReceipt(receiptInfo);
-        setReceiptSeq(seq);
-      } catch (error) {
-        console.error(error);
-      }
+      const data = await getNagStatistic();
+      // const data = tempNagStatisticResponse;
+      const receiptInfo = createReceiptObject(data);
+      const seq = await createReceipt(receiptInfo);
+      console.log(receiptInfo);
+      setReceiptSeq(seq);
     };
 
     getDataAndCreateReceipt();

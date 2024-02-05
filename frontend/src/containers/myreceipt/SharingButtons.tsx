@@ -5,7 +5,6 @@ import {
   doubleButtonWrapper,
   modalWrapper,
 } from '@/containers/myreceipt/index.css';
-import { makeUrlForSharing } from '@/utils/makeReceipt';
 
 import Button from '@/components/Button';
 

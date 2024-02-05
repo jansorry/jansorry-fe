@@ -23,28 +23,21 @@ import Button from '@/components/Button';
 interface Props {
   data: receiptContent;
   seq: number;
+  familyUrlForOpenGraph: string;
+  friendUrlForOpenGraph: string;
 }
-const MyReceipt = ({ data, seq }: Props) => {
+const MyReceipt = ({
+  data,
+  seq,
+  familyUrlForOpenGraph,
+  friendUrlForOpenGraph,
+}: Props) => {
   const { Modal, openModal } = useModal();
   const shareReceiptEvent = () => {};
   const deleteReceiptEvent = () => {
     deleteReceipt(seq);
   };
-
-  const familyUrlForOpenGraph = makeUrlForSharing(
-    data.familyUrl,
-    data.title,
-    data.description,
-    data.message,
-    data.date,
-  );
-  const friendUrlForOpenGraph = makeUrlForSharing(
-    data.familyUrl,
-    data.title,
-    data.description,
-    data.message,
-    data.date,
-  );
+  console.log(data);
 
   return (
     <main className={fullWrapper}>
