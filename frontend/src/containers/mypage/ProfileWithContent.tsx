@@ -6,15 +6,17 @@ import { useRouter } from 'next/navigation';
 import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
 import { totalReceiptCountResponse } from '@/types/receipt';
+import { actionResponse } from '@/types/userData';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
+  totalActionCards: actionResponse[];
   totalReceiptCount: totalReceiptCountResponse;
 }
 
-const ProfileWithContent = ({ totalReceiptCount }: Props) => {
+const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
@@ -22,8 +24,7 @@ const ProfileWithContent = ({ totalReceiptCount }: Props) => {
     if (totalReceiptCount.receiptCount >= 3) {
       openModal();
     } else {
-        router.push(`/receipts/${totalReceiptCount.receiptCount + 1}`)
-      }
+      router.push(`/receipts/${totalReceiptCount.receiptCount + 1}`);
     }
   };
 
@@ -44,7 +45,7 @@ const ProfileWithContent = ({ totalReceiptCount }: Props) => {
         영수증 발급
       </Button>
       <div className={styles.cardGridWrapper}>
-        {actions.map((action) => (
+        {totalActionCards.map((action) => (
           <div
             onClick={() => handleCardClick(action.actionId)}
             key={action.actionId}
