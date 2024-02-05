@@ -52,7 +52,8 @@ export const getReceipts = async (
     message: '서버오류',
     familyUrl: '서버오류',
     friendUrl: '서버오류',
-    totalPrice: 0,
+    totalPrice: -1,
+    totalCount: -1,
     createdAt: '없음',
   };
 };

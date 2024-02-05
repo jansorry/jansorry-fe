@@ -33,11 +33,12 @@ export interface nagStatisticResponse {
 
 export interface receiptResponse {
   maxCountedNagId: number;
+  totalPrice: number;
+  totalCount: number;
   title?: string;
   description?: string;
   message?: string;
   familyUrl: string;
   friendUrl: string;
-  totalPrice: number;
   createdAt?: string;
 }

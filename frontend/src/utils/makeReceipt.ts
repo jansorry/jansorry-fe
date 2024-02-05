@@ -23,6 +23,7 @@ export const createReceiptObject = (
   response: nagStatisticResponse,
 ): receiptResponse => {
   const total = response.totalPrice;
+  const count = response.totalCount;
   const { maxCountedNagId } = response;
   // nagId : count Map 생성
   const nagCountMap = createNagMap(response);
@@ -46,6 +47,7 @@ export const createReceiptObject = (
   const postData: receiptResponse = {
     maxCountedNagId,
     totalPrice: total,
+    totalCount: count,
     familyUrl,
     friendUrl,
   };
