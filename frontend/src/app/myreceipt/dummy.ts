@@ -7,6 +7,7 @@ export const dummyReceiptResponse = {
   friendUrl: 'http://localhost:3000/sharereceipt/friend?1=10&2=2&7=9&6=2',
   totalPrice: 10000,
   createdAt: '202401021225',
+  totalCount: 4,
 };
 
 export const dummyNagArray = [

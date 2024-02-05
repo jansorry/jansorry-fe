@@ -9,7 +9,7 @@ import { getAllNags, getReceipts } from '@/services/receipt';
 import { dummyNagArray, dummyReceiptResponse } from '@/app/myreceipt/dummy';
 
 interface Props {
-  params: { seq: 0 | 1 | 2 };
+  params: { seq: 1 | 2 | 3 };
 }
 
 const MyReceiptPage = async ({ params }: Props) => {
@@ -21,7 +21,7 @@ const MyReceiptPage = async ({ params }: Props) => {
     getAllNags(),
   ]);
 
-  // //  더미데이터
+  // // //  더미데이터
   // const receiptInfo = dummyReceiptResponse;
   // const allNagsArray = dummyNagArray;
 
