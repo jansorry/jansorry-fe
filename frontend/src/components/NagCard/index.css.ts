@@ -9,7 +9,16 @@ export const cardSizes = recipe({
   variants: {
     size: {
       xSmall: { width: 96, height: 128 },
-      small: { width: 138, height: 184 },
+      small: {
+        width: `calc((480px - 2 * ${vars.space['1x']}) / 3)`,
+        height: `calc(((480px - 2 * ${vars.space['1x']}) / 3) * (184 / 138))`,
+        '@media': {
+          'screen and (max-width: 480px)': {
+            width: `calc((100vw - 2 * ${vars.space['1x']}) / 3)`, // 화면 너비에 맞춰 조절, 여백 고려
+            height: `calc(((100vw - 2 * ${vars.space['1x']}) / 3) * (184 / 138))`, // 원래 비율 유지
+          },
+        },
+      },
       medium: { width: 198, height: 264 },
       large: { width: 300, height: 400 },
     },

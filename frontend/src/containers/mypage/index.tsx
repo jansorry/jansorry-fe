@@ -24,25 +24,18 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    try {
-      setNagCount(actionsData.content.length);
-      setIsLoading(false);
-    } catch (e) {
-      console.error(e);
-      setIsLoading(false);
-    }
+    const contentLength = actionsData.content?.length ?? 0;
+    setNagCount(contentLength);
+    setIsLoading(false);
   }, [actionsData]);
 
-  const renderContent = () => {
+  const renderMyCard = () => {
     if (isLoading) {
       return <Loading />;
     }
 
     return NagCount > 0 ? (
-      <ProfileWithContent
-        actions={actionsData.content}
-        totalReceiptCount={receiptCount}
-      />
+      <ProfileWithContent totalReceiptCount={receiptCount} />
     ) : (
       <ProfileNoContent totalReceiptCount={receiptCount} />
     );
@@ -55,7 +48,7 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
         <div className={styles.profileContentWrapper}>
           <UserProfile myPageItems={myPageItems} />
         </div>
-        {renderContent()}
+        {renderMyCard()}
         <div className={styles.bottomNav}>
           <NavBar clickedIndex={3} />
         </div>

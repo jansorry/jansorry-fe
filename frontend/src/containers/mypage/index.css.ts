@@ -137,6 +137,9 @@ export const cardGridWrapper = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: vars.space['1x'],
+  padding: vars.space['1x'],
+  margin: vars.space['1x'],
+  marginTop: vars.space['5x'],
 });
 
 export const noCardWrapper = style({

@@ -26,5 +26,5 @@ export interface ReceiptData {
 }
 
 export interface totalReceiptCountResponse {
-  receiptCount: number;
+  receiptCount: 0 | 1 | 2;
 }
