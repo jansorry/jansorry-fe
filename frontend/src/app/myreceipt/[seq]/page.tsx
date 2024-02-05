@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 import MyReceipt from '@/containers/myreceipt';
 import {
   makeShareUrl,
@@ -14,11 +16,13 @@ interface Props {
 
 const MyReceiptPage = async ({ params }: Props) => {
   const { seq } = params;
+  const cookieStore = cookies();
+  const refreshToken = cookieStore.get('refreshToken')?.value;
 
   // api 받는 로직
   const [receiptInfo, allNagsArray] = await Promise.all([
-    getReceipts(seq),
-    getAllNags(),
+    getReceipts(seq, refreshToken),
+    getAllNags(refreshToken),
   ]);
 
   // // //  더미데이터
