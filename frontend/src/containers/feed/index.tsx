@@ -65,7 +65,7 @@ const Feed = ({ content, last }: feedResponse) => {
               type='button'
               size='small'
               colorStyle='blue'
-              filled
+              filled={selectedHashtag === hashtagKey}
               onClick={() => handleHashtagClicked(hashtagKey)}
             >
               {hashtagValues[hashtagKey]}
