@@ -6,12 +6,39 @@ export interface receiptData {
 }
 
 export interface receiptContent {
-  type: 'adult' | 'normal';
+  type: 'family' | 'friend';
   title: string;
   description: string;
   message: string;
   date: string;
   data: receiptData[];
+  familyUrl: string;
+  friendUrl: string;
   totalCount: number;
   totalPrice: number;
+}
+
+export interface nagStatisticItem {
+  nagId: number;
+  content: string;
+  price: number;
+  count: number;
+}
+export interface nagStatisticResponse {
+  totalPrice: number;
+  totalCount: number;
+  maxCountedNagId: number;
+  data: nagStatisticItem[];
+}
+
+export interface receiptResponse {
+  maxCountedNagId: number;
+  totalPrice: number;
+  totalCount: number;
+  title?: string;
+  description?: string;
+  message?: string;
+  familyUrl: string;
+  friendUrl: string;
+  createdAt?: string;
 }

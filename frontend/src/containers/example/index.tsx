@@ -12,7 +12,6 @@ import User from './User';
 import Button from '@/components/Button';
 import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
-import { tempReceiptContent } from '@/components/Receipt/tempReceipData';
 import { Receipt } from '@/components/Receipt';
 import {
   cardLargeComment,
@@ -40,7 +39,7 @@ const Example = () => {
   };
   return (
     <main>
-      <Receipt content={tempReceiptContent} />
+      {/* <Receipt content={tempReceiptContent} /> */}
 
       <Button
         onClick={saveAsImageHandler}
@@ -54,7 +53,7 @@ const Example = () => {
       <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
       <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
       <div id='content' style={{ width: '350px', height: 'auto' }}>
-        <Receipt content={{ ...tempReceiptContent, type: 'normal' }} />
+        {/* <Receipt content={{ ...tempReceiptContent, type: 'normal' }} /> */}
       </div>
       {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
       <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
