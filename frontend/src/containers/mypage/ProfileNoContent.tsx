@@ -25,9 +25,24 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
     textStyleKey: 0,
   };
 
+  const renderSavedReceipts = () => {
+    const receipts = Array.from(
+      { length: totalReceiptCount.receiptCount },
+      (_, i) => (
+        <div
+          key={i}
+          className={styles.savedReceiptsFrame}
+          onClick={() => router.push(`/receipts/${i + 1}`)}
+        />
+      ),
+    );
+
+    return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
+  };
+
   return (
     <div className={styles.profileContentStyle}>
-      <div className={styles.profileText({ contentType: 'card' })} />
+      <div className={styles.mypageText({ contentType: 'card' })} />
       <Button
         type='button'
         size='large'
@@ -37,6 +52,9 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
+      <div className={styles.savedReceiptsContainer}>
+        {renderSavedReceipts()}
+      </div>
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>
           <Button
@@ -51,7 +69,7 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
         </div>
       </Modal>
       <div
-        className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}
+        className={`${styles.mypageText({ contentType: 'card' })} ${styles.noCardWrapper}`}
       >
         <NagCard cardOption={card} />
       </div>

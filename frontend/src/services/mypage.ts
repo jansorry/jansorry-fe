@@ -21,3 +21,14 @@ export const getMyPage = async (
     throw e;
   }
 };
+
+export const getMyPageTemp = async (
+  token: string = '',
+): Promise<totalReceiptCountResponse> => {
+  try {
+    return await apiServer.get<totalReceiptCountResponse>(`/receipts`, token);
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};

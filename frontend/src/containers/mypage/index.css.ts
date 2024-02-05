@@ -5,6 +5,8 @@ import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { vars } from '@/styles/vars.css';
 
+import { profileImage } from '@/components/UserPreview/index.css';
+
 export const profileWrapper = style([
   contentWrapper({ contentArea: 'headerAndNavBar' }),
   flex({
@@ -32,18 +34,7 @@ export const profileContentWrapper = style([
   },
 ]);
 
-export const receiptPrintButtonWrapper = style([
-  flex({
-    justify: 'center',
-    align: 'center',
-    direction: 'row',
-  }),
-  {
-    width: '100%',
-  },
-]);
-
-export const profileText = recipe({
+export const mypageText = recipe({
   base: {
     color: vars.colors.black,
     padding: vars.space['2x'],
@@ -132,6 +123,25 @@ export const profileContentStyle = style([
     height: '100%',
   },
 ]);
+
+export const savedReceiptsContainer = style({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: `calc(100vw - 2 * ${vars.space['4x']})`,
+  height: '120px',
+  padding: `0 ${vars.space['4x']}`,
+});
+
+export const savedReceiptsFrame = style({
+  // UserPreview 컴포넌트 사용하기
+  width: 64,
+  height: 64,
+  borderRadius: vars.borderRadius.full,
+  backgroundColor: vars.colors.gray,
+  cursor: 'pointer',
+});
 
 export const cardGridWrapper = style({
   display: 'grid',

@@ -31,10 +31,24 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   const handleCardClick = (actionId: number) => {
     router.push(`/actions/${actionId}`);
   };
+  const renderSavedReceipts = () => {
+    const receipts = Array.from(
+      { length: totalReceiptCount.receiptCount },
+      (_, i) => (
+        <div
+          key={i}
+          className={styles.savedReceiptsFrame}
+          onClick={() => router.push(`/receipts/${i + 1}`)}
+        />
+      ),
+    );
+
+    return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
+  };
 
   return (
     <div className={styles.profileContentStyle}>
-      <div className={styles.profileText({ contentType: 'card' })} />
+      <div className={styles.mypageText({ contentType: 'card' })} />
       <Button
         type='button'
         size='large'
@@ -44,11 +58,12 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
+      {renderSavedReceipts()}
       <div className={styles.cardGridWrapper}>
         {totalActionCards.map((action) => (
           <div
-            onClick={() => handleCardClick(action.actionId)}
             key={action.actionId}
+            onClick={() => handleCardClick(action.actionId)}
           >
             <NagCard
               key={action.actionId}
