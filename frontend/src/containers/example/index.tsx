@@ -6,13 +6,13 @@ import html2canvas from 'html2canvas';
 
 import { users } from '@/containers/example/users';
 import KakaoLogin from '@/containers/welcome/KakaoLoginButton';
+import { tempReceiptContent } from '@/containers/myreceipt/tempReceipData';
 
 import NagCard from '@/components/NagCard';
 import User from './User';
 import Button from '@/components/Button';
 import { UserPreview } from '@/components/UserPreview';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
-import { tempReceiptContent } from '@/components/Receipt/tempReceipData';
 import { Receipt } from '@/components/Receipt';
 import {
   cardLargeComment,

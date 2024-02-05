@@ -93,6 +93,37 @@ export const tempReceiptContent: receiptContent = {
   message: '돈 벌기 쉽지 않아요~!',
   date: '202402011218',
   data: tempReceiptData,
+  familyUrl: 'http://janssory.com/sharereceipt/family?1=10&2=10&3=10&4=10',
+  friendUrl: 'http://janssory.com/sharereceipt/friend?1=10&2=10&3=10&4=10',
   totalCount: 30,
   totalPrice: 1900000000000,
+};
+
+export const tempNagStatisticResponse = {
+  data: [
+    {
+      nagId: 1,
+      content: '잔잔',
+      price: 3000,
+      count: 10,
+    },
+    {
+      nagId: 2,
+      content: '잔잔',
+      price: 3000,
+      count: 10,
+    },
+    {
+      nagId: 3,
+      content: '잔잔',
+      price: 3000,
+      count: 10,
+    },
+    {
+      nagId: 4,
+      content: '잔잔',
+      price: 3000,
+      count: 10,
+    },
+  ],
 };
