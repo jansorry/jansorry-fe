@@ -67,9 +67,9 @@ export const deleteReceipt = async (seq: number) => {
   return undefined;
 };
 
-export const getAllNags = async (): Promise<nag[]> => {
+export const getAllNags = async (token: string = ''): Promise<nag[]> => {
   try {
-    const response = await apiClient.get<nagTotalResponse[]>(`/nags`);
+    const response = await apiServer.get<nagTotalResponse[]>(`/nags`, token);
     return flattenNags(response);
   } catch (e) {
     console.log(e);

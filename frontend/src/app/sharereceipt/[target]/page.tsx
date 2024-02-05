@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 import type { Metadata } from 'next';
 import SharedReceipt from '@/containers/sharereceipt';
 import { getAllNags } from '@/services/receipt';
@@ -30,8 +32,11 @@ export const generateMetadata = ({
 };
 
 const ShareReceipt = async ({ params, searchParams }: metaProps) => {
+  const cookieStore = cookies();
+  const refreshToken = cookieStore.get('refreshToken')?.value;
+
   // //  전체 잔소리 배열api호출
-  const allNagsArray = await getAllNags();
+  const allNagsArray = await getAllNags(refreshToken);
   // const allNagsArray = dummyNagArray;
 
   //  잔소리 배열 + url 상의 잔소리 내역
