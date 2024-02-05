@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { genderMap } from '@/containers/signup/genderOptions';
 import { userBirthState, userGenderState } from '@/states/signup';
-import { oauthIdState } from '@/states/auth';
+import { kakaoNicknameState, oauthIdState } from '@/states/auth';
 import { authResponse, signupRequest } from '@/types/auth';
 import { postSignup } from '@/services/auth';
 
@@ -19,7 +19,8 @@ const GenderPage = () => {
   const [userBirth, setUserBirth] = useRecoilState(userBirthState);
   const isGenderRequired: boolean = userBirth !== null && userBirth < 2024 - 14;
   const [userGender, setUserGender] = useRecoilState(userGenderState);
-  const [oauthId] = useRecoilState(oauthIdState);
+  const [oauthId, setOauthId] = useRecoilState(oauthIdState);
+  const [kakaoNickname, setKakakNickname] = useRecoilState(kakaoNicknameState);
   const resetUserGender = useResetRecoilState(userGenderState);
 
   const buttons = Array.from(genderMap)
@@ -33,12 +34,15 @@ const GenderPage = () => {
   const handleSignupRequest = async () => {
     const data: signupRequest = {
       oauthId,
+      kakaoNickname,
       birth: userBirth,
       genderId: userGender,
     };
 
     const response: authResponse = await postSignup(data);
     if (response.accessToken) {
+      setOauthId('');
+      setKakakNickname('');
       router.push(`/home`);
       return;
     }
