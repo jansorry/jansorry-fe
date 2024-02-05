@@ -96,3 +96,21 @@ export const dislikeFeed = async (actionId: number) => {
   }
   return null;
 };
+
+export const followUser = async (memberId: number) => {
+  try {
+    return await apiClient.post(`/follows/${memberId}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
+
+export const unfollowUser = async (memberId: number) => {
+  try {
+    return await apiClient.delete(`/follows/${memberId}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
