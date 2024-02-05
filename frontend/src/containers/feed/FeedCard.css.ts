@@ -7,6 +7,7 @@ import { flex } from '@/styles/common.css';
 export const feedCardWrapper = style({
   width: 360,
   height: 240,
+  marginBottom: vars.space['4x'],
   border: `1px solid ${vars.colors.whitesmoke}`,
   borderRadius: vars.borderRadius['1x'],
   boxShadow: `0px 10px 25px 0px ${vars.colors.whitesmoke}`,
@@ -19,11 +20,6 @@ export const feedHeader = style([
     height: vars.space['4x'],
   },
 ]);
-
-export const feedTimestamp = style({
-  fontSize: vars.fontSize['1.5x'],
-  color: vars.colors.gray,
-});
 
 export const feedFollowButton = recipe({
   base: {
@@ -92,6 +88,7 @@ export const feedFooter = style([
 export const feedNag = style({
   fontWeight: vars.fontWeight.accent,
   marginBottom: vars.space['1x'],
+  wordBreak: 'keep-all',
 });
 
 export const feedCategoryTitle = style({

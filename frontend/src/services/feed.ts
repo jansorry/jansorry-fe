@@ -1,13 +1,13 @@
 import { apiClient, apiServer } from '@/services/index';
-import { liveFeedResponse } from '@/types/feed';
+import { feedResponse } from '@/types/feed';
 
 export const getLiveFeedonServer = async (
   lastActionId: number,
   token: string = '',
-): Promise<liveFeedResponse> => {
+): Promise<feedResponse> => {
   try {
     const params = lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    return await apiServer.get<liveFeedResponse>(
+    return await apiServer.get<feedResponse>(
       `/feed/actions/live${params}`,
       token,
     );
@@ -37,17 +37,46 @@ export const getLiveFeedonServer = async (
     },
     numberOfElements: -1,
     first: false,
-    last: false,
+    last: true,
     empty: false,
   };
 };
 
-export const getLiveFeed = async (
+export const getFeed = async (
   lastActionId: number,
-): Promise<liveFeedResponse> => {
+  hashtagId?: number,
+): Promise<feedResponse> => {
   try {
-    const params = lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    return await apiClient.get<liveFeedResponse>(`/feed/actions/live${params}`);
+    const actionIdParams =
+      lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
+
+    let feedType;
+    let generationParams = '';
+    switch (hashtagId) {
+      case 0: // live feed
+        feedType = 'live';
+        break;
+      case 1: // following feed
+        feedType = 'following';
+        break;
+      case 2: // trending feed
+        feedType = 'trending';
+        break;
+      case 3: // 10s feed
+      case 4: // 20s feed
+      case 5: // 30s feed
+        feedType = 'generation';
+        generationParams = lastActionId !== -1 ? '&age=' : '?age=';
+        if (hashtagId === 3) generationParams += '10';
+        else if (hashtagId === 4) generationParams += '20';
+        else generationParams += '30';
+        break;
+      default: // live feed
+        feedType = 'live';
+    }
+    return await apiClient.get<feedResponse>(
+      `/feed/actions/${feedType}${actionIdParams}${generationParams}`,
+    );
   } catch (error) {
     console.log(error);
   }
@@ -74,7 +103,43 @@ export const getLiveFeed = async (
     },
     numberOfElements: -1,
     first: false,
-    last: false,
+    last: true,
     empty: false,
   };
+};
+
+export const likeFeed = async (actionId: number) => {
+  try {
+    return await apiClient.post(`/actions/${actionId}/favorite`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
+
+export const dislikeFeed = async (actionId: number) => {
+  try {
+    return await apiClient.delete(`/actions/${actionId}/favorite`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
+
+export const followUser = async (memberId: number) => {
+  try {
+    return await apiClient.post(`/follows/${memberId}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
+};
+
+export const unfollowUser = async (memberId: number) => {
+  try {
+    return await apiClient.delete(`/follows/${memberId}`);
+  } catch (error) {
+    console.log(error);
+  }
+  return null;
 };
