@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
-import { direction } from 'html2canvas/dist/types/css/property-descriptors/direction';
 import { calc } from '@vanilla-extract/css-utils';
 
 import { flex } from '@/styles/common.css';
@@ -119,7 +118,7 @@ export const profileContentStyle = style([
     justify: 'spaceAround',
   }),
   {
-    width: '100svw',
+    width: '100%',
     height: '100%',
   },
 ]);
@@ -156,9 +155,10 @@ export const cardGridWrapper = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: vars.space['1x'],
-  padding: vars.space['1x'],
-  margin: vars.space['1x'],
+  margin: '0 auto',
   marginTop: vars.space['5x'],
+  width: '90%',
+  maxWidth: 480,
 });
 
 export const noCardWrapper = style({
@@ -166,7 +166,7 @@ export const noCardWrapper = style({
 });
 
 export const bottomNav = style({
-  width: '100svw',
+  width: '100%',
   height: 'auto',
 });
 
