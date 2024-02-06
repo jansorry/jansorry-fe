@@ -33,17 +33,6 @@ export const profileContentWrapper = style([
   },
 ]);
 
-export const receiptPrintButtonWrapper = style([
-  flex({
-    justify: 'center',
-    align: 'center',
-    direction: 'row',
-  }),
-  {
-    width: '100%',
-  },
-]);
-
 export const profileText = recipe({
   base: {
     color: vars.colors.black,
@@ -129,7 +118,7 @@ export const profileContentStyle = style([
     justify: 'spaceAround',
   }),
   {
-    width: '100svw',
+    width: '100%',
     height: '100%',
   },
 ]);
@@ -138,9 +127,10 @@ export const cardGridWrapper = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: vars.space['1x'],
-  padding: vars.space['1x'],
-  margin: vars.space['1x'],
+  margin: '0 auto',
   marginTop: vars.space['5x'],
+  width: '90%',
+  maxWidth: 480,
 });
 
 export const noCardWrapper = style({
@@ -148,7 +138,7 @@ export const noCardWrapper = style({
 });
 
 export const bottomNav = style({
-  width: '100svw',
+  width: '100%',
   height: 'auto',
 });
 
