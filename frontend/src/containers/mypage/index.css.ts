@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -157,7 +158,7 @@ export const actionModalWrapper = style([
     direction: 'column',
   }),
   {
-    marginTop: `calc(${vars.space['5x']} * 4)`,
+    marginTop: calc.multiply(vars.space['5x'], 4),
     marginBottom: vars.space['5x'],
   },
 ]);
