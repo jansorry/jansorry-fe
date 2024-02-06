@@ -9,12 +9,16 @@ import createCounter from '@/utils/counter';
 import { followingDummy } from '@/containers/followings/dummy';
 import * as styles from '@/containers/followings/index.css';
 import { defaultWrapper } from '@/styles/common.css';
-import { profileItemWrapper } from '@/containers/followings/index.css';
+import FollowButton from '@/containers/feed/FollowButton';
+import {
+  followButtonWrapper,
+  profileImgTextWrapper,
+} from '@/containers/followings/index.css';
+import counter from '@/utils/counter';
 
 import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
 import { UserPreview } from '@/components/UserPreview';
-import Button from '@/components/Button';
 
 const Followings = () => {
   const [data, setData] = useState<followingResponse[]>([]);
@@ -32,18 +36,28 @@ const Followings = () => {
 
   return (
     <div className={defaultWrapper({ width: 'max', height: 'max' })}>
-      <Header title='follow' hasPrevious />
+      <Header title='following' hasPrevious />
       <div className={contentWrapper({ contentArea: 'headerAndNavBar' })}>
         <div className={styles.profilesWrapper}>
           {data.map((item, index) => (
-            <div
-              key={`${createCounter()}`}
-              className={styles.profileItemWrapper}
-            >
-              <UserPreview imgSrc={item.imageUrl} nickname={item.nickname} />
-              <Button type='button' size='small' colorStyle='black' filled>
-                팔로우
-              </Button>
+            <div key={counter().toString()} className={styles.profilesWrapper}>
+              <div
+                key={`${createCounter()}`}
+                className={styles.profileItemWrapper}
+              >
+                {/*  TODO : imgSrc 수정 */}
+                <div className={styles.profileImgTextWrapper}>
+                  <UserPreview
+                    imgSrc='/images/userProfileImage/temp-userProfile.png'
+                    nickname={item.nickname}
+                  />
+                </div>
+
+                <div className={styles.followButtonWrapper}>
+                  <FollowButton isFollow memberId={item.toId} />
+                </div>
+              </div>
+              <hr className={styles.userSeperateLine} />
             </div>
           ))}
         </div>

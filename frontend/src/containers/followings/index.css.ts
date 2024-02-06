@@ -22,10 +22,33 @@ export const profilesWrapper = style([
 ]);
 
 export const profileItemWrapper = style([
-  flex({ justify: 'spaceAround', align: 'center', direction: 'row' }),
+  flex({ justify: 'center', align: 'center', direction: 'row' }),
   {
     width: '100%',
-    marginTop: vars.space['1x'],
+    marginTop: vars.space['2x'],
     marginBottom: vars.space['1x'],
+  },
+]);
+
+export const profileImgTextWrapper = style([
+  {
+    paddingRight: vars.space['3x'],
+    paddingLeft: vars.space['5x'],
+    boxSizing: 'border-box',
+    width: '70%',
+  },
+]);
+
+export const followButtonWrapper = style([
+  {
+    width: '30%',
+  },
+]);
+
+export const userSeperateLine = style([
+  {
+    borderBottom: `0.3px solid ${vars.colors.whitesmoke}`,
+    width: '100%',
+    margin: `${vars.space['0.5x']} ${vars.space['2x']}`,
   },
 ]);
