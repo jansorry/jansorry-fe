@@ -1,73 +1,103 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 
 import {
-  buttonStyleForSharing,
   doubleButtonWrapper,
+  explainText,
+  iconAndText,
   modalWrapper,
 } from '@/containers/myreceipt/index.css';
+import { copyLink } from '@/utils/makeReceipt';
+import { IconSharing } from '#/svgs';
 
 import Button from '@/components/Button';
 
 interface Props {
   familyUrl: string;
   friendUrl: string;
+  saveImageEvent: () => void;
 }
 
-export const SharingButtons = ({ familyUrl, friendUrl }: Props) => {
-  const [isSelected, setIsSelected] = useState(true);
+export const SharingButtons = ({
+  familyUrl,
+  friendUrl,
+  saveImageEvent,
+}: Props) => {
+  const [isSelected, setIsSelected] = useState<'family' | 'friend' | null>(
+    null,
+  );
 
-  const copyLink = async () => {
-    try {
-      const url = isSelected ? friendUrl : familyUrl;
-      await navigator.clipboard.writeText(url);
-      console.log('링크가 클립보드에 복사되었습니다.');
-      console.log(url);
-    } catch (err) {
-      console.error('클립보드에 복사 실패:', err);
-    }
+  const clickCopyLinkEvent = {
+    family() {
+      setIsSelected('family');
+      copyLink(familyUrl);
+    },
+    friend() {
+      setIsSelected('friend');
+      copyLink(friendUrl);
+    },
+  };
+
+  const saveImageEventhandler = () => {
+    saveImageEvent();
   };
 
   return (
     <div className={modalWrapper}>
-      <Button type='button' size='large' colorStyle='blue' filled>
+      <Button
+        onClick={saveImageEventhandler}
+        type='button'
+        size='large'
+        colorStyle='blue'
+        filled
+      >
         영수증 이미지로 저장하기
       </Button>
       <div className={doubleButtonWrapper}>
-        <div className={buttonStyleForSharing}>
-          <Button
-            onClick={() => {
-              setIsSelected(true);
-              copyLink();
-            }}
-            type='button'
-            size='small'
-            colorStyle='blue'
-            filled={isSelected}
-          >
+        <Button
+          onClick={clickCopyLinkEvent.family}
+          type='button'
+          size='small'
+          colorStyle='blue'
+          filled={isSelected === 'family'}
+        >
+          <div>
+            <span className={iconAndText}>
+              <IconSharing />
+            </span>
             어른용
-          </Button>
-        </div>
+          </div>
+        </Button>
 
-        <div className={buttonStyleForSharing}>
-          <Button
-            onClick={() => {
-              setIsSelected(false);
-              copyLink();
-            }}
-            type='button'
-            size='small'
-            colorStyle='blue'
-            filled={!isSelected}
-          >
+        <Button
+          onClick={clickCopyLinkEvent.friend}
+          type='button'
+          size='small'
+          colorStyle='blue'
+          filled={isSelected === 'friend'}
+        >
+          <span>
+            <span className={iconAndText}>
+              <IconSharing />
+            </span>
             친구용
-          </Button>
-        </div>
+          </span>
+        </Button>
       </div>
       <div>
-        {isSelected ? (
-          <div>어른들을 위한 큰 글씨! </div>
+        {isSelected !== 'friend' ? (
+          <div className={explainText}>
+            <div>어른용 영수증은 글씨가 커져요! 👀 </div>
+            <div>💘 애교 있는 문구가 추가돼요.</div>
+            <div>어른들께 잔소리 비용💸을 청구해봐요!</div>
+          </div>
         ) : (
-          <div> 문구 변경 필요! </div>
+          <div className={explainText}>
+            <div>👭 친구들에게 영수증을 공유해요!</div>
+            <div>영수증 내역🧾을 비교하고</div>
+            <div>누가 가장 비싼 잔소리를 들었는지 확인해봐요.</div>
+          </div>
         )}
       </div>
     </div>

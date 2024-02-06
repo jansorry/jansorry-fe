@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { receiptContent } from '@/types/receipt';
+import { formatNumberAsCurrency } from '@/utils/drawReceipt';
 
 import {
   qrcodeWrapper,
@@ -131,7 +132,7 @@ export const Receipt = ({ content }: Props) => {
                     contentType: 'content',
                   })}
                 >
-                  {item.price}
+                  {formatNumberAsCurrency(item.price)}
                 </div>
               </div>
             </div>
@@ -174,7 +175,7 @@ export const Receipt = ({ content }: Props) => {
                 contentType: 'content',
               })}
             >
-              {content.totalPrice}
+              {formatNumberAsCurrency(content.totalPrice)}
             </div>
           </div>
           <div className={receiptTextStyle({ contentType: 'line' })}>
@@ -184,8 +185,9 @@ export const Receipt = ({ content }: Props) => {
             <Image
               src='/images/receipt/jansorryQR.png'
               fill
-              objectFit='cover'
+              object-fit='cover'
               alt='임시큐알위치'
+              sizes='90px'
             />
           </div>
           <div

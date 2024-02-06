@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { defaultWrapper, flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -18,9 +19,6 @@ export const myReceiptWrapper = style([
     boxSizing: 'border-box',
     paddingTop: vars.space['3x'],
     paddingBottom: vars.space['3x'],
-    '::-webkit-scrollbar': {
-      display: 'none',
-    },
   },
 ]);
 
@@ -39,7 +37,7 @@ export const buttonsWrapper = style([
 ]);
 export const myreceiptButtonWrapper = style([
   {
-    marginTop: vars.space['3x'],
+    marginTop: vars.space['4x'],
     marginBottom: vars.space['3x'],
   },
 ]);
@@ -57,6 +55,30 @@ export const modalWrapper = style([
 ]);
 export const doubleButtonWrapper = style([
   flex({ direction: 'row', align: 'center', justify: 'spaceBetween' }),
+  {
+    width: '80vw',
+    paddingTop: vars.space['2x'],
+    marginBottom: vars.space['2x'],
+  },
 ]);
 
-export const buttonStyleForSharing = style([{}]);
+export const explainText = style([
+  flex({
+    direction: 'column',
+    align: 'center',
+    justify: 'center',
+  }),
+  {
+    height: vars.space['5x'],
+    marginTop: vars.space['2x'],
+    fontSize: vars.fontSize['2x'],
+    paddingBottom: vars.space['2x'],
+  },
+]);
+
+export const iconAndText = style([
+  {
+    marginLeft: '6px',
+    marginRight: vars.space['1x'],
+  },
+]);

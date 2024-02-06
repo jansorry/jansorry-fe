@@ -54,3 +54,13 @@ export const createReceiptObject = (
   console.log(postData);
   return postData;
 };
+
+
+export const copyLink = async (url:string) => {
+  try {
+    await navigator.clipboard.writeText(url);
+    console.log(url);
+  } catch (err) {
+    console.log(err)
+  }
+};

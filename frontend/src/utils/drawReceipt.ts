@@ -21,7 +21,7 @@ export const parsingReceiptDataArray = ({
           nagId: index,
           count: parseInt(value, 10),
           content: categoryItem.content,
-          price: categoryItem.price.toString(),
+          price: categoryItem.price,
         });
       }
     }
@@ -72,4 +72,8 @@ export const makeShareUrl = (baseurl: string, receiptInfo: receiptResponse) => {
   if (totalPrice) urlObj.searchParams.set('totalPrice', totalPrice.toString());
 
   return urlObj.toString();
+};
+
+export const formatNumberAsCurrency = (num: number): string => {
+  return new Intl.NumberFormat('ko-KR').format(num);
 };
