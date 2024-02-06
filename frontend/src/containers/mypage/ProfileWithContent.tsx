@@ -47,6 +47,7 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
       <div className={styles.cardGridWrapper}>
         {totalActionCards.map((action) => (
           <div
+            role='presentation'
             onClick={() => handleCardClick(action.actionId)}
             key={action.actionId}
           >
