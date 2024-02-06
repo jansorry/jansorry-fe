@@ -1,9 +1,9 @@
 import React from 'react';
 import Script from 'next/script';
+import localFont from 'next/font/local';
 
 import type { Metadata } from 'next';
 import './layout.css';
-import * as pretendard from '@/styles/font.css';
 
 import Provider from '@/app/Provider';
 
@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title: '명절 잔소리 영수증',
   description: '잔소리 영수증을 만들고 비용을 청구해보세요.',
 };
+
+const Pretendard = localFont({
+  src: './fonts/PretendardVariable.woff2',
+});
 
 declare global {
   interface Window {
@@ -25,8 +29,8 @@ interface Props {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body className={pretendard.font}>
+    <html lang='en' className={Pretendard.className} suppressHydrationWarning>
+      <body>
         <Provider>
           {children}
           <div id='modal' />
