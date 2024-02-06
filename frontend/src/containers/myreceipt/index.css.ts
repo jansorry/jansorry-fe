@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 
 import { defaultWrapper, flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';

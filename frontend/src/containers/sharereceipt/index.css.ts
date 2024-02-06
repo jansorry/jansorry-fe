@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
+
 import { defaultWrapper, flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
-import { display } from 'html2canvas/dist/types/css/property-descriptors/display';
 import { vars } from '@/styles/vars.css';
 
 export const fullWrapper = style([

@@ -1,46 +1,47 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { receiptContent } from '@/types/receipt';
+import * as styles from '@/containers/sharereceipt/index.css';
 
 import { Receipt } from '@/components/Receipt';
-import { buttonsWrapper, fullWrapper, receiptWrapper, shareReceiptWrapper } from '@/containers/sharereceipt/index.css';
 import Header from '@/components/Header';
 import Button from '@/components/Button';
-
-import  { useRouter } from 'next/navigation';
 
 interface Props {
   content: receiptContent;
 }
 
 const SharedReceipt = ({ content }: Props) => {
+  //  TODO : api 자료 확인 후 삭제
   console.log(content);
 
   const router = useRouter();
 
-
   const onClick = () => {
     router.push(`/`);
-  }
+  };
 
   return (
-    <div className={fullWrapper}>
+    <div className={styles.fullWrapper}>
       <Header title='잔소리 영수증' />
-      <div className={receiptWrapper}>
-
-        <div className={shareReceiptWrapper}>
-          <Receipt content={content}  />
-<div className={buttonsWrapper}>
-  <Button onClick={onClick} type='button' size='large' colorStyle='blue' filled>
-    나도 영수증 만들러 가기
-  </Button>
-</div>
+      <div className={styles.receiptWrapper}>
+        <div className={styles.shareReceiptWrapper}>
+          <Receipt content={content} />
         </div>
-
-
-
+        <div className={styles.buttonsWrapper}>
+          <Button
+            onClick={onClick}
+            type='button'
+            size='large'
+            colorStyle='blue'
+            filled
+          >
+            나도 영수증 만들러 가기
+          </Button>
+        </div>
       </div>
-
     </div>
   );
 };

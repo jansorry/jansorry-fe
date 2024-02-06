@@ -3,17 +3,7 @@ import Image from 'next/image';
 import { receiptContent } from '@/types/receipt';
 import { formatNumberAsCurrency } from '@/utils/drawReceipt';
 
-import {
-  qrcodeWrapper,
-  receipt,
-  receiptContentWrapper,
-  receiptRowBox,
-  receiptTextStyle,
-  receiptTextWrapper,
-  receiptTopAndBottomBg,
-  receiptWrapper,
-  RowBoxWrapper,
-} from '@/components/Receipt/index.css';
+import * as style from '@/components/Receipt/index.css';
 
 interface Props {
   content: receiptContent;
@@ -22,8 +12,8 @@ interface Props {
 export const Receipt = ({ content }: Props) => {
   const receiptStyle = content.type;
   return (
-    <div className={receiptWrapper}>
-      <div className={receiptTopAndBottomBg}>
+    <div className={style.receiptWrapper}>
+      <div className={style.receiptTopAndBottomBg}>
         <Image
           src='/images/receipt/receipt-top.png'
           fill
@@ -31,11 +21,11 @@ export const Receipt = ({ content }: Props) => {
           alt='receipt-top'
         />
       </div>
-      <div className={receiptContentWrapper}>
-        <div className={receiptTextWrapper}>
-          <div className={receipt}>
+      <div className={style.receiptContentWrapper}>
+        <div className={style.receiptTextWrapper}>
+          <div className={style.receipt}>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'title',
               })}
@@ -44,23 +34,23 @@ export const Receipt = ({ content }: Props) => {
             </div>
           </div>
 
-          <div className={receiptRowBox({ align: 'left' })}>
+          <div className={style.receiptRowBox({ align: 'left' })}>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'content',
               })}
             >{`발행일자 : ${content.date}`}</div>
           </div>
 
-          <div className={receiptTextStyle({ contentType: 'line' })}>
+          <div className={style.receiptTextStyle({ contentType: 'line' })}>
             -------------------------------------------
           </div>
 
-          <div className={RowBoxWrapper}>
-            <div className={receiptRowBox({ entry: 'nag' })}>
+          <div className={style.RowBoxWrapper}>
+            <div className={style.receiptRowBox({ entry: 'nag' })}>
               <div
-                className={receiptTextStyle({
+                className={style.receiptTextStyle({
                   target: receiptStyle,
                   contentType: 'content',
                 })}
@@ -69,10 +59,13 @@ export const Receipt = ({ content }: Props) => {
               </div>
             </div>
             <div
-              className={receiptRowBox({ entry: 'quantity', align: 'right' })}
+              className={style.receiptRowBox({
+                entry: 'quantity',
+                align: 'right',
+              })}
             >
               <div
-                className={receiptTextStyle({
+                className={style.receiptTextStyle({
                   target: receiptStyle,
                   contentType: 'content',
                 })}
@@ -81,10 +74,13 @@ export const Receipt = ({ content }: Props) => {
               </div>
             </div>
             <div
-              className={receiptRowBox({ entry: 'unitPrice', align: 'right' })}
+              className={style.receiptRowBox({
+                entry: 'unitPrice',
+                align: 'right',
+              })}
             >
               <div
-                className={receiptTextStyle({
+                className={style.receiptTextStyle({
                   target: receiptStyle,
                   contentType: 'content',
                 })}
@@ -93,14 +89,17 @@ export const Receipt = ({ content }: Props) => {
               </div>
             </div>
           </div>
-          <div className={receiptTextStyle({ contentType: 'line' })}>
+          <div className={style.receiptTextStyle({ contentType: 'line' })}>
             -------------------------------------------
           </div>
           {content.data.map((item) => (
-            <div key={`${item.nagId}-${item.count}`} className={RowBoxWrapper}>
-              <div className={receiptRowBox({ entry: 'nag' })}>
+            <div
+              key={`${item.nagId}-${item.count}`}
+              className={style.RowBoxWrapper}
+            >
+              <div className={style.receiptRowBox({ entry: 'nag' })}>
                 <div
-                  className={receiptTextStyle({
+                  className={style.receiptTextStyle({
                     target: receiptStyle,
                     contentType: 'content',
                   })}
@@ -109,10 +108,13 @@ export const Receipt = ({ content }: Props) => {
                 </div>
               </div>
               <div
-                className={receiptRowBox({ entry: 'quantity', align: 'right' })}
+                className={style.receiptRowBox({
+                  entry: 'quantity',
+                  align: 'right',
+                })}
               >
                 <div
-                  className={receiptTextStyle({
+                  className={style.receiptTextStyle({
                     target: receiptStyle,
                     contentType: 'content',
                   })}
@@ -121,13 +123,13 @@ export const Receipt = ({ content }: Props) => {
                 </div>
               </div>
               <div
-                className={receiptRowBox({
+                className={style.receiptRowBox({
                   entry: 'unitPrice',
                   align: 'right',
                 })}
               >
                 <div
-                  className={receiptTextStyle({
+                  className={style.receiptTextStyle({
                     target: receiptStyle,
                     contentType: 'content',
                   })}
@@ -138,13 +140,13 @@ export const Receipt = ({ content }: Props) => {
             </div>
           ))}
 
-          <div className={receiptTextStyle({ contentType: 'line' })}>
+          <div className={style.receiptTextStyle({ contentType: 'line' })}>
             -------------------------------------------
           </div>
 
-          <div className={RowBoxWrapper}>
+          <div className={style.RowBoxWrapper}>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'content',
               })}
@@ -152,7 +154,7 @@ export const Receipt = ({ content }: Props) => {
               총 개 수
             </div>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'content',
               })}
@@ -160,9 +162,9 @@ export const Receipt = ({ content }: Props) => {
               {content.totalCount}
             </div>
           </div>
-          <div className={RowBoxWrapper}>
+          <div className={style.RowBoxWrapper}>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'content',
               })}
@@ -170,7 +172,7 @@ export const Receipt = ({ content }: Props) => {
               합 계
             </div>
             <div
-              className={receiptTextStyle({
+              className={style.receiptTextStyle({
                 target: receiptStyle,
                 contentType: 'content',
               })}
@@ -178,10 +180,10 @@ export const Receipt = ({ content }: Props) => {
               {formatNumberAsCurrency(content.totalPrice)}
             </div>
           </div>
-          <div className={receiptTextStyle({ contentType: 'line' })}>
+          <div className={style.receiptTextStyle({ contentType: 'line' })}>
             -------------------------------------------
           </div>
-          <div className={qrcodeWrapper}>
+          <div className={style.qrcodeWrapper}>
             <Image
               src='/images/receipt/jansorryQR.png'
               fill
@@ -191,14 +193,14 @@ export const Receipt = ({ content }: Props) => {
             />
           </div>
           <div
-            className={receiptTextStyle({
+            className={style.receiptTextStyle({
               target: receiptStyle,
               contentType: 'content',
             })}
           >
             https://jansorry.com/
           </div>
-          <div className={receiptTextStyle({ contentType: 'line' })}>
+          <div className={style.receiptTextStyle({ contentType: 'line' })}>
             -------------------------------------------
           </div>
         </div>
@@ -210,7 +212,7 @@ export const Receipt = ({ content }: Props) => {
           alt='영수증 뒷배경'
         />
       </div>
-      <div className={receiptTopAndBottomBg}>
+      <div className={style.receiptTopAndBottomBg}>
         <Image
           src='/images/receipt/receipt-bottom.png'
           fill

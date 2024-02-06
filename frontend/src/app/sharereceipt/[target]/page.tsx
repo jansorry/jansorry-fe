@@ -18,13 +18,12 @@ export const generateMetadata = ({
   params,
   searchParams,
 }: metaProps): Metadata => {
-  const id = params.target;
-  const { description, title, message } = searchParams;
+  const { description, title } = searchParams;
 
   return {
     openGraph: {
       title,
-      description,
+      description: `${description}의 잔소리 영수증!`,
     },
   };
 };

@@ -5,14 +5,7 @@ import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 
 import { receiptContent } from '@/types/receipt';
-import {
-  buttonsWrapper,
-  fullWrapper,
-  myreceiptButtonWrapper,
-  myReceiptWrapper,
-  receiptShadow,
-  receiptWrapper,
-} from '@/containers/myreceipt/index.css';
+import * as styles from '@/containers/myreceipt/index.css';
 import { deleteReceipt } from '@/services/receipt';
 import useModal from '@/hooks/useModal';
 import { SharingButtons } from '@/containers/myreceipt/SharingButtons';
@@ -60,17 +53,17 @@ const MyReceipt = ({
   };
 
   return (
-    <main className={fullWrapper}>
+    <main className={styles.fullWrapper}>
       <Header title='영수증 출력' hasPrevious />
-      <div className={receiptWrapper}>
-        <div className={myReceiptWrapper}>
-          <div className={receiptShadow}>
+      <div className={styles.receiptWrapper}>
+        <div className={styles.myReceiptWrapper}>
+          <div className={styles.receiptShadow}>
             <div ref={receiptRef}>
               <Receipt content={data} />
             </div>
           </div>
-          <div className={buttonsWrapper}>
-            <div className={myreceiptButtonWrapper}>
+          <div className={styles.buttonsWrapper}>
+            <div className={styles.myreceiptButtonWrapper}>
               <Button
                 onClick={openModal}
                 type='button'
@@ -81,7 +74,7 @@ const MyReceipt = ({
                 공유하기
               </Button>
             </div>
-            <div className={myreceiptButtonWrapper}>
+            <div className={styles.myreceiptButtonWrapper}>
               <Button
                 onClick={deleteReceiptEvent}
                 type='button'

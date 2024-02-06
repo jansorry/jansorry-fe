@@ -33,8 +33,7 @@ export const createReceiptObject = (
     params: Record<string, string | number | boolean>,
   ) => {
     const url = new URL(baseUrl);
-    const queryString = createQueryStringUsingURL(params);
-    url.search = queryString;
+    url.search = createQueryStringUsingURL(params);
     return url.toString();
   };
 
@@ -55,12 +54,12 @@ export const createReceiptObject = (
   return postData;
 };
 
-
-export const copyLink = async (url:string) => {
+export const copyLink = async (url: string) => {
   try {
     await navigator.clipboard.writeText(url);
+    //  TODO : 테스트용 console 지우기
     console.log(url);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
