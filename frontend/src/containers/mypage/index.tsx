@@ -36,7 +36,7 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
 
     return NagCount > 0 ? (
       <ProfileWithContent
-        actions={actionsData.content}
+        totalActionCards={actionsData.content}
         totalReceiptCount={receiptCount}
       />
     ) : (
