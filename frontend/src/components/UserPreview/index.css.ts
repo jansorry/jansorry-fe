@@ -7,7 +7,7 @@ import { vars } from '@/styles/vars.css';
 export const userPreview = style([
   flex(),
   {
-    height: '40px',
+    height: 'auto',
     width: 'auto',
     boxSizing: 'border-box',
     marginTop: vars.space['0.5x'],
@@ -17,16 +17,21 @@ export const userPreview = style([
 
 export const profileImage = recipe({
   base: {
-    width: '40px',
-    height: '40px',
+    width: vars.space['5x'],
+    height: vars.space['5x'],
     marginRight: vars.space['1x'],
     borderRadius: vars.borderRadius.full,
   },
   variants: {
     sizes: {
       large: {
-        width: '64px',
-        height: '64px',
+        width: 64,
+        height: 64,
+        border: `1px solid ${vars.colors.lightGray}`,
+      },
+      xLarge: {
+        width: '72px',
+        height: '72px',
       },
     },
   },
@@ -36,16 +41,17 @@ export const profileText = {
   box: style([
     flex({
       justify: 'center',
+      direction: 'column',
     }),
-    {
-      flexDirection: 'column',
-    },
   ]),
   nickname: style({
     fontSize: vars.fontSize['2x'],
   }),
+  nicknameLarge: style({
+    fontSize: vars.fontSize['3x'],
+  }),
   subText: style({
-    fontSize: vars.fontSize['1x'],
+    fontSize: vars.fontSize['1.5x'],
     color: vars.colors.gray,
   }),
 };

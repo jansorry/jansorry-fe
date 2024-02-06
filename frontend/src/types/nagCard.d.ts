@@ -4,4 +4,5 @@ export interface NagCardKeyOptions {
   sizeKey: number;
   textStyleKey: number;
   text?: string;
+  shadow?: boolean;
 }

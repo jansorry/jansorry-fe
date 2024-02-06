@@ -7,15 +7,19 @@ export const getKakaoLogin = async (code: string): Promise<authResponse> => {
   } catch (e) {
     console.log(e);
   }
-  // TODO: authResponse 타입 default 선언 필요함
-  return { oauthId: '', nickname: null, accessToken: null } as authResponse;
+  return { oauthId: '', kakaoNickname: '', nickname: null, accessToken: null };
 };
 
-export const postSignup = async (signupInfo: signupRequest): Promise<authResponse> => {
+export const postSignup = async (
+  signupInfo: signupRequest,
+): Promise<authResponse> => {
   try {
-    return await apiClient.post<authResponse, signupRequest>(`/members/signup`, signupInfo);
+    return await apiClient.post<authResponse, signupRequest>(
+      `/members/signup`,
+      signupInfo,
+    );
   } catch (e) {
     console.log(e);
   }
-  return { nickname: null, accessToken: null } as authResponse;
+  return { kakaoNickname: '', nickname: null, accessToken: null };
 };

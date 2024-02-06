@@ -12,7 +12,11 @@ function handleError(status: number, message: string) {
   throw new Error(`${status}: ${message}`);
 }
 
-async function requestClient<T>(url: string, config: RequestInit, body?: BodyInit): Promise<T> {
+async function requestClient<T>(
+  url: string,
+  config: RequestInit,
+  body?: BodyInit,
+): Promise<T> {
   const needToken = !(url.includes(`login`) || url.includes(`signup`));
   const options = { ...config, body };
 
@@ -26,7 +30,10 @@ async function requestClient<T>(url: string, config: RequestInit, body?: BodyIni
     options.headers = { 'Content-Type': 'application/json' };
   }
 
-  const response = await fetch(url, { ...options, credentials: 'include' });
+  const response = await fetch(`/api${url}`, {
+    ...options,
+    credentials: 'include',
+  });
   if (!response.ok) {
     response.json().then((res) => console.log(res));
     handleError(response.status, response.statusText);
@@ -34,7 +41,12 @@ async function requestClient<T>(url: string, config: RequestInit, body?: BodyIni
   return response.json();
 }
 
-async function requestServer<T>(url: string, config: RequestInit, refreshToken: string, body?: BodyInit): Promise<T> {
+async function requestServer<T>(
+  url: string,
+  config: RequestInit,
+  refreshToken: string,
+  body?: BodyInit,
+): Promise<T> {
   const options = { ...config, body };
   const token = await getServerToken(refreshToken);
   options.headers = {
@@ -42,7 +54,10 @@ async function requestServer<T>(url: string, config: RequestInit, refreshToken: 
     Authorization: `Bearer ${token}`,
   };
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, { ...options, credentials: 'include' });
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, {
+    ...options,
+    credentials: 'include',
+  });
   if (!response.ok) {
     response.json().then((res) => console.log(res));
     handleError(response.status, response.statusText);
@@ -51,16 +66,24 @@ async function requestServer<T>(url: string, config: RequestInit, refreshToken: 
 }
 
 export const apiClient = {
-  get: <TResponse>(url: string): Promise<TResponse> => requestClient<TResponse>(url, { method: HTTPMethods.GET }),
+  get: <TResponse>(url: string): Promise<TResponse> =>
+    requestClient<TResponse>(url, { method: HTTPMethods.GET }),
 
-  post: <TResponse, TBody>(url: string, bodyObject?: TBody): Promise<TResponse> => {
+  post: <TResponse, TBody>(
+    url: string,
+    bodyObject?: TBody,
+  ): Promise<TResponse> => {
     const body = JSON.stringify(bodyObject);
     return requestClient<TResponse>(url, { method: HTTPMethods.POST }, body);
   },
+
+  delete: <T>(url: string): Promise<T> =>
+    requestClient<T>(url, { method: HTTPMethods.DELETE }),
 };
 
 export const apiServer = {
-  get: <T>(url: string, token: string): Promise<T> => requestServer<T>(url, { method: HTTPMethods.GET }, token),
+  get: <T>(url: string, token: string): Promise<T> =>
+    requestServer<T>(url, { method: HTTPMethods.GET }, token),
 
   post: <T, U>(url: string, token: string, bodyObject?: U): Promise<T> => {
     const body = JSON.stringify(bodyObject);

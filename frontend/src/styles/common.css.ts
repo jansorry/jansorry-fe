@@ -16,6 +16,9 @@ export const defaultWrapper = recipe({
       max: {
         height: '100svh',
       },
+      auto: {
+        height: 'auto',
+      },
     },
     border: {
       top: {
@@ -37,16 +40,36 @@ export const flex = recipe({
       center: {
         justifyContent: 'center',
       },
+      flexStart: {
+        justifyContent: 'flex-start',
+      },
       spaceAround: {
         justifyContent: 'space-around',
+      },
+      spaceBetween: {
+        justifyContent: 'space-between',
       },
     },
     align: {
       center: {
         alignItems: 'center',
       },
+      flexStart: {
+        alignItems: 'flex-start',
+      },
       right: {
         marginLeft: 'auto',
+      },
+    },
+    direction: {
+      row: {
+        flexDirection: 'row',
+      },
+      column: {
+        flexDirection: 'column',
+      },
+      columnReverse: {
+        flexDirection: 'column-reverse',
       },
     },
   },

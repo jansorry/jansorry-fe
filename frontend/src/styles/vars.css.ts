@@ -15,10 +15,11 @@ export const vars = createGlobalTheme(':root', {
   colors: {
     white: '#ffffff',
     black: '#000000',
-    gray: '#919191',
+    gray: '#767676',
     lightGray: '#CDCDCD',
     whitesmoke: '#f1f1f1',
     blue: '#7f9bc9',
+    babyBlue: '#BFCDE5',
     red: '#ff8585',
     yellow: '#ffde9d',
     green: '#83cf74',
@@ -27,6 +28,9 @@ export const vars = createGlobalTheme(':root', {
     oatmeal: '#fdf5e4',
     brown: '#453216',
     strongRed: '#E8635C',
+    pink: '#F19CBC',
+    lightBlue: '#8AAEF9',
+    lavender: '#BBA4DA',
   },
 
   borderRadius: {
@@ -46,6 +50,7 @@ export const vars = createGlobalTheme(':root', {
 
   fontSize: {
     '1x': '8px',
+    '1.5x': '12px',
     '2x': '16px',
     '3x': '24px',
     '4x': '32px',
@@ -65,7 +70,7 @@ export const vars = createGlobalTheme(':root', {
     'alert-bg': '3000',
     'content-to-top': '2001',
     'content-bg-to-top': '2000',
-    'float-button': '1000',
+    'layout-content': '1000',
     'z-5': '5',
     'z-4': '4',
     'z-3': '3',

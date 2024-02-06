@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 import { defaultWrapper, flex } from '@/styles/common.css';
+import { vars } from '@/styles/vars.css';
 
 export const navWrapper = style([
   flex({ align: 'center', justify: 'spaceAround' }),
@@ -13,5 +14,7 @@ export const navWrapper = style([
     height: 48,
     margin: 'auto', // 하단바 가운데 정렬
     overflow: 'hidden', // 영역 밖으로 나가면 숨김
+    backgroundColor: vars.colors.white,
+    zIndex: vars.zIndex['layout-content'],
   },
 ]);

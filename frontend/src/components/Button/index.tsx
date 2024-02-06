@@ -1,7 +1,11 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import { CommonButtonVariantProps, ButtonWrapper, commonButton } from '@/components/Button/index.css';
+import {
+  CommonButtonVariantProps,
+  ButtonWrapper,
+  commonButton,
+} from '@/components/Button/index.css';
 
 interface ButtonProps {
   children: ReactNode;
@@ -11,12 +15,23 @@ interface ButtonProps {
   type: 'submit' | 'reset' | 'button';
 }
 
-
-const Button = ({ link, children, disabled, onClick, type, size, colorStyle, filled}: ButtonProps & CommonButtonVariantProps) => {
+const Button = ({
+  link,
+  children,
+  disabled,
+  onClick,
+  type,
+  size,
+  colorStyle,
+  filled,
+}: ButtonProps & CommonButtonVariantProps) => {
   if (link) {
     return (
       <div className={ButtonWrapper[size]}>
-        <Link href={link} className={commonButton({ size, colorStyle, filled })}>
+        <Link
+          href={link}
+          className={commonButton({ size, colorStyle, filled })}
+        >
           {children}
         </Link>
       </div>

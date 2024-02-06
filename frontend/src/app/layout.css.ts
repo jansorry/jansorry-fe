@@ -17,3 +17,17 @@ globalStyle('body', {
   position: 'relative',
   boxShadow: `0 0 25px ${vars.colors.whitesmoke}`,
 });
+
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
+});
+
+globalStyle('ul', {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+});
+
+globalStyle('textarea', {
+  fontFamily: 'pretendard',
+});
