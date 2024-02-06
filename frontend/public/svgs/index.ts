@@ -13,9 +13,10 @@ import IconTwitter from './twitter.svg';
 import IconInstagram from './instagram.svg';
 import IconEdit from './edit.svg';
 import IconSetting from './setting.svg';
+import IconSavedReceipt from './saved-receipt.svg';
+import IconSharing from './sharing.svg';
 import AnimationLoading from './loading.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
-import IconSharing from './sharing.svg';
 
 export {
   IconUser,
@@ -34,5 +35,6 @@ export {
   IconSetting,
   IconSharing,
   AnimationLoading,
+  IconSavedReceipt,
   ButtonKakaoLogin,
 };

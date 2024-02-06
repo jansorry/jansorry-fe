@@ -6,15 +6,16 @@ import { useRouter } from 'next/navigation';
 import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
 import { totalReceiptCountResponse } from '@/types/receipt';
-import { actionTotalCount, actionResponse } from '@/types/userData';
+import { actionTotalCountResponse, actionResponse } from '@/types/userData';
 import { getCards } from '@/services/mypage';
 import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
+import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  totalActionCards: actionTotalCount;
+  totalActionCards: actionTotalCountResponse;
   totalReceiptCount: totalReceiptCountResponse;
 }
 
@@ -54,7 +55,6 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
 
   return (
     <div className={styles.profileContentStyle}>
-      <div className={styles.mypageText({ contentType: 'card' })} />
       <Button
         type='button'
         size='large'
@@ -64,7 +64,9 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
-      <SavedReceipts totalReceiptCount={totalReceiptCount} />
+      {totalReceiptCount.receiptCount > 0 && (
+        <SavedReceiptContainer totalReceiptCountProps={totalReceiptCount} />
+      )}
       <div className={styles.cardGridWrapper}>
         {totalActionCards.content.map((action) => (
           <div

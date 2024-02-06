@@ -6,6 +6,7 @@ import * as styles from '@/containers/mypage/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 import useModal from '@/hooks/useModal';
 import { totalReceiptCountResponse } from '@/types/receipt';
+import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
@@ -25,25 +26,8 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
     textStyleKey: 0,
   };
 
-  const renderSavedReceipts = () => {
-    const receipts = Array.from(
-      { length: 2 },
-      // totalReceiptCount.receiptCount
-      (_, i) => (
-        <div
-          key={i}
-          className={styles.savedReceiptsFrame}
-          onClick={() => router.push(`/receipts/${i + 1}`)}
-        />
-      ),
-    );
-
-    return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
-  };
-
   return (
     <div className={styles.profileContentStyle}>
-      <div className={styles.mypageText({ contentType: 'card' })} />
       <Button
         type='button'
         size='large'
@@ -53,9 +37,9 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
-      <div className={styles.savedReceiptsContainer}>
-        {renderSavedReceipts()}
-      </div>
+      {totalReceiptCount.receiptCount > 0 && (
+        <SavedReceiptContainer totalReceiptCountProps={totalReceiptCount} />
+      )}
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>
           <Button

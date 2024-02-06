@@ -5,6 +5,7 @@ import { calc } from '@vanilla-extract/css-utils';
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { vars } from '@/styles/vars.css';
+import { totalReceiptCountResponse } from '@/types/receipt';
 
 export const profileWrapper = style([
   contentWrapper({ contentArea: 'headerAndNavBar' }),
@@ -30,6 +31,7 @@ export const profileContentWrapper = style([
   }),
   {
     width: '100%',
+    marginBottom: vars.space['4x'],
   },
 ]);
 
@@ -40,6 +42,7 @@ export const mypageText = recipe({
   },
   variants: {
     contentType: {
+      // mypage 카드에 들어갈 텍스트 스타일
       card: {},
       title: {
         fontSize: vars.fontSize['3x'],
@@ -123,33 +126,55 @@ export const profileContentStyle = style([
   },
 ]);
 
-export const savedReceiptsContainer = style([
-  flex({
-    direction: 'row',
-    justify: 'flexStart',
-    align: 'center',
-  }),
+export const savedReceiptWrapper = style([
+  flex({ direction: 'column', justify: 'flexStart' }),
   {
-    '@media': {
-      'screen and (min-width: 480px)': {
-        width: `480px`,
-      },
-    },
-    height: '120px',
-    marginTop: vars.space['5x'],
-    // gap: `calc((100svw - 2 * ${vars.space['4x']}) / 3)`,
+    width: '90%',
+    maxWidth: 480,
+    height: 'auto',
+    margin: '0 auto',
+    marginTop: vars.space['4x'],
   },
 ]);
 
-export const savedReceiptsFrame = style({
-  // UserPreview 컴포넌트 사용하기
-  width: 64,
-  height: 64,
-  borderRadius: vars.borderRadius.full,
-  backgroundColor: vars.colors.lightGray,
-  cursor: 'pointer',
-  margin: vars.space['5x'],
-});
+export const savedReceiptContainer = style([
+  flex({
+    direction: 'row',
+    justify: 'spaceBetween',
+    align: 'center',
+  }),
+  {
+    width: '100%',
+    position: 'relative',
+    gap: vars.space['1x'],
+    marginTop: vars.space['2x'],
+  },
+]);
+
+export const savedReceiptFrame = style([
+  flex({ justify: 'center', align: 'center' }),
+  {
+    // UserPreview 컴포넌트 사용하기
+    width: 64,
+    height: 64,
+    borderRadius: vars.borderRadius.full,
+    backgroundColor: vars.colors.whitesmoke,
+    stroke: '0.1',
+    cursor: 'pointer',
+    margin: vars.space['1x'],
+  },
+]);
+
+export const noReceiptFrame = style([
+  flex({ justify: 'center', align: 'center' }),
+  {
+    // UserPreview 컴포넌트 사용하기
+    width: 64,
+    height: 64,
+    backgroundColor: 'transparent',
+    margin: vars.space['1x'],
+  },
+]);
 
 export const cardGridWrapper = style({
   display: 'grid',

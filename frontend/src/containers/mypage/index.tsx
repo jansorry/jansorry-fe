@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { userDataResponse, actionTotalCount } from '@/types/userData';
+import { userDataResponse, actionTotalCountResponse } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
 import { UserProfile } from '@/containers/mypage/UserProfile';
 
@@ -15,7 +15,7 @@ import Loading from '@/components/Loading';
 
 interface Props {
   myPageItems: userDataResponse;
-  actionsData: actionTotalCount;
+  actionsData: actionTotalCountResponse;
   receiptCount: totalReceiptCountResponse;
 }
 
