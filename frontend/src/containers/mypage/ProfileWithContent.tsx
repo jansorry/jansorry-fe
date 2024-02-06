@@ -24,7 +24,7 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
     if (totalReceiptCount.receiptCount >= 3) {
       openModal();
     } else {
-      router.push(`/receipts/${totalReceiptCount.receiptCount + 1}`);
+      router.push(`/newreceipt`);
     }
   };
 
@@ -47,6 +47,7 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
       <div className={styles.cardGridWrapper}>
         {totalActionCards.map((action) => (
           <div
+            role='presentation'
             onClick={() => handleCardClick(action.actionId)}
             key={action.actionId}
           >
@@ -63,7 +64,6 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
             />
           </div>
         ))}
-        ;
       </div>
       <Modal title='영수증은 세 개까지만 저장 가능해요.'>
         <div className={styles.actionModalWrapper}>
