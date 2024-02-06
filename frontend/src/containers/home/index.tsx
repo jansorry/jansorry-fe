@@ -2,13 +2,12 @@ import Image from 'next/image';
 
 import Empty from '@/containers/home/Empty';
 import CardsPresent from '@/containers/home/CardsPresent';
+import { homeCardsResponse } from '@/types/home';
 
 import * as styles from './index.css';
 import NavBar from '@/components/NavBar';
 
-const Home = () => {
-  const nagCount = 0;
-
+const Home = ({ count, categoryList }: homeCardsResponse) => {
   return (
     <main className={styles.homeWrapper}>
       <Image
@@ -21,8 +20,10 @@ const Home = () => {
       />
 
       <div className={`${styles.homeContentWrapper}`}>
-        <div className={styles.homeText({ contentType: 'title' })}>당신의 잔소리</div>
-        {nagCount ? <CardsPresent /> : <Empty />}
+        <div className={styles.homeText({ contentType: 'title' })}>
+          당신의 잔소리
+        </div>
+        {count ? <CardsPresent {...{ count, categoryList }} /> : <Empty />}
       </div>
 
       <div className={styles.bottomNav}>

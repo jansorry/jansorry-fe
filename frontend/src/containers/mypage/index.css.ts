@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -86,14 +87,14 @@ export const profileDetails = style([
   }),
 ]);
 
-export const usernameAndSettings = style([
+export const nicknameAndSettings = style([
   flex({ align: 'center' }),
   {
     gap: vars.space['1x'],
   },
 ]);
 
-export const username = style({
+export const nicknameBox = style({
   flexGrow: 0,
   fontSize: vars.fontSize['3x'],
   width: 'auto',
@@ -121,7 +122,7 @@ export const followNumber = style({
   width: 'auto',
 });
 
-export const profileNoContentStyle = style([
+export const profileContentStyle = style([
   flex({
     direction: 'column',
     align: 'center',
@@ -132,6 +133,15 @@ export const profileNoContentStyle = style([
     height: '100%',
   },
 ]);
+
+export const cardGridWrapper = style({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gap: vars.space['1x'],
+  padding: vars.space['1x'],
+  margin: vars.space['1x'],
+  marginTop: vars.space['5x'],
+});
 
 export const noCardWrapper = style({
   marginTop: vars.space['4x'],
@@ -148,6 +158,7 @@ export const actionModalWrapper = style([
     direction: 'column',
   }),
   {
-    marginTop: vars.space['5x'],
+    marginTop: calc.multiply(vars.space['5x'], 4),
+    marginBottom: vars.space['5x'],
   },
 ]);
