@@ -68,6 +68,9 @@ export const flex = recipe({
       column: {
         flexDirection: 'column',
       },
+      columnReverse: {
+        flexDirection: 'column-reverse',
+      },
     },
   },
 });
