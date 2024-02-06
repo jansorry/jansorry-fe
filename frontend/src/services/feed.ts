@@ -2,15 +2,10 @@ import { apiClient, apiServer } from '@/services/index';
 import { feedResponse } from '@/types/feed';
 
 export const getLiveFeedonServer = async (
-  lastActionId: number,
   token: string = '',
 ): Promise<feedResponse> => {
   try {
-    const params = lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    return await apiServer.get<feedResponse>(
-      `/feed/actions/live${params}`,
-      token,
-    );
+    return await apiServer.get<feedResponse>(`/feed/actions/live`, token);
   } catch (error) {
     console.log(error);
   }
