@@ -1,5 +1,3 @@
-'use client';
-
 import { assignInlineVars } from '@vanilla-extract/dynamic';
 
 import { homeCardsResponse } from '@/types/home';
