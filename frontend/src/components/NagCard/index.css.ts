@@ -1,4 +1,5 @@
 import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css';
 
@@ -9,7 +10,40 @@ export const cardSizes = recipe({
   variants: {
     size: {
       xSmall: { width: 96, height: 128 },
-      small: { width: 138, height: 184 },
+      small: {
+        width: calc.divide(
+          calc.subtract(480, calc.multiply(vars.space['1x'], 2)),
+          3,
+        ),
+        height: calc.divide(
+          calc.multiply(
+            calc.divide(
+              calc.subtract(480, calc.multiply(vars.space['1x'], 2)),
+              3,
+            ),
+            184,
+          ),
+          138,
+        ),
+        '@media': {
+          'screen and (max-width: 480px)': {
+            width: calc.divide(
+              calc.subtract('100vw', calc.multiply(2, vars.space['1x'])),
+              3,
+            ),
+            height: calc.divide(
+              calc.multiply(
+                calc.divide(
+                  calc.subtract('100vw', calc.multiply(vars.space['1x'], 2)),
+                  3,
+                ),
+                184,
+              ),
+              138,
+            ),
+          },
+        },
+      },
       medium: { width: 198, height: 264 },
       large: { width: 300, height: 400 },
     },

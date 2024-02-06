@@ -7,9 +7,16 @@ import MyPageContainer from '../../containers/mypage';
 const MyPage = async () => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
-  const data = await getMyPage(refreshToken);
+  const { userData, actionsData, receiptCountData } =
+    await getMyPage(refreshToken);
 
-  return <MyPageContainer myPageItems={data} />;
+  return (
+    <MyPageContainer
+      myPageItems={userData}
+      actionsData={actionsData}
+      receiptCount={receiptCountData}
+    />
+  );
 };
 
 export default MyPage;
