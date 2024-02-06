@@ -18,6 +18,19 @@ export interface receiptContent {
   totalPrice: number;
 }
 
+export interface ReceiptData {
+  title: string;
+  description: string;
+  message: string;
+  familyUrl: string;
+  friendUrl: string;
+  createdAt: string;
+}
+
+export interface totalReceiptCountResponse {
+  receiptCount: 0 | 1 | 2;
+}
+
 export interface nagStatisticItem {
   nagId: number;
   content: string;
