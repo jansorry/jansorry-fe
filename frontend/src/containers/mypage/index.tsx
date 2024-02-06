@@ -21,7 +21,7 @@ interface Props {
 
 const MyPageContainer = () => {
   // { myPageItems, actionsData, receiptCount }: Props
-  const [NagCount, setNagCount] = useState<number>(0);
+  // const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // useEffect(() => {
@@ -29,8 +29,12 @@ const MyPageContainer = () => {
   //   setNagCount(contentLength);
   //   setIsLoading(false);
   // }, [actionsData]);
-
+  const NagCount = 2;
   const renderMyCard = () => {
+    // if (isLoading) {
+    //   return <Loading />;
+    // }
+
     // if (isLoading) {
     //   return <Loading />;
     // }
@@ -156,9 +160,9 @@ const MyPageContainer = () => {
     <>
       <Header title='나의 잔소리 목록' />
       <main className={styles.profileWrapper}>
-        {/* <div className={styles.profileContentWrapper}> */}
-        {/*  <UserProfile myPageItems={myPageItems} /> */}
-        {/* </div> */}
+        <div className={styles.profileContentWrapper}>
+          {/* <UserProfile myPageItems={myPageItems} /> */}
+        </div>
         {renderMyCard()}
         <div className={styles.bottomNav}>
           <NavBar clickedIndex={3} />

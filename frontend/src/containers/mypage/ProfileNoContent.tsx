@@ -14,8 +14,7 @@ interface Props {
   totalReceiptCount: totalReceiptCountResponse;
 }
 
-const ProfileNoContent = () => {
-  // { totalReceiptCount }: Props
+const ProfileNoContent = ({ totalReceiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal } = useModal();
 
@@ -26,20 +25,21 @@ const ProfileNoContent = () => {
     textStyleKey: 0,
   };
 
-  // const renderSavedReceipts = () => {
-  //   const receipts = Array.from(
-  //     { length: totalReceiptCount.receiptCount },
-  //     (_, i) => (
-  //       <div
-  //         key={i}
-  //         className={styles.savedReceiptsFrame}
-  //         onClick={() => router.push(`/receipts/${i + 1}`)}
-  //       />
-  //     ),
-  //   );
-  //
-  //   return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
-  // };
+  const renderSavedReceipts = () => {
+    const receipts = Array.from(
+      { length: 2 },
+      // totalReceiptCount.receiptCount
+      (_, i) => (
+        <div
+          key={i}
+          className={styles.savedReceiptsFrame}
+          onClick={() => router.push(`/receipts/${i + 1}`)}
+        />
+      ),
+    );
+
+    return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
+  };
 
   return (
     <div className={styles.profileContentStyle}>
@@ -53,9 +53,9 @@ const ProfileNoContent = () => {
       >
         영수증 발급
       </Button>
-      {/* <div className={styles.savedReceiptsContainer}> */}
-      {/*  {renderSavedReceipts()} */}
-      {/* </div> */}
+      <div className={styles.savedReceiptsContainer}>
+        {renderSavedReceipts()}
+      </div>
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>
           <Button

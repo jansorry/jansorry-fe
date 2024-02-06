@@ -34,8 +34,7 @@ const ProfileWithContent = ({ totalActionCards }: Props) => {
   };
   const renderSavedReceipts = () => {
     const receipts = Array.from(
-      { length: 3 },
-      // totalReceiptCount.receiptCount
+      { length: totalReceiptCount.receiptCount },
       (_, i) => (
         <div
           key={i}
@@ -62,25 +61,24 @@ const ProfileWithContent = ({ totalActionCards }: Props) => {
       </Button>
       {renderSavedReceipts()}
       <div className={styles.cardGridWrapper}>
-        {totalActionCards.map((action) => (
-          <div
-            key={action.actionId}
-            onClick={() => handleCardClick(action.actionId)}
-          >
-            <NagCard
-              key={action.actionId}
-              cardOption={{
-                categoryKey: action.categoryId,
-                typeKey: 1,
-                sizeKey: 1,
-                textStyleKey: 1,
-                shadow: false,
-                text: undefined,
-              }}
-            />
-          </div>
-        ))}
-        ;
+        {/* {totalActionCards.map((action) => ( */}
+        {/*  <div */}
+        {/*    key={action.actionId} */}
+        {/*    onClick={() => handleCardClick(action.actionId)} */}
+        {/*  > */}
+        {/*    <NagCard */}
+        {/*      key={action.actionId} */}
+        {/*      cardOption={{ */}
+        {/*        categoryKey: action.categoryId, */}
+        {/*        typeKey: 1, */}
+        {/*        sizeKey: 1, */}
+        {/*        textStyleKey: 1, */}
+        {/*        shadow: false, */}
+        {/*        text: undefined, */}
+        {/*      }} */}
+        {/*    /> */}
+        {/*  </div> */}
+        {/* ))} */};
       </div>
       <Modal title='영수증은 세 개까지만 저장 가능해요.'>
         <div className={styles.actionModalWrapper}>

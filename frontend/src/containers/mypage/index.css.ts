@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { direction } from 'html2canvas/dist/types/css/property-descriptors/direction';
 
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -124,23 +125,32 @@ export const profileContentStyle = style([
   },
 ]);
 
-export const savedReceiptsContainer = style({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  width: `calc(100vw - 2 * ${vars.space['4x']})`,
-  height: '120px',
-  padding: `0 ${vars.space['4x']}`,
-});
+export const savedReceiptsContainer = style([
+  flex({
+    direction: 'row',
+    justify: 'flexStart',
+    align: 'center',
+  }),
+  {
+    '@media': {
+      'screen and (min-width: 480px)': {
+        width: `480px`,
+      },
+    },
+    height: '120px',
+    marginTop: vars.space['5x'],
+    // gap: `calc((100svw - 2 * ${vars.space['4x']}) / 3)`,
+  },
+]);
 
 export const savedReceiptsFrame = style({
   // UserPreview 컴포넌트 사용하기
   width: 64,
   height: 64,
   borderRadius: vars.borderRadius.full,
-  backgroundColor: vars.colors.gray,
+  backgroundColor: vars.colors.lightGray,
   cursor: 'pointer',
+  margin: vars.space['5x'],
 });
 
 export const cardGridWrapper = style({

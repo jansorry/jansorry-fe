@@ -28,7 +28,7 @@ export interface ReceiptData {
 }
 
 export interface totalReceiptCountResponse {
-  receiptCount: 0 | 1 | 2;
+  receiptCount: 0 | 1 | 2 | 3;
 }
 
 export interface nagStatisticItem {
