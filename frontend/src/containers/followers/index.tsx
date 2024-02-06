@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import * as styles from '@/styles/common.css';
+import * as styles from './index.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { getFollowers } from '@/services/follow';
 import { followerResponse } from '@/types/follow';
@@ -12,13 +12,18 @@ import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
 import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
+import { followContentWrapper } from '@/containers/followings/index.css';
+import { followingDummy } from '@/containers/followings/dummy';
+import { followerDummy } from '@/containers/followers/dummy';
 
 const Followers = () => {
   const [data, setData] = useState<followerResponse[]>([]);
 
   useEffect(() => {
     const getData = async () => {
-      const followerData = await getFollowers();
+      // const followerData = await getFollowers();
+      // TODO : 더미데이터 삭제
+      const followerData = followerDummy
       setData(followerData);
     };
 
@@ -28,15 +33,17 @@ const Followers = () => {
   return (
     <div className={styles.defaultWrapper({ width: 'max', height: 'max' })}>
       <Header title='follow' hasPrevious />
-      <div className={contentWrapper({ contentArea: 'headerAndNavBar' })}>
-        {data.map((item, index) => (
-          <div key={`${createCounter()}`}>
-            <UserPreview imgSrc={item.imageUrl} nickname={item.nickname} />
-            <Button type='button' size='small' colorStyle='black' filled>
-              팔로우
-            </Button>
-          </div>
-        ))}
+      <div className={followContentWrapper}>
+<div className={styles.profile}>
+  {data.map((item, index) => (
+
+    <div key={`${createCounter()}`}>
+      {/* TODO : 이미지링크 변경 */}
+      <UserPreview imgSrc={'/images'} nickname={item.nickname} />
+    </div>
+  ))}
+</div>
+
       </div>
       <NavBar />
     </div>

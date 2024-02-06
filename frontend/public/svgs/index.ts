@@ -16,6 +16,7 @@ import IconSetting from './setting.svg';
 import AnimationLoading from './loading.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
 import IconSharing from './sharing.svg';
+import IconMagnify from './magnifying.svg';
 
 export {
   IconUser,
@@ -28,6 +29,7 @@ export {
   IconArrowLeft,
   IconClose,
   IconRightBracket,
+  IconMagnify,
   IconTwitter,
   IconInstagram,
   IconEdit,
