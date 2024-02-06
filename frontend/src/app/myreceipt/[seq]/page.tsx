@@ -8,8 +8,6 @@ import {
 } from '@/utils/drawReceipt';
 import { getAllNags, getReceipts } from '@/services/receipt';
 
-import { dummyNagArray, dummyReceiptResponse } from '@/app/myreceipt/dummy';
-
 interface Props {
   params: { seq: 1 | 2 | 3 };
 }
@@ -19,15 +17,10 @@ const MyReceiptPage = async ({ params }: Props) => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
-  // api 받는 로직
   const [receiptInfo, allNagsArray] = await Promise.all([
     getReceipts(seq, refreshToken),
     getAllNags(refreshToken),
   ]);
-
-  // // //  더미데이터
-  // const receiptInfo = dummyReceiptResponse;
-  // const allNagsArray = dummyNagArray;
 
   const familyUrlForOpenGraph = makeShareUrl(
     receiptInfo.familyUrl,

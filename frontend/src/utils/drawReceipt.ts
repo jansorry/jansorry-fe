@@ -21,7 +21,7 @@ export const parsingReceiptDataArray = ({
           nagId: index,
           count: parseInt(value, 10),
           content: categoryItem.content,
-          price: categoryItem.price.toString(),
+          price: categoryItem.price,
         });
       }
     }
@@ -67,9 +67,14 @@ export const makeShareUrl = (baseurl: string, receiptInfo: receiptResponse) => {
   const { title, description, message, createdAt, totalPrice } = receiptInfo;
   if (title) urlObj.searchParams.set('title', title);
   if (description) urlObj.searchParams.set('description', description);
-  if (message) urlObj.searchParams.set('message', message);
+  //  message 현재는 미사용 But 추후 오픈그래프 수정 시 사용 가능
+  //  if (message) urlObj.searchParams.set('message', message);
   if (createdAt) urlObj.searchParams.set('createdAt', createdAt);
   if (totalPrice) urlObj.searchParams.set('totalPrice', totalPrice.toString());
 
   return urlObj.toString();
+};
+
+export const formatNumberAsCurrency = (num: number): string => {
+  return new Intl.NumberFormat('ko-KR').format(num);
 };
