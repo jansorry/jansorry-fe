@@ -8,8 +8,6 @@ import {
   parsingReceiptDataArray,
 } from '@/utils/drawReceipt';
 
-import { dummyNagArray } from '@/app/myreceipt/dummy';
-
 interface metaProps {
   params: { target: 'family' | 'friend' };
   searchParams: { [key: string]: string };
@@ -20,13 +18,12 @@ export const generateMetadata = ({
   params,
   searchParams,
 }: metaProps): Metadata => {
-  const id = params.target;
-  const { description, title, message } = searchParams;
+  const { description, title } = searchParams;
 
   return {
     openGraph: {
       title,
-      description,
+      description: `${description}의 잔소리 영수증!`,
     },
   };
 };
@@ -35,9 +32,7 @@ const ShareReceipt = async ({ params, searchParams }: metaProps) => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
-  // //  전체 잔소리 배열api호출
   const allNagsArray = await getAllNags(refreshToken);
-  // const allNagsArray = dummyNagArray;
 
   //  잔소리 배열 + url 상의 잔소리 내역
   const dataArray = parsingReceiptDataArray({
@@ -52,11 +47,7 @@ const ShareReceipt = async ({ params, searchParams }: metaProps) => {
     searchParams,
   );
 
-  return (
-    <div>
-      <SharedReceipt content={receiptContent} />
-    </div>
-  );
+  return <SharedReceipt content={receiptContent} />;
 };
 
 export default ShareReceipt;

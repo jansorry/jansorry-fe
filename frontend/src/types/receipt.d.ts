@@ -1,7 +1,7 @@
 export interface receiptData {
   nagId: number;
   content: string | null;
-  price: number | null | string;
+  price: number;
   count: number;
 }
 

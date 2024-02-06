@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { feedContent, feedResponse } from '@/types/feed';
 import FeedCard from '@/containers/feed/FeedCard';
@@ -13,6 +13,7 @@ import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
 
 const Feed = ({ content, last }: feedResponse) => {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLast, setIsLast] = useState<boolean>(last);
   const [feeds, setFeeds] = useState<feedContent[]>(content);
@@ -28,16 +29,10 @@ const Feed = ({ content, last }: feedResponse) => {
     5: '#30대',
   };
 
-  const handleHashtagClicked = async (hashtagId: number) => {
-    if (isLoading) return;
-    setIsLoading(true);
-
-    setSelectedHashtag(hashtagId);
+  const fetchHashtagFeed = async () => {
     const data = await getFeed(-1, selectedHashtag);
     if (data.last) setIsLast(data.last);
     setFeeds([...data.content]);
-
-    setIsLoading(false);
   };
 
   const handleLastDetected = async () => {
@@ -51,6 +46,14 @@ const Feed = ({ content, last }: feedResponse) => {
 
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (isMounted) {
+      fetchHashtagFeed();
+      return;
+    }
+    setIsMounted(true);
+  }, [selectedHashtag]);
 
   const refLast = useInfiniteObserver(handleLastDetected);
 
@@ -66,7 +69,7 @@ const Feed = ({ content, last }: feedResponse) => {
               size='small'
               colorStyle='blue'
               filled={selectedHashtag === hashtagKey}
-              onClick={() => handleHashtagClicked(hashtagKey)}
+              onClick={() => setSelectedHashtag(hashtagKey)}
             >
               {hashtagValues[hashtagKey]}
             </Button>

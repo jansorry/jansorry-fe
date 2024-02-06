@@ -1,14 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
+import html2canvas from 'html2canvas';
+
 import { receiptContent } from '@/types/receipt';
-import {
-  buttonsWrapper,
-  fullWrapper,
-  myreceiptButtonWrapper,
-  myReceiptWrapper,
-  receiptShadow,
-  receiptWrapper,
-} from '@/containers/myreceipt/index.css';
+import * as styles from '@/containers/myreceipt/index.css';
 import { deleteReceipt } from '@/services/receipt';
 import useModal from '@/hooks/useModal';
 import { SharingButtons } from '@/containers/myreceipt/SharingButtons';
@@ -31,21 +28,42 @@ const MyReceipt = ({
   friendUrlForOpenGraph,
 }: Props) => {
   const { Modal, openModal } = useModal();
+  const router = useRouter();
   const deleteReceiptEvent = () => {
     deleteReceipt(seq);
+    router.push('/mypage');
   };
-  console.log(data);
+  const receiptRef = useRef(null);
+  const saveImageEvent = () => {
+    const receiptComponent = receiptRef.current;
+
+    if (!receiptComponent) {
+      console.log('저장에 실패했습니다!');
+      return;
+    }
+
+    html2canvas(receiptComponent).then((canvas) => {
+      const link = document.createElement('a');
+      document.body.appendChild(link);
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'result.png';
+      link.click();
+      document.body.removeChild(link);
+    });
+  };
 
   return (
-    <main className={fullWrapper}>
+    <main className={styles.fullWrapper}>
       <Header title='영수증 출력' hasPrevious />
-      <div className={receiptWrapper}>
-        <div className={myReceiptWrapper}>
-          <div className={receiptShadow}>
-            <Receipt content={data} />
+      <div className={styles.receiptWrapper}>
+        <div className={styles.myReceiptWrapper}>
+          <div className={styles.receiptShadow}>
+            <div ref={receiptRef}>
+              <Receipt content={data} />
+            </div>
           </div>
-          <div className={buttonsWrapper}>
-            <div className={myreceiptButtonWrapper}>
+          <div className={styles.buttonsWrapper}>
+            <div className={styles.myreceiptButtonWrapper}>
               <Button
                 onClick={openModal}
                 type='button'
@@ -56,7 +74,7 @@ const MyReceipt = ({
                 공유하기
               </Button>
             </div>
-            <div className={myreceiptButtonWrapper}>
+            <div className={styles.myreceiptButtonWrapper}>
               <Button
                 onClick={deleteReceiptEvent}
                 type='button'
@@ -74,6 +92,7 @@ const MyReceipt = ({
 
       <Modal title='어떻게 공유할까요?'>
         <SharingButtons
+          saveImageEvent={saveImageEvent}
           familyUrl={familyUrlForOpenGraph}
           friendUrl={friendUrlForOpenGraph}
         />
