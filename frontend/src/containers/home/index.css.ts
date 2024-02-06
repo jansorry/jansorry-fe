@@ -1,5 +1,6 @@
-import { style } from '@vanilla-extract/css';
+import { createVar, keyframes, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { defaultWrapper, flex } from '@/styles/common.css';
 import { vars } from '@/styles/vars.css';
@@ -22,14 +23,18 @@ export const bottomNav = style({
 export const homeContentWrapper = style([
   flex({ align: 'center', direction: 'column' }),
   {
+    '@media': {
+      'screen and (max-height: 720px)': {
+        paddingTop: '15%',
+      },
+    },
     position: 'relative',
     top: 0,
     boxSizing: 'border-box',
     height: '100svh',
-    //  padding용 48px spacing도 만들어야 될듯
-    // 상하단 padding style 셋팅을 하는게 나을지도 -> 고민
+    width: '100%',
     paddingBottom: '48px',
-    paddingTop: '20%',
+    paddingTop: '30%',
   },
 ]);
 
@@ -37,7 +42,7 @@ export const emptyStyle = style([
   flex({ align: 'center', justify: 'center', direction: 'column' }),
   {
     width: '100%',
-    height: '100%',
+    height: '80%',
   },
 ]);
 
@@ -71,5 +76,55 @@ export const homeText = recipe({
         color: vars.colors.gray,
       },
     },
+    margin: {
+      top: {
+        marginTop: '60%',
+      },
+    },
   },
+});
+
+const cardCount = '7';
+const curvature = `150deg`;
+export const cardIndex = createVar();
+const curve = calc.multiply(
+  curvature,
+  calc.divide(calc.divide(calc.subtract(cardIndex, 3), 2.5), cardCount),
+);
+
+export const cardWrapper = style([
+  flex({ justify: 'center' }),
+  {
+    '@media': {
+      'screen and (max-height: 650px)': {
+        transform: 'translateY(50vh)',
+      },
+    },
+    counterReset: cardCount,
+    position: 'absolute',
+    width: '100%',
+    transform: 'translateY(40vh)',
+  },
+]);
+
+export const renderEffect = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `rotate(0) translateY(0%)`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: `rotate(${curve}) translateY(-150%)`,
+  },
+});
+
+export const cardElement = style({
+  position: 'absolute',
+  counterIncrement: cardCount,
+  flex: '0 0 auto',
+  transformOrigin: '50% 100%',
+  animationName: renderEffect,
+  animationDuration: '1s',
+  animationTimingFunction: 'ease-in-out',
+  animationFillMode: 'forwards',
 });
