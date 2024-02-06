@@ -16,7 +16,8 @@ interface Props {
   totalReceiptCount: totalReceiptCountResponse;
 }
 
-const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
+const ProfileWithContent = ({ totalActionCards }: Props) => {
+  // , totalReceiptCount
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
@@ -33,7 +34,8 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   };
   const renderSavedReceipts = () => {
     const receipts = Array.from(
-      { length: totalReceiptCount.receiptCount },
+      { length: 3 },
+      // totalReceiptCount.receiptCount
       (_, i) => (
         <div
           key={i}
