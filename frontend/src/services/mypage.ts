@@ -26,11 +26,13 @@ export const getCards = async (
   lastActionId: number,
 ): Promise<actionTotalCountResponse> => {
   try {
-    const actionIdParams =
-      lastActionId !== -1 ? `?lastActionId=${lastActionId}` : '';
-    const sizeParams = `?size=20`;
+    const queryParams = new URLSearchParams({
+      size: '20',
+      ...(lastActionId !== -1 && { lastActionId: `${lastActionId}` }),
+    }).toString();
+
     return await apiClient.get<actionTotalCountResponse>(
-      `/actions/${sizeParams}${actionIdParams}`,
+      `/actions/?${queryParams}`,
     );
   } catch (e) {
     console.log(e);

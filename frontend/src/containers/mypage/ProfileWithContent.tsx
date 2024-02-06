@@ -25,6 +25,7 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   const [cards, setCards] = useState<actionResponse[]>(
     totalActionCards.content,
   );
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
@@ -43,11 +44,13 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   const handleLastCardDetected = async () => {
     if (isLast || isLoading) return;
     setIsLoading(true);
-    const lastCardActionId: number = cards[cards.length - 1]?.actionId;
-    const data = await getCards(lastCardActionId);
-    if (data.last) setIsLast(data.last);
-    setCards((prevCards) => [...prevCards, ...data.content]);
 
+    const nextPage = currentPage + 1;
+    const data = await getCards(nextPage * 20);
+    if (data.last) setIsLast(data.last);
+
+    setCards((prevCards) => [...prevCards, ...data.content]);
+    setCurrentPage(nextPage);
     setIsLoading(false);
   };
 
