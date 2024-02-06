@@ -42,8 +42,11 @@ const FeedCard = ({
 
   const handleFavoriteClicked = () => {
     setIsLike(!isLike);
-    if (isLike) setLikeCount(favoriteCount);
-    else setLikeCount(favoriteCount + 1);
+    if (isFavorite) {
+      setLikeCount(isLike ? favoriteCount - 1 : favoriteCount);
+      return;
+    }
+    setLikeCount(isLike ? favoriteCount : favoriteCount + 1);
   };
 
   useEffect(() => {
