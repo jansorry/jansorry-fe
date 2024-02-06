@@ -1,12 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { direction } from 'html2canvas/dist/types/css/property-descriptors/direction';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { vars } from '@/styles/vars.css';
-
-import { profileImage } from '@/components/UserPreview/index.css';
 
 export const profileWrapper = style([
   contentWrapper({ contentArea: 'headerAndNavBar' }),
@@ -177,7 +176,7 @@ export const actionModalWrapper = style([
     direction: 'column',
   }),
   {
-    marginTop: `calc(${vars.space['5x']} * 4)`,
+    marginTop: calc.multiply(vars.space['5x'], 4),
     marginBottom: vars.space['5x'],
   },
 ]);

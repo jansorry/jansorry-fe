@@ -15,6 +15,7 @@ import IconEdit from './edit.svg';
 import IconSetting from './setting.svg';
 import AnimationLoading from './loading.svg';
 import ButtonKakaoLogin from './kakao-login.svg';
+import IconSharing from './sharing.svg';
 
 export {
   IconUser,
@@ -31,6 +32,7 @@ export {
   IconInstagram,
   IconEdit,
   IconSetting,
+  IconSharing,
   AnimationLoading,
   ButtonKakaoLogin,
 };

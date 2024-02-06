@@ -17,8 +17,7 @@ interface Props {
   totalReceiptCount: totalReceiptCountResponse;
 }
 
-const ProfileWithContent = ({ totalActionCards }: Props) => {
-  // , totalReceiptCount
+const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
@@ -50,8 +49,9 @@ const ProfileWithContent = ({ totalActionCards }: Props) => {
       <div className={styles.cardGridWrapper}>
         {totalActionCards.map((action) => (
           <div
-            key={action.actionId}
+            role='presentation'
             onClick={() => handleCardClick(action.actionId)}
+            key={action.actionId}
           >
             <NagCard
               key={action.actionId}

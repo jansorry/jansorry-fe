@@ -7,6 +7,7 @@ import { flex } from '@/styles/common.css';
 export const feedCardWrapper = style({
   width: 360,
   height: 240,
+  marginBottom: vars.space['4x'],
   border: `1px solid ${vars.colors.whitesmoke}`,
   borderRadius: vars.borderRadius['1x'],
   boxShadow: `0px 10px 25px 0px ${vars.colors.whitesmoke}`,

@@ -1,7 +1,7 @@
 export interface receiptData {
   nagId: number;
   content: string | null;
-  price: number | null | string;
+  price: number;
   count: number;
 }
 
@@ -38,15 +38,20 @@ export interface nagStatisticItem {
   count: number;
 }
 export interface nagStatisticResponse {
-  data: nagStatisticItem[];
+  totalPrice: number;
+  totalCount: number;
+  maxCountedNagId: number;
+  nagStatisticDtos: nagStatisticItem[];
 }
 
 export interface receiptResponse {
-  title: string | null;
-  description: string | null;
-  message: string | null;
-  familyUrl: string | null;
-  friendUrl: string | null;
-  totalPrice: number | null;
-  createdAt: string | null;
+  maxCountedNagId?: number;
+  totalPrice: number;
+  totalCount?: number;
+  title?: string;
+  description?: string;
+  message?: string;
+  familyUrl: string;
+  friendUrl: string;
+  createdAt?: string;
 }

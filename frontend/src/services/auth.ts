@@ -7,7 +7,7 @@ export const getKakaoLogin = async (code: string): Promise<authResponse> => {
   } catch (e) {
     console.log(e);
   }
-  return { oauthId: '', nickname: null, accessToken: null };
+  return { oauthId: '', kakaoNickname: '', nickname: null, accessToken: null };
 };
 
 export const postSignup = async (
@@ -21,5 +21,5 @@ export const postSignup = async (
   } catch (e) {
     console.log(e);
   }
-  return { nickname: null, accessToken: null };
+  return { kakaoNickname: '', nickname: null, accessToken: null };
 };

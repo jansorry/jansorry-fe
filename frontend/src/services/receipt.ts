@@ -5,12 +5,15 @@ import { flattenNags } from '@/utils/drawReceipt';
 
 export const getNagStatistic = async (): Promise<nagStatisticResponse> => {
   try {
-    return await apiClient.get(`/nags/statistic`);
+    return await apiClient.get(`/receipts/statistic`);
   } catch (error) {
     console.log(error);
   }
   return {
-    data: [
+    totalPrice: -1,
+    totalCount: -1,
+    maxCountedNagId: -1,
+    nagStatisticDtos: [
       {
         nagId: -1,
         content: '서버 오류',
@@ -32,7 +35,6 @@ export const createReceipt = async (
   return -1;
 };
 
-//  영수증 상세 정보
 export const getReceipts = async (
   seq: number,
   token: string = '',
@@ -44,12 +46,14 @@ export const getReceipts = async (
   }
 
   return {
+    maxCountedNagId: -1,
+    totalPrice: -1,
+    totalCount: -1,
     title: '서버오류',
     description: '서버오류',
     message: '서버오류',
     familyUrl: '서버오류',
     friendUrl: '서버오류',
-    totalPrice: 0,
     createdAt: '없음',
   };
 };
@@ -63,9 +67,9 @@ export const deleteReceipt = async (seq: number) => {
   return undefined;
 };
 
-export const getAllNags = async (): Promise<nag[]> => {
+export const getAllNags = async (token: string = ''): Promise<nag[]> => {
   try {
-    const response = await apiClient.get<nagTotalResponse[]>(`/nags`);
+    const response = await apiServer.get<nagTotalResponse[]>(`/nags`, token);
     return flattenNags(response);
   } catch (e) {
     console.log(e);
