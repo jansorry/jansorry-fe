@@ -7,6 +7,7 @@ import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
 import { totalReceiptCountResponse } from '@/types/receipt';
 import { actionResponse } from '@/types/userData';
+import { SavedReceipts } from '@/containers/mypage/SavedReciepts';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
@@ -32,20 +33,6 @@ const ProfileWithContent = ({ totalActionCards }: Props) => {
   const handleCardClick = (actionId: number) => {
     router.push(`/actions/${actionId}`);
   };
-  const renderSavedReceipts = () => {
-    const receipts = Array.from(
-      { length: totalReceiptCount.receiptCount },
-      (_, i) => (
-        <div
-          key={i}
-          className={styles.savedReceiptsFrame}
-          onClick={() => router.push(`/receipts/${i + 1}`)}
-        />
-      ),
-    );
-
-    return <div className={styles.savedReceiptsContainer}>{receipts}</div>;
-  };
 
   return (
     <div className={styles.profileContentStyle}>
@@ -59,26 +46,27 @@ const ProfileWithContent = ({ totalActionCards }: Props) => {
       >
         영수증 발급
       </Button>
-      {renderSavedReceipts()}
+      <SavedReceipts totalReceiptCount={totalReceiptCount} />
       <div className={styles.cardGridWrapper}>
-        {/* {totalActionCards.map((action) => ( */}
-        {/*  <div */}
-        {/*    key={action.actionId} */}
-        {/*    onClick={() => handleCardClick(action.actionId)} */}
-        {/*  > */}
-        {/*    <NagCard */}
-        {/*      key={action.actionId} */}
-        {/*      cardOption={{ */}
-        {/*        categoryKey: action.categoryId, */}
-        {/*        typeKey: 1, */}
-        {/*        sizeKey: 1, */}
-        {/*        textStyleKey: 1, */}
-        {/*        shadow: false, */}
-        {/*        text: undefined, */}
-        {/*      }} */}
-        {/*    /> */}
-        {/*  </div> */}
-        {/* ))} */};
+        {totalActionCards.map((action) => (
+          <div
+            key={action.actionId}
+            onClick={() => handleCardClick(action.actionId)}
+          >
+            <NagCard
+              key={action.actionId}
+              cardOption={{
+                categoryKey: action.categoryId,
+                typeKey: 1,
+                sizeKey: 1,
+                textStyleKey: 1,
+                shadow: false,
+                text: undefined,
+              }}
+            />
+          </div>
+        ))}
+        ;
       </div>
       <Modal title='영수증은 세 개까지만 저장 가능해요.'>
         <div className={styles.actionModalWrapper}>

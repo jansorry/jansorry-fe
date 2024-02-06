@@ -34,10 +34,7 @@ const MyPageContainer = () => {
     // if (isLoading) {
     //   return <Loading />;
     // }
-
-    // if (isLoading) {
-    //   return <Loading />;
-    // }
+    // 더미 데이터
     const actionsData = {
       content: [
         {
