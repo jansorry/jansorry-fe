@@ -79,6 +79,11 @@ export const apiClient = {
 
   delete: <T>(url: string): Promise<T> =>
     requestClient<T>(url, { method: HTTPMethods.DELETE }),
+
+  put: <T, U>(url: string, bodyObject?: U): Promise<T> => {
+    const body = JSON.stringify(bodyObject);
+    return requestClient<T>(url, { method: HTTPMethods.PUT }, body);
+  },
 };
 
 export const apiServer = {
