@@ -2,11 +2,7 @@
 
 import { ChangeEvent, useEffect, useState } from 'react';
 
-import {
-  getFollowers,
-  getFollowings,
-  getSearchByNickname,
-} from '@/services/follow';
+import { getFollowings, getSearchByNickname } from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
 import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
@@ -23,7 +19,7 @@ const Followings = () => {
   const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
   const [inputNickname, setInputNickname] = useState('');
   const [isExist, setIsExist] = useState(true);
-  const [newFollw, setNewFollow] = useState<searchResponse[]>([]);
+  const [newFollow, setNewFollow] = useState<searchResponse[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -89,7 +85,7 @@ const Followings = () => {
           </span>
         </div>
         <div>
-          {newFollw.map((item) => (
+          {newFollow.map((item) => (
             <div key={`${createCounter()}`} className={styles.newUserWrapper}>
               {/*  TODO : imgSrc 수정 */}
               <div className={styles.profileImgTextWrapper}>
