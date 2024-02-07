@@ -100,3 +100,10 @@ export const managementSeperateLine = style({
   border: `1px solid ${vars.colors.lightGray}`,
   width: '100%',
 });
+
+export const logoutModalWrapper = style([
+  flex({ justify: 'center' }),
+  {
+    marginTop: vars.space['5x'],
+  },
+]);

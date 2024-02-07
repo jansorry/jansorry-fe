@@ -25,3 +25,11 @@ export const logout = async (): Promise<void> => {
     console.log('로그아웃 실패:', error);
   }
 };
+
+export const withdrawal = async () => {
+  try {
+    await apiClient.delete('/members/withdraw/kakao');
+  } catch (error) {
+    console.log(error);
+  }
+};
