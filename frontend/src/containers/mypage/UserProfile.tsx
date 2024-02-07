@@ -5,12 +5,11 @@ import { useRouter } from 'next/navigation';
 import * as styles from '@/containers/mypage/index.css';
 import { IconSetting } from '#/svgs';
 
-import defaultProfileImage from '../../../public/images/userProfileImage/defaultProfileImage.png';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 interface Props {
   nickname: string;
-  imageUrl: string;
+  imageUrl: number;
   followerCnt: number;
   followingCnt: number;
 }
@@ -27,15 +26,9 @@ export const UserProfile = ({
     router.push('/management');
   };
 
-  const defaultUserProfile =
-    '/public/images/userProfileImage/defaultProfileImage.png';
-  const userProfileImage = imageUrl || defaultUserProfile;
-
   return (
     <div className={styles.userProfileWrapper}>
-      {/* TODO: 랜덤 이미지 생성 완료되면 이미지 바꾸기 */}
-      {/* {imageUrl && <UserProfileImage imgSrc={imageUrl} size='large' />} */}
-      <UserProfileImage imgSrc={userProfileImage} size='large' />
+      {imageUrl && <UserProfileImage imgSrc={imageUrl} size='large' />}
       <div className={styles.profileDetails}>
         <div className={styles.nicknameAndSettings}>
           <span className={styles.nicknameBox}>{nickname}</span>
