@@ -1,24 +1,37 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
 import { ManagementUserProfile } from '@/containers/management/ManagementUserProfile';
-import { managementUserDataResponse } from '@/types/managementProfile';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 
 interface Props {
-  managementItems: managementUserDataResponse;
+  nickname: string;
+  imageUrl: string;
 }
 
-const ManagementContainer = ({ managementItems }: Props) => {
+const ManagementContainer = ({ nickname, imageUrl }: Props) => {
+  const router = useRouter();
+  const handleLogout = () => {
+    // Implement your logout logic here
+    router.push('/logout');
+  };
+
+  const handleWithdrawal = () => {
+    router.push('/management/withdrawal');
+  };
+
   return (
     <>
       <Header title='마이페이지' hasPrevious />
       <main className={styles.managementWrapper}>
         <div className={styles.managementProfile}>
-          <ManagementUserProfile managementItems={managementItems} />
+          <ManagementUserProfile nickname={nickname} imageUrl={imageUrl} />
         </div>
         <hr className={styles.managementSeperateLine} />
         <Link
@@ -41,22 +54,27 @@ const ManagementContainer = ({ managementItems }: Props) => {
           href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
           className={styles.managementListContent}
         >
-          <div>자주 듣는 질문</div>
+          <div>자주 하는 질문</div>
           <IconRightBracket />
         </Link>
         <hr className={styles.managementSeperateLine} />
-        <Link href='/logout' className={styles.managementListContent}>
+        <div
+          role='presentation'
+          className={styles.managementListContent}
+          onClick={handleLogout}
+        >
           <div>로그아웃</div>
           <IconRightBracket />
-        </Link>
+        </div>
         <hr className={styles.managementSeperateLine} />
-        <Link
-          href='/management/withdrawal'
+        <div
+          role='presentation'
           className={styles.managementListContent}
+          onClick={handleWithdrawal}
         >
           <div>회원 탈퇴</div>
           <IconRightBracket />
-        </Link>
+        </div>
         <hr className={styles.managementSeperateLine} />
         <Link
           href='https://www.instagram.com/jansorry_official/'

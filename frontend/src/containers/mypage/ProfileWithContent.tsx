@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
-import { totalReceiptCountResponse } from '@/types/receipt';
-import { actionTotalCountResponse, actionResponse } from '@/types/userData';
+import { actionResponse } from '@/types/userData';
 import { getCards } from '@/services/mypage';
 import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
 import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
@@ -15,22 +14,21 @@ import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  totalActionCards: actionTotalCountResponse;
-  totalReceiptCount: totalReceiptCountResponse;
+  content: actionResponse[];
+  last: boolean;
+  receiptCount: 0 | 1 | 2 | 3;
 }
 
-const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
+const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isLast, setIsLast] = useState<boolean>(totalActionCards.last);
-  const [cards, setCards] = useState<actionResponse[]>(
-    totalActionCards.content,
-  );
+  const [isLast, setIsLast] = useState<boolean>(last);
+  const [cards, setCards] = useState<actionResponse[]>(content);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
   const handleReceiptCount = async () => {
-    if (totalReceiptCount.receiptCount >= 3) {
+    if (receiptCount >= 3) {
       openModal();
     } else {
       router.push(`/newreceipt`);
@@ -46,7 +44,7 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
     setIsLoading(true);
 
     const nextPage = currentPage + 1;
-    const data = await getCards(nextPage * 20);
+    const data = await getCards();
     if (data.last) setIsLast(data.last);
 
     setCards((prevCards) => [...prevCards, ...data.content]);
@@ -67,20 +65,20 @@ const ProfileWithContent = ({ totalActionCards, totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
-      {totalReceiptCount.receiptCount > 0 && (
-        <SavedReceiptContainer totalReceiptCountProps={totalReceiptCount} />
+      {receiptCount > 0 && (
+        <SavedReceiptContainer receiptCount={receiptCount} />
       )}
       <div className={styles.cardGridWrapper}>
-        {totalActionCards.content.map((action) => (
+        {cards.map((card) => (
           <div
             role='presentation'
-            onClick={() => handleCardClick(action.actionId)}
-            key={action.actionId}
+            onClick={() => handleCardClick(card.actionId)}
+            key={card.actionId}
           >
             <NagCard
-              key={action.actionId}
+              key={card.actionId}
               cardOption={{
-                categoryKey: action.categoryId,
+                categoryKey: card.categoryId,
                 typeKey: 1,
                 sizeKey: 1,
                 textStyleKey: 1,

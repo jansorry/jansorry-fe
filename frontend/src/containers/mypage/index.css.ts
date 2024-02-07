@@ -5,7 +5,6 @@ import { calc } from '@vanilla-extract/css-utils';
 import { flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { vars } from '@/styles/vars.css';
-import { totalReceiptCountResponse } from '@/types/receipt';
 
 export const profileWrapper = style([
   contentWrapper({ contentArea: 'headerAndNavBar' }),
@@ -42,7 +41,7 @@ export const mypageText = recipe({
   },
   variants: {
     contentType: {
-      // mypage 카드에 들어갈 텍스트 스타일
+      // TODO: mypage 카드에 들어갈 텍스트 스타일
       card: {},
       title: {
         fontSize: vars.fontSize['3x'],

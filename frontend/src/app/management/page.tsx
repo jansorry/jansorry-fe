@@ -8,7 +8,7 @@ const ManagementPage = async () => {
   const refreshToken = cookieStore.get('refreshToken')?.value;
   const data = await getManagement(refreshToken);
 
-  return <ManagementContainer managementItems={data} />;
+  return <ManagementContainer {...data} />;
 };
 
 export default ManagementPage;

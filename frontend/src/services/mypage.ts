@@ -22,18 +22,9 @@ export const getMyPage = async (
   }
 };
 
-export const getCards = async (
-  lastActionId: number,
-): Promise<actionTotalCountResponse> => {
+export const getCards = async (): Promise<actionTotalCountResponse> => {
   try {
-    const queryParams = new URLSearchParams({
-      size: '20',
-      ...(lastActionId !== -1 && { lastActionId: `${lastActionId}` }),
-    }).toString();
-
-    return await apiClient.get<actionTotalCountResponse>(
-      `/actions/?${queryParams}`,
-    );
+    return await apiClient.get<actionTotalCountResponse>(`/actions/`);
   } catch (e) {
     console.log(e);
   }

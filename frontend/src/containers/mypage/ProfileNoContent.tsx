@@ -12,10 +12,10 @@ import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  totalReceiptCount: totalReceiptCountResponse;
+  receiptCount: 0 | 1 | 2 | 3;
 }
 
-const ProfileNoContent = ({ totalReceiptCount }: Props) => {
+const ProfileNoContent = ({ receiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal } = useModal();
 
@@ -37,8 +37,8 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
-      {totalReceiptCount.receiptCount > 0 && (
-        <SavedReceiptContainer totalReceiptCountProps={totalReceiptCount} />
+      {receiptCount > 0 && (
+        <SavedReceiptContainer receiptCount={receiptCount} />
       )}
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>

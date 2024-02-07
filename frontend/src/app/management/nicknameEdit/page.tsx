@@ -8,7 +8,7 @@ const NicknameEditPage = async () => {
   const refreshToken = cookieStore.get('refreshToken')?.value;
   const data = await getManagement(refreshToken);
 
-  return <NicknameEditContainer managementItems={data} />;
+  return <NicknameEditContainer {...data} />;
 };
 
 export default NicknameEditPage;

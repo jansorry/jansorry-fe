@@ -4,21 +4,22 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
-import { totalReceiptCountResponse } from '@/types/receipt';
 import { IconSavedReceipt } from '#/svgs';
+import createCounter from '@/utils/counter';
 
 interface Props {
-  totalReceiptCountProps: totalReceiptCountResponse;
+  receiptCount: 0 | 1 | 2 | 3;
 }
 
-const SavedReceipts: React.FC<Props> = ({ totalReceiptCountProps }) => {
+const SavedReceipts: React.FC<Props> = ({ receiptCount }) => {
   const router = useRouter();
+  const getReceiptKey = createCounter();
 
   const receiptSpaces = Array(3)
     .fill(null)
     .map((_, index) => {
-      const receiptKey = `receipt-${index}`;
-      if (index < totalReceiptCountProps.receiptCount) {
+      const receiptKey = getReceiptKey();
+      if (index < receiptCount) {
         return (
           <button
             type='button'

@@ -78,6 +78,9 @@ export const managementListContent = style([
     padding: vars.space['2x'],
     color: 'black',
     width: `calc(100% - 2 * ${vars.space['2x']})`,
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
     textDecorationLine: 'none',
   },
 ]);

@@ -2,38 +2,43 @@
 
 import { useRouter } from 'next/navigation';
 
-import { userDataResponse } from '@/types/userData';
 import * as styles from '@/containers/mypage/index.css';
 import { IconSetting } from '#/svgs';
 
+import defaultProfileImage from '../../../public/images/userProfileImage/defaultProfileImage.png';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 interface Props {
-  myPageItems: userDataResponse;
+  nickname: string;
+  imageUrl: string;
+  followerCnt: number;
+  followingCnt: number;
 }
 
-export const UserProfile = ({ myPageItems }: Props) => {
+export const UserProfile = ({
+  nickname,
+  imageUrl,
+  followerCnt,
+  followingCnt,
+}: Props) => {
   const router = useRouter();
-
-  const UserData: userDataResponse = {
-    nickname: myPageItems.nickname,
-    imageUrl: myPageItems.imageUrl,
-    followerCnt: myPageItems.followerCnt,
-    followingCnt: myPageItems.followingCnt,
-  };
 
   const handleConfigClicked = () => {
     router.push('/management');
   };
 
+  const defaultUserProfile =
+    '/public/images/userProfileImage/defaultProfileImage.png';
+  const userProfileImage = imageUrl || defaultUserProfile;
+
   return (
     <div className={styles.userProfileWrapper}>
-      {UserData.imageUrl && (
-        <UserProfileImage imgSrc={UserData.imageUrl} size='large' />
-      )}
+      // TODO: 랜덤 이미지 생성 완료되면 이미지 바꾸기
+      {/* {imageUrl && <UserProfileImage imgSrc={imageUrl} size='large' />} */}
+      <UserProfileImage imgSrc={userProfileImage} size='large' />
       <div className={styles.profileDetails}>
         <div className={styles.nicknameAndSettings}>
-          <span className={styles.nicknameBox}>{UserData.nickname}</span>
+          <span className={styles.nicknameBox}>{nickname}</span>
           <button
             type='button'
             className={styles.settingsButton}
@@ -44,14 +49,10 @@ export const UserProfile = ({ myPageItems }: Props) => {
         </div>
         <div className={styles.followInfo}>
           <span>
-            <div className={styles.followNumber}>
-              팔로워 {UserData.followerCnt}
-            </div>
+            <div className={styles.followNumber}>팔로워 {followerCnt}</div>
           </span>
           <span>
-            <div className={styles.followNumber}>
-              팔로잉 {UserData.followingCnt}
-            </div>
+            <div className={styles.followNumber}>팔로잉 {followingCnt}</div>
           </span>
         </div>
       </div>

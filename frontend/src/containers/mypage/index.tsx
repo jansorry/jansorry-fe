@@ -35,12 +35,9 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
     }
 
     return NagCount > 0 ? (
-      <ProfileWithContent
-        totalActionCards={actionsData}
-        totalReceiptCount={receiptCount}
-      />
+      <ProfileWithContent {...actionsData} {...receiptCount} />
     ) : (
-      <ProfileNoContent totalReceiptCount={receiptCount} />
+      <ProfileNoContent {...receiptCount} />
     );
   };
 
@@ -49,7 +46,7 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
       <Header title='나의 잔소리 목록' />
       <main className={styles.profileWrapper}>
         <div className={styles.profileContentWrapper}>
-          <UserProfile myPageItems={myPageItems} />
+          <UserProfile {...myPageItems} />
         </div>
         {renderMyCard()}
         <div className={styles.bottomNav}>
