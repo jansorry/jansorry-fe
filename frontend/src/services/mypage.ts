@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiServer } from '@/services/index';
 import { userDataResponse, actionTotalCount } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
@@ -18,6 +20,6 @@ export const getMyPage = async (
     return { userData, actionsData, receiptCountData };
   } catch (e) {
     console.log(e);
-    throw e;
   }
+  return redirect('/401');
 };

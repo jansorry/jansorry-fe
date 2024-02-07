@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiServer } from '@/services/index';
 import { managementUserDataResponse } from '@/types/managementProfile';
 
@@ -9,8 +11,5 @@ export const getManagement = async (
   } catch (e) {
     console.log(e);
   }
-  return {
-    nickname: '',
-    imageUrl: '',
-  };
+  return redirect('/401');
 };
