@@ -1,19 +1,17 @@
 import { style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { flex } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
-
 
 export const searchIcon = style([
   {
     marginRight: vars.space['1x'],
-  }
-])
+  },
+]);
 export const followContentWrapper = style([
   flex({ justify: 'center', align: 'center', direction: 'column' }),
-  contentWrapper({contentArea: 'headerAndNavBar'})
-
+  contentWrapper({ contentArea: 'headerAndNavBar' }),
 ]);
 export const nicknameInputWrapper = style([
   flex({ justify: 'center', align: 'center' }),
@@ -69,5 +67,31 @@ export const userSeperateLine = style([
     borderBottom: `0.3px solid ${vars.colors.whitesmoke}`,
     width: '100%',
     margin: `${vars.space['0.5x']} ${vars.space['1x']}`,
+  },
+]);
+
+export const errorText = style([
+  flex({ justify: 'center', align: 'center', direction: 'column' }),
+  {
+    color: vars.colors.strongRed,
+    fontSize: vars.fontSize['2x'],
+  },
+]);
+
+export const buttonWrapper = style([
+  {
+    marginLeft: vars.space['1x'],
+  },
+]);
+
+export const newUserWrapper = style([
+  defaultWrapper({ width: 'max' }),
+  flex({ justify: 'center', align: 'center', direction: 'row' }),
+  {
+    borderBottom: `0.3px solid ${vars.colors.babyBlue} `,
+    borderTop: `0.3px solid ${vars.colors.babyBlue} `,
+    backgroundColor: vars.colors.whitesmoke,
+    paddingTop: `${vars.space['0.5x']} ${vars.space['1x']}`,
+    paddingBottom: `${vars.space['0.5x']} ${vars.space['1x']}`,
   },
 ]);

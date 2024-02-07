@@ -9,3 +9,9 @@ export interface followingResponse {
   imageUrl: number;
   nickname: string;
 }
+
+export interface searchResponse {
+  memberId: number;
+  nickname: string;
+  imageUrl: number;
+}
