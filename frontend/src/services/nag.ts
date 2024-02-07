@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiServer } from '@/services/index';
 import { nagDetails, nagTotalResponse } from '@/types/nag';
 
@@ -9,7 +11,7 @@ export const getNagCategory = async (
   } catch (e) {
     console.log(e);
   }
-  return [];
+  return redirect('/401');
 };
 
 export const getNagDetails = async (
@@ -21,5 +23,5 @@ export const getNagDetails = async (
   } catch (e) {
     console.log(e);
   }
-  return { nagId: -1, content: '', price: -1, categoryId: -1 };
+  return redirect('/401');
 };

@@ -29,17 +29,18 @@ const SharedReceipt = ({ content }: Props) => {
       <div className={styles.receiptWrapper}>
         <div className={styles.shareReceiptWrapper}>
           <Receipt content={content} />
-        </div>
-        <div className={styles.buttonsWrapper}>
-          <Button
-            onClick={onClick}
-            type='button'
-            size='large'
-            colorStyle='blue'
-            filled
-          >
-            나도 영수증 만들러 가기
-          </Button>
+
+          <div className={styles.buttonsWrapper}>
+            <Button
+              onClick={onClick}
+              type='button'
+              size='large'
+              colorStyle='blue'
+              filled
+            >
+              나도 영수증 만들러 가기
+            </Button>
+          </div>
         </div>
       </div>
     </div>

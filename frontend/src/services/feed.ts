@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiClient, apiServer } from '@/services/index';
 import { feedResponse } from '@/types/feed';
 
@@ -9,32 +11,7 @@ export const getLiveFeedonServer = async (
   } catch (error) {
     console.log(error);
   }
-  return {
-    size: -1,
-    content: [],
-    number: -1,
-    sort: {
-      empty: false,
-      sorted: false,
-      unsorted: false,
-    },
-    pageable: {
-      offset: -1,
-      sort: {
-        empty: false,
-        sorted: false,
-        unsorted: false,
-      },
-      pageNumber: -1,
-      pageSize: -1,
-      paged: false,
-      unpaged: false,
-    },
-    numberOfElements: -1,
-    first: false,
-    last: true,
-    empty: false,
-  };
+  return redirect('/401');
 };
 
 export const getFeed = async (
@@ -51,8 +28,8 @@ export const getFeed = async (
       case 0: // live feed
         feedType = 'live';
         break;
-      case 1: // following feed
-        feedType = 'following';
+      case 1: // followings feed
+        feedType = 'followings';
         break;
       case 2: // trending feed
         feedType = 'trending';
