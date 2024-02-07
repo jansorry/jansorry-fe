@@ -35,7 +35,7 @@ const Followings = () => {
     getData();
   }, []);
 
-  const handleTextInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextInput = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 15) {
       event.target.value = event.target.value.slice(0, 15);
     }
@@ -62,7 +62,7 @@ const Followings = () => {
               <IconMagnify className={styles.searchIcon} />
             </span>
 
-            <textarea
+            <input
               className={styles.nicknameInputStyle}
               value={inputNickname}
               onChange={handleTextInput}
