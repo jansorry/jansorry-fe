@@ -77,10 +77,7 @@ const Followings = () => {
             <div key={`${createCounter()}`} className={styles.newUserWrapper}>
               {/*  TODO : imgSrc 수정 */}
               <div className={styles.profileImgTextWrapper}>
-                <UserPreview
-                  imgSrc='/images/userProfileImage/temp-userProfile.png'
-                  nickname={item.nickname}
-                />
+                <UserPreview imgSrc={item.imageUrl} nickname={item.nickname} />
               </div>
 
               <div className={styles.followButtonWrapper}>
@@ -102,7 +99,7 @@ const Followings = () => {
                 {/*  TODO : imgSrc 수정 */}
                 <div className={styles.profileImgTextWrapper}>
                   <UserPreview
-                    imgSrc='/images/userProfileImage/temp-userProfile.png'
+                    imgSrc={item.imageUrl}
                     nickname={item.nickname}
                   />
                 </div>

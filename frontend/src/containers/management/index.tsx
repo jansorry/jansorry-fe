@@ -8,17 +8,16 @@ import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 
-interface Props {
-  managementItems: managementUserDataResponse;
-}
-
-const ManagementContainer = ({ managementItems }: Props) => {
+const ManagementContainer = ({
+  nickname,
+  imageUrl,
+}: managementUserDataResponse) => {
   return (
     <>
       <Header title='마이페이지' hasPrevious />
       <main className={styles.managementWrapper}>
         <div className={styles.managementProfile}>
-          <ManagementUserProfile managementItems={managementItems} />
+          <ManagementUserProfile nickname={nickname} imageUrl={imageUrl} />
         </div>
         <hr className={styles.managementSeperateLine} />
         <Link
