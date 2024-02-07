@@ -16,6 +16,7 @@ import IconInstagram from './instagram.svg';
 import IconEdit from './edit.svg';
 import IconSetting from './setting.svg';
 import IconSharing from './sharing.svg';
+import IconSavedReceipt from './saved-receipt.svg';
 import IconMagnify from './magnifying.svg';
 import IconPlus from './plus.svg';
 
@@ -39,4 +40,5 @@ export {
   IconSetting,
   IconSharing,
   IconPlus,
+  IconSavedReceipt,
 };
