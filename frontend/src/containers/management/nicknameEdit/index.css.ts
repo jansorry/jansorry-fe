@@ -30,11 +30,19 @@ export const nicknameEditContent = style({
   fontSize: vars.fontSize['2x'],
 });
 
+export const nicknameErrorContent = style({
+  padding: vars.space['1x'],
+  fontSize: vars.fontSize['2x'],
+  color: vars.colors.strongRed,
+  height: vars.space['3x'],
+});
+
 export const nicknameInputWrapper = style([
   flex({ justify: 'center', align: 'center' }),
   {
     paddingTop: vars.space['3x'],
     paddingBottom: vars.space['3x'],
+    width: 'auto',
   },
 ]);
 
@@ -47,4 +55,6 @@ export const nicknameInputStyle = style({
   borderRadius: vars.borderRadius['2x'],
   backgroundColor: vars.colors.whitesmoke,
   fontSize: vars.fontSize['2x'],
+  width: '80%',
+  height: vars.space['3x'],
 });

@@ -14,9 +14,6 @@ interface Props {
 }
 
 const SharedReceipt = ({ content }: Props) => {
-  //  TODO : api 자료 확인 후 삭제
-  console.log(content);
-
   const router = useRouter();
 
   const onClick = () => {

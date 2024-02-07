@@ -15,7 +15,7 @@ export const Receipt = ({ content }: Props) => {
     <div className={style.receiptWrapper}>
       <div className={style.receiptTopAndBottomBg}>
         <Image
-          src='/images/receipt/receipt-top.png'
+          src='/images/receipt/receipt-top.webp'
           fill
           object-fit='cover'
           alt='receipt-top'
@@ -185,7 +185,7 @@ export const Receipt = ({ content }: Props) => {
           </div>
           <div className={style.qrcodeWrapper}>
             <Image
-              src='/images/receipt/jansorryQR.png'
+              src='/images/receipt/jansorryQR.webp'
               fill
               object-fit='cover'
               alt='임시큐알위치'
@@ -206,7 +206,7 @@ export const Receipt = ({ content }: Props) => {
         </div>
 
         <Image
-          src='/images/receipt/receiptPaperBright-2.png'
+          src='/images/receipt/receiptPaperBright-2.webp'
           fill
           object-fit='cover'
           alt='영수증 뒷배경'
@@ -214,7 +214,7 @@ export const Receipt = ({ content }: Props) => {
       </div>
       <div className={style.receiptTopAndBottomBg}>
         <Image
-          src='/images/receipt/receipt-bottom.png'
+          src='/images/receipt/receipt-bottom.webp'
           fill
           object-fit='cover'
           alt='receipt-top'
