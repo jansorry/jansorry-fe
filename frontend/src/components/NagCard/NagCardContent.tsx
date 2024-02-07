@@ -38,7 +38,7 @@ const NagCardContent = ({
 }: Props) => {
   let imgSrc = '/images/nag-card/nagcard/center/nagcard-empty.webp';
   if (cardSize === 'xSmall') {
-    imgSrc = `/images/nag-card/nagcard/center/nagcard-${cardCategory}.webp`;
+    imgSrc = `/images/nag-card/center/nagcard-${cardCategory}.webp`;
   } else if (cardType || cardCategory) {
     imgSrc = `/images/nag-card/nagcard-${cardCategory}-${cardType}.webp`;
   } else {
@@ -59,6 +59,7 @@ const NagCardContent = ({
         })}
         text={text}
       />
+
       <Image src={imgSrc} alt={`${cardCategory}카드`} fill sizes='400px' />
     </div>
   );
