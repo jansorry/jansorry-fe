@@ -1,8 +1,7 @@
 import { cookies } from 'next/headers';
 
 import { getManagement } from '@/services/management';
-
-import ManagementContainer from '../../containers/management';
+import ManagementContainer from '@/containers/management';
 
 const ManagementPage = async () => {
   const cookieStore = cookies();

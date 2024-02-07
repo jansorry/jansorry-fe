@@ -30,21 +30,11 @@ export const profileContentWrapper = style([
   }),
   {
     width: '100%',
+    marginBottom: vars.space['4x'],
   },
 ]);
 
-export const receiptPrintButtonWrapper = style([
-  flex({
-    justify: 'center',
-    align: 'center',
-    direction: 'row',
-  }),
-  {
-    width: '100%',
-  },
-]);
-
-export const profileText = recipe({
+export const mypageText = recipe({
   base: {
     color: vars.colors.black,
     padding: vars.space['2x'],
@@ -129,8 +119,58 @@ export const profileContentStyle = style([
     justify: 'spaceAround',
   }),
   {
-    width: '100svw',
+    width: '100%',
     height: '100%',
+  },
+]);
+
+export const savedReceiptWrapper = style([
+  flex({ direction: 'column', justify: 'flexStart' }),
+  {
+    width: '90%',
+    maxWidth: 480,
+    height: 'auto',
+    margin: '0 auto',
+    marginTop: vars.space['4x'],
+  },
+]);
+
+export const savedReceiptContainer = style([
+  flex({
+    direction: 'row',
+    justify: 'spaceBetween',
+    align: 'center',
+  }),
+  {
+    width: '100%',
+    position: 'relative',
+    gap: vars.space['1x'],
+    marginTop: vars.space['2x'],
+  },
+]);
+
+export const savedReceiptFrame = style([
+  flex({ justify: 'center', align: 'center' }),
+  {
+    // UserPreview 컴포넌트 사용하기
+    width: 64,
+    height: 64,
+    borderRadius: vars.borderRadius.full,
+    backgroundColor: vars.colors.whitesmoke,
+    stroke: '0.1',
+    cursor: 'pointer',
+    margin: vars.space['1x'],
+  },
+]);
+
+export const noReceiptFrame = style([
+  flex({ justify: 'center', align: 'center' }),
+  {
+    // UserPreview 컴포넌트 사용하기
+    width: 64,
+    height: 64,
+    backgroundColor: 'transparent',
+    margin: vars.space['1x'],
   },
 ]);
 
@@ -138,9 +178,10 @@ export const cardGridWrapper = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',
   gap: vars.space['1x'],
-  padding: vars.space['1x'],
-  margin: vars.space['1x'],
+  margin: '0 auto',
   marginTop: vars.space['5x'],
+  width: '90%',
+  maxWidth: 480,
 });
 
 export const noCardWrapper = style({
@@ -148,7 +189,7 @@ export const noCardWrapper = style({
 });
 
 export const bottomNav = style({
-  width: '100svw',
+  width: '100%',
   height: 'auto',
 });
 

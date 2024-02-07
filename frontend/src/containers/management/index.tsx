@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
 import { ManagementUserProfile } from '@/containers/management/ManagementUserProfile';
 import { managementUserDataResponse } from '@/types/managementProfile';
+import { logout } from '@/services/management';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
@@ -12,6 +16,12 @@ const ManagementContainer = ({
   nickname,
   imageUrl,
 }: managementUserDataResponse) => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await logout();
+    router.replace('/');
+  };
+
   return (
     <>
       <Header title='마이페이지' hasPrevious />
@@ -40,14 +50,18 @@ const ManagementContainer = ({
           href='https://ninth-check-14d.notion.site/jansorry-ceb36c9a19864488b242e8d773094950?pvs=4'
           className={styles.managementListContent}
         >
-          <div>자주 듣는 질문</div>
+          <div>자주 하는 질문</div>
           <IconRightBracket />
         </Link>
         <hr className={styles.managementSeperateLine} />
-        <Link href='/logout' className={styles.managementListContent}>
+        <button
+          type='button'
+          onClick={handleLogout}
+          className={styles.managementListContent}
+        >
           <div>로그아웃</div>
           <IconRightBracket />
-        </Link>
+        </button>
         <hr className={styles.managementSeperateLine} />
         <Link
           href='/management/withdrawal'
