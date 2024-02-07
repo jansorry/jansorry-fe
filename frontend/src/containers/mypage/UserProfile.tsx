@@ -33,7 +33,7 @@ export const UserProfile = ({
 
   return (
     <div className={styles.userProfileWrapper}>
-      // TODO: 랜덤 이미지 생성 완료되면 이미지 바꾸기
+      {/* TODO: 랜덤 이미지 생성 완료되면 이미지 바꾸기 */}
       {/* {imageUrl && <UserProfileImage imgSrc={imageUrl} size='large' />} */}
       <UserProfileImage imgSrc={userProfileImage} size='large' />
       <div className={styles.profileDetails}>

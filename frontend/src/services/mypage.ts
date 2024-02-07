@@ -24,7 +24,7 @@ export const getMyPage = async (
 
 export const getCards = async (): Promise<actionTotalCountResponse> => {
   try {
-    return await apiClient.get<actionTotalCountResponse>(`/actions/`);
+    return await apiClient.get<actionTotalCountResponse>('/actions');
   } catch (e) {
     console.log(e);
   }

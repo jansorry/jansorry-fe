@@ -8,7 +8,7 @@ const WithdrawalPage = async () => {
   const refreshToken = cookieStore.get('refreshToken')?.value;
   const data = await getManagement(refreshToken);
 
-  return <WithdrawalContainer managementItems={data} />;
+  return <WithdrawalContainer {...data} />;
 };
 
 export default WithdrawalPage;
