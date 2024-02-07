@@ -42,14 +42,16 @@ const Followings = () => {
     setInputNickname(event.target.value);
   };
 
-  const handleSearchNickname = async () => {
-    const user = await getSearchByNickname(inputNickname);
-
-    if (!user.memberId) {
-      setIsExist(false);
-      return;
-    }
-    setNewFollow((prevState) => [...prevState, user]);
+  const handleSearchNickname = () => {
+    getSearchByNickname(inputNickname)
+      .then((user) => {
+        setNewFollow((prevState) => [...prevState, user]);
+      })
+      .catch((error) => {
+        if (error.errorCode === 404) {
+          setIsExist(false);
+        }
+      });
   };
 
   return (
