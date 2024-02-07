@@ -1,6 +1,7 @@
 'use client';
 
 import { contentWrapper } from '@/styles/wrapper.css';
+import { postNewNickname } from '@/services/management';
 
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
@@ -8,6 +9,12 @@ import Button from '@/components/Button';
 import * as styles from './index.css';
 
 const nicknameEdit = () => {
+  const handleEditClicked = () => {
+    postNewNickname('ntgg3620')
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <Header title='닉네임 변경하기' hasPrevious />
@@ -37,7 +44,13 @@ const nicknameEdit = () => {
             </div>
           </div>
 
-          <Button type='button' size='large' colorStyle='blue' filled>
+          <Button
+            type='button'
+            size='large'
+            colorStyle='blue'
+            filled
+            onClick={handleEditClicked}
+          >
             닉네임 변경하기
           </Button>
         </div>

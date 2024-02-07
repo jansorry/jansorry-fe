@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { apiServer } from '@/services/index';
+import { apiClient, apiServer } from '@/services/index';
 import { managementUserDataResponse } from '@/types/managementProfile';
 
 export const getManagement = async (
@@ -12,4 +12,8 @@ export const getManagement = async (
     console.log(e);
   }
   return redirect('/401');
+};
+
+export const postNewNickname = (nickname: string) => {
+  return apiClient.post(`/members/rename`, { nickname });
 };

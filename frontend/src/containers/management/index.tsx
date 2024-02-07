@@ -1,31 +1,17 @@
-'use client';
-
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import { IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
 import { ManagementUserProfile } from '@/containers/management/ManagementUserProfile';
+import { managementUserDataResponse } from '@/types/managementProfile';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 
-interface Props {
-  nickname: string;
-  imageUrl: string;
-}
-
-const ManagementContainer = ({ nickname, imageUrl }: Props) => {
-  const router = useRouter();
-  const handleLogout = () => {
-    // Implement your logout logic here
-    router.push('/logout');
-  };
-
-  const handleWithdrawal = () => {
-    router.push('/management/withdrawal');
-  };
-
+const ManagementContainer = ({
+  nickname,
+  imageUrl,
+}: managementUserDataResponse) => {
   return (
     <>
       <Header title='마이페이지' hasPrevious />
@@ -58,23 +44,18 @@ const ManagementContainer = ({ nickname, imageUrl }: Props) => {
           <IconRightBracket />
         </Link>
         <hr className={styles.managementSeperateLine} />
-        <div
-          role='presentation'
-          className={styles.managementListContent}
-          onClick={handleLogout}
-        >
+        <Link href='/logout' className={styles.managementListContent}>
           <div>로그아웃</div>
           <IconRightBracket />
-        </div>
+        </Link>
         <hr className={styles.managementSeperateLine} />
-        <div
-          role='presentation'
+        <Link
+          href='/management/withdrawal'
           className={styles.managementListContent}
-          onClick={handleWithdrawal}
         >
           <div>회원 탈퇴</div>
           <IconRightBracket />
-        </div>
+        </Link>
         <hr className={styles.managementSeperateLine} />
         <Link
           href='https://www.instagram.com/jansorry_official/'

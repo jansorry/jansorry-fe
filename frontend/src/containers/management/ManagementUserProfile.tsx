@@ -4,15 +4,14 @@ import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/management/index.css';
 import { IconEdit } from '#/svgs';
+import { managementUserDataResponse } from '@/types/managementProfile';
 
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
-interface Props {
-  nickname: string;
-  imageUrl: string;
-}
-
-export const ManagementUserProfile = ({ nickname, imageUrl }: Props) => {
+export const ManagementUserProfile = ({
+  nickname,
+  imageUrl,
+}: managementUserDataResponse) => {
   const router = useRouter();
 
   return (

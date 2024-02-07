@@ -32,12 +32,18 @@ const Followers = () => {
       <div className={followContentWrapper}>
         <div className={styles.profilesWrapper}>
           {followerArray.map((item) => (
-            <div className={styles.profileItemWrapper}>
+            <div
+              className={styles.profileItemWrapper}
+              key={`${createCounter()}`}
+            >
               {/* TODO : Wrapper꾸미기 */}
               <div className={styles.profileImgTextWrapper}>
-                <div key={`${createCounter()}`}>
+                <div>
                   {/* TODO : 이미지링크 변경 */}
-                  <UserPreview imgSrc='/images' nickname={item.nickname} />
+                  <UserPreview
+                    imgSrc={item.imageUrl}
+                    nickname={item.nickname}
+                  />
                 </div>
               </div>
               <hr className={styles.userSeperateLine} />
