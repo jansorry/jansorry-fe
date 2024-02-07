@@ -1,10 +1,11 @@
 import { keyframes, style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '@/styles/vars.css';
 import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const welcomeWrapper = style([
-  defaultWrapper({ height: 'max' }),
+  defaultWrapper({ height: 'auto' }),
   {
     backgroundColor: vars.colors.oatmeal,
     textAlign: 'center',
@@ -41,16 +42,62 @@ export const characters = style([
   },
 ]);
 
+export const grandpaAnimation = keyframes({
+  '0%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '5%': {
+    transform: `translateY(24px) rotate(-20deg)`,
+  },
+  '10%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '95%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '100%': {
+    transform: `translateY(24px) rotate(-20deg)`,
+  },
+});
+
+export const boyAnimation = keyframes({
+  '0%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '40%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '45%': {
+    transform: `translateY(24px) rotate(10deg)`,
+  },
+  '50%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+  '100%': {
+    transform: `translateY(0px) rotate(0deg)`,
+  },
+});
+
 export const grandpa = style({
   width: '60%',
   height: 'auto',
   paddingLeft: vars.space['5x'],
+  animationName: grandpaAnimation,
+  animationDuration: '4s',
+  animationTimingFunction: 'linear',
+  animationIterationCount: 'infinite',
+  animationDirection: 'alternate',
 });
 
 export const boy = style({
   width: '30%',
   height: 'auto',
   paddingRight: 160,
+  animationName: boyAnimation,
+  animationDuration: '4s',
+  animationTimingFunction: 'linear',
+  animationIterationCount: 'infinite',
+  animationDirection: 'alternate',
 });
 
 export const title = style({
@@ -78,7 +125,16 @@ export const fadeout = keyframes({
   },
 });
 
-export const subtitle = style({
+export const fadein = keyframes({
+  '0%': {
+    opacity: 0,
+  },
+  '100%': {
+    opacity: 1,
+  },
+});
+
+export const guidance = style({
   color: vars.colors.gray,
   fontSize: vars.fontSize['2x'],
   animationName: fadeout,
@@ -87,3 +143,44 @@ export const subtitle = style({
   animationIterationCount: 'infinite',
   animationDirection: 'alternate',
 });
+
+export const cardContentWrapper = style({
+  paddingTop: 200,
+  background: `linear-gradient(180deg, ${vars.colors.oatmeal} 0%, ${vars.colors.white} 25%)`,
+  height: 440,
+});
+
+export const subtitle = recipe({
+  base: {
+    width: '50%',
+    animationName: fadein,
+    animationDuration: '1.5s',
+    animationTimingFunction: 'linear',
+    animationFillMode: 'forwards',
+  },
+  variants: {
+    main: {
+      true: {
+        fontSize: vars.fontSize['3x'],
+      },
+      false: {
+        fontSize: vars.fontSize['2x'],
+        fontWeight: vars.fontWeight.accent,
+        color: vars.colors.blue,
+        marginBottom: vars.space['2x'],
+      },
+    },
+    align: {
+      left: {
+        marginLeft: '15%',
+        textAlign: 'left',
+      },
+      right: {
+        marginRight: '15%',
+        textAlign: 'right',
+      },
+    },
+  },
+});
+
+export const notShow = style({ visibility: 'hidden' });
