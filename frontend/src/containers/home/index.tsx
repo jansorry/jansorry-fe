@@ -6,6 +6,7 @@ import { homeCardsResponse } from '@/types/home';
 
 import * as styles from './index.css';
 import NavBar from '@/components/NavBar';
+import PostActionButton from '@/components/PostActionButton';
 
 const Home = ({ count, categoryList }: homeCardsResponse) => {
   return (
@@ -26,9 +27,8 @@ const Home = ({ count, categoryList }: homeCardsResponse) => {
         {count ? <CardsPresent {...{ count, categoryList }} /> : <Empty />}
       </div>
 
-      <div className={styles.bottomNav}>
-        <NavBar clickedIndex={2} />
-      </div>
+      <PostActionButton />
+      <NavBar clickedIndex={2} />
     </main>
   );
 };

@@ -12,6 +12,7 @@ import ProfileWithContent from './ProfileWithContent';
 import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 import Loading from '@/components/Loading';
+import PostActionButton from '@/components/PostActionButton';
 
 interface Props {
   myPageItems: userDataResponse;
@@ -52,9 +53,8 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
           <UserProfile myPageItems={myPageItems} />
         </div>
         {renderMyCard()}
-        <div className={styles.bottomNav}>
-          <NavBar clickedIndex={3} />
-        </div>
+        <PostActionButton />
+        <NavBar clickedIndex={3} />
       </main>
     </>
   );

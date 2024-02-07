@@ -11,6 +11,7 @@ import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
+import PostActionButton from '@/components/PostActionButton';
 
 const Feed = ({ content, last }: feedResponse) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -81,6 +82,7 @@ const Feed = ({ content, last }: feedResponse) => {
           ))}
         {isLast ? <div>더 이상 피드가 없어요.</div> : <div ref={refLast} />}
       </div>
+      <PostActionButton />
       <NavBar clickedIndex={1} />
     </>
   );

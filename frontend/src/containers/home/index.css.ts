@@ -16,10 +16,6 @@ export const homeWrapper = style([
   },
 ]);
 
-export const bottomNav = style({
-  width: '100svw',
-  height: 'auto',
-});
 export const homeContentWrapper = style([
   flex({ align: 'center', direction: 'column' }),
   {
@@ -31,7 +27,6 @@ export const homeContentWrapper = style([
     position: 'relative',
     top: 0,
     boxSizing: 'border-box',
-    height: '100svh',
     width: '100%',
     paddingBottom: '48px',
     paddingTop: '30%',

@@ -147,11 +147,6 @@ export const noCardWrapper = style({
   marginTop: vars.space['4x'],
 });
 
-export const bottomNav = style({
-  width: '100svw',
-  height: 'auto',
-});
-
 export const actionModalWrapper = style([
   flex({
     align: 'center',
