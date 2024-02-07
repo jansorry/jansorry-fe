@@ -2,18 +2,32 @@
 
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 import BirthyearPage from '@/containers/signup/BirthyearPage';
 import GenderPage from '@/containers/signup/GenderPage';
 import { userBirthState } from '@/states/signup';
 import { defaultWrapper } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
+import { kakaoNicknameState } from '@/states/auth';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 
 const Signup = () => {
+  const router = useRouter();
+  const kakaoNickname = useRecoilValue(kakaoNicknameState);
   const userBirth = useRecoilValue(userBirthState);
+
+  useEffect(() => {
+    if (!kakaoNickname) {
+      router.replace('/401');
+    }
+    if (kakaoNickname === '') {
+      router.replace('/home');
+    }
+  }, [kakaoNickname]);
 
   return (
     <main className={defaultWrapper({ width: 'max', height: 'max' })}>
