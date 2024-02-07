@@ -30,7 +30,7 @@ const FeedCard = ({
   const isMounted = useRef<boolean>(false);
   const [isLike, setIsLike] = useState<boolean>(isFavorite);
   const [likeCount, setLikeCount] = useState<number>(favoriteCount);
-  const debouncedLike = useDebounce<boolean>(isLike, 3000);
+  const debouncedLike = useDebounce<boolean>(isLike, 1000);
 
   const handleLike = async (catchLike: boolean) => {
     if (catchLike) {
