@@ -1,4 +1,9 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import { contentWrapper } from '@/styles/wrapper.css';
+import { withdrawal } from '@/services/management';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
@@ -6,6 +11,13 @@ import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
 
 const Withdrawal = () => {
+  const router = useRouter();
+
+  const handleButtonClicked = async () => {
+    await withdrawal();
+    router.push('/');
+  };
+
   return (
     <>
       <Header title='탈퇴하기' hasPrevious />
@@ -38,7 +50,13 @@ const Withdrawal = () => {
             </div>
           </div>
 
-          <Button type='button' size='large' colorStyle='strongRed' filled>
+          <Button
+            type='button'
+            size='large'
+            colorStyle='strongRed'
+            filled
+            onClick={handleButtonClicked}
+          >
             탈퇴하기
           </Button>
         </div>

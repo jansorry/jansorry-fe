@@ -2,11 +2,12 @@ import { cookies } from 'next/headers';
 
 import type { Metadata } from 'next';
 import SharedReceipt from '@/containers/sharereceipt';
-import { getAllNags } from '@/services/receipt';
 import {
+  flattenNags,
   parsingReceiptContent,
   parsingReceiptDataArray,
 } from '@/utils/drawReceipt';
+import { getNagCategory } from '@/services/nag';
 
 interface metaProps {
   params: { target: 'family' | 'friend' };
@@ -32,12 +33,12 @@ const ShareReceipt = async ({ params, searchParams }: metaProps) => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
-  const allNagsArray = await getAllNags(refreshToken);
+  const allNagsArray = await getNagCategory(refreshToken);
 
   //  잔소리 배열 + url 상의 잔소리 내역
   const dataArray = parsingReceiptDataArray({
     urlParams: searchParams,
-    categoryArray: allNagsArray,
+    categoryArray: flattenNags(allNagsArray),
   });
 
   //  잔소리 영수증에 필요한 Content로 재구성

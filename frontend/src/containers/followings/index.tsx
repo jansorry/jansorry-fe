@@ -1,8 +1,12 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
-import { getSearchByNickname } from '@/services/follow';
+import {
+  getFollowers,
+  getFollowings,
+  getSearchByNickname,
+} from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
 import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
@@ -16,26 +20,38 @@ import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
 
 const Followings = () => {
-  const [followingArray] = useState<followingResponse[]>([]);
+  const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
   const [inputNickname, setInputNickname] = useState('');
   const [isExist, setIsExist] = useState(true);
   const [newFollw, setNewFollow] = useState<searchResponse[]>([]);
 
-  const handleTextInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  useEffect(() => {
+    const getData = async () => {
+      const followingData = await getFollowings();
+
+      setFollowingArray(followingData);
+    };
+
+    getData();
+  }, []);
+
+  const handleTextInput = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length > 15) {
       event.target.value = event.target.value.slice(0, 15);
     }
     setInputNickname(event.target.value);
   };
 
-  const handleSearchNickname = async () => {
-    const user = await getSearchByNickname(inputNickname);
-
-    if (!user.memberId) {
-      setIsExist(false);
-      return;
-    }
-    setNewFollow((prevState) => [...prevState, user]);
+  const handleSearchNickname = () => {
+    getSearchByNickname(inputNickname)
+      .then((user) => {
+        setNewFollow((prevState) => [...prevState, user]);
+      })
+      .catch((error) => {
+        if (error.errorCode === 404) {
+          setIsExist(false);
+        }
+      });
   };
 
   return (
@@ -48,7 +64,7 @@ const Followings = () => {
               <IconMagnify className={styles.searchIcon} />
             </span>
 
-            <textarea
+            <input
               className={styles.nicknameInputStyle}
               value={inputNickname}
               onChange={handleTextInput}

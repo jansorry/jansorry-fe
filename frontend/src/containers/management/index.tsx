@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -5,16 +7,20 @@ import { IconInstagram, IconRightBracket, IconTwitter } from '#/svgs';
 import { ManagementUserProfile } from '@/containers/management/ManagementUserProfile';
 import { managementUserDataResponse } from '@/types/managementProfile';
 import { logout } from '@/services/management';
+import useModal from '@/hooks/useModal';
 
 import * as styles from './index.css';
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
+import Button from '@/components/Button';
 
 const ManagementContainer = ({
   nickname,
   imageUrl,
 }: managementUserDataResponse) => {
   const router = useRouter();
+  const { openModal, Modal } = useModal();
+
   const handleLogout = async () => {
     await logout();
     router.replace('/');
@@ -52,14 +58,27 @@ const ManagementContainer = ({
           <IconRightBracket />
         </Link>
         <hr className={styles.managementSeperateLine} />
-        <button
-          type='button'
-          onClick={handleLogout}
+        <div
+          onClick={openModal}
           className={styles.managementListContent}
+          role='presentation'
         >
           <div>로그아웃</div>
           <IconRightBracket />
-        </button>
+        </div>
+        <Modal title='로그아웃 하시겠어요?'>
+          <div className={styles.logoutModalWrapper}>
+            <Button
+              type='button'
+              size='large'
+              colorStyle='strongRed'
+              filled
+              onClick={handleLogout}
+            >
+              로그아웃
+            </Button>
+          </div>
+        </Modal>
         <hr className={styles.managementSeperateLine} />
         <Link
           href='/management/withdrawal'

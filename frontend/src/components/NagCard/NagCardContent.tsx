@@ -38,8 +38,8 @@ const NagCardContent = ({
 }: Props) => {
   const imgSrc: string =
     cardType || cardCategory
-      ? `/images/nag-card/nagcard-${cardCategory}-${cardType}.png`
-      : '/images/nag-card/nagcard-empty-empty.png';
+      ? `/images/nag-card/nagcard-${cardCategory}-${cardType}.webp`
+      : '/images/nag-card/nagcard-empty-empty.webp';
 
   const position: 'center' | 'bottom' =
     textStyle === 'comment' ? 'center' : 'bottom';

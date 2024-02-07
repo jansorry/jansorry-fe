@@ -3,15 +3,12 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '@/styles/vars.css';
 
 export const kakaoLoginImage = style({
-  '@media': {
-    'screen and (max-height: 600px)': {
-      marginTop: 20,
-    },
-  },
-  width: '90%',
+  position: 'sticky',
+  width: '83%',
+  maxWidth: 400,
   height: 'auto',
-  marginTop: 60,
-  position: 'relative',
+  top: '90vh',
+  margin: '0 auto',
   cursor: 'pointer',
   zIndex: vars.zIndex['z-2'],
 });
