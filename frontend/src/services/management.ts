@@ -1,4 +1,4 @@
-import { redirect, useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 import { apiClient, apiServer } from '@/services/index';
 import { managementUserDataResponse } from '@/types/managementProfile';
@@ -23,5 +23,13 @@ export const logout = async (): Promise<void> => {
     await apiClient.post('/oauth/logout/kakao');
   } catch (error) {
     console.log('로그아웃 실패:', error);
+  }
+};
+
+export const withdrawal = async () => {
+  try {
+    await apiClient.delete('/members/withdraw/kakao');
+  } catch (error) {
+    console.log(error);
   }
 };

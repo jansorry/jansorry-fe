@@ -17,6 +17,7 @@ const PostActionButton = () => {
       type='button'
       className={styles.floatButton}
       onClick={handleButtonClicked}
+      aria-label='post action'
     >
       <IconPlus />
     </button>
