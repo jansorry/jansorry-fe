@@ -72,11 +72,6 @@ export const homeText = recipe({
         color: vars.colors.gray,
       },
     },
-    margin: {
-      top: {
-        marginTop: '60%',
-      },
-    },
   },
 });
 
@@ -87,6 +82,10 @@ const curve = calc.multiply(
   curvature,
   calc.divide(calc.divide(calc.subtract(cardIndex, 3), 2.5), cardCount),
 );
+
+export const cardArea = style({
+  height: 240,
+});
 
 export const cardWrapper = style([
   flex({ justify: 'center' }),

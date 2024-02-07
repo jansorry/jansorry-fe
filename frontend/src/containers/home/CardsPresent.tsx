@@ -32,6 +32,7 @@ const CardsPresent = ({ count, categoryList }: homeCardsResponse) => {
 
   return (
     <>
+      <div className={styles.cardArea} />
       <ul className={styles.cardWrapper}>
         {cardViews.map((cardView, index) => (
           <li
@@ -49,9 +50,7 @@ const CardsPresent = ({ count, categoryList }: homeCardsResponse) => {
           </li>
         ))}
       </ul>
-      <div
-        className={styles.homeText({ contentType: 'content', margin: 'top' })}
-      >
+      <div className={styles.homeText({ contentType: 'content' })}>
         잔소리를 {count}번 들었어요.
       </div>
       <div className={styles.homeText({ contentType: 'guidance' })}>
