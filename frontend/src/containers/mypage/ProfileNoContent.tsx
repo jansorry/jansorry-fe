@@ -5,16 +5,16 @@ import { useRouter } from 'next/navigation';
 import * as styles from '@/containers/mypage/index.css';
 import { NagCardKeyOptions } from '@/types/nagCard';
 import useModal from '@/hooks/useModal';
-import { totalReceiptCountResponse } from '@/types/receipt';
+import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
 
 import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  totalReceiptCount: totalReceiptCountResponse;
+  receiptCount: 0 | 1 | 2 | 3;
 }
 
-const ProfileNoContent = ({ totalReceiptCount }: Props) => {
+const ProfileNoContent = ({ receiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal } = useModal();
 
@@ -27,7 +27,6 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
 
   return (
     <div className={styles.profileContentStyle}>
-      <div className={styles.profileText({ contentType: 'card' })} />
       <Button
         type='button'
         size='large'
@@ -37,6 +36,9 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
       >
         영수증 발급
       </Button>
+      {receiptCount > 0 && (
+        <SavedReceiptContainer receiptCount={receiptCount} />
+      )}
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>
           <Button
@@ -51,7 +53,7 @@ const ProfileNoContent = ({ totalReceiptCount }: Props) => {
         </div>
       </Modal>
       <div
-        className={`${styles.profileText({ contentType: 'card' })} ${styles.noCardWrapper}`}
+        className={`${styles.mypageText({ contentType: 'card' })} ${styles.noCardWrapper}`}
       >
         <NagCard cardOption={card} />
       </div>
