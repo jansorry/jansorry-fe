@@ -14,7 +14,7 @@ interface Props {
 const FollowButton = ({ isFollow, memberId }: Props) => {
   const isMounted = useRef<boolean>(false);
   const [isFollowState, setIsFollowState] = useState<boolean>(isFollow);
-  const debouncedFollow = useDebounce<boolean>(isFollowState, 3000);
+  const debouncedFollow = useDebounce<boolean>(isFollowState, 1000);
 
   const handleFollow = async (catchFollow: boolean) => {
     if (catchFollow) {
