@@ -14,6 +14,6 @@ export const getManagement = async (
   return redirect('/401');
 };
 
-export const postNewNickname = (nickname: string) => {
-  return apiClient.post(`/members/rename`, { nickname });
+export const putNewNickname = (nickname: string) => {
+  return apiClient.put(`/members/rename`, { nickname });
 };
