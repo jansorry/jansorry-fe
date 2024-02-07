@@ -41,7 +41,6 @@ export const mypageText = recipe({
   },
   variants: {
     contentType: {
-      // TODO: mypage 카드에 들어갈 텍스트 스타일
       card: {},
       title: {
         fontSize: vars.fontSize['3x'],

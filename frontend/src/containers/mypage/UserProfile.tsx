@@ -41,12 +41,12 @@ export const UserProfile = ({
           </button>
         </div>
         <div className={styles.followInfo}>
-          <span>
+          <button type='button' onClick={() => router.push('/followers')}>
             <div className={styles.followNumber}>팔로워 {followerCnt}</div>
-          </span>
-          <span>
+          </button>
+          <button type='button' onClick={() => router.push('/followings')}>
             <div className={styles.followNumber}>팔로잉 {followingCnt}</div>
-          </span>
+          </button>
         </div>
       </div>
     </div>

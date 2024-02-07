@@ -30,30 +30,5 @@ export const getCards = async (): Promise<actionTotalDataResponse> => {
   } catch (e) {
     console.log(e);
   }
-  return {
-    size: -1,
-    content: [],
-    number: -1,
-    sort: {
-      empty: false,
-      sorted: false,
-      unsorted: false,
-    },
-    pageable: {
-      offset: -1,
-      sort: {
-        empty: false,
-        sorted: false,
-        unsorted: false,
-      },
-      pageNumber: -1,
-      pageSize: -1,
-      paged: false,
-      unpaged: false,
-    },
-    numberOfElements: -1,
-    first: false,
-    last: true,
-    empty: false,
-  };
+  return redirect('/401');
 };
