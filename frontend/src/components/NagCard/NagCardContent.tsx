@@ -36,10 +36,14 @@ const NagCardContent = ({
   text,
   shadow,
 }: Props) => {
-  const imgSrc: string =
-    cardType || cardCategory
-      ? `/images/nag-card/nagcard-${cardCategory}-${cardType}.webp`
-      : '/images/nag-card/nagcard-empty-empty.webp';
+  let imgSrc = '/images/nag-card/nagcard/center/nagcard-empty.webp';
+  if (cardSize === 'xSmall') {
+    imgSrc = `/images/nag-card/nagcard/center/nagcard-${cardCategory}.webp`;
+  } else if (cardType || cardCategory) {
+    imgSrc = `/images/nag-card/nagcard-${cardCategory}-${cardType}.webp`;
+  } else {
+    imgSrc = '/images/nag-card/nagcard-empty-empty.webp';
+  }
 
   const position: 'center' | 'bottom' =
     textStyle === 'comment' ? 'center' : 'bottom';
