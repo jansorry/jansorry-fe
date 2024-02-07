@@ -51,10 +51,29 @@ export const homeBg = style([
   },
 ]);
 
+export const homeTextWrapper = style({
+  width: '100%',
+  '@media': {
+    'screen and (min-height: 850px)': {
+      paddingTop: '15svh',
+    },
+  },
+});
+
+export const fadeout = keyframes({
+  '0%': {
+    opacity: 0.8,
+  },
+  '100%': {
+    opacity: 0,
+  },
+});
+
 export const homeText = recipe({
   base: {
     color: vars.colors.black,
     padding: vars.space['2x'],
+    textAlign: 'center',
   },
   variants: {
     contentType: {
@@ -70,6 +89,11 @@ export const homeText = recipe({
       guidance: {
         fontSize: vars.fontSize['2x'],
         color: vars.colors.gray,
+        animationName: fadeout,
+        animationDuration: '3s',
+        animationTimingFunction: 'linear',
+        animationIterationCount: 'infinite',
+        animationDirection: 'alternate',
       },
     },
   },

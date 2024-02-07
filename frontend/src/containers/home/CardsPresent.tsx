@@ -1,4 +1,7 @@
+'use client';
+
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import { useRouter } from 'next/navigation';
 
 import { homeCardsResponse } from '@/types/home';
 import { NagCardKeyOptions } from '@/types/nagCard';
@@ -9,6 +12,8 @@ import NagCard from '@/components/NagCard';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
 
 const CardsPresent = ({ count, categoryList }: homeCardsResponse) => {
+  const router = useRouter();
+
   const createCardViews = (cardCount: number, cardList: number[]): number[] => {
     if (cardCount > 7) {
       const startIndex = cardList.length - 6;
@@ -50,11 +55,17 @@ const CardsPresent = ({ count, categoryList }: homeCardsResponse) => {
           </li>
         ))}
       </ul>
-      <div className={styles.homeText({ contentType: 'content' })}>
-        잔소리를 {count}번 들었어요.
-      </div>
-      <div className={styles.homeText({ contentType: 'guidance' })}>
-        터치하면 내 카드 목록을 볼 수 있어요
+      <div
+        className={styles.homeTextWrapper}
+        onClick={() => router.push('/mypage')}
+        role='presentation'
+      >
+        <div className={styles.homeText({ contentType: 'content' })}>
+          잔소리를 {count}번 들었어요.
+        </div>
+        <div className={styles.homeText({ contentType: 'guidance' })}>
+          터치하면 내 카드 목록을 볼 수 있어요
+        </div>
       </div>
     </>
   );
