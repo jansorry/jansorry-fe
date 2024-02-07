@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiClient, apiServer } from '@/services/index';
 import { createActionRequest, getActionResponse } from '@/types/action';
 
@@ -24,12 +26,7 @@ export const getCardAction = async (
   } catch (error) {
     console.log(error);
   }
-  return {
-    categoryId: -1,
-    nagContent: '서버 오류',
-    actionId: -1,
-    actionContent: '서버 오류',
-  };
+  return redirect('/401');
 };
 
 export const deleteCardAction = async (actionId: number) => {

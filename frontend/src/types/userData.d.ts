@@ -1,6 +1,6 @@
 export interface userDataResponse {
   nickname: string;
-  imageUrl: string;
+  imageUrl: number;
   followerCnt: number;
   followingCnt: number;
 }

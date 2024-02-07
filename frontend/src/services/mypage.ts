@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiClient, apiServer } from '@/services/index';
 import { userDataResponse, actionTotalCountResponse } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
@@ -18,8 +20,8 @@ export const getMyPage = async (
     return { userData, actionsData, receiptCountData };
   } catch (e) {
     console.log(e);
-    throw e;
   }
+  return redirect('/401');
 };
 
 export const getCards = async (): Promise<actionTotalCountResponse> => {

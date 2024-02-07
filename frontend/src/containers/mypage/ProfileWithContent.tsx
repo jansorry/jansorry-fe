@@ -14,17 +14,16 @@ import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  actionData: actionTotalCountResponse;
-  content: actionResponse[];
+  actionTotalData: actionTotalCountResponse;
   last: boolean;
   receiptCount: 0 | 1 | 2 | 3;
 }
 
-const ProfileWithContent = ({ actionData, last, receiptCount }: Props) => {
+const ProfileWithContent = ({ actionTotalData, last, receiptCount }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLast, setIsLast] = useState<boolean>(last);
   const [cards, setCards] = useState<actionResponse[]>(
-    actionData.content.slice(0, 20),
+    actionTotalData.content.slice(0, 20),
   );
   const [currentPage, setCurrentPage] = useState<number>(0);
   const router = useRouter();

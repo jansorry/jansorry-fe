@@ -1,14 +1,16 @@
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { getManagement } from '@/services/management';
-import NicknameEditContainer from '@/containers/management';
+import NicknameEdit from '@/containers/management/nicknameEdit';
 
-const NicknameEditPage = async () => {
+const NicknameEditPage = () => {
   const cookieStore = cookies();
   const refreshToken = cookieStore.get('refreshToken')?.value;
-  const data = await getManagement(refreshToken);
+  if (refreshToken === undefined) {
+    redirect('/401');
+  }
 
-  return <NicknameEditContainer {...data} />;
+  return <NicknameEdit />;
 };
 
 export default NicknameEditPage;

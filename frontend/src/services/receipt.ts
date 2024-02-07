@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiClient, apiServer } from '@/services/index';
 import { nagStatisticResponse, receiptResponse } from '@/types/receipt';
 import { nag, nagTotalResponse } from '@/types/nag';
@@ -45,17 +47,7 @@ export const getReceipts = async (
     console.log(error);
   }
 
-  return {
-    maxCountedNagId: -1,
-    totalPrice: -1,
-    totalCount: -1,
-    title: '서버오류',
-    description: '서버오류',
-    message: '서버오류',
-    familyUrl: '서버오류',
-    friendUrl: '서버오류',
-    createdAt: '없음',
-  };
+  return redirect('/401');
 };
 
 export const deleteReceipt = async (seq: number) => {

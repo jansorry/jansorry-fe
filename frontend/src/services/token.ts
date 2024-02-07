@@ -1,19 +1,21 @@
 import { tokenResponse } from '@/types/token';
 
 export const getToken = async (): Promise<string> => {
-  const data: tokenResponse = await fetch(`/api/members/reissue`, {
+  const response = await fetch(`/api/members/reissue`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-  }).then((res) => res.json());
-
-  return data.accessToken;
+  });
+  if (!response.ok) {
+    window.location.href = '/401';
+  }
+  return response.json().then((res: tokenResponse) => res.accessToken);
 };
 
 export const getServerToken = async (token: string): Promise<string> => {
-  const data: tokenResponse = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/members/reissue`,
     {
       method: 'POST',
@@ -23,7 +25,9 @@ export const getServerToken = async (token: string): Promise<string> => {
       },
       credentials: 'include',
     },
-  ).then((res) => res.json());
-
-  return data.accessToken;
+  );
+  if (!response.ok) {
+    throw new Error('no authentication');
+  }
+  return response.json().then((res: tokenResponse) => res.accessToken);
 };
