@@ -22,6 +22,6 @@ export const logout = async (): Promise<void> => {
   try {
     await apiClient.post('/oauth/logout/kakao');
   } catch (error) {
-    console.error('로그아웃 실패:', error);
+    console.log('로그아웃 실패:', error);
   }
 };
