@@ -24,6 +24,7 @@ export const ManagementUserProfile = ({
             type='button'
             className={styles.nicknameEditButton}
             onClick={() => router.push('/management/nicknameEdit')}
+            aria-label='rename'
           >
             <IconEdit />
           </button>
