@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { userDataResponse, actionTotalCountResponse } from '@/types/userData';
+import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
 import { UserProfile } from '@/containers/mypage/UserProfile';
 
@@ -15,7 +15,7 @@ import Loading from '@/components/Loading';
 
 interface Props {
   myPageItems: userDataResponse;
-  actionsData: actionTotalCountResponse;
+  actionsData: actionTotalDataResponse;
   receiptCount: totalReceiptCountResponse;
 }
 
@@ -35,11 +35,7 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
     }
 
     return NagCount > 0 ? (
-      <ProfileWithContent
-        actionTotalData={actionsData}
-        {...actionsData}
-        {...receiptCount}
-      />
+      <ProfileWithContent {...actionsData} {...receiptCount} />
     ) : (
       <ProfileNoContent {...receiptCount} />
     );

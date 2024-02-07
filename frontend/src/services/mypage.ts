@@ -1,20 +1,20 @@
 import { redirect } from 'next/navigation';
 
 import { apiClient, apiServer } from '@/services/index';
-import { userDataResponse, actionTotalCountResponse } from '@/types/userData';
+import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
 
 export const getMyPage = async (
   token: string = '',
 ): Promise<{
   userData: userDataResponse;
-  actionsData: actionTotalCountResponse;
+  actionsData: actionTotalDataResponse;
   receiptCountData: totalReceiptCountResponse;
 }> => {
   try {
     const [userData, actionsData, receiptCountData] = await Promise.all([
       apiServer.get<userDataResponse>(`/members`, token),
-      apiServer.get<actionTotalCountResponse>(`/actions`, token),
+      apiServer.get<actionTotalDataResponse>(`/actions`, token),
       apiServer.get<totalReceiptCountResponse>(`/receipts`, token),
     ]);
     return { userData, actionsData, receiptCountData };
@@ -24,9 +24,9 @@ export const getMyPage = async (
   return redirect('/401');
 };
 
-export const getCards = async (): Promise<actionTotalCountResponse> => {
+export const getCards = async (): Promise<actionTotalDataResponse> => {
   try {
-    return await apiClient.get<actionTotalCountResponse>('/actions');
+    return await apiClient.get<actionTotalDataResponse>('/actions');
   } catch (e) {
     console.log(e);
   }

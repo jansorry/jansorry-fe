@@ -36,6 +36,7 @@ export {
   IconEdit,
   IconSetting,
   IconSharing,
+  IconSavedReceipt,
   AnimationLoading,
   ButtonKakaoLogin,
 };

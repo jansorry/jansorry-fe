@@ -15,24 +15,22 @@ const SavedReceipts: React.FC<Props> = ({ receiptCount }) => {
   const router = useRouter();
   const getReceiptKey = createCounter();
 
-  const receiptSpaces = Array(3)
-    .fill(null)
-    .map((_, index) => {
-      const receiptKey = getReceiptKey();
-      if (index < receiptCount) {
-        return (
-          <button
-            type='button'
-            key={receiptKey}
-            className={styles.savedReceiptFrame}
-            onClick={() => router.push(`/receipts/${index + 1}`)}
-          >
-            <IconSavedReceipt />
-          </button>
-        );
-      }
-      return <div key={receiptKey} className={styles.noReceiptFrame} />;
-    });
+  const receiptSpaces = [0, 1, 2].map((index) => {
+    const receiptKey = getReceiptKey();
+    if (index < receiptCount) {
+      return (
+        <button
+          type='button'
+          key={receiptKey}
+          className={styles.savedReceiptFrame}
+          onClick={() => router.push(`/receipts/${index + 1}`)}
+        >
+          <IconSavedReceipt />
+        </button>
+      );
+    }
+    return <div key={receiptKey} className={styles.noReceiptFrame} />;
+  });
 
   return (
     <div className={styles.savedReceiptWrapper}>

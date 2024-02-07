@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
-import { actionResponse, actionTotalCountResponse } from '@/types/userData';
+import { actionResponse } from '@/types/userData';
 import { getCards } from '@/services/mypage';
 import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
 import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
@@ -14,18 +14,15 @@ import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  actionTotalData: actionTotalCountResponse;
+  content: actionResponse[];
   last: boolean;
   receiptCount: 0 | 1 | 2 | 3;
 }
 
-const ProfileWithContent = ({ actionTotalData, last, receiptCount }: Props) => {
+const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLast, setIsLast] = useState<boolean>(last);
-  const [cards, setCards] = useState<actionResponse[]>(
-    actionTotalData.content.slice(0, 20),
-  );
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [cards, setCards] = useState<actionResponse[]>(content);
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
@@ -45,12 +42,11 @@ const ProfileWithContent = ({ actionTotalData, last, receiptCount }: Props) => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const nextPage = currentPage + 1;
     const data = await getCards();
     if (data.last) setIsLast(data.last);
 
     setCards((prevCards) => [...prevCards, ...data.content]);
-    setCurrentPage(nextPage);
+
     setIsLoading(false);
   };
 

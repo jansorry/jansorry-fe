@@ -12,7 +12,7 @@ export interface actionResponse {
   actionContent: string;
 }
 
-export interface actionTotalCountResponse {
+export interface actionTotalDataResponse {
   size: number;
   content: actionResponse[];
   number: number;
