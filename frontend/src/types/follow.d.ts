@@ -1,17 +1,19 @@
-export interface followerResponse {
+interface userInfo {
+  nickname: string;
+  imageUrl: number;
+}
+export interface followerResponse extends userInfo {
   fromId: number;
   imageUrl: number;
   nickname: string;
 }
 
-export interface followingResponse {
+export interface followingResponse extends userInfo {
   toId: number;
   imageUrl: number;
   nickname: string;
 }
 
-export interface searchResponse {
+export interface searchResponse extends userInfo {
   memberId: number;
-  nickname: string;
-  imageUrl: number;
 }

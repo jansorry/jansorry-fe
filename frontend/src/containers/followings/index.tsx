@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-import { getFollowings, getSearchByNickname } from '@/services/follow';
+import { getSearchByNickname } from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
 import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
@@ -16,37 +16,26 @@ import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
 
 const Followings = () => {
-  const [data, setData] = useState<followingResponse[]>([]);
+  const [followingArray] = useState<followingResponse[]>([]);
   const [inputNickname, setInputNickname] = useState('');
   const [isExist, setIsExist] = useState(true);
   const [newFollw, setNewFollow] = useState<searchResponse[]>([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const followingData = await getFollowings();
-      setData(followingData);
-    };
+  const handleTextInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length > 15) {
+      event.target.value = event.target.value.slice(0, 15);
+    }
+    setInputNickname(event.target.value);
+  };
 
-    getData();
-  }, []);
-
-  let searchParam = '';
-  useEffect(() => {
-    searchParam = inputNickname;
-  }, [inputNickname]);
-
-  const searchEventHandler = async () => {
-    const user = await getSearchByNickname(searchParam);
+  const handleSearchNickname = async () => {
+    const user = await getSearchByNickname(inputNickname);
 
     if (!user.memberId) {
       setIsExist(false);
       return;
     }
     setNewFollow((prevState) => [...prevState, user]);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputNickname(e.target.value);
   };
 
   return (
@@ -56,19 +45,17 @@ const Followings = () => {
         <div>
           <div className={styles.nicknameInputWrapper}>
             <span className={styles.searchIcon}>
-              <IconMagnify />
+              <IconMagnify className={styles.searchIcon} />
             </span>
 
-            <input
-              type='text'
+            <textarea
               className={styles.nicknameInputStyle}
-              maxLength={10}
               value={inputNickname}
-              onChange={handleInputChange}
+              onChange={handleTextInput}
             />
             <div className={styles.buttonWrapper}>
               <Button
-                onClick={searchEventHandler}
+                onClick={handleSearchNickname}
                 type='button'
                 size='small'
                 colorStyle='blue'
@@ -103,7 +90,7 @@ const Followings = () => {
           ))}
         </div>
         <div className={styles.profilesWrapper}>
-          {data.map((item) => (
+          {followingArray.map((item) => (
             <div
               key={createCounter().toString()}
               className={styles.profilesWrapper}

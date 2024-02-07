@@ -6,6 +6,7 @@ import { contentWrapper } from '@/styles/wrapper.css';
 
 export const searchIcon = style([
   {
+    color: vars.colors.whitesmoke,
     marginRight: vars.space['1x'],
   },
 ]);
@@ -18,18 +19,23 @@ export const nicknameInputWrapper = style([
   {
     paddingTop: vars.space['3x'],
     paddingBottom: vars.space['3x'],
+    width: 'auto',
   },
 ]);
-export const nicknameInputStyle = style({
-  padding: vars.space['2x'],
-  border: 'none',
-  ':focus': {
-    outline: 'none',
+export const nicknameInputStyle = style([
+  flex({ align: 'center', direction: 'column' }),
+  {
+    padding: vars.space['2x'],
+    border: 'none',
+    ':focus': {
+      outline: 'none',
+    },
+    borderRadius: vars.borderRadius['2x'],
+    backgroundColor: vars.colors.whitesmoke,
+    fontSize: vars.fontSize['2x'],
+    width: '40vw',
   },
-  borderRadius: vars.borderRadius['2x'],
-  backgroundColor: vars.colors.whitesmoke,
-  fontSize: vars.fontSize['2x'],
-});
+]);
 
 export const profilesWrapper = style([
   flex({ justify: 'center', align: 'center', direction: 'column' }),

@@ -14,13 +14,13 @@ import { UserPreview } from '@/components/UserPreview';
 import * as styles from './index.css';
 
 const Followers = () => {
-  const [data, setData] = useState<followerResponse[]>([]);
+  const [followerArray, setFollowerArray] = useState<followerResponse[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       const followerData = await getFollowers();
 
-      setData(followerData);
+      setFollowerArray(followerData);
     };
 
     getData();
@@ -31,7 +31,7 @@ const Followers = () => {
       <Header title='follower' hasPrevious />
       <div className={followContentWrapper}>
         <div className={styles.profilesWrapper}>
-          {data.map((item) => (
+          {followerArray.map((item) => (
             <div className={styles.profileItemWrapper}>
               {/* TODO : Wrapper꾸미기 */}
               <div className={styles.profileImgTextWrapper}>
