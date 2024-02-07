@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { vars } from '@/styles/vars.css';
 import { defaultWrapper, flex } from '@/styles/common.css';
@@ -33,7 +34,8 @@ export const nicknameInputStyle = style([
     borderRadius: vars.borderRadius['2x'],
     backgroundColor: vars.colors.whitesmoke,
     fontSize: vars.fontSize['2x'],
-    width: '40vw',
+    width: '60vw',
+    maxWidth: calc.subtract('480px', '30vw'),
   },
 ]);
 

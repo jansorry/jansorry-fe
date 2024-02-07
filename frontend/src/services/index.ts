@@ -48,11 +48,17 @@ async function requestServer<T>(
   body?: BodyInit,
 ): Promise<T> {
   const options = { ...config, body };
-  const token = await getServerToken(refreshToken);
-  options.headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  };
+  if (url !== '/nags') {
+    const token = await getServerToken(refreshToken);
+    options.headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+  } else {
+    options.headers = {
+      'Content-Type': 'application/json',
+    };
+  }
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, {
     ...options,
