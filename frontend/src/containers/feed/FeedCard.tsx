@@ -61,7 +61,7 @@ const FeedCard = ({
     <div className={styles.feedCardWrapper}>
       <div className={styles.feedHeader}>
         <UserPreview
-          imgSrc='/images/userProfileImage/temp-userProfile.png'
+          imgSrc={profileImage}
           nickname={nickname}
           subText={createdAt}
         />

@@ -3,7 +3,7 @@ import { profileText } from './index.css';
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
 interface Props {
-  imgSrc: string;
+  imgSrc: number;
   nickname: string;
   subText?: string;
   size?: 'xLarge';
