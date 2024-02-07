@@ -11,7 +11,7 @@ interface Props {
   receiptCount: 0 | 1 | 2 | 3;
 }
 
-const SavedReceipts: React.FC<Props> = ({ receiptCount }) => {
+const SavedReceipts = ({ receiptCount }: Props) => {
   const router = useRouter();
   const getReceiptKey = createCounter();
 
