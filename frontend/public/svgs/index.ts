@@ -1,6 +1,8 @@
 import IconUser from './user.svg';
 import IconUserFilled from './user-filled.svg';
 
+import AnimationLoading from './loading.svg';
+import ButtonKakaoLogin from './kakao-login.svg';
 import IconHome from './home.svg';
 import IconHomeFilled from './home-filled.svg';
 import IconHeart from './heart.svg';
@@ -13,13 +15,14 @@ import IconTwitter from './twitter.svg';
 import IconInstagram from './instagram.svg';
 import IconEdit from './edit.svg';
 import IconSetting from './setting.svg';
-import IconSavedReceipt from './saved-receipt.svg';
-import AnimationLoading from './loading.svg';
-import ButtonKakaoLogin from './kakao-login.svg';
 import IconSharing from './sharing.svg';
+import IconSavedReceipt from './saved-receipt.svg';
 import IconMagnify from './magnifying.svg';
+import IconPlus from './plus.svg';
 
 export {
+  AnimationLoading,
+  ButtonKakaoLogin,
   IconUser,
   IconUserFilled,
   IconHome,
@@ -36,7 +39,6 @@ export {
   IconEdit,
   IconSetting,
   IconSharing,
+  IconPlus,
   IconSavedReceipt,
-  AnimationLoading,
-  ButtonKakaoLogin,
 };

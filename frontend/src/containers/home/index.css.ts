@@ -16,10 +16,6 @@ export const homeWrapper = style([
   },
 ]);
 
-export const bottomNav = style({
-  width: '100svw',
-  height: 'auto',
-});
 export const homeContentWrapper = style([
   flex({ align: 'center', direction: 'column' }),
   {
