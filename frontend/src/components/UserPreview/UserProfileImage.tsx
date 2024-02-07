@@ -10,7 +10,7 @@ interface Props {
 export const UserProfileImage = ({ imgSrc, size, nickname }: Props) => {
   return (
     <Image
-      src={`/images/user-profile/user-img-${imgSrc}.png`}
+      src={`/images/user-profile/user-img-${imgSrc}.webp`}
       width={100}
       height={100}
       alt={`${nickname || ''} profileImage`}

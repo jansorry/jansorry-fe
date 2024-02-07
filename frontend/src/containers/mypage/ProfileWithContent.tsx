@@ -35,7 +35,7 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   };
 
   const handleCardClick = (actionId: number) => {
-    router.push(`/actions/${actionId}`);
+    router.push(`/carddetails/${actionId}`);
   };
 
   const handleLastCardDetected = async () => {
@@ -81,7 +81,7 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
                 sizeKey: 1,
                 textStyleKey: 1,
                 shadow: false,
-                text: card.actionContent,
+                text: '',
               }}
             />
           </div>

@@ -1,7 +1,7 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 
 import { vars } from '@/styles/vars.css';
-import { defaultWrapper } from '@/styles/common.css';
+import { defaultWrapper, flex } from '@/styles/common.css';
 
 export const welcomeWrapper = style([
   defaultWrapper({ height: 'max' }),
@@ -14,7 +14,7 @@ export const welcomeWrapper = style([
 export const bgTop = style({
   '@media': {
     'screen and (max-height: 720px)': {
-      marginBottom: 0,
+      marginBottom: vars.space['2x'],
     },
     'screen and (min-height: 720px) and (max-height: 840px)': {
       marginBottom: vars.space['4x'],
@@ -29,19 +29,32 @@ export const bgTop = style({
 export const bgBottom = style({
   width: '100%',
   height: 'auto',
-  position: 'absolute',
   bottom: vars.space['2x'],
   left: 0,
   zIndex: vars.zIndex['z-1'],
 });
 
-export const mainCharacter = style({
-  width: '40%',
+export const characters = style([
+  flex({ direction: 'column', align: 'center' }),
+  {
+    width: '100%',
+  },
+]);
+
+export const grandpa = style({
+  width: '60%',
   height: 'auto',
+  paddingLeft: vars.space['5x'],
+});
+
+export const boy = style({
+  width: '30%',
+  height: 'auto',
+  paddingRight: 160,
 });
 
 export const title = style({
-  width: '70%',
+  width: '80%',
   height: 'auto',
   '@media': {
     'screen and (max-height: 720px)': {
@@ -56,15 +69,21 @@ export const title = style({
   zIndex: vars.zIndex['z-2'],
 });
 
-export const subtitle = style({
-  '@media': {
-    'screen and (max-height: 600px)': {
-      fontSize: 0,
-    },
+export const fadeout = keyframes({
+  '0%': {
+    opacity: 0.8,
   },
+  '100%': {
+    opacity: 0,
+  },
+});
+
+export const subtitle = style({
+  color: vars.colors.gray,
   fontSize: vars.fontSize['2x'],
-  fontWeight: vars.fontWeight.accent,
-  color: vars.colors.brown,
-  position: 'relative',
-  zIndex: vars.zIndex['z-2'],
+  animationName: fadeout,
+  animationDuration: '3s',
+  animationTimingFunction: 'linear',
+  animationIterationCount: 'infinite',
+  animationDirection: 'alternate',
 });

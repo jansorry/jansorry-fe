@@ -36,6 +36,7 @@ export const UserProfile = ({
             type='button'
             className={styles.settingsButton}
             onClick={() => handleConfigClicked()}
+            aria-label='settings'
           >
             <IconSetting />
           </button>

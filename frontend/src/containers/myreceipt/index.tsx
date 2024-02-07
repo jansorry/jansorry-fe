@@ -54,7 +54,7 @@ const MyReceipt = ({
 
   return (
     <main className={styles.fullWrapper}>
-      <Header title='영수증 출력' hasPrevious />
+      <Header title='영수증 출력' />
       <div className={styles.receiptWrapper}>
         <div className={styles.myReceiptWrapper}>
           <div className={styles.receiptShadow}>
