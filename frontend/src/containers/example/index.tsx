@@ -50,26 +50,16 @@ const Example = () => {
       >
         다운로드버튼임
       </Button>
-      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
-      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
+      <UserProfileImage imgSrc={1} />
+      <UserProfileImage imgSrc={2} />
       <div id='content' style={{ width: '350px', height: 'auto' }}>
         {/* <Receipt content={{ ...tempReceiptContent, type: 'normal' }} /> */}
       </div>
       {/* <UserProfileImage imgSrc='이미지 경로' size='large' large만 가능(안 넣을 경우 small디폴트)/>  */}
-      <UserProfileImage imgSrc='/images/userProfileImage/temp-userProfile.png' />
-      <UserProfileImage
-        imgSrc='/images/userProfileImage/temp-userProfile.png'
-        size='large'
-      />
-      <UserPreview
-        imgSrc='/images/userProfileImage/temp-userProfile.png'
-        nickname='테스트닉네임'
-        subText='00분전'
-      />
-      <UserPreview
-        imgSrc='/images/userProfileImage/temp-userProfile.png'
-        nickname='테스트닉네임'
-      />
+      <UserProfileImage imgSrc={3} />
+      <UserProfileImage imgSrc={4} size='large' />
+      <UserPreview imgSrc={1} nickname='테스트닉네임' subText='00분전' />
+      <UserPreview imgSrc={6} nickname='테스트닉네임' />
 
       <NagCard cardOption={cardXsmall(1, 'xSmall', true)} />
       <NagCard cardOption={cardSmall(2, 'small')} />

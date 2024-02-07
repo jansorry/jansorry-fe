@@ -8,28 +8,18 @@ import { managementUserDataResponse } from '@/types/managementProfile';
 
 import { UserProfileImage } from '@/components/UserPreview/UserProfileImage';
 
-interface Props {
-  managementItems: managementUserDataResponse;
-}
-
-export const ManagementUserProfile = ({ managementItems }: Props) => {
+export const ManagementUserProfile = ({
+  nickname,
+  imageUrl,
+}: managementUserDataResponse) => {
   const router = useRouter();
-
-  const ManagementUserData: managementUserDataResponse = {
-    nickname: managementItems.nickname,
-    imageUrl: managementItems.imageUrl,
-  };
 
   return (
     <div className={styles.managementProfileContentWrapper}>
-      {ManagementUserData.imageUrl && (
-        <UserProfileImage imgSrc={ManagementUserData.imageUrl} size='large' />
-      )}
+      {imageUrl && <UserProfileImage imgSrc={imageUrl} size='large' />}
       <div className={styles.managementProfileDetails}>
         <div className={styles.nicknameAndEdit}>
-          <span className={styles.nicknameManagement}>
-            {ManagementUserData.nickname}
-          </span>
+          <span className={styles.nicknameManagement}>{nickname}</span>
           <button
             type='button'
             className={styles.nicknameEditButton}

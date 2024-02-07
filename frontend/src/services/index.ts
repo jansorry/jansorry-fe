@@ -48,11 +48,17 @@ async function requestServer<T>(
   body?: BodyInit,
 ): Promise<T> {
   const options = { ...config, body };
-  const token = await getServerToken(refreshToken);
-  options.headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  };
+  if (url !== '/nags') {
+    const token = await getServerToken(refreshToken);
+    options.headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+  } else {
+    options.headers = {
+      'Content-Type': 'application/json',
+    };
+  }
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, {
     ...options,
@@ -79,6 +85,11 @@ export const apiClient = {
 
   delete: <T>(url: string): Promise<T> =>
     requestClient<T>(url, { method: HTTPMethods.DELETE }),
+
+  put: <T, U>(url: string, bodyObject?: U): Promise<T> => {
+    const body = JSON.stringify(bodyObject);
+    return requestClient<T>(url, { method: HTTPMethods.PUT }, body);
+  },
 };
 
 export const apiServer = {

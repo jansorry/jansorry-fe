@@ -1,6 +1,6 @@
 export interface userDataResponse {
   nickname: string;
-  imageUrl: string;
+  imageUrl: number;
   followerCnt: number;
   followingCnt: number;
 }
@@ -12,7 +12,7 @@ export interface actionResponse {
   actionContent: string;
 }
 
-export interface actionTotalCount {
+export interface actionTotalDataResponse {
   size: number;
   content: actionResponse[];
   number: number;

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { userDataResponse, actionTotalCount } from '@/types/userData';
+import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
 import { totalReceiptCountResponse } from '@/types/receipt';
 import { UserProfile } from '@/containers/mypage/UserProfile';
 
@@ -12,10 +12,11 @@ import ProfileWithContent from './ProfileWithContent';
 import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 import Loading from '@/components/Loading';
+import PostActionButton from '@/components/PostActionButton';
 
 interface Props {
   myPageItems: userDataResponse;
-  actionsData: actionTotalCount;
+  actionsData: actionTotalDataResponse;
   receiptCount: totalReceiptCountResponse;
 }
 
@@ -35,12 +36,9 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
     }
 
     return NagCount > 0 ? (
-      <ProfileWithContent
-        totalActionCards={actionsData.content}
-        totalReceiptCount={receiptCount}
-      />
+      <ProfileWithContent {...actionsData} {...receiptCount} />
     ) : (
-      <ProfileNoContent totalReceiptCount={receiptCount} />
+      <ProfileNoContent {...receiptCount} />
     );
   };
 
@@ -49,12 +47,11 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
       <Header title='나의 잔소리 목록' />
       <main className={styles.profileWrapper}>
         <div className={styles.profileContentWrapper}>
-          <UserProfile myPageItems={myPageItems} />
+          <UserProfile {...myPageItems} />
         </div>
         {renderMyCard()}
-        <div className={styles.bottomNav}>
-          <NavBar clickedIndex={3} />
-        </div>
+        <PostActionButton />
+        <NavBar clickedIndex={3} />
       </main>
     </>
   );

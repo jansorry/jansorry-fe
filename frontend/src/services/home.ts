@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { apiServer } from '@/services/index';
 import { homeCardsResponse } from '@/types/home';
 
@@ -9,8 +11,5 @@ export const getHomeCards = async (
   } catch (error) {
     console.log(error);
   }
-  return {
-    count: -1,
-    categoryList: [],
-  };
+  return redirect('/401');
 };
