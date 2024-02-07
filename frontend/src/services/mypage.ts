@@ -24,9 +24,12 @@ export const getMyPage = async (
   return redirect('/401');
 };
 
-export const getCards = async (): Promise<actionTotalDataResponse> => {
+export const getCards = async (
+  lastActionId: number,
+): Promise<actionTotalDataResponse> => {
   try {
-    return await apiClient.get<actionTotalDataResponse>('/actions');
+    const url = `/actions?lastActionId=${lastActionId}`;
+    return await apiClient.get<actionTotalDataResponse>(url);
   } catch (e) {
     console.log(e);
   }

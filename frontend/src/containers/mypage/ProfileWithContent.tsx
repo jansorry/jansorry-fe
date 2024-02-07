@@ -42,9 +42,9 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const data = await getCards();
+    const lastCardId: number = cards[cards.length - 1]?.actionId;
+    const data = await getCards(lastCardId);
     if (data.last) setIsLast(data.last);
-
     setCards((prevCards) => [...prevCards, ...data.content]);
 
     setIsLoading(false);
