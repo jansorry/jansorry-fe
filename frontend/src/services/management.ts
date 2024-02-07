@@ -1,4 +1,4 @@
-import { redirect, useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 import { apiClient, apiServer } from '@/services/index';
 import { managementUserDataResponse } from '@/types/managementProfile';
