@@ -1,8 +1,12 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
-import { getSearchByNickname } from '@/services/follow';
+import {
+  getFollowers,
+  getFollowings,
+  getSearchByNickname,
+} from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
 import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
@@ -16,10 +20,20 @@ import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
 
 const Followings = () => {
-  const [followingArray] = useState<followingResponse[]>([]);
+  const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
   const [inputNickname, setInputNickname] = useState('');
   const [isExist, setIsExist] = useState(true);
   const [newFollw, setNewFollow] = useState<searchResponse[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const followingData = await getFollowings();
+
+      setFollowingArray(followingData);
+    };
+
+    getData();
+  }, []);
 
   const handleTextInput = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (event.target.value.length > 15) {
