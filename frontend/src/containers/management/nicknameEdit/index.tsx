@@ -1,7 +1,7 @@
 'use client';
 
 import { contentWrapper } from '@/styles/wrapper.css';
-import { postNewNickname } from '@/services/management';
+import { putNewNickname } from '@/services/management';
 
 import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
@@ -10,7 +10,7 @@ import * as styles from './index.css';
 
 const nicknameEdit = () => {
   const handleEditClicked = () => {
-    postNewNickname('ntgg3620')
+    putNewNickname('ntgg3620')
       .then((res) => console.log(res))
       .catch((error) => console.log(error));
   };
