@@ -47,14 +47,40 @@ export const feedFollowButton = recipe({
   },
 });
 
-export const feedActionBackground = style([
-  flex({ justify: 'center', align: 'center' }),
-  {
-    position: 'relative',
-    height: 112,
-    background: `linear-gradient(120deg, ${vars.colors.pink}, ${vars.colors.lavender}, ${vars.colors.lightBlue})`,
+export const feedActionBackground = recipe({
+  base: [
+    flex({ justify: 'center', align: 'center' }),
+    {
+      position: 'relative',
+      height: 112,
+    },
+  ],
+  variants: {
+    background: {
+      blue: {
+        backgroundColor: vars.colors.blue,
+      },
+      emerald: {
+        backgroundColor: vars.colors.emerald,
+      },
+      green: {
+        backgroundColor: vars.colors.green,
+      },
+      purple: {
+        backgroundColor: vars.colors.purple,
+      },
+      red: {
+        backgroundColor: vars.colors.red,
+      },
+      yellow: {
+        backgroundColor: vars.colors.yellow,
+      },
+      oatmeal: {
+        backgroundColor: vars.colors.oatmeal,
+      },
+    },
   },
-]);
+});
 
 export const feedFavorite = style([
   flex({ align: 'center' }),
@@ -96,7 +122,8 @@ export const feedCategoryTitle = style({
 });
 
 export const feedNagCard = style({
-  marginTop: 80,
+  width: 40,
+  height: 'auto',
 });
 
 export const feedFavoriteIcon = style({
