@@ -44,6 +44,7 @@ const Followings = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
         setNewFollow((prevState) => [...prevState, user]);
+        console.log(user)
         followUser(user.memberId);
 
       })
