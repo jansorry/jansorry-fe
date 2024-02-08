@@ -28,8 +28,8 @@ export const getFeed = async (
       case 0: // live feed
         feedType = 'live';
         break;
-      case 1: // followings feed
-        feedType = 'followings';
+      case 1: // following feed
+        feedType = 'following';
         break;
       case 2: // trending feed
         feedType = 'trending';
