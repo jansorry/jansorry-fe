@@ -21,7 +21,7 @@ export const getSearchByNickname = async (
   nickname: string,
 ): Promise<searchResponse> => {
   const data: searchResponse = await apiClient.get<searchResponse>(
-    `/follows?nickname=${nickname}`,
+    `/members/search?nickname=${nickname}`,
   );
   return data;
 };
