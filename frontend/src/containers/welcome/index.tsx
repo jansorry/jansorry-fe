@@ -185,7 +185,7 @@ const Welcome = () => {
           공유해보세요
         </div>
         <Image
-          src='/images/welcome/feed-1.png'
+          src='/images/welcome/feed-1.webp'
           alt='receipt'
           width={0}
           height={0}
@@ -199,7 +199,7 @@ const Welcome = () => {
           }
         />
         <Image
-          src='/images/welcome/feed-2.png'
+          src='/images/welcome/feed-2.webp'
           alt='receipt'
           width={0}
           height={0}

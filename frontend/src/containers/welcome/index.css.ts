@@ -238,7 +238,7 @@ export const animationElements = recipe({
     },
     image: {
       receipt: {
-        width: 150,
+        width: 200,
         marginTop: vars.space['3x'],
         height: 'auto',
         animationName: onlyFadein,
