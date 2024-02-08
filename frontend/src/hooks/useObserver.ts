@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useObserver = (callback?: () => void) => {
+export const useObserver = (
+  callback?: () => void,
+  options?: IntersectionObserverInit,
+) => {
   const [isInViewport, setIsInViewport] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -13,7 +16,7 @@ export const useObserver = (callback?: () => void) => {
         return;
       }
       setIsInViewport(false);
-    });
+    }, options);
 
     observer.observe(ref.current);
     return () => observer.disconnect();

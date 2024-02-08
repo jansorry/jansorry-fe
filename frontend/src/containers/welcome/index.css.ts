@@ -128,9 +128,53 @@ export const fadeout = keyframes({
 export const fadein = keyframes({
   '0%': {
     opacity: 0,
+    transform: `translateY(20px)`,
   },
   '100%': {
     opacity: 1,
+    transform: `translateY(0px)`,
+  },
+});
+
+export const onlyFadein = keyframes({
+  '0%': {
+    opacity: 0,
+  },
+  '50%': {
+    opacity: 0,
+  },
+  '100%': {
+    opacity: 1,
+  },
+});
+
+export const feedOneAnimation = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `translateX(-20px)`,
+  },
+  '30%': {
+    opacity: 0,
+    transform: `translateX(-20px)`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: `translateX(0px)`,
+  },
+});
+
+export const feedTwoAnimation = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `translateX(-20px)`,
+  },
+  '70%': {
+    opacity: 0,
+    transform: `translateX(-20px)`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: `translateX(0px)`,
   },
 });
 
@@ -147,12 +191,24 @@ export const guidance = style({
 export const cardContentWrapper = style({
   paddingTop: 200,
   background: `linear-gradient(180deg, ${vars.colors.oatmeal} 0%, ${vars.colors.white} 25%)`,
-  height: 440,
+  height: 360,
 });
 
-export const subtitle = recipe({
+export const receiptContentWrapper = style({
+  height: 600,
+  paddingTop: 40,
+  backgroundColor: vars.colors.oatmeal,
+});
+
+export const feedContentWrapper = style({
+  height: 700,
+  paddingTop: 40,
+  backgroundColor: vars.colors.white,
+});
+
+export const animationElements = recipe({
   base: {
-    width: '50%',
+    width: '80%',
     animationName: fadein,
     animationDuration: '1.5s',
     animationTimingFunction: 'linear',
@@ -180,7 +236,30 @@ export const subtitle = recipe({
         textAlign: 'right',
       },
     },
+    image: {
+      receipt: {
+        width: 150,
+        marginTop: vars.space['3x'],
+        height: 'auto',
+        animationName: onlyFadein,
+        animationDuration: '2s',
+      },
+      feedOne: {
+        width: 300,
+        marginTop: vars.space['3x'],
+        height: 'auto',
+        animationName: feedOneAnimation,
+        animationDuration: '1.5s',
+      },
+      feedTwo: {
+        width: 300,
+        marginTop: vars.space['3x'],
+        height: 'auto',
+        animationName: feedTwoAnimation,
+        animationDuration: '2.5s',
+      },
+    },
   },
 });
 
-export const notShow = style({ visibility: 'hidden' });
+export const notShow = style({ display: 'none' });
