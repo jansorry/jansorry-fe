@@ -90,8 +90,8 @@ export const nicknameBox = style({
   width: 'auto',
 });
 
-export const settingsButton = style({
-  width: vars.space['3x'],
+export const transparentButton = style({
+  width: 'auto',
   height: vars.space['3x'],
   cursor: 'pointer',
   backgroundColor: 'transparent',

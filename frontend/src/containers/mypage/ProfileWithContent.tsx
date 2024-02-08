@@ -7,7 +7,7 @@ import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
 import { actionResponse } from '@/types/userData';
 import { getCards } from '@/services/mypage';
-import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
+import { useObserver } from '@/hooks/useObserver';
 import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
 
 import Button from '@/components/Button';
@@ -42,15 +42,15 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const data = await getCards();
+    const lastCardId: number = cards[cards.length - 1]?.actionId;
+    const data = await getCards(lastCardId);
     if (data.last) setIsLast(data.last);
-
     setCards((prevCards) => [...prevCards, ...data.content]);
 
     setIsLoading(false);
   };
 
-  const refLast = useInfiniteObserver(handleLastCardDetected);
+  const refLast = useObserver(handleLastCardDetected).ref;
 
   return (
     <div className={styles.profileContentStyle}>

@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 
 import { defaultWrapper, flex } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
@@ -44,12 +45,8 @@ export const myreceiptButtonWrapper = style([
 export const modalWrapper = style([
   flex({ direction: 'column', align: 'center', justify: 'center' }),
   {
-    width: '100%',
-    '@media': {
-      'screen and (min-width: 480px)': {
-        width: '432px', // 480px의 90%에 해당하는 너비 직접 지정
-      },
-    },
+    width: '90vw',
+    maxWidth: calc.multiply('480px', 0.9),
   },
 ]);
 export const doubleButtonWrapper = style([

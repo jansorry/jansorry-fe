@@ -1,6 +1,7 @@
 import { recipe } from '@vanilla-extract/recipes';
 
 import { vars } from '@/styles/vars.css';
+import { flex } from '@/styles/common.css';
 
 export const cardSizes = recipe({
   base: {
@@ -25,15 +26,18 @@ export const cardSizes = recipe({
 });
 
 export const cardText = recipe({
-  base: {
-    position: 'absolute',
-    transform: 'translate(-50%, -50%)',
-    zIndex: vars.zIndex['z-1'],
-    color: vars.colors.black,
-    left: '50%',
-
-    fontSize: vars.fontSize['3x'],
-  },
+  base: [
+    flex({ justify: 'center', align: 'center' }),
+    {
+      position: 'absolute',
+      transform: 'translate(-50%, -50%)',
+      zIndex: vars.zIndex['z-1'],
+      color: vars.colors.black,
+      left: '50%',
+      wordBreak: 'keep-all',
+      fontSize: vars.fontSize['3x'],
+    },
+  ],
   variants: {
     position: {
       center: {
