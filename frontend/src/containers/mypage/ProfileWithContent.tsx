@@ -26,7 +26,6 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
-
   const handleReceiptCount = async () => {
     if (receiptCount >= 3) {
       openModal();

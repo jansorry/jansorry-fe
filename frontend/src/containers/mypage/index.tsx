@@ -24,12 +24,10 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
-
     const contentLength = actionsData.content?.length ?? 0;
     setNagCount(contentLength);
     setIsLoading(false);
   }, [actionsData]);
-
 
   return (
     <>
@@ -39,9 +37,13 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
           <UserProfile {...myPageItems} />
         </div>
         {NagCount > 0 ? (
-            <ProfileWithContent content={actionsData.content} last={actionsData.last} receiptCount = {receiptCount} />
+          <ProfileWithContent
+            content={actionsData.content}
+            last={actionsData.last}
+            receiptCount={receiptCount}
+          />
         ) : (
-            <ProfileNoContent receiptCount = {receiptCount} />
+          <ProfileNoContent receiptCount={receiptCount} />
         )}
         <PostActionButton />
         <NavBar clickedIndex={3} />
