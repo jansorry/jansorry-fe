@@ -21,7 +21,7 @@ create-env:
     paths:
       - .env
   only:
-    - fe-deploy
+    - fe-test-deploy
 
 
 frontend-build:
@@ -38,7 +38,7 @@ frontend-build:
 #      - frontend/public
 #      - frontend/.next/static
   only:
-    - fe-deploy
+    - fe-test-deploy
 
 docker-build:
   stage: docker-build
@@ -55,7 +55,7 @@ docker-build:
     - docker build -t ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest -f Dockerfile .
     - docker push ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest
   only:
-    - fe-deploy
+    - fe-test-deploy
 
 docker-pull:
   stage: docker-pull
@@ -72,4 +72,4 @@ docker-pull:
     - docker-compose -f $DOCKER_COMPOSE_FILE up -d
     - docker image prune -f
   only:
-    - fe-deploy
+    - fe-test-deploy
