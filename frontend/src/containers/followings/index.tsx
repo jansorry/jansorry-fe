@@ -49,7 +49,7 @@ const Followings = () => {
 
       })
       .catch((error) => {
-        if (error.message.contain('404')) {
+        if (error.message.includes('404')) {
           setIsExist(false);
         }
       });
