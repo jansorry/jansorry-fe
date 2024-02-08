@@ -11,7 +11,7 @@ import Button from '@/components/Button';
 import NagCard from '@/components/NagCard';
 
 interface Props {
-  receiptCount: 0 | 1 | 2 | 3;
+  receiptCount: number;
 }
 
 const ProfileNoContent = ({ receiptCount }: Props) => {

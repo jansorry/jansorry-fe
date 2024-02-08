@@ -16,7 +16,7 @@ import NagCard from '@/components/NagCard';
 interface Props {
   content: actionResponse[];
   last: boolean;
-  receiptCount: 0 | 1 | 2 | 3;
+  receiptCount: number;
 }
 
 const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
