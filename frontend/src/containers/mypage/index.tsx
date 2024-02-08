@@ -17,30 +17,17 @@ import PostActionButton from '@/components/PostActionButton';
 interface Props {
   myPageItems: userDataResponse;
   actionsData: actionTotalDataResponse;
-  receiptCount: totalReceiptCountResponse;
+  receiptCount: number;
 }
 
 const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
   useEffect(() => {
     const contentLength = actionsData.content?.length ?? 0;
     setNagCount(contentLength);
     setIsLoading(false);
   }, [actionsData]);
-
-  const renderMyCard = () => {
-    if (isLoading) {
-      return <Loading />;
-    }
-
-    return NagCount > 0 ? (
-      <ProfileWithContent {...actionsData} {...receiptCount} />
-    ) : (
-      <ProfileNoContent {...receiptCount} />
-    );
-  };
 
   return (
     <>
@@ -49,7 +36,15 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
         <div className={styles.profileContentWrapper}>
           <UserProfile {...myPageItems} />
         </div>
-        {renderMyCard()}
+        {NagCount > 0 ? (
+          <ProfileWithContent
+            content={actionsData.content}
+            last={actionsData.last}
+            receiptCount={receiptCount}
+          />
+        ) : (
+          <ProfileNoContent receiptCount={receiptCount} />
+        )}
         <PostActionButton />
         <NavBar clickedIndex={3} />
       </main>

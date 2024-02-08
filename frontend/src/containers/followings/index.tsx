@@ -9,6 +9,7 @@ import * as styles from '@/containers/followings/index.css';
 import { defaultWrapper } from '@/styles/common.css';
 import FollowButton from '@/containers/feed/FollowButton';
 import { IconMagnify } from '#/svgs';
+import { followUser } from '@/services/feed';
 
 import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
@@ -41,10 +42,19 @@ const Followings = () => {
   const handleSearchNickname = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
-        setNewFollow((prevState) => [...prevState, user]);
+        setNewFollow((prevState) => {
+          const isUserExist = prevState.some(
+            (existingUser) => existingUser.memberId === user.memberId,
+          );
+          if (!isUserExist) {
+            followUser(user.memberId);
+            return [...prevState, user];
+          }
+          return prevState;
+        });
       })
       .catch((error) => {
-        if (error.errorCode === 404) {
+        if (error.message.includes('404')) {
           setIsExist(false);
         }
       });

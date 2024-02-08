@@ -9,13 +9,13 @@ export const getMyPage = async (
 ): Promise<{
   userData: userDataResponse;
   actionsData: actionTotalDataResponse;
-  receiptCountData: totalReceiptCountResponse;
+  receiptCountData: number;
 }> => {
   try {
     const [userData, actionsData, receiptCountData] = await Promise.all([
       apiServer.get<userDataResponse>(`/members`, token),
       apiServer.get<actionTotalDataResponse>(`/actions`, token),
-      apiServer.get<totalReceiptCountResponse>(`/receipts`, token),
+      apiServer.get<number>(`/receipts`, token),
     ]);
     return { userData, actionsData, receiptCountData };
   } catch (e) {
