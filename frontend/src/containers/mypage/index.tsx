@@ -24,6 +24,9 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
+    console.log('mypageContainer')
+    console.log(receiptCount)
+    console.log(typeof receiptCount)
     const contentLength = actionsData.content?.length ?? 0;
     setNagCount(contentLength);
     setIsLoading(false);
