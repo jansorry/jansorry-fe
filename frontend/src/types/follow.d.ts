@@ -12,4 +12,7 @@ export interface followingResponse extends userInfo {
 
 export interface searchResponse extends userInfo {
   memberId: number;
+  actionCnt: number;
+  follwerCnt: number;
+  followingCnt: number;
 }
