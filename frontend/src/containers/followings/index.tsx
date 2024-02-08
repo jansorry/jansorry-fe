@@ -14,6 +14,7 @@ import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
 import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
+import {followUser} from "@/services/feed";
 
 const Followings = () => {
   const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
@@ -38,10 +39,13 @@ const Followings = () => {
     setInputNickname(event.target.value);
   };
 
+
   const handleSearchNickname = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
         setNewFollow((prevState) => [...prevState, user]);
+        followUser(user.memberId);
+
       })
       .catch((error) => {
         if (error.errorCode === 404) {
