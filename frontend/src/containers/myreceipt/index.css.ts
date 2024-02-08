@@ -53,6 +53,7 @@ export const doubleButtonWrapper = style([
   flex({ direction: 'row', align: 'center', justify: 'spaceBetween' }),
   {
     width: '80vw',
+    maxWidth: calc.multiply('480px', 0.8),
     paddingTop: vars.space['2x'],
     marginBottom: vars.space['2x'],
   },
