@@ -16,9 +16,9 @@ const CardsPresent = ({ count, categoryList }: homeCardsResponse) => {
 
   const createCardViews = (cardCount: number, cardList: number[]): number[] => {
     if (cardCount > 7) {
-      const startIndex = cardList.length - 6;
+      const startIndex = cardList.length - 7;
       const endIndex = cardList.length;
-      return [-1, ...cardList.slice(startIndex, endIndex)];
+      return [...cardList.slice(startIndex, endIndex)];
     }
     const subArray = new Array(7 - cardCount).fill(-1);
     return [...subArray, ...cardList];
