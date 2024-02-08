@@ -43,9 +43,16 @@ const Followings = () => {
   const handleSearchNickname = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
-        setNewFollow((prevState) => [...prevState, user]);
-        console.log(user)
-        followUser(user.memberId);
+
+        setNewFollow((prevState) => {
+          const isUserExist = prevState.some((existingUser) => existingUser.memberId === user.memberId);
+          if (!isUserExist) {
+            followUser(user.memberId);
+            return [...prevState, user];
+          }
+          return prevState;
+        })
+
 
       })
       .catch((error) => {
