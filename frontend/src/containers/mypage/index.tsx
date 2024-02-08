@@ -17,7 +17,7 @@ import PostActionButton from '@/components/PostActionButton';
 interface Props {
   myPageItems: userDataResponse;
   actionsData: actionTotalDataResponse;
-  receiptCount: totalReceiptCountResponse;
+  receiptCount: number;
 }
 
 const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
@@ -39,9 +39,9 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
           <UserProfile {...myPageItems} />
         </div>
         {NagCount > 0 ? (
-            <ProfileWithContent content={actionsData.content} last={actionsData.last} receiptCount = {receiptCount.receiptCount} />
+            <ProfileWithContent content={actionsData.content} last={actionsData.last} receiptCount = {receiptCount} />
         ) : (
-            <ProfileNoContent receiptCount = {receiptCount.receiptCount} />
+            <ProfileNoContent receiptCount = {receiptCount} />
         )}
         <PostActionButton />
         <NavBar clickedIndex={3} />

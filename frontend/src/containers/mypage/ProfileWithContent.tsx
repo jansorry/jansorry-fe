@@ -16,7 +16,7 @@ import NagCard from '@/components/NagCard';
 interface Props {
   content: actionResponse[];
   last: boolean;
-  receiptCount: 0 | 1 | 2 | 3;
+  receiptCount: number;
 }
 
 const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
@@ -26,9 +26,6 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   const router = useRouter();
   const { Modal, openModal, closeModal } = useModal();
 
-
-  console.log('profilewithCon')
-  console.log(receiptCount)
 
   const handleReceiptCount = async () => {
     if (receiptCount >= 3) {
