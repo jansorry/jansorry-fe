@@ -29,14 +29,12 @@ const NicknameEdit = () => {
         router.push('/mypage');
       })
       .catch((e) => {
-        console.log('테스트야아')
-        console.log(e)
-        console.log('테스트')
-        if (e.errorCode === 409) {
+
+        if (e.message.includes('409')) {
           setIsDuplicated(true);
           return;
         }
-        if (e.errorCode === 400) {
+        if (e.message.includes('400')) {
           setWrongType(true);
         }
       });
