@@ -9,12 +9,12 @@ import * as styles from '@/containers/followings/index.css';
 import { defaultWrapper } from '@/styles/common.css';
 import FollowButton from '@/containers/feed/FollowButton';
 import { IconMagnify } from '#/svgs';
+import { followUser } from '@/services/feed';
 
 import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
 import { UserPreview } from '@/components/UserPreview';
 import Button from '@/components/Button';
-import {followUser} from "@/services/feed";
 
 const Followings = () => {
   const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
@@ -39,21 +39,19 @@ const Followings = () => {
     setInputNickname(event.target.value);
   };
 
-
   const handleSearchNickname = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
-
         setNewFollow((prevState) => {
-          const isUserExist = prevState.some((existingUser) => existingUser.memberId === user.memberId);
+          const isUserExist = prevState.some(
+            (existingUser) => existingUser.memberId === user.memberId,
+          );
           if (!isUserExist) {
             followUser(user.memberId);
             return [...prevState, user];
           }
           return prevState;
-        })
-
-
+        });
       })
       .catch((error) => {
         if (error.message.includes('404')) {
