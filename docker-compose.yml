@@ -1,8 +1,0 @@
-version: '3'
-services:
-  frontend:
-    image: ${DOCKER_USERNAME}/${DOCKER_REPO}:frontend-latest
-    ports:
-      - "3000:3000"
-    env_file:
-      - ./.env
