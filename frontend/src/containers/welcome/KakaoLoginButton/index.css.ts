@@ -7,7 +7,7 @@ export const kakaoLoginImage = style({
   width: '83%',
   maxWidth: 400,
   height: 'auto',
-  top: '90vh',
+  top: '90svh',
   margin: '0 auto',
   cursor: 'pointer',
   zIndex: vars.zIndex['z-2'],

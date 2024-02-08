@@ -14,7 +14,18 @@ import NagCard from '@/components/NagCard';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
 
 const Welcome = () => {
-  const { ref: cardRef, isInViewport: isCardViewed } = useObserver();
+  const { ref: cardRef, isInViewport: isCardViewed } = useObserver(() => {}, {
+    rootMargin: '-200px',
+  });
+  const { ref: receiptRef, isInViewport: isReceiptViewed } = useObserver(
+    () => {},
+    {
+      rootMargin: '-200px',
+    },
+  );
+  const { ref: feedRef, isInViewport: isFeedViewed } = useObserver(() => {}, {
+    rootMargin: '-200px',
+  });
   const counter = createCounter();
 
   const cards = [0, 1, 2, 3, 4, 5, 6];
@@ -94,7 +105,7 @@ const Welcome = () => {
         <div
           className={
             isCardViewed
-              ? styles.subtitle({ main: false, align: 'left' })
+              ? styles.animationElements({ main: false, align: 'left' })
               : styles.notShow
           }
         >
@@ -103,13 +114,104 @@ const Welcome = () => {
         <div
           className={
             isCardViewed
-              ? styles.subtitle({ main: true, align: 'left' })
+              ? styles.animationElements({ main: true, align: 'left' })
               : styles.notShow
           }
         >
           나만의 카드를 만들고
           <br /> 공유해보세요
         </div>
+      </div>
+
+      <div ref={receiptRef} className={styles.receiptContentWrapper}>
+        <div
+          className={
+            isReceiptViewed
+              ? styles.animationElements({ main: false, align: 'left' })
+              : styles.notShow
+          }
+        >
+          영수증
+        </div>
+        <div
+          className={
+            isReceiptViewed
+              ? styles.animationElements({ main: true, align: 'left' })
+              : styles.notShow
+          }
+        >
+          잔소리 영수증을
+          <br />
+          만들고
+          <br />
+          비용을 청구하세요
+        </div>
+        <Image
+          src='/images/welcome/receipt.webp'
+          alt='receipt'
+          width={0}
+          height={0}
+          sizes='100vw'
+          className={
+            isReceiptViewed
+              ? styles.animationElements({
+                  align: 'left',
+                  image: 'receipt',
+                })
+              : styles.notShow
+          }
+        />
+      </div>
+
+      <div ref={feedRef} className={styles.feedContentWrapper}>
+        <div
+          className={
+            isFeedViewed
+              ? styles.animationElements({ main: false, align: 'left' })
+              : styles.notShow
+          }
+        >
+          피드
+        </div>
+        <div
+          className={
+            isFeedViewed
+              ? styles.animationElements({ main: true, align: 'left' })
+              : styles.notShow
+          }
+        >
+          잔소리에 대한 반응을
+          <br />
+          공유해보세요
+        </div>
+        <Image
+          src='/images/welcome/feed-1.png'
+          alt='receipt'
+          width={0}
+          height={0}
+          sizes='100vw'
+          className={
+            isFeedViewed
+              ? styles.animationElements({
+                  image: 'feedOne',
+                })
+              : styles.notShow
+          }
+        />
+        <Image
+          src='/images/welcome/feed-2.png'
+          alt='receipt'
+          width={0}
+          height={0}
+          sizes='100vw'
+          className={
+            isFeedViewed
+              ? styles.animationElements({
+                  image: 'feedTwo',
+                })
+              : styles.notShow
+          }
+        />
       </div>
     </main>
   );
