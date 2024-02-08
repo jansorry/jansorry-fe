@@ -12,7 +12,6 @@ import { useObserver } from '@/hooks/useObserver';
 import * as styles from './index.css';
 import NagCard from '@/components/NagCard';
 import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
-import { subContentStart } from './index.css';
 
 const Welcome = () => {
   const { ref: cardRef, isInViewport: isCardViewed } = useObserver();
