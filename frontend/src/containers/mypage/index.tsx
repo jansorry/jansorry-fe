@@ -23,7 +23,6 @@ interface Props {
 const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  console.log(receiptCount);
   useEffect(() => {
     const contentLength = actionsData.content?.length ?? 0;
     setNagCount(contentLength);

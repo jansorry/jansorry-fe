@@ -17,7 +17,6 @@ export const getMyPage = async (
       apiServer.get<actionTotalDataResponse>(`/actions`, token),
       apiServer.get<totalReceiptCountResponse>(`/receipts`, token),
     ]);
-    console.log(receiptCountData);
     return { userData, actionsData, receiptCountData };
   } catch (e) {
     console.log(e);
