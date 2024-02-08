@@ -83,6 +83,7 @@ export const errorText = style([
   {
     color: vars.colors.strongRed,
     fontSize: vars.fontSize['2x'],
+    margin: vars.fontSize['2x'],
   },
 ]);
 
