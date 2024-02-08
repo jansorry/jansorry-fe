@@ -8,10 +8,10 @@ import { IconSavedReceipt } from '#/svgs';
 import createCounter from '@/utils/counter';
 
 interface Props {
-  receiptCount: 0 | 1 | 2 | 3;
+  receiptCount: number;
 }
 
-const SavedReceipts: React.FC<Props> = ({ receiptCount }) => {
+const SavedReceipts = ({ receiptCount }: Props) => {
   const router = useRouter();
   const getReceiptKey = createCounter();
 

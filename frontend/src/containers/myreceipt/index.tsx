@@ -54,10 +54,11 @@ const MyReceipt = ({
 
   return (
     <main className={styles.fullWrapper}>
-      <Header title='영수증 출력' hasPrevious />
+      <Header title='영수증 출력' />
       <div className={styles.receiptWrapper}>
         <div className={styles.myReceiptWrapper}>
           <div className={styles.receiptShadow}>
+            {/* TODO : 영수증 이미지 외부 안잘리게 하기 */}
             <div ref={receiptRef}>
               <Receipt content={data} />
             </div>

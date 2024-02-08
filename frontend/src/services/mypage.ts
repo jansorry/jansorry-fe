@@ -9,13 +9,13 @@ export const getMyPage = async (
 ): Promise<{
   userData: userDataResponse;
   actionsData: actionTotalDataResponse;
-  receiptCountData: totalReceiptCountResponse;
+  receiptCountData: number;
 }> => {
   try {
     const [userData, actionsData, receiptCountData] = await Promise.all([
       apiServer.get<userDataResponse>(`/members`, token),
       apiServer.get<actionTotalDataResponse>(`/actions`, token),
-      apiServer.get<totalReceiptCountResponse>(`/receipts`, token),
+      apiServer.get<number>(`/receipts`, token),
     ]);
     return { userData, actionsData, receiptCountData };
   } catch (e) {
@@ -24,9 +24,12 @@ export const getMyPage = async (
   return redirect('/401');
 };
 
-export const getCards = async (): Promise<actionTotalDataResponse> => {
+export const getCards = async (
+  lastActionId: number,
+): Promise<actionTotalDataResponse> => {
   try {
-    return await apiClient.get<actionTotalDataResponse>('/actions');
+    const url = `/actions?lastActionId=${lastActionId}`;
+    return await apiClient.get<actionTotalDataResponse>(url);
   } catch (e) {
     console.log(e);
   }

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { feedContent, feedResponse } from '@/types/feed';
 import FeedCard from '@/containers/feed/FeedCard';
-import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
+import { useObserver } from '@/hooks/useObserver';
 import { getFeed } from '@/services/feed';
 
 import * as styles from './index.css';
@@ -56,7 +56,7 @@ const Feed = ({ content, last }: feedResponse) => {
     setIsMounted(true);
   }, [selectedHashtag]);
 
-  const refLast = useInfiniteObserver(handleLastDetected);
+  const refLast = useObserver(handleLastDetected).ref;
 
   return (
     <>

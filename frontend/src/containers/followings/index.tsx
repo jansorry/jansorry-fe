@@ -2,17 +2,14 @@
 
 import { ChangeEvent, useEffect, useState } from 'react';
 
-import {
-  getFollowers,
-  getFollowings,
-  getSearchByNickname,
-} from '@/services/follow';
+import { getFollowings, getSearchByNickname } from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
 import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
 import { defaultWrapper } from '@/styles/common.css';
 import FollowButton from '@/containers/feed/FollowButton';
 import { IconMagnify } from '#/svgs';
+import { followUser } from '@/services/feed';
 
 import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
@@ -23,7 +20,7 @@ const Followings = () => {
   const [followingArray, setFollowingArray] = useState<followingResponse[]>([]);
   const [inputNickname, setInputNickname] = useState('');
   const [isExist, setIsExist] = useState(true);
-  const [newFollw, setNewFollow] = useState<searchResponse[]>([]);
+  const [newFollow, setNewFollow] = useState<searchResponse[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -45,10 +42,19 @@ const Followings = () => {
   const handleSearchNickname = () => {
     getSearchByNickname(inputNickname)
       .then((user) => {
-        setNewFollow((prevState) => [...prevState, user]);
+        setNewFollow((prevState) => {
+          const isUserExist = prevState.some(
+            (existingUser) => existingUser.memberId === user.memberId,
+          );
+          if (!isUserExist) {
+            followUser(user.memberId);
+            return [...prevState, user];
+          }
+          return prevState;
+        });
       })
       .catch((error) => {
-        if (error.errorCode === 404) {
+        if (error.message.includes('404')) {
           setIsExist(false);
         }
       });
@@ -89,7 +95,7 @@ const Followings = () => {
           </span>
         </div>
         <div>
-          {newFollw.map((item) => (
+          {newFollow.map((item) => (
             <div key={`${createCounter()}`} className={styles.newUserWrapper}>
               {/*  TODO : imgSrc 수정 */}
               <div className={styles.profileImgTextWrapper}>

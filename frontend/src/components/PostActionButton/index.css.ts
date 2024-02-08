@@ -13,6 +13,7 @@ export const floatButton = style([
     left: 0,
     right: 0,
     margin: '0 auto',
+    padding: 0,
     border: 'none',
     outline: 'none',
     cursor: 'pointer',

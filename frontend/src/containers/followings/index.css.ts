@@ -35,7 +35,7 @@ export const nicknameInputStyle = style([
     backgroundColor: vars.colors.whitesmoke,
     fontSize: vars.fontSize['2x'],
     width: '60vw',
-    maxWidth: calc.subtract('480px', '30vw'),
+    maxWidth: calc.multiply('480px', 0.6),
   },
 ]);
 
@@ -83,6 +83,7 @@ export const errorText = style([
   {
     color: vars.colors.strongRed,
     fontSize: vars.fontSize['2x'],
+    margin: vars.fontSize['2x'],
   },
 ]);
 

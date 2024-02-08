@@ -7,7 +7,7 @@ import * as styles from '@/containers/mypage/index.css';
 import useModal from '@/hooks/useModal';
 import { actionResponse } from '@/types/userData';
 import { getCards } from '@/services/mypage';
-import { useInfiniteObserver } from '@/hooks/useInfiniteObserver';
+import { useObserver } from '@/hooks/useObserver';
 import SavedReceiptContainer from '@/containers/mypage/SavedReceiptContainer';
 
 import Button from '@/components/Button';
@@ -16,7 +16,7 @@ import NagCard from '@/components/NagCard';
 interface Props {
   content: actionResponse[];
   last: boolean;
-  receiptCount: 0 | 1 | 2 | 3;
+  receiptCount: number;
 }
 
 const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
@@ -35,22 +35,22 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   };
 
   const handleCardClick = (actionId: number) => {
-    router.push(`/actions/${actionId}`);
+    router.push(`/carddetails/${actionId}`);
   };
 
   const handleLastCardDetected = async () => {
     if (isLast || isLoading) return;
     setIsLoading(true);
 
-    const data = await getCards();
+    const lastCardId: number = cards[cards.length - 1]?.actionId;
+    const data = await getCards(lastCardId);
     if (data.last) setIsLast(data.last);
-
     setCards((prevCards) => [...prevCards, ...data.content]);
 
     setIsLoading(false);
   };
 
-  const refLast = useInfiniteObserver(handleLastCardDetected);
+  const refLast = useObserver(handleLastCardDetected).ref;
 
   return (
     <div className={styles.profileContentStyle}>
@@ -81,7 +81,7 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
                 sizeKey: 1,
                 textStyleKey: 1,
                 shadow: false,
-                text: card.actionContent,
+                text: '',
               }}
             />
           </div>
