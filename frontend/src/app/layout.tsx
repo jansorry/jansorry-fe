@@ -19,7 +19,7 @@ declare global {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://acme.com'),
+  metadataBase: new URL('https://jansorry.com'),
   openGraph: {
     url: 'https://jansorry.com',
     images: 'https://jansorry.com/opengraph-image.png',
