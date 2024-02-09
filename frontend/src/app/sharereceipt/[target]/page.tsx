@@ -25,6 +25,7 @@ export const generateMetadata = ({
     openGraph: {
       title,
       description: `${description}의 잔소리 영수증!`,
+      images: 'https://jansorry.com/opengraph-image.png',
     },
   };
 };
