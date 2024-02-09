@@ -7,11 +7,6 @@ import './layout.css';
 
 import Provider from '@/app/Provider';
 
-export const metadata: Metadata = {
-  title: '명절 잔소리 영수증',
-  description: '잔소리 영수증을 만들고 비용을 청구해보세요.',
-};
-
 const Pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
 });
@@ -22,6 +17,20 @@ declare global {
     Kakao: any;
   }
 }
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://acme.com'),
+  openGraph: {
+    url: 'https://jansorry.com',
+    images: 'https://jansorry.com/opengraph-image.png',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '명절 잔소리 영수증',
+    description: '잔소리 영수증을 만들고 비용을 청구해보세요!',
+    images: ['https://jansorry.com/opengraph-image.png'],
+  },
+};
 
 interface Props {
   children: React.ReactNode;
