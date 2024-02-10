@@ -15,16 +15,16 @@ import { cardXsmall } from '@/components/NagCard/cardOptionsSet';
 
 const Welcome = () => {
   const { ref: cardRef, isInViewport: isCardViewed } = useObserver(() => {}, {
-    rootMargin: '-200px',
+    rootMargin: '-200px 0px',
   });
   const { ref: receiptRef, isInViewport: isReceiptViewed } = useObserver(
     () => {},
     {
-      rootMargin: '-200px',
+      rootMargin: '-200px 0px',
     },
   );
   const { ref: feedRef, isInViewport: isFeedViewed } = useObserver(() => {}, {
-    rootMargin: '-200px',
+    rootMargin: '-200px 0px',
   });
   const counter = createCounter();
 
