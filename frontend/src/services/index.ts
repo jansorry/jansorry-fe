@@ -59,7 +59,9 @@ async function requestServer<T>(
       'Content-Type': 'application/json',
     };
   }
-  if (url === '/mypage' || url === 'home') {
+
+  const needNoStore = ['/main', '/members', '/actions', '/receipts'];
+  if (needNoStore.includes(url)) {
     options.cache = 'no-store';
   }
 
