@@ -59,6 +59,9 @@ async function requestServer<T>(
       'Content-Type': 'application/json',
     };
   }
+  if (url === '/mypage' || url === 'home') {
+    options.cache = 'no-store';
+  }
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, {
     ...options,
