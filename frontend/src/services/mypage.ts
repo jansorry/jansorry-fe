@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation';
 
 import { apiClient, apiServer } from '@/services/index';
 import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
-import { totalReceiptCountResponse } from '@/types/receipt';
 
 export const getMyPage = async (
   token: string = '',
