@@ -2,7 +2,6 @@ import IconUser from './user.svg';
 import IconUserFilled from './user-filled.svg';
 
 import AnimationLoading from './loading.svg';
-import ButtonKakaoLogin from './kakao-login.svg';
 import IconHome from './home.svg';
 import IconHomeFilled from './home-filled.svg';
 import IconHeart from './heart.svg';
@@ -22,7 +21,6 @@ import IconPlus from './plus.svg';
 
 export {
   AnimationLoading,
-  ButtonKakaoLogin,
   IconUser,
   IconUserFilled,
   IconHome,

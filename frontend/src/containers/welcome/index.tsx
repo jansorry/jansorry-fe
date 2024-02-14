@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import Link from 'next/link';
 
 import KakaoLoginButton from '@/containers/welcome/KakaoLoginButton';
 import * as cardStyles from '@/containers/home/index.css';
@@ -74,6 +75,16 @@ const Welcome = () => {
         className={styles.title}
       />
       <div className={styles.guidance}>아래로 스크롤해서 미리보기</div>
+      <Link href='/statistics'>
+        <Image
+          src='/images/welcome/button-statistics.png'
+          alt='button-statistics'
+          width={0}
+          height={0}
+          sizes='100vw'
+          className={styles.statisticsButton}
+        />
+      </Link>
       <KakaoLoginButton />
       <Image
         src='/images/welcome/bg-bottom.png'

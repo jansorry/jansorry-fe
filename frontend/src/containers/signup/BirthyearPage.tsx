@@ -3,12 +3,12 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
-import { selectedYearState, userBirthState } from '@/states/signup';
 import {
   birthGenderWrapper,
   prevNextButton,
 } from '@/containers/signup/index.css';
 
+import { selectedYearState, userBirthState } from './store';
 import Button from '@/components/Button';
 
 const BirthyearPage = () => {
