@@ -20,6 +20,8 @@ declare global {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://jansorry.com'),
+  title: '명절 잔소리 영수증',
+  description: '잔소리 영수증을 만들고 비용을 청구해보세요!',
   openGraph: {
     url: 'https://jansorry.com',
     images: 'https://jansorry.com/opengraph-image.png',

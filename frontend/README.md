@@ -1,4 +1,4 @@
-<img src="./assets/title.png" alt="title">
+<img src="assets/images/title.png" alt="title">
 
 ## 💬 프로젝트 소개
 
@@ -80,7 +80,9 @@ pnpm build
 
 ### 🖥️ 랜딩 페이지 - `서범석`
 
-- 스크롤 애니메이션
+|                      첫 화면                       |
+|:-----------------------------------------------:|
+| <img src="assets/gifs/landing.gif" width='200px'> |
 
 ### 🔑 소셜 로그인 - `류승광`
 
@@ -94,7 +96,9 @@ pnpm build
 
 ### 👤 회원 가입 페이지 - `이담비`
 
-- year picker
+|                      회원 가입                      |
+|:-----------------------------------------------:|
+| <img src="assets/gifs/signup.gif" width='200px'> |
 
 - button 공통 컴포넌트
 

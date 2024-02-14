@@ -26,7 +26,6 @@ const CreateReceipt = () => {
       const data = await getNagStatistic();
       const receiptInfo = createReceiptObject(data);
       const seq = await createReceipt(receiptInfo);
-      console.log(receiptInfo);
       setReceiptSeq(seq);
     };
 
