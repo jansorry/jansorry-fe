@@ -22,9 +22,7 @@ const createNagMap = (
 export const createReceiptObject = (
   response: nagStatisticResponse,
 ): receiptResponse => {
-  const total = response.totalPrice;
-  const count = response.totalCount;
-  const { maxCountedNagId } = response;
+  const { maxCountedNagId, totalPrice, totalCount } = response;
   // nagId : count Map 생성
   const nagCountMap = createNagMap(response);
 
@@ -43,22 +41,18 @@ export const createReceiptObject = (
   const familyUrl = addQueryStringToURL(familyUrlBase, nagCountMap);
   const friendUrl = addQueryStringToURL(friendUrlBase, nagCountMap);
 
-  const postData: receiptResponse = {
+  return {
     maxCountedNagId,
-    totalPrice: total,
-    totalCount: count,
+    totalPrice,
+    totalCount,
     familyUrl,
     friendUrl,
   };
-  console.log(postData);
-  return postData;
 };
 
 export const copyLink = async (url: string) => {
   try {
     await navigator.clipboard.writeText(url);
-    //  TODO : 테스트용 console 지우기
-    console.log(url);
   } catch (err) {
     console.log(err);
   }
