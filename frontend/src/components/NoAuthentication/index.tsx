@@ -11,7 +11,7 @@ const NoAuthentication = () => {
   return (
     <div className={styles.noAuthenticationWrapper}>
       <Image
-        src='/images/error/401.png'
+        src='/images/error/401.webp'
         alt='404Error'
         width={0}
         height={0}
