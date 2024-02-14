@@ -157,7 +157,7 @@ export const savedReceiptFrame = style([
     height: 64,
     borderRadius: vars.borderRadius.full,
     backgroundColor: vars.colors.whitesmoke,
-    stroke: '0.1',
+    stroke: 'gray',
     cursor: 'pointer',
     margin: vars.space['1x'],
   },

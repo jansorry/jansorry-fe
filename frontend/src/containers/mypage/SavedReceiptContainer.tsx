@@ -1,19 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
 import { IconSavedReceipt } from '#/svgs';
 import createCounter from '@/utils/counter';
+import { getReceiptCount } from '@/services/receipt';
 
 interface Props {
-  receiptCount: number;
+  initialReceiptCount: number;
 }
 
-const SavedReceipts = ({ receiptCount }: Props) => {
+const SavedReceipts = ({ initialReceiptCount }: Props) => {
+  const [receiptCount, setReceiptCount] = useState<number>(initialReceiptCount);
+
   const router = useRouter();
   const getReceiptKey = createCounter();
+
+  useEffect(() => {
+    const fetchReceiptCount = async () => {
+      const count = await getReceiptCount();
+      setReceiptCount(count);
+    };
+
+    fetchReceiptCount();
+  }, []);
 
   const receiptSpaces = [1, 2, 3].map((index) => {
     const receiptKey = getReceiptKey();

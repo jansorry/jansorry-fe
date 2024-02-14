@@ -68,3 +68,12 @@ export const getAllNags = async (token: string = ''): Promise<nag[]> => {
   }
   return [];
 };
+
+export const getReceiptCount = async (token: string = ''): Promise<number> => {
+  try {
+    return await apiServer.get<number>('/receipts', token);
+  } catch (error) {
+    console.error('Error fetching receipt count:', error);
+    return 0;
+  }
+};

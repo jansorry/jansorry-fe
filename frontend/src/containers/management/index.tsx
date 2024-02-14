@@ -28,7 +28,7 @@ const ManagementContainer = ({
 
   return (
     <>
-      <Header title='마이페이지' hasPrevious />
+      <Header title='관리페이지' hasPrevious />
       <main className={styles.managementWrapper}>
         <div className={styles.managementProfile}>
           <ManagementUserProfile nickname={nickname} imageUrl={imageUrl} />
