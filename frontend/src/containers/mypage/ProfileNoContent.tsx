@@ -37,7 +37,7 @@ const ProfileNoContent = ({ receiptCount }: Props) => {
         영수증 발급
       </Button>
       {receiptCount > 0 && (
-        <SavedReceiptContainer receiptCount={receiptCount} />
+        <SavedReceiptContainer initialReceiptCount={receiptCount} />
       )}
       <Modal title='잔소리 카드를 먼저 만들어 주세요.'>
         <div className={styles.actionModalWrapper}>

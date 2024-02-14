@@ -7,11 +7,11 @@ import { useRouter } from 'next/navigation';
 
 import BirthyearPage from '@/containers/signup/BirthyearPage';
 import GenderPage from '@/containers/signup/GenderPage';
-import { userBirthState } from '@/states/signup';
 import { defaultWrapper } from '@/styles/common.css';
 import { contentWrapper } from '@/styles/wrapper.css';
 import { kakaoNicknameState } from '@/states/auth';
 
+import { userBirthState } from './store';
 import * as styles from './index.css';
 import Header from '@/components/Header';
 

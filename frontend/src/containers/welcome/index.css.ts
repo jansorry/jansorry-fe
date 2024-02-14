@@ -188,6 +188,12 @@ export const guidance = style({
   animationDirection: 'alternate',
 });
 
+export const statisticsButton = style({
+  width: '83%',
+  height: 'auto',
+  marginTop: vars.space['4x'],
+});
+
 export const cardContentWrapper = style({
   paddingTop: 200,
   background: `linear-gradient(180deg, ${vars.colors.oatmeal} 0%, ${vars.colors.white} 25%)`,
