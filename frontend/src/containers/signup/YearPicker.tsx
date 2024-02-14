@@ -3,8 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { selectedYearState } from '@/states/signup';
-
+import { selectedYearState } from './store';
 import * as styles from './index.css';
 
 const YearPicker = () => {

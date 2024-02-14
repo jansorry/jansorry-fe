@@ -4,11 +4,11 @@ import { useRecoilState, useResetRecoilState } from 'recoil';
 import { useRouter } from 'next/navigation';
 
 import { genderMap } from '@/containers/signup/genderOptions';
-import { userBirthState, userGenderState } from '@/states/signup';
 import { kakaoNicknameState, oauthIdState } from '@/states/auth';
 import { authResponse, signupRequest } from '@/types/auth';
 import { postSignup } from '@/services/auth';
 
+import { userBirthState, userGenderState } from './store';
 import * as styles from './index.css';
 import Button from '@/components/Button';
 import { birthGenderWrapper, prevNextButton } from './index.css';

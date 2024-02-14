@@ -10,7 +10,6 @@ import * as styles from './index.css';
 import ProfileWithContent from './ProfileWithContent';
 import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
-import Loading from '@/components/Loading';
 import PostActionButton from '@/components/PostActionButton';
 
 interface Props {
@@ -21,11 +20,10 @@ interface Props {
 
 const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
   const [NagCount, setNagCount] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const contentLength = actionsData.content?.length ?? 0;
     setNagCount(contentLength);
-    setIsLoading(false);
   }, [actionsData]);
 
   return (
