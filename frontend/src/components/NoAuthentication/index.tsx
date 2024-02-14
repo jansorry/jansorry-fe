@@ -23,9 +23,9 @@ const NoAuthentication = () => {
         size='small'
         colorStyle='blue'
         filled={false}
-        onClick={() => router.back()}
+        onClick={() => router.push('/')}
       >
-        이전으로
+        홈으로
       </Button>
     </div>
   );
