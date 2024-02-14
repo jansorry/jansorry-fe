@@ -11,7 +11,7 @@ const NoAuthentication = () => {
   return (
     <div className={styles.noAuthenticationWrapper}>
       <Image
-        src='/images/error/401.png'
+        src='/images/error/401.webp'
         alt='404Error'
         width={0}
         height={0}
@@ -23,9 +23,9 @@ const NoAuthentication = () => {
         size='small'
         colorStyle='blue'
         filled={false}
-        onClick={() => router.back()}
+        onClick={() => router.push('/')}
       >
-        이전으로
+        홈으로
       </Button>
     </div>
   );

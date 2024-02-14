@@ -11,7 +11,7 @@ const NotFound = () => {
   return (
     <div className={styles.notFoundWrapper}>
       <Image
-        src='/images/error/404.png'
+        src='/images/error/404.webp'
         alt='404Error'
         width={0}
         height={0}
