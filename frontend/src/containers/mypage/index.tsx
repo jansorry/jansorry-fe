@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 
 import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
-import { totalReceiptCountResponse } from '@/types/receipt';
 import { UserProfile } from '@/containers/mypage/UserProfile';
 
 import Header from '@/components/Header';
