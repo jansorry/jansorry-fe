@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import * as styles from '@/containers/mypage/index.css';
@@ -51,6 +51,10 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
   };
 
   const refLast = useObserver(handleLastCardDetected).ref;
+
+  useEffect(() => {
+    setCards(content);
+  }, [content]);
 
   return (
     <div className={styles.profileContentStyle}>
