@@ -64,7 +64,7 @@ const ProfileWithContent = ({ content, last, receiptCount }: Props) => {
         영수증 발급
       </Button>
       {receiptCount > 0 && (
-        <SavedReceiptContainer receiptCount={receiptCount} />
+        <SavedReceiptContainer initialReceiptCount={receiptCount} />
       )}
       <div className={styles.cardGridWrapper}>
         {cards.map((card) => (
