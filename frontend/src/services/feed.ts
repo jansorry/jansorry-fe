@@ -1,18 +1,5 @@
-import { redirect } from 'next/navigation';
-
-import { apiClient, apiServer } from '@/services/index';
+import { apiClient } from '@/services/index';
 import { feedResponse } from '@/types/feed';
-
-export const getLiveFeedonServer = async (
-  token: string = '',
-): Promise<feedResponse> => {
-  try {
-    return await apiServer.get<feedResponse>(`/feed/actions/live`, token);
-  } catch (error) {
-    console.log(error);
-  }
-  return redirect('/401');
-};
 
 export const getFeed = async (
   lastActionId: number,
