@@ -1,14 +1,31 @@
+'use client';
+
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import Empty from '@/containers/home/Empty';
 import CardsPresent from '@/containers/home/CardsPresent';
-import { homeCardsResponse } from '@/types/home';
+import { getHomeCards } from '@/services/home';
 
 import * as styles from './index.css';
 import NavBar from '@/components/NavBar';
 import PostActionButton from '@/components/PostActionButton';
 
-const Home = ({ count, categoryList }: homeCardsResponse) => {
+const Home = () => {
+  const [count, setCount] = useState<number>(0);
+  const [categoryList, setCategoryList] = useState<number[]>([]);
+
+  const fetchHomeData = async () => {
+    const { count: countData, categoryList: categoryListData } =
+      await getHomeCards();
+    setCount(countData);
+    setCategoryList(categoryListData);
+  };
+
+  useEffect(() => {
+    fetchHomeData();
+  }, []);
+
   return (
     <main className={styles.homeWrapper}>
       <Image

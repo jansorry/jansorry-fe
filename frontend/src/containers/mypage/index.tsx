@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
+import { userDataResponse, actionData } from '@/types/userData';
 import { UserProfile } from '@/containers/mypage/UserProfile';
+import { getMyPage } from '@/services/mypage';
 
 import Header from '@/components/Header';
 import * as styles from './index.css';
@@ -12,19 +13,31 @@ import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 import PostActionButton from '@/components/PostActionButton';
 
-interface Props {
-  myPageItems: userDataResponse;
-  actionsData: actionTotalDataResponse;
-  receiptCount: number;
-}
+const MyPageContainer = () => {
+  const [myPageItems, setMyPageItems] = useState<userDataResponse>({
+    nickname: '',
+    imageUrl: 0,
+    followerCnt: 0,
+    followingCnt: 0,
+  });
+  const [actionsItems, setActionsItems] = useState<actionData>({
+    content: [],
+    last: true,
+  });
+  const [receiptCount, setReceiptCount] = useState<number>(0);
+  const [nagCount, setNagCount] = useState<number>(0);
 
-const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
-  const [NagCount, setNagCount] = useState<number>(0);
+  const fetchMypageData = async () => {
+    const { userData, actionsData, receiptCountData } = await getMyPage();
+    setMyPageItems(userData);
+    setActionsItems(actionsData);
+    setReceiptCount(receiptCountData);
+    setNagCount(actionsItems.content?.length ?? 0);
+  };
 
   useEffect(() => {
-    const contentLength = actionsData.content?.length ?? 0;
-    setNagCount(contentLength);
-  }, [actionsData]);
+    fetchMypageData();
+  }, []);
 
   return (
     <>
@@ -33,10 +46,10 @@ const MyPageContainer = ({ myPageItems, actionsData, receiptCount }: Props) => {
         <div className={styles.profileContentWrapper}>
           <UserProfile {...myPageItems} />
         </div>
-        {NagCount > 0 ? (
+        {nagCount > 0 ? (
           <ProfileWithContent
-            content={actionsData.content}
-            last={actionsData.last}
+            content={actionsItems.content}
+            last={actionsItems.last}
             receiptCount={receiptCount}
           />
         ) : (
