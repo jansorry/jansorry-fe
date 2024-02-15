@@ -12,9 +12,13 @@ export interface actionResponse {
   actionContent: string;
 }
 
-export interface actionTotalDataResponse {
-  size: number;
+export interface actionData {
   content: actionResponse[];
+  last: boolean;
+}
+
+export interface actionTotalDataResponse extends actionData {
+  size: number;
   number: number;
   sort: { empty: boolean; sorted: boolean; unsorted: boolean };
   pageable: {
@@ -27,6 +31,5 @@ export interface actionTotalDataResponse {
   };
   numberOfElements: number;
   first: boolean;
-  last: boolean;
   empty: boolean;
 }

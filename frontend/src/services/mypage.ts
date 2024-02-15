@@ -3,18 +3,16 @@ import { redirect } from 'next/navigation';
 import { apiClient, apiServer } from '@/services/index';
 import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
 
-export const getMyPage = async (
-  token: string = '',
-): Promise<{
+export const getMyPage = async (): Promise<{
   userData: userDataResponse;
   actionsData: actionTotalDataResponse;
   receiptCountData: number;
 }> => {
   try {
     const [userData, actionsData, receiptCountData] = await Promise.all([
-      apiServer.get<userDataResponse>(`/members`, token),
-      apiServer.get<actionTotalDataResponse>(`/actions`, token),
-      apiServer.get<number>(`/receipts`, token),
+      apiClient.get<userDataResponse>(`/members`),
+      apiClient.get<actionTotalDataResponse>(`/actions`),
+      apiClient.get<number>(`/receipts`),
     ]);
     return { userData, actionsData, receiptCountData };
   } catch (e) {
