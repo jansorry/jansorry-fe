@@ -10,16 +10,19 @@ import { getHomeCards } from '@/services/home';
 import * as styles from './index.css';
 import NavBar from '@/components/NavBar';
 import PostActionButton from '@/components/PostActionButton';
+import Loading from '@/components/Loading';
 
 const Home = () => {
   const [count, setCount] = useState<number>(0);
   const [categoryList, setCategoryList] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchHomeData = async () => {
     const { count: countData, categoryList: categoryListData } =
       await getHomeCards();
     setCount(countData);
     setCategoryList(categoryListData);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -37,12 +40,16 @@ const Home = () => {
         className={`${styles.homeBg}`}
       />
 
-      <div className={`${styles.homeContentWrapper}`}>
-        <div className={styles.homeText({ contentType: 'title' })}>
-          당신의 잔소리
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className={`${styles.homeContentWrapper}`}>
+          <div className={styles.homeText({ contentType: 'title' })}>
+            당신의 잔소리
+          </div>
+          {count ? <CardsPresent {...{ count, categoryList }} /> : <Empty />}
         </div>
-        {count ? <CardsPresent {...{ count, categoryList }} /> : <Empty />}
-      </div>
+      )}
 
       <PostActionButton />
       <NavBar clickedIndex={2} />

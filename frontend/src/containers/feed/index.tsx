@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { feedContent, feedResponse } from '@/types/feed';
+import { feedContent } from '@/types/feed';
 import FeedCard from '@/containers/feed/FeedCard';
 import { useObserver } from '@/hooks/useObserver';
 import { getFeed } from '@/services/feed';
@@ -12,12 +12,13 @@ import Header from '@/components/Header';
 import NavBar from '@/components/NavBar';
 import Button from '@/components/Button';
 import PostActionButton from '@/components/PostActionButton';
+import Loading from '@/components/Loading';
 
-const Feed = ({ content, last }: feedResponse) => {
+const Feed = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isLast, setIsLast] = useState<boolean>(last);
-  const [feeds, setFeeds] = useState<feedContent[]>(content);
+  const [isLast, setIsLast] = useState<boolean>(true);
+  const [feeds, setFeeds] = useState<feedContent[]>([]);
   const [selectedHashtag, setSelectedHashtag] = useState<number>(0);
 
   const hashtagKeys = [0, 1, 2, 3, 4, 5];
@@ -30,9 +31,16 @@ const Feed = ({ content, last }: feedResponse) => {
     5: '#30대',
   };
 
+  const fetchFeedData = async () => {
+    const data = await getFeed(-1, selectedHashtag);
+    setIsLast(data.last);
+    setFeeds([...data.content]);
+    setIsMounted(true);
+  };
+
   const fetchHashtagFeed = async () => {
     const data = await getFeed(-1, selectedHashtag);
-    if (data.last) setIsLast(data.last);
+    setIsLast(data.last);
     setFeeds([...data.content]);
   };
 
@@ -42,7 +50,7 @@ const Feed = ({ content, last }: feedResponse) => {
 
     const lastActionId: number = feeds[feeds.length - 1]?.actionId;
     const data = await getFeed(lastActionId, selectedHashtag);
-    if (data.last) setIsLast(data.last);
+    setIsLast(data.last);
     setFeeds([...feeds, ...data.content]);
 
     setIsLoading(false);
@@ -53,7 +61,7 @@ const Feed = ({ content, last }: feedResponse) => {
       fetchHashtagFeed();
       return;
     }
-    setIsMounted(true);
+    fetchFeedData();
   }, [selectedHashtag]);
 
   const refLast = useObserver(handleLastDetected).ref;
@@ -61,27 +69,31 @@ const Feed = ({ content, last }: feedResponse) => {
   return (
     <>
       <Header title='모두의 잔소리' />
-      <div className={styles.feedWrapper}>
-        <div className={styles.feedHashtagWrapper}>
-          {hashtagKeys.map((hashtagKey) => (
-            <Button
-              key={hashtagKey}
-              type='button'
-              size='small'
-              colorStyle='blue'
-              filled={selectedHashtag === hashtagKey}
-              onClick={() => setSelectedHashtag(hashtagKey)}
-            >
-              {hashtagValues[hashtagKey]}
-            </Button>
-          ))}
+      {isMounted ? (
+        <div className={styles.feedWrapper}>
+          <div className={styles.feedHashtagWrapper}>
+            {hashtagKeys.map((hashtagKey) => (
+              <Button
+                key={hashtagKey}
+                type='button'
+                size='small'
+                colorStyle='blue'
+                filled={selectedHashtag === hashtagKey}
+                onClick={() => setSelectedHashtag(hashtagKey)}
+              >
+                {hashtagValues[hashtagKey]}
+              </Button>
+            ))}
+          </div>
+          {feeds &&
+            feeds.map((feedItem) => (
+              <FeedCard key={feedItem.actionId} {...feedItem} />
+            ))}
+          {isLast ? <div>더 이상 피드가 없어요.</div> : <div ref={refLast} />}
         </div>
-        {feeds &&
-          feeds.map((feedItem) => (
-            <FeedCard key={feedItem.actionId} {...feedItem} />
-          ))}
-        {isLast ? <div>더 이상 피드가 없어요.</div> : <div ref={refLast} />}
-      </div>
+      ) : (
+        <Loading />
+      )}
       <PostActionButton />
       <NavBar clickedIndex={1} />
     </>
