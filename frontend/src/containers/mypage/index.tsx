@@ -12,6 +12,7 @@ import ProfileWithContent from './ProfileWithContent';
 import ProfileNoContent from './ProfileNoContent';
 import NavBar from '@/components/NavBar';
 import PostActionButton from '@/components/PostActionButton';
+import Loading from '@/components/Loading';
 
 const MyPageContainer = () => {
   const [myPageItems, setMyPageItems] = useState<userDataResponse>({
@@ -26,6 +27,7 @@ const MyPageContainer = () => {
   });
   const [receiptCount, setReceiptCount] = useState<number>(0);
   const [nagCount, setNagCount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchMypageData = async () => {
     const { userData, actionsData, receiptCountData } = await getMyPage();
@@ -33,6 +35,7 @@ const MyPageContainer = () => {
     setActionsItems(actionsData);
     setReceiptCount(receiptCountData);
     setNagCount(actionsData.content?.length ?? 0);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -42,22 +45,26 @@ const MyPageContainer = () => {
   return (
     <>
       <Header title='나의 잔소리 목록' />
-      <main className={styles.profileWrapper}>
-        <div className={styles.profileContentWrapper}>
-          <UserProfile {...myPageItems} />
-        </div>
-        {nagCount > 0 ? (
-          <ProfileWithContent
-            content={actionsItems.content}
-            last={actionsItems.last}
-            receiptCount={receiptCount}
-          />
-        ) : (
-          <ProfileNoContent receiptCount={receiptCount} />
-        )}
-        <PostActionButton />
-        <NavBar clickedIndex={3} />
-      </main>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <main className={styles.profileWrapper}>
+          <div className={styles.profileContentWrapper}>
+            <UserProfile {...myPageItems} />
+          </div>
+          {nagCount > 0 ? (
+            <ProfileWithContent
+              content={actionsItems.content}
+              last={actionsItems.last}
+              receiptCount={receiptCount}
+            />
+          ) : (
+            <ProfileNoContent receiptCount={receiptCount} />
+          )}
+          <PostActionButton />
+          <NavBar clickedIndex={3} />
+        </main>
+      )}
     </>
   );
 };
