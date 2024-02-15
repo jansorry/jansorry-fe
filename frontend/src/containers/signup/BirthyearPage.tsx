@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { redirect } from 'next/navigation';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
@@ -17,9 +18,9 @@ const BirthyearPage = () => {
 
   const setBirthOnClick = () => {
     setUserBirth(selectedYear);
+    redirect('/');
   };
 
-  //  첫화면으로 돌아가는 router 추가 필요
   const handlePrevButton = () => {
     setUserBirth(null);
   };
