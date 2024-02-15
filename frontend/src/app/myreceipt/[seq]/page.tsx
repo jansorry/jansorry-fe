@@ -8,6 +8,8 @@ import {
 } from '@/utils/drawReceipt';
 import { getAllNags, getReceipts } from '@/services/receipt';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: { seq: 1 | 2 | 3 };
 }

@@ -61,7 +61,7 @@ const GenderPage = () => {
             visible: isGenderRequired ? 'hidden' : 'show',
           })}
         >
-          14세 이하는 성별 정보를 받지 않아요.
+          14세 미만은 성별 정보를 받지 않아요.
         </div>
       </div>
       <div className={styles.selectWrapper({ content: 'genderButtons' })}>
