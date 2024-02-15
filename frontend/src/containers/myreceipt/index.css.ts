@@ -45,15 +45,15 @@ export const myreceiptButtonWrapper = style([
 export const modalWrapper = style([
   flex({ direction: 'column', align: 'center', justify: 'center' }),
   {
-    width: '90vw',
+    width: 'auto',
     maxWidth: calc.multiply('480px', 0.9),
   },
 ]);
 export const doubleButtonWrapper = style([
   flex({ direction: 'row', align: 'center', justify: 'spaceBetween' }),
   {
-    width: '80vw',
-    maxWidth: calc.multiply('480px', 0.8),
+    width: '100%',
+    maxWidth: calc.multiply('480px', 0.7),
     paddingTop: vars.space['2x'],
     marginBottom: vars.space['2x'],
   },

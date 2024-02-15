@@ -2,12 +2,7 @@
 
 import { useState } from 'react';
 
-import {
-  doubleButtonWrapper,
-  explainText,
-  iconAndText,
-  modalWrapper,
-} from '@/containers/myreceipt/index.css';
+import * as styles from '@/containers/myreceipt/index.css';
 import { copyLink } from '@/utils/makeReceipt';
 import { IconSharing } from '#/svgs';
 
@@ -44,7 +39,7 @@ export const SharingButtons = ({
   };
 
   return (
-    <div className={modalWrapper}>
+    <div className={styles.modalWrapper}>
       <Button
         onClick={saveImageEventhandler}
         type='button'
@@ -54,7 +49,7 @@ export const SharingButtons = ({
       >
         영수증 이미지로 저장하기
       </Button>
-      <div className={doubleButtonWrapper}>
+      <div className={styles.doubleButtonWrapper}>
         <Button
           onClick={clickCopyLinkEvent.family}
           type='button'
@@ -63,7 +58,7 @@ export const SharingButtons = ({
           filled={isSelected === 'family'}
         >
           <div>
-            <span className={iconAndText}>
+            <span className={styles.iconAndText}>
               <IconSharing />
             </span>
             어른용
@@ -78,7 +73,7 @@ export const SharingButtons = ({
           filled={isSelected === 'friend'}
         >
           <span>
-            <span className={iconAndText}>
+            <span className={styles.iconAndText}>
               <IconSharing />
             </span>
             친구용
@@ -87,13 +82,13 @@ export const SharingButtons = ({
       </div>
       <div>
         {isSelected !== 'friend' ? (
-          <div className={explainText}>
+          <div className={styles.explainText}>
             <div>어른용 영수증은 글씨가 커져요! 👀 </div>
             <div>💘 애교 있는 문구가 추가돼요.</div>
             <div>어른들께 잔소리 비용💸을 청구해봐요!</div>
           </div>
         ) : (
-          <div className={explainText}>
+          <div className={styles.explainText}>
             <div>👭 친구들에게 영수증을 공유해요!</div>
             <div>영수증 내역🧾을 비교하고</div>
             <div>누가 가장 비싼 잔소리를 들었는지 확인해봐요.</div>
