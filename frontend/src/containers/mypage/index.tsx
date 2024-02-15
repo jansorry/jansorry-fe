@@ -45,26 +45,28 @@ const MyPageContainer = () => {
   return (
     <>
       <Header title='나의 잔소리 목록' />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <main className={styles.profileWrapper}>
-          <div className={styles.profileContentWrapper}>
-            <UserProfile {...myPageItems} />
-          </div>
-          {nagCount > 0 ? (
-            <ProfileWithContent
-              content={actionsItems.content}
-              last={actionsItems.last}
-              receiptCount={receiptCount}
-            />
-          ) : (
-            <ProfileNoContent receiptCount={receiptCount} />
-          )}
-          <PostActionButton />
-          <NavBar clickedIndex={3} />
-        </main>
-      )}
+      <main className={styles.profileWrapper}>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className={styles.profileContentWrapper}>
+              <UserProfile {...myPageItems} />
+            </div>
+            {nagCount > 0 ? (
+              <ProfileWithContent
+                content={actionsItems.content}
+                last={actionsItems.last}
+                receiptCount={receiptCount}
+              />
+            ) : (
+              <ProfileNoContent receiptCount={receiptCount} />
+            )}
+          </>
+        )}
+        <PostActionButton />
+        <NavBar clickedIndex={3} />
+      </main>
     </>
   );
 };
