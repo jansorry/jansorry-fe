@@ -32,7 +32,7 @@ const MyPageContainer = () => {
     setMyPageItems(userData);
     setActionsItems(actionsData);
     setReceiptCount(receiptCountData);
-    setNagCount(actionsItems.content?.length ?? 0);
+    setNagCount(actionsData.content?.length ?? 0);
   };
 
   useEffect(() => {
