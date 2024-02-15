@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import YearPicker from '@/containers/signup/YearPicker';
 import * as styles from '@/containers/signup/index.css';
@@ -13,16 +15,17 @@ import { selectedYearState, userBirthState } from './store';
 import Button from '@/components/Button';
 
 const BirthyearPage = () => {
+  const router = useRouter();
   const selectedYear = useRecoilValue(selectedYearState);
   const setUserBirth = useSetRecoilState(userBirthState);
 
   const setBirthOnClick = () => {
     setUserBirth(selectedYear);
-    redirect('/');
   };
 
   const handlePrevButton = () => {
     setUserBirth(null);
+    router.replace('/');
   };
 
   return (
