@@ -1,13 +1,11 @@
 import { redirect } from 'next/navigation';
 
-import { apiServer } from '@/services/index';
+import { apiClient } from '@/services/index';
 import { homeCardsResponse } from '@/types/home';
 
-export const getHomeCards = async (
-  token: string = '',
-): Promise<homeCardsResponse> => {
+export const getHomeCards = async (): Promise<homeCardsResponse> => {
   try {
-    return await apiServer.get(`/main`, token);
+    return await apiClient.get(`/main`);
   } catch (error) {
     console.log(error);
   }

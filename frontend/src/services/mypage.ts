@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { apiClient, apiServer } from '@/services/index';
+import { apiClient } from '@/services/index';
 import { userDataResponse, actionTotalDataResponse } from '@/types/userData';
 
 export const getMyPage = async (): Promise<{
