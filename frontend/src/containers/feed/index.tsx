@@ -33,17 +33,14 @@ const Feed = () => {
 
   const fetchFeedData = async () => {
     const data = await getFeed(-1, selectedHashtag);
-    if (data.last) setIsLast(data.last);
+    setIsLast(data.last);
     setFeeds([...data.content]);
     setIsMounted(true);
   };
 
   const fetchHashtagFeed = async () => {
     const data = await getFeed(-1, selectedHashtag);
-    // TODO: last detect 로그 확인
-    console.log(data);
-    console.log(data.last);
-    if (data.last) setIsLast(data.last);
+    setIsLast(data.last);
     setFeeds([...data.content]);
   };
 
@@ -53,7 +50,7 @@ const Feed = () => {
 
     const lastActionId: number = feeds[feeds.length - 1]?.actionId;
     const data = await getFeed(lastActionId, selectedHashtag);
-    if (data.last) setIsLast(data.last);
+    setIsLast(data.last);
     setFeeds([...feeds, ...data.content]);
 
     setIsLoading(false);
