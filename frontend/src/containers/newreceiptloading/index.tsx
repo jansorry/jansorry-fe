@@ -15,11 +15,14 @@ const CreateReceipt = () => {
   const [animationFinished, setAnimationFinished] = useRecoilState(
     animationFinishedState,
   );
-  const [receiptSeq, setReceiptSeq] = useState(1);
+  const [receiptSeq, setReceiptSeq] = useState<number>(1);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    if (animationFinished && receiptSeq) {
-      router.push(`/myreceipt/${receiptSeq}`);
+    if (isMounted) {
+      if (animationFinished && receiptSeq) {
+        router.push(`/myreceipt/${receiptSeq}`);
+      }
     }
   }, [animationFinished, receiptSeq]);
 
@@ -30,6 +33,7 @@ const CreateReceipt = () => {
       const receiptInfo = createReceiptObject(data);
       const seq = await createReceipt(receiptInfo);
       setReceiptSeq(seq);
+      setIsMounted(true);
     };
 
     getDataAndCreateReceipt();
