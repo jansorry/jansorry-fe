@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { useRouter } from 'next/navigation';
 
 import { animationFinishedState } from '@/containers/newreceiptloading/store';
@@ -12,7 +12,9 @@ import { createReceiptObject } from '@/utils/makeReceipt';
 
 const CreateReceipt = () => {
   const router = useRouter();
-  const animationFinished = useRecoilValue(animationFinishedState);
+  const [animationFinished, setAnimationFinished] = useRecoilState(
+    animationFinishedState,
+  );
   const [receiptSeq, setReceiptSeq] = useState(1);
 
   useEffect(() => {
@@ -23,6 +25,7 @@ const CreateReceipt = () => {
 
   useEffect(() => {
     const getDataAndCreateReceipt = async () => {
+      setAnimationFinished(false);
       const data = await getNagStatistic();
       const receiptInfo = createReceiptObject(data);
       const seq = await createReceipt(receiptInfo);
