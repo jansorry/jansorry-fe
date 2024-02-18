@@ -4,7 +4,6 @@ import { ChangeEvent, useEffect, useState } from 'react';
 
 import { getFollowings, getSearchByNickname } from '@/services/follow';
 import { followingResponse, searchResponse } from '@/types/follow';
-import createCounter from '@/utils/counter';
 import * as styles from '@/containers/followings/index.css';
 import { defaultWrapper } from '@/styles/common.css';
 import FollowButton from '@/containers/feed/FollowButton';
@@ -40,6 +39,7 @@ const Followings = () => {
   };
 
   const handleSearchNickname = () => {
+    setIsExist(true);
     getSearchByNickname(inputNickname)
       .then((user) => {
         setNewFollow((prevState) => {
@@ -95,30 +95,27 @@ const Followings = () => {
           </span>
         </div>
         <div>
-          {newFollow.map((item) => (
-            <div key={`${createCounter()}`} className={styles.newUserWrapper}>
-              {/*  TODO : imgSrc 수정 */}
-              <div className={styles.profileImgTextWrapper}>
-                <UserPreview imgSrc={item.imageUrl} nickname={item.nickname} />
-              </div>
+          <div className={styles.profilesWrapper}>
+            {newFollow.map((item) => (
+              <div key={item.nickname} className={styles.newUserWrapper}>
+                <div className={styles.profileImgTextWrapper}>
+                  <UserPreview
+                    imgSrc={item.imageUrl}
+                    nickname={item.nickname}
+                  />
+                </div>
 
-              <div className={styles.followButtonWrapper}>
-                <FollowButton isFollow memberId={item.memberId} />
+                <div className={styles.followButtonWrapper}>
+                  <FollowButton isFollow memberId={item.memberId} />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className={styles.profilesWrapper}>
           {followingArray.map((item) => (
-            <div
-              key={createCounter().toString()}
-              className={styles.profilesWrapper}
-            >
-              <div
-                key={`${createCounter()}`}
-                className={styles.profileItemWrapper}
-              >
-                {/*  TODO : imgSrc 수정 */}
+            <div key={item.nickname} className={styles.profilesWrapper}>
+              <div className={styles.profileItemWrapper}>
                 <div className={styles.profileImgTextWrapper}>
                   <UserPreview
                     imgSrc={item.imageUrl}
