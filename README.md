@@ -66,7 +66,7 @@ pnpm dev
 pnpm build
 ```
 
-- 📱 front-domain : https://jansorry.com
+- 📱 front-domain : https://jansorry.com, https://jansorry.vercel.app
 - 🛠 back-server : https://jansorry.store
 - 🔗 back-swagger : https://jansorry.store/swagger-ui/index.html
 
